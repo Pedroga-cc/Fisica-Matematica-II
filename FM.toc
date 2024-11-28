@@ -1,0 +1,40 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {chapter}{\numberline {1}Un breve repaso: Espacios vectoriales y espacio de funciones}{4}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Definiciones}{4}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Proceso de ortonormalización de Gram-Schmidt}{9}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Coeficientes de Fourier}{11}{section.1.3}%
+\contentsline {chapter}{\numberline {2}Análisis de Fourier}{16}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Periodicidad y paridad de funciones}{16}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Funciones periódicas}{16}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Funciones pares e impares}{18}{subsection.2.1.2}%
+\contentsline {section}{\numberline {2.2}Serie de Fourier trigonométrica}{19}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Definición}{19}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Series de senos y cosenos}{21}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Ejemplos}{21}{subsection.2.2.3}%
+\contentsline {section}{\numberline {2.3}Serie exponencial}{25}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Diferenciación e integración de las series de Fourier}{27}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Fenómeno de Gibbs}{29}{section.2.5}%
+\contentsline {chapter}{\numberline {3}Integrales y convergencia*}{33}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Funciones definidas por una integral propia}{33}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Funciones definidas por una integral impropia}{37}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Convergencia uniforme de la integral}{37}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Continuidad y derivabilidad}{38}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Intercambio del orden de integración}{42}{subsection.3.2.3}%
+\contentsline {section}{\numberline {3.3}Valor principal de Cauchy}{43}{section.3.3}%
+\contentsline {chapter}{\numberline {4}Transformada de Fourier}{46}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Definiciones}{46}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Ejemplos}{51}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Propiedades de la transformada de Fourier}{56}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Convolución}{59}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Aplicación de la transformada de Fourier}{64}{section.4.5}%
+\contentsline {chapter}{\numberline {5}Transformada de Laplace}{67}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Definición}{67}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Transformada inversa de Laplace}{71}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}$F(s)$ con polos}{73}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}$F(s)$ con puntos de ramificación*}{74}{subsection.5.2.2}%
+\contentsline {section}{\numberline {5.3}Propiedades de la transformada de Laplace}{77}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Convolución}{79}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Aplicaciones de la transformada de Laplace}{82}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Ecuaciones diferenciales lineales con coeficientes constantes}{82}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Ecuaciones integrales}{83}{subsection.5.5.2}%
+\contentsline {subsection}{\numberline {5.5.3}Sistema de ecuaciones lineales}{86}{subsection.5.5.3}%

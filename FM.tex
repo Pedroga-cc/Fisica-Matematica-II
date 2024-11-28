@@ -24,6 +24,7 @@
 \usepackage{etoolbox}
 \usepackage{tcolorbox}
 \usepackage{tikz}
+\usepackage{multicol}
 \usetikzlibrary{arrows,babel}
 \usepackage[font=small]{caption}
 
@@ -73,28 +74,28 @@
 
 \declaretheorem[%
 name            =Teorema,%
-numberwithin=section,
+numberwithin=chapter,
 postheadhook    =\vspace*{\parskip} \begin{Rdbleftbar}\vspace*{-5pt},%
 prefoothook     =\vspace*{-1pt}\end{Rdbleftbar}%
 ]{teorema}
 
 \declaretheorem[%
 name            =Definición,%
-numberwithin=section,
+numberwithin=chapter,
 postheadhook    =\vspace*{\parskip}\begin{Bdbleftbar}\vspace*{-5pt},%
 prefoothook     =\vspace*{-1pt}\end{Bdbleftbar}%
 ]{defi}
 
 \declaretheorem[%
 name            = Proposición,%
-numberwithin=section,
+numberwithin=chapter,
 postheadhook    =\vspace*{\parskip}\begin{Gdbleftbar}\vspace*{-5pt},%
 prefoothook     =\vspace*{-1pt}\end{Gdbleftbar}%
 ]{propo}  
 
 \declaretheorem[%
 name            = Lema,%
-numberwithin=section,
+numberwithin=chapter,
 postheadhook    =\vspace*{\parskip}\begin{Gdbleftbar}\vspace*{-5pt},%
 prefoothook     =\vspace*{-1pt}\end{Gdbleftbar}%
 ]{lema}   
@@ -117,15 +118,19 @@ prefoothook     =\vspace*{-1pt}\end{Gdbleftbar}%
     \vspace*{\baselineskip}
     \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}
     \rule{\textwidth}{0.4pt}\\[\baselineskip]
-    {\scshape\Huge Física matemática} \\[0.2\baselineskip]
+    {\scshape\Huge Física Matemática II} \\[0.2\baselineskip]
     \rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt}
     \rule{\textwidth}{1.6pt}\\[\baselineskip]
     {\Large Autor: \par}
-{\Large Alejandro Saavedra \par}
+{\large Pedro A. Contreras-Corral \par}
 \vfill
 {\large Enero 2023 \par}
 {\large v1.0 \par}
 \end{titlepage}
+
+\chapter*{Prefacio}
+
+Este documento ha sido preparado por Pedro Contreras Corral como material de apoyo para el curso Física Matemática II. Se han utilizado como base las notas de clase de las ocasiones en que el curso fue dictado por Guillermo Rubilar, Ariana Muñoz e Ivana Sebestova, junto al apunte preparado por Alejandro Saavedra.
 
 \tableofcontents
 

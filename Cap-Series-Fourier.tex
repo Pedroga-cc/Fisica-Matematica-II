@@ -1,13 +1,15 @@
 \chapter{Análisis de Fourier}
 
+En el curso Física Matemática I ya se discutió el estudio de la Serie de Fourier. En este curso, haremos un rápido resumen de dichos contenidos, pues son la base para introducir el concepto de la \emph{transformada de Fourier}, que será de utilidad para la resolución de algunas ecuaciones diferenciales parciales cuyas condiciones de borde son periódicas.
+
 \section{Periodicidad y paridad de funciones}
 
 \subsection{Funciones periódicas}
 
 \begin{defi}
-Una función $f: \mathbb{R} \longrightarrow \mathbb{C} $ se dice que es \textbf{periódica de período $T$}, $T\neq 0$, si 
+Una función $f: \mathbb{R} \to \mathbb{C} $ se dice que es \textbf{periódica de período} $T$, con $T\neq 0$, si 
 \begin{equation}
-f(t) = f(t +T ), \quad \forall t.    \label{Periodica}
+f(t) = f(t +T ), \quad \forall \ t \in \mathbb{R}.    \label{Periodica}
 \end{equation}
 
 La constante $T$ la tomaremos como la  menor constante positiva que satisface la igualdad \eqref{Periodica}.
@@ -79,7 +81,7 @@ donde $k_0 \in \mathbb{Z}$ es el único entero que verifica $t + k_0(b-a) \in [a
 \end{defi}
 
 \begin{ejemplo}
-La extensión periódica de $f \in \mathcal{C}[-\pi,\pi]$ real es
+La extensión periódica de $f \in \mathscr{C}[-\pi,\pi]$ real es
 $$f_e(t) = f_e(t + 2\pi)$$
 
 \begin{figure}[H]
@@ -92,7 +94,7 @@ $$f_e(t) = f_e(t + 2\pi)$$
 \subsection{Funciones pares e impares}
  
 \begin{defi}
-Sea $f: [-a,a] \longrightarrow \mathbb{R}$ perteneciente a $\mathcal{C}[-a,a]$.
+Sea $f: [-a,a] \longrightarrow \mathbb{R}$ perteneciente a $\mathscr{C}[-a,a]$.
 \vspace{-0.1cm}
 \begin{align*}
     f ~\mbox{es par} &\Leftrightarrow \forall x \in [-a,a] :~ f(-t) = f(t). \\
@@ -100,17 +102,21 @@ Sea $f: [-a,a] \longrightarrow \mathbb{R}$ perteneciente a $\mathcal{C}[-a,a]$.
 \end{align*}
 \end{defi} 
 
-\textbf{Observación 1:} Sea $f: [-a,a] \longrightarrow \mathbb{R}$ integrable,
-\begin{align*}
-    f ~\mbox{es par} &\Rightarrow \int_{-a}^a f(t) \,dt = 2 \int_0^a f(t) \,dt. \\
-    f ~\mbox{es impar} &\Rightarrow \int_{-a}^a f(t) \,dt = 0.
-\end{align*}
+% \textbf{Observación 1:} 
+
+\begin{propo}
+    Sea $f: [-a,a] \longrightarrow \mathbb{R}$ integrable,
+    \begin{align*}
+        f ~\mbox{es par} &\Rightarrow \int_{-a}^a f(t) \,dt = 2 \int_0^a f(t) \,dt. \\
+        f ~\mbox{es impar} &\Rightarrow \int_{-a}^a f(t) \,dt = 0.
+    \end{align*}
+\end{propo}
 
 \textbf{Observación 2:} Toda función $f:[-a,a] \longrightarrow \mathbb{R}$ puede expresarse como la suma de una función par más otra impar: $f = f_p + f_i$ con 
 $$f_p(t) = \frac{f(t) + f(-t)}{2}, \quad f_i(t) = \frac{f(t) - f(-t)}{2}.$$
 
 \begin{defi}
-Sea $f \in \mathcal{C}[0,a]$ real, entonces la \textbf{extensión par} y la \textbf{extensión impar} de $f$ están definidas, respectivamente, por:
+Sea $f \in \mathscr{C}[0,a]$ real, entonces la \textbf{extensión par} y la \textbf{extensión impar} de $f$ están definidas, respectivamente, por:
 \begin{equation*}
     E_f(t) = \left\{ \begin{array}{cll}
     f(-t)     & \mbox{si} & -a \leq t < 0 \\
@@ -132,22 +138,29 @@ Sea $f \in \mathcal{C}[0,a]$ real, entonces la \textbf{extensión par} y la \tex
 
 \subsection{Definición}
 
-En el espacio $\mathcal{C}[-\pi,\pi]$ consideremos el sistema ortonormal completo 
-$$\left\{ \frac{1}{\sqrt{2\pi}}, \frac{\cos(nt)}{\sqrt{\pi}}, \frac{\sin(nt)}{\sqrt{\pi}} \right\}_{n=1}^{\infty}$$
+\begin{propo}
+    En el espacio $\mathscr{C}[a,b]$, el conjunto formado por las funciones
+    $$\left\{ 1, \cos\left( \frac{2\pi}{L}x \right), \sin\left( \frac{2\pi}{L}x \right) \right\}_{n=1}^{\infty}$$
+    es un conjunto ortogonal, con $L = b-a$.
+\end{propo}
 
-llamado \textbf{sistema trigonométrico}.
 
 \begin{defi}
-Sea $f \in \mathcal{C}[-\pi,\pi]$, la serie 
+    Llamamos \textbf{sistema trigonométrico} al conjunto de funciones ortonormales en el espacio $\mathscr{C}[-\pi,\pi]$, definido como
+    $$\left\{ \frac{1}{\sqrt{2\pi}}, \frac{\cos(nt)}{\sqrt{\pi}}, \frac{\sin(nt)}{\sqrt{\pi}} \right\}_{n=1}^{\infty}$$
+\end{defi}
+
+\begin{defi}
+Sea $f \in \mathscr{C}[a, a+2L]$, una función con un número finito de discontinuidades. Entonces, ella puede ser aproximada por la serie 
 \begin{equation}
-    \frac{a_0}{2} + \sum_{n=1}^{\infty} ( a_n \cos(nt) + b_n \sin(nt)) \label{FourierTrigo}
+    \frac{a_0}{2} + \sum_{n=1}^{\infty} ( a_n \cos\left( \frac{n\pi}{L}x \right) + b_n \sin\left( \frac{n\pi}{L}x \right)) \ . \label{FourierTrigo}
 \end{equation}
 
-se denomina \textbf{serie trigonométrica de Fourier} o simplemente \textbf{serie de Fourier}, donde los \textit{coeficientes de Fourier} están dados por:
+Esta expansión se denomina \textbf{serie trigonométrica de Fourier} o simplemente \textbf{serie de Fourier}, donde los \textit{coeficientes de Fourier} están dados por:
 \begin{align*}
-    a_0 &= \frac{1}{\pi} \int_{-\pi}^{\pi} f(t) \,dt, \\
-    a_n &= \frac{1}{\pi} \int_{-\pi}^{\pi} f(t) \cos(nt) \,dt, \quad n = 1,2, \dots\\
-    b_n &= \frac{1}{\pi} \int_{-\pi}^{\pi} f(t) \sin(nt) \,dt. \quad n = 1,2, \dots
+    a_0 &= \frac{1}{L} \int_{a}^{a+2L} f(t) \,dt, \\
+    a_n &= \frac{1}{L} \int_{a}^{a+2L} f(t) \cos\left( \frac{n\pi}{L}t \right) \,dt, \quad n = 1,2, \dots\\
+    b_n &= \frac{1}{L} \int_{a}^{a+2L} f(t) \sin\left( \frac{n\pi}{L}t \right) \,dt. \quad n = 1,2, \dots
 \end{align*}
 \end{defi}
 
@@ -156,34 +169,34 @@ se denomina \textbf{serie trigonométrica de Fourier} o simplemente \textbf{seri
 $$f(t) \sim \frac{a_0}{2} + \sum_{n=1}^{\infty} (a_n \cos(nt) + b_n \sin(nt)).$$    
 \end{shaded}
 
-\begin{propo} \label{C.FourierCero}
-Los coeficientes de la serie trigonométrica de Fourier de $f \in \mathcal{C}[-\pi,\pi]$ convergen a cero cuando $n \to \infty$, es decir,
-$$\lim_{n \to + \infty} a_n = \lim_{n \to + \infty} b_n = 0.$$
-\end{propo}
+% \begin{propo} \label{C.FourierCero}
+% Los coeficientes de la serie trigonométrica de Fourier de $f \in \mathscr{C}[-\pi,\pi]$ convergen a cero cuando $n \to \infty$, es decir,
+% $$\lim_{n \to + \infty} a_n = \lim_{n \to + \infty} b_n = 0.$$
+% \end{propo}
 
-\begin{demo}
-Si denotamos el sistema trigonométrico por 
-$$\varphi_0(t) = \frac{1}{\sqrt{2\pi}}, ~ \varphi_{2n-1}(t) = \frac{1}{\sqrt{\pi}} \cos(nt), ~ \varphi_{2n(t)} = \frac{1}{\sqrt{\pi}} \sin(nt), \quad n = 1,2, \dots$$
+% \begin{demo}
+% Si denotamos el sistema trigonométrico por 
+% $$\varphi_0(t) = \frac{1}{\sqrt{2\pi}}, ~ \varphi_{2n-1}(t) = \frac{1}{\sqrt{\pi}} \cos(nt), ~ \varphi_{2n(t)} = \frac{1}{\sqrt{\pi}} \sin(nt), \quad n = 1,2, \dots$$
 
-tenemos que la serie generalizada de Fourier queda
-$$\sum_{n=0}^{\infty} C_n \varphi_n(t) = C_0 \varphi_0(t) + \sum_{n=1}^{\infty} \left[ C_{2n-1} \varphi_{2n-1}(t) + C_{2n} \varphi_{2n}(t) \right] ,$$
+% tenemos que la serie generalizada de Fourier queda
+% $$\sum_{n=0}^{\infty} C_n \varphi_n(t) = C_0 \varphi_0(t) + \sum_{n=1}^{\infty} \left[ C_{2n-1} \varphi_{2n-1}(t) + C_{2n} \varphi_{2n}(t) \right] ,$$
 
-la cual corresponde a la serie trigonométrica de Fourier de $f \in \mathcal{C}[-\pi,\pi]$, donde 
-$$a_0 = \sqrt{\frac{2}{\pi}} C_0, ~ a_n = \frac{C_{2n-1}}{\sqrt{\pi}}, ~ b_n = \frac{C_{2n}}{\sqrt{\pi}}, \quad n = 1,2, \dots$$
+% la cual corresponde a la serie trigonométrica de Fourier de $f \in \mathscr{C}[-\pi,\pi]$, donde 
+% $$a_0 = \sqrt{\frac{2}{\pi}} C_0, ~ a_n = \frac{C_{2n-1}}{\sqrt{\pi}}, ~ b_n = \frac{C_{2n}}{\sqrt{\pi}}, \quad n = 1,2, \dots$$
 
-De lo discutido en el primer capítulo, una de las consecuencias de la desigualdad de Bessel \eqref{D.Bessel} es que 
-$$\lim_{n \to + \infty} C_n = \lim_{n \to + \infty} \langle f, \varphi_n \rangle = 0 ~\Rightarrow~ \lim_{n \to \infty} C_{2n-1} = \lim_{n \to \infty} C_{2n} = 0. $$
+% De lo discutido en el primer capítulo, una de las consecuencias de la desigualdad de Bessel \eqref{D.Bessel} es que 
+% $$\lim_{n \to + \infty} C_n = \lim_{n \to + \infty} \langle f, \varphi_n \rangle = 0 ~\Rightarrow~ \lim_{n \to \infty} C_{2n-1} = \lim_{n \to \infty} C_{2n} = 0. $$
 
-Por lo tanto, 
-$$\lim_{n \to + \infty} a_n = \lim_{n \to + \infty} b_n = 0.$$
+% Por lo tanto, 
+% $$\lim_{n \to + \infty} a_n = \lim_{n \to + \infty} b_n = 0.$$
 
-\end{demo}
+% \end{demo}
 
-¿Convergerá puntual y/o uniformemente la serie de Fourier a $f(t)$? ¿Qué condiciones deben cumplirse?
+% ¿Convergerá puntual y/o uniformemente la serie de Fourier a $f(t)$? ¿Qué condiciones deben cumplirse?
 
-Antes de responder estas preguntas, primero justifiquemos que es suficiente trabajar con funciones a valores reales, a pesar de que los siguientes teoremas también son válidos para funciones a valores complejos. 
+% Antes de responder estas preguntas, primero justifiquemos que es suficiente trabajar con funciones a valores reales, a pesar de que los siguientes teoremas también son válidos para funciones a valores complejos. 
 
-Sea $f = u + iv \in \mathcal{C}[-\pi,\pi]$, su serie de Fourier trigonométrica está dada por \eqref{FourierTrigo} con 
+Sea $f = u + iv \in \mathscr{C}[-\pi,\pi]$, su serie de Fourier trigonométrica está dada por \eqref{FourierTrigo} con 
 \begin{align*}
     a_0 &= \frac{1}{\pi} \int_{-\pi}^{\pi} f(t) \,dt =  \frac{1}{\pi} \int_{-\pi}^{\pi} u(t) \,dt + \frac{i}{\pi} \int_{-\pi}^{\pi} v(t) \,dt,\\
     a_n &= \frac{1}{\pi} \int_{-\pi}^{\pi} f(t) \cos(nt) \,dt = \frac{1}{\pi} \int_{-\pi}^{\pi} u(t) \cos(nt) \,dt + \frac{i}{\pi} \int_{-\pi}^{\pi} v(t) \cos(nt) \,dt , \quad n = 1,2, \dots\\
@@ -211,7 +224,7 @@ Sea $f:[0,\pi] \longrightarrow \mathbb{R}$ seccionalmente continua, entonces la 
     \end{array} \right. .
 \end{equation*}
 
-Puesto que $E_f, O_f: [-\pi,\pi] \longrightarrow$ son seccionalmente continuas, se puede obtener el desarrollo en serie de Fourier de éstas, los cuales están definidos por: \footnote{La forma de las series seno y coseno, con sus respectivos coeficientes, se obtienen al aplicar las propiedades vistas para las funciones pares e impares.}
+Puesto que $E_f, O_f: [-\pi,\pi] \to \mathbb{R}$ son seccionalmente continuas, se puede obtener el desarrollo en serie de Fourier de éstas, los cuales están definidos por: \footnote{La forma de las series seno y coseno, con sus respectivos coeficientes, se obtienen al aplicar las propiedades vistas para las funciones pares e impares.}
 $$ E_f(t) \sim \frac{a_0}{2}  + \sum_{n=1}^{\infty} a_n \cos(nt), ~~\mbox{donde}~~ a_n = \frac{2}{\pi} \int_0^{\pi} f(t) \cos(nt)\,dt$$
 
 y
@@ -219,65 +232,65 @@ $$ O_f(t) \sim  \sum_{n=1}^{\infty} b_n \sin(nt), ~~\mbox{donde} ~~ b_n = \frac{
 
 Estos son llamados \textbf{desarrollos en serie de Fourier de coseno y de seno de $f$}, respectivamente.
 
-\subsection{Convergencia puntual y uniforme}
+% \subsection{Convergencia puntual y uniforme}
 
-\begin{defi}
-Sea $f: [a,b] \longrightarrow \mathbb{R}$, para $t_0 \in [a,b]$ definimos
-\begin{align*}
-    f(t_0^+) &= \lim_{t \to t_0^+} f(t), \\
-    f(t_0^-) &= \lim_{t \to t_0^-} f(t),
-\end{align*}
+% \begin{defi}
+% Sea $f: [a,b] \longrightarrow \mathbb{R}$, para $t_0 \in [a,b]$ definimos
+% \begin{align*}
+%     f(t_0^+) &= \lim_{t \to t_0^+} f(t), \\
+%     f(t_0^-) &= \lim_{t \to t_0^-} f(t),
+% \end{align*}
 
-si existen los límites. 
+% si existen los límites. 
 
-Una discontinuidad en $t_0$ tal que $f(t_0^+)$ y $f(t_0^-)$ existen se denomina \textbf{discontinuidad de salto} y $f(t_0^+) - f(t_0^-)$ recibe el nombre de \textbf{salto} de $f$ en $t_0$.
-\end{defi}
+% Una discontinuidad en $t_0$ tal que $f(t_0^+)$ y $f(t_0^-)$ existen se denomina \textbf{discontinuidad de salto} y $f(t_0^+) - f(t_0^-)$ recibe el nombre de \textbf{salto} de $f$ en $t_0$.
+% \end{defi}
 
-\textbf{Observaciones:} 
+% \textbf{Observaciones:} 
 
-\begin{enumerate}
-    \item La magnitud del salto es $|f(t_0^+) - f(t_0^-)|$.
+% \begin{enumerate}
+%     \item La magnitud del salto es $|f(t_0^+) - f(t_0^-)|$.
     
-    \item El salto se anula cuando $f(t_0) = f(t_0^+) = f(t_0^-)$, es decir, cuando $f$ es continua en $t_0$.
+%     \item El salto se anula cuando $f(t_0) = f(t_0^+) = f(t_0^-)$, es decir, cuando $f$ es continua en $t_0$.
     
-    \item Una función $f: [a,b] \longrightarrow \mathbb{R}$ seccionalmente continua tiene discontinuidades de salto.
-\end{enumerate}
+%     \item Una función $f: [a,b] \longrightarrow \mathbb{R}$ seccionalmente continua tiene discontinuidades de salto.
+% \end{enumerate}
 
-\begin{defi}
-Sea $f:[a,b] \longrightarrow \mathbb{R}$, con una discontinuidad de salto en $t_0 \in [a,b]$, definimos la \textbf{derivada por la derecha} como 
-$$f'(t_0^+) = \lim_{h \to 0^+} \frac{f(t_0 + h ) - f(t_0^+)}{h}$$
+% \begin{defi}
+% Sea $f:[a,b] \longrightarrow \mathbb{R}$, con una discontinuidad de salto en $t_0 \in [a,b]$, definimos la \textbf{derivada por la derecha} como 
+% $$f'(t_0^+) = \lim_{h \to 0^+} \frac{f(t_0 + h ) - f(t_0^+)}{h}$$
 
-cuando el límite existe. Similarmente, definimos la \textbf{derivada por la izquierda} como 
-$$f'(t_0^-) = \lim_{h \to 0^-} \frac{f(t_0 + h ) - f(t_0^-)}{h}$$
+% cuando el límite existe. Similarmente, definimos la \textbf{derivada por la izquierda} como 
+% $$f'(t_0^-) = \lim_{h \to 0^-} \frac{f(t_0 + h ) - f(t_0^-)}{h}$$
 
-cuando el límite existe.
-\end{defi}
+% cuando el límite existe.
+% \end{defi}
 
-\begin{teorema}[Convergencia puntual de la serie de Fourier] \label{Puntual}
-Sea $f(t)$ una función real seccionalmente continua en el intervalo $-\pi < t < \pi$. Su serie de Fourier trigonométrica converge al valor medio
-\vspace{-0.05cm}
-$$\frac{f(t^+) + f(t^-)}{2}$$
+% \begin{teorema}[Convergencia puntual de la serie de Fourier] \label{Puntual}
+% Sea $f(t)$ una función real seccionalmente continua en el intervalo $-\pi < t < \pi$. Su serie de Fourier trigonométrica converge al valor medio
+% \vspace{-0.05cm}
+% $$\frac{f(t^+) + f(t^-)}{2}$$
 
-para cada $t \in (-\pi,\pi)$ donde ambas derivadas laterales $f'(t^+)$ y $f'(t^-)$ existen.
-\end{teorema}
+% para cada $t \in (-\pi,\pi)$ donde ambas derivadas laterales $f'(t^+)$ y $f'(t^-)$ existen.
+% \end{teorema}
 
-\textbf{Observación:} Si denotamos por $f_e$ a la extensión periódica de $f$, a partir del teorema anterior, la expansión en serie de Fourier converge a $f_e$ para todo $x \in \mathbb{R}$ al extenderla periódicamente al valor medio
-$$\frac{f_e(t^+) + f_e(t^-)}{2}.$$
+% \textbf{Observación:} Si denotamos por $f_e$ a la extensión periódica de $f$, a partir del teorema anterior, la expansión en serie de Fourier converge a $f_e$ para todo $x \in \mathbb{R}$ al extenderla periódicamente al valor medio
+% $$\frac{f_e(t^+) + f_e(t^-)}{2}.$$
 
-De hecho, en los extremos $t = \pm \pi$, la serie converge a 
-$$\frac{f(-\pi^+) + f(\pi^-)}{2}.$$
+% De hecho, en los extremos $t = \pm \pi$, la serie converge a 
+% $$\frac{f(-\pi^+) + f(\pi^-)}{2}.$$
 
-En efecto, observemos que
-$$f_e(-\pi^+) = f(-\pi^+) ~~\mbox{y}~~ f_e(-\pi^-) = f(\pi^-).$$
+% En efecto, observemos que
+% $$f_e(-\pi^+) = f(-\pi^+) ~~\mbox{y}~~ f_e(-\pi^-) = f(\pi^-).$$
 
-Luego, el cociente
-$$\frac{f_e(-\pi^+) + f_e(-\pi^-)}{2} = \frac{f(-\pi^+) + f(\pi-)}{2}.$$
+% Luego, el cociente
+% $$\frac{f_e(-\pi^+) + f_e(-\pi^-)}{2} = \frac{f(-\pi^+) + f(\pi-)}{2}.$$
 
-Análogamente para $t = \pi$.
+% Análogamente para $t = \pi$.
 
-\begin{teorema}[Convergencia uniforme] \label{C.Uniforme}
-Supóngase que $f$ es continua en $[-\pi,\pi]$, $f(-\pi) = f(\pi)$ y que $f'$ es continua por tramos, con discontinuidades de salto. Entonces la serie de Fourier trigonométrica de $f$ converge a $f$ absolutamente y uniformemente.
-\end{teorema}
+% \begin{teorema}[Convergencia uniforme] \label{C.Uniforme}
+% Supóngase que $f$ es continua en $[-\pi,\pi]$, $f(-\pi) = f(\pi)$ y que $f'$ es continua por tramos, con discontinuidades de salto. Entonces la serie de Fourier trigonométrica de $f$ converge a $f$ absolutamente y uniformemente.
+% \end{teorema}
 
 \subsection{Ejemplos}
 
@@ -370,20 +383,28 @@ La gráfica de $f$ en conjunto con diferentes sumas parciales de su serie de Fou
 
 \section{Serie exponencial}
 
-En el espacio $\mathcal{C}[-\pi,\pi]$ consideremos el sistema ortonormal completo 
-$$\left\{ \frac{1}{\sqrt{2\pi}} e^{int} \right\}_{n= - \infty}^{n = \infty}$$
-
-llamado \textbf{sistema exponencial}.
+\begin{propo}
+    En el espacio $\mathscr{C}[a,a+2L]$, el conjunto formado por las funciones 
+    \begin{equation}
+        \left\{ \frac{1}{\sqrt{2L}} e^{i\frac{n\pi}{L}x} \right\}_{n= - \infty}^{n = \infty}
+    \end{equation}
+    es un conjunto ortonormal.
+\end{propo}
 
 \begin{defi}
-Sea $f \in \mathcal{C}[-\pi,\pi]$, la serie 
+    Llamamos \textbf{sistema exponencial} al conjunto de funciones ortonormales en el espacio $\mathscr{C}[-\pi,\pi]$, definido como 
+    $$\left\{ \frac{1}{\sqrt{2\pi}} e^{int} \right\}_{n= - \infty}^{n = \infty}$$
+\end{defi}
+
+\begin{defi}
+Sea $f \in \mathscr{C}[a,a+2L]$ una función con un número finito de discontinuidades. Entonces, ella puede ser aproximada por la serie 
 \begin{equation}
-     \sum_{n=- \infty}^{\infty} c_n e^{int} \label{FourierExpo}
+     \sum_{n=- \infty}^{\infty} c_n e^{i\frac{n\pi}{L}x} \label{FourierExpo}
 \end{equation}
 
-se denomina \textbf{serie exponencial de Fourier}  donde los \textit{coeficientes de Fourier} están dados por:
+Esta expansión se denomina \textbf{serie exponencial de Fourier}  donde los \textit{coeficientes de Fourier} están dados por:
 \begin{equation*}
-    c_n = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(t) e^{-int} \,dt.
+    c_n = \frac{1}{2L} \int_{a}^{a+2L} f(t) e^{-i\frac{n\pi}{L}t} \,dt \ .
 \end{equation*}
 \end{defi}
 
@@ -596,57 +617,57 @@ $$Si(x) = \int_0^x \frac{\sin t}{t} \,dt.$$
     \label{Gibbs}
 \end{figure}
  
-\section{Cambio de intervalo}
+% \section{Cambio de intervalo}
 
-Hasta ahora hemos estudiado funciones en el intervalo $[-\pi,\pi]$, sin embargo, es posible extender los resultados al caso de funciones seccionalmente continuas en un intervalo más general $[a,b]$. 
+% Hasta ahora hemos estudiado funciones en el intervalo $[-\pi,\pi]$, sin embargo, es posible extender los resultados al caso de funciones seccionalmente continuas en un intervalo más general $[a,b]$. 
 
-Sea $f \in \mathcal{C}[a,b]$, consideremos $\alpha: [- \pi,\pi] \longrightarrow [a,b]$ definida por \footnote{El lector puede llegar a esta función calculando la ecuación de la recta que pasa por los puntos $(-\pi,a)$ y $(\pi,b)$. La función resultante mapea biunívocamente los puntos del intervalo $[-\pi,\pi]$ a $[a,b]$.} 
-$$\alpha(t) = a + \frac{b-a}{2\pi} (t+\pi)$$
+% Sea $f \in \mathscr{C}[a,b]$, consideremos $\alpha: [- \pi,\pi] \longrightarrow [a,b]$ definida por \footnote{El lector puede llegar a esta función calculando la ecuación de la recta que pasa por los puntos $(-\pi,a)$ y $(\pi,b)$. La función resultante mapea biunívocamente los puntos del intervalo $[-\pi,\pi]$ a $[a,b]$.} 
+% $$\alpha(t) = a + \frac{b-a}{2\pi} (t+\pi)$$
 
-la cual es continua, creciente con $\alpha(-\pi) = a$ y $\alpha(\pi) = b$. Ahora, si consideramos la función compuesta $g = f \circ \alpha$, se tiene que $g \in \mathcal{C}[-\pi,\pi]$. Luego, 
-$$g(t) \sim \sum_{n= - \infty}^{\infty} c_n e^{int}$$
+% la cual es continua, creciente con $\alpha(-\pi) = a$ y $\alpha(\pi) = b$. Ahora, si consideramos la función compuesta $g = f \circ \alpha$, se tiene que $g \in \mathscr{C}[-\pi,\pi]$. Luego, 
+% $$g(t) \sim \sum_{n= - \infty}^{\infty} c_n e^{int}$$
 
-donde 
-$$c_n = \frac{1}{2\pi} \int_{-\pi}^{\pi} g(t) e^{-int} \,dt, \quad n \in \mathbb{Z}.$$
+% donde 
+% $$c_n = \frac{1}{2\pi} \int_{-\pi}^{\pi} g(t) e^{-int} \,dt, \quad n \in \mathbb{Z}.$$
 
-Al hacer 
-$$x = a + \frac{b-a}{2\pi} (t+\pi) ~\Leftrightarrow~ t = \frac{2x-b-a}{b-a} \pi = \frac{2 \pi}{b-a} x - \frac{b+a}{b-a} \pi  ,$$
+% Al hacer 
+% $$x = a + \frac{b-a}{2\pi} (t+\pi) ~\Leftrightarrow~ t = \frac{2x-b-a}{b-a} \pi = \frac{2 \pi}{b-a} x - \frac{b+a}{b-a} \pi  ,$$
 
-se obtiene $g(t) = f(a + \frac{b-a}{2\pi} (t+\pi)) = f(x)$ y así 
-$$f(x) \sim \sum_{n=-\infty}^{\infty} c_n \left[ e^{i\frac{2n\pi}{b-a} x} e^{-i \frac{b+a}{b-a}n\pi}\right].$$
+% se obtiene $g(t) = f(a + \frac{b-a}{2\pi} (t+\pi)) = f(x)$ y así 
+% $$f(x) \sim \sum_{n=-\infty}^{\infty} c_n \left[ e^{i\frac{2n\pi}{b-a} x} e^{-i \frac{b+a}{b-a}n\pi}\right].$$
 
-Haciendo el cambio de variable $t = \frac{2\pi}{b-a} x - \frac{b+a}{b-a} \pi ~\Rightarrow~ dt = \frac{2\pi}{b-a} dx$, se obtiene
-\begin{align*}
- c_n = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(a + \frac{b-a}{2\pi} (t+\pi)) e^{-int} \,dt   &= \frac{1}{b-a} \int_a^b f(x) \left[ e^{-i\frac{2n\pi}{b-a} x} e^{i \frac{b+a}{b-a}n\pi}\right] \,dx \\
- &= \frac{1}{b-a} e^{i \frac{b+a}{b-a}n\pi} \int_a^b f(x) e^{-i \frac{2n\pi}{b-a}} \,dx.
-\end{align*}
+% Haciendo el cambio de variable $t = \frac{2\pi}{b-a} x - \frac{b+a}{b-a} \pi ~\Rightarrow~ dt = \frac{2\pi}{b-a} dx$, se obtiene
+% \begin{align*}
+%  c_n = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(a + \frac{b-a}{2\pi} (t+\pi)) e^{-int} \,dt   &= \frac{1}{b-a} \int_a^b f(x) \left[ e^{-i\frac{2n\pi}{b-a} x} e^{i \frac{b+a}{b-a}n\pi}\right] \,dx \\
+%  &= \frac{1}{b-a} e^{i \frac{b+a}{b-a}n\pi} \int_a^b f(x) e^{-i \frac{2n\pi}{b-a}} \,dx.
+% \end{align*}
 
-Por lo tanto, la serie de Fourier exponencial asociada a $f$ está dada por 
-$$f(x) \sim \sum_{n=-\infty}^{\infty} f_n e^{i \frac{2n\pi}{b-a}x} $$
+% Por lo tanto, la serie de Fourier exponencial asociada a $f$ está dada por 
+% $$f(x) \sim \sum_{n=-\infty}^{\infty} f_n e^{i \frac{2n\pi}{b-a}x} $$
 
-donde 
-$$f_n = \frac{1}{b-a} \int_a^b f(x) e^{-i \frac{2n\pi}{b-a}} \,dx.$$
+% donde 
+% $$f_n = \frac{1}{b-a} \int_a^b f(x) e^{-i \frac{2n\pi}{b-a}} \,dx.$$
 
-Si $f:[a,b] \longrightarrow \mathbb{C}$ se extiende periódicamente con período $T = b-a$ y definimos la \textbf{frecuencia fundamental} $\omega_1 := 2\pi/T$ y las \textbf{frecuencias armónicas} $\omega_n := n \omega_1, n = 0, \pm 1, \pm 2,\dots$ Entonces, la serie de Fourier exponencial puede escribirse como 
-\begin{shaded}
-  $$f(x) \sim \sum_{n = - \infty}^{\infty} f_n e^{i \omega_n x}$$
-\end{shaded}
+% Si $f:[a,b] \longrightarrow \mathbb{C}$ se extiende periódicamente con período $T = b-a$ y definimos la \textbf{frecuencia fundamental} $\omega_1 := 2\pi/T$ y las \textbf{frecuencias armónicas} $\omega_n := n \omega_1, n = 0, \pm 1, \pm 2,\dots$ Entonces, la serie de Fourier exponencial puede escribirse como 
+% \begin{shaded}
+%   $$f(x) \sim \sum_{n = - \infty}^{\infty} f_n e^{i \omega_n x}$$
+% \end{shaded}
 
-donde 
-\begin{shaded}
-$$f_n = \frac{1}{T} \int_a^b f(x) e^{-i \omega_n x} \,dx, \quad n = 0, \pm 1, \pm 2, \dots$$    
-\end{shaded}
+% donde 
+% \begin{shaded}
+% $$f_n = \frac{1}{T} \int_a^b f(x) e^{-i \omega_n x} \,dx, \quad n = 0, \pm 1, \pm 2, \dots$$    
+% \end{shaded}
 
-Usando las relaciones entre los coeficientes de la serie trigonométrica y la exponencial (vea \eqref{RelacionCoefi1}), se puede probar que la serie de Fourier trigonométrica para la función $f$, definida en los párrafos anteriores, es
-\begin{shaded}
-$$f(x) \sim \frac{a_0}{2} + \sum_{n=1}^{\infty} \left[a_n \cos(\omega_n x) + b_n \sin(\omega_n x) \right]$$    
-\end{shaded}
+% Usando las relaciones entre los coeficientes de la serie trigonométrica y la exponencial (vea \eqref{RelacionCoefi1}), se puede probar que la serie de Fourier trigonométrica para la función $f$, definida en los párrafos anteriores, es
+% \begin{shaded}
+% $$f(x) \sim \frac{a_0}{2} + \sum_{n=1}^{\infty} \left[a_n \cos(\omega_n x) + b_n \sin(\omega_n x) \right]$$    
+% \end{shaded}
 
-con
-\begin{shaded}
- \begin{align*}
-    a_0 &= \frac{2}{T} \int_a^b f(x) \,dx , \\
-    a_n &= \frac{2}{T} \int_a^b f(x) \cos(\omega_n x) \,dx; \quad n = 1,2 \dots \\
-    b_n &= \frac{2}{T} \int_a^b f(x) \sin(\omega_n x) \,dx; \quad n = 1,2 \dots
-\end{align*}   
-\end{shaded}
+% con
+% \begin{shaded}
+%  \begin{align*}
+%     a_0 &= \frac{2}{T} \int_a^b f(x) \,dx , \\
+%     a_n &= \frac{2}{T} \int_a^b f(x) \cos(\omega_n x) \,dx; \quad n = 1,2 \dots \\
+%     b_n &= \frac{2}{T} \int_a^b f(x) \sin(\omega_n x) \,dx; \quad n = 1,2 \dots
+% \end{align*}   
+% \end{shaded}
