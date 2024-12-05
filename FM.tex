@@ -1,5 +1,6 @@
 \documentclass[letterpaper,12pt]{report}
 \usepackage[spanish]{babel}
+% \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{amsfonts,amsmath,color,amssymb,float, amsthm,mathrsfs}  
@@ -27,6 +28,10 @@
 \usepackage{multicol}
 \usetikzlibrary{arrows,babel}
 \usepackage[font=small]{caption}
+
+\usepackage{fourier}
+\usepackage[LGR,T1]{fontenc} %% LGR encoding is needed for loading the package gfsneohellenic
+
 
 \decimalpoint
 \newcommand{\grad}{^\circ}
@@ -104,6 +109,7 @@ prefoothook     =\vspace*{-1pt}\end{Gdbleftbar}%
 %%%%%%%%%%%%Fancy Chapters%%%%%%%%%%%%%%%%%
 %Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
 \usepackage[Lenny]{fncychap}
+\ChTitleVar{\bfseries\huge\rm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %Referencias
@@ -132,13 +138,25 @@ prefoothook     =\vspace*{-1pt}\end{Gdbleftbar}%
 
 Este documento ha sido preparado por Pedro Contreras Corral como material de apoyo para el curso Física Matemática II. Se han utilizado como base las notas de clase de las ocasiones en que el curso fue dictado por Guillermo Rubilar, Ariana Muñoz e Ivana Sebestova, junto al apunte preparado por Alejandro Saavedra.
 
+Agradezco los aportes de Lixin Lai y José Huenchual, cuyas notas tomadas mientras cursaban la asignatura sirvieron como fuente para seguir la estructura de clases de las profesoras Ivana y Ariana, respectivamente.
+
 \tableofcontents
 
-\input{./Cap-Espacio-de-Funciones.tex}
 \input{./Cap-Series-Fourier.tex}
-\input{./Cap-Integrales-Convergencia.tex}
+% \input{./Cap-Integrales-Convergencia.tex}
 \input{./Cap-Transformada-de-Fourier.tex}
-\input{./Cap-Transformada-de-Laplace.tex}
+\input{./Cap-Ecuaciones-Diferenciales.tex}
+\input{Cap-Separacion-Variables.tex}
+\input{Cap-Funciones-de-Legendre.tex}
+\input{Cap-Funciones-de-Bessel.tex}
+\input{Cap-Funciones-de-Green.tex}
+\input{Cap-Tensores.tex}
+% \input{./Cap-Transformada-de-Laplace.tex}
+
+\appendix
+
+\input{./Cap-Espacio-de-Funciones.tex}
+
 
 \nocite{*} %Referencia todo, incluso lo que no está citado.
 \printbibliography[title={Referencias}]

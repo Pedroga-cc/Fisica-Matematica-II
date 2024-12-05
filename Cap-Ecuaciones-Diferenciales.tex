@@ -1,0 +1,73 @@
+\chapter{Ecuaciones Diferenciales en Física}
+
+En física, es muy común que diversas situaciones sean modeladas no por ecuaciones que únicamente contengan potencias (enteras o semienteras) de alguna variable física, sino que incluyan derivadas de estas.
+
+En sus cursos de Mecánica y de Ecuaciones Diferenciales, probablemente se familiarizaron con los casos del Oscilador Armónico y del Oscilador amortiguado, que son descritos por las ecuaciones \eqref{eq:mas} y \eqref{eq:amortiguado}, respectivamente.
+
+\begin{gather}
+    \frac{d^2x}{dt^2} = - \omega^2 x \ , \label{eq:mas} \\
+    \frac{d^2x}{dt^2} + 2\gamma \frac{dx}{dt} + \omega^2_0 x = 0 \ . \label{eq:amortiguado}
+\end{gather}
+
+Ambas ecuaciones consisten en ecuaciones diferenciales \emph{ordinarias}, debido a que la función a derivar, $x$, depende de una única variable, de modo que todas las derivadas en ella son totales.
+
+Sin embargo, muchas otras situaciones físicas no pueden ser descritas únicamente en términos de funciones de una sola variable, incluso cuando dicha función solo dependa de la posición. Por ejemplo, podríamos querer describir el potencial eléctrico de una distribución de cargas esférica, cuya densidad dependa de qué tan alejados de su centro nos encontremos (variable $r$), así como también del ángulo que forma con respecto de su polo norte (variable $\theta$), de modo que este potencial será una función tanto de $r$ como de $\theta$. Este tipo de sistemas serán descritos por ecuaciones diferenciales \emph{parciales} (EDPs).
+
+Hasta el día de hoy, el desarrollo de métodos para resolver EDPs es un área de investigación activa en matemáticas, por lo que en este curso nos limitaremos a algunos de los métodos más tradicionales y que son la base para la descripción de la física de los siglos XVIII y XIX, como lo son la mecánica hamiltoniana, la teoría clásica de campos o la electrodinámica clásica.
+
+\section{Algunas ecuaciones básicas}
+
+\subsection{Ecuación de Laplace}
+
+Esta corresponde a la expresión
+\begin{equation}
+    \nabla^2 \Phi = 0 \ ,
+\end{equation}
+la que surge en el estudio de diferentes sistemas físicos, como por ejemplo:
+\begin{itemize}
+    \item el \textbf{potencial electrostático} en una región sin cargas. 
+    \item un \textbf{fluido irrotacional incompresible} en un movimiento estacionario, cuyo campo de velocidades es descrito como $\vec{v} = -\nabla \Phi$.
+    \item el \textbf{potencial gravitatorio}.
+    \item una \textbf{distribución de temperatura estacionaria}, donde en este caso $\Phi = T(x,t)$ corresponde al campo de temperaturas de un material.
+\end{itemize}
+
+\subsection{Ecuación de Poisson}
+
+Esta corresponde, por llamarlo de una manera, a la generalización de la ecuación de Laplace para cualquier sistema con una función \emph{fuente} $f$ conocida. Es dada por la expresión
+\begin{equation}
+    \nabla^2\Phi = f(\vec{x}) \ .
+\end{equation}
+
+Esta corresponde a una ecuación \emph{inhomogénea}, cuyas soluciones generales pueden escribirse como $\Phi = \Phi_h + \Phi_p$, donde el primer término corresponde a la solución de la \emph{ecuación homogénea} donde $f(x) = 0$, que en este caso corresponde a la ecuación de Laplace, y el segundo término es una \emph{solución particular} de la ecuación de Poisson.
+
+Esta puede surgir en situaciones similares a la ecuación de Laplace, pero en las cuales existen \emph{fuentes} para los respectivos campos. Por ejemplo, para el caso electrostático, puede existir una fuente con densidad de carga $\rho(\vec{x})$, de modo que la ecuación que describe el potencial eléctrico en dicha región será
+\begin{equation}
+    \nabla^2 \phi = - \frac{\rho(\vec{x})}{\varepsilon_0} \ .
+\end{equation}
+
+\subsection{Ecuación de Helmholtz}
+
+
+\subsection{Ecuación de difusión de calor dependiente del tiempo}
+
+
+\subsection{Ecuación de onda dependiente del tiempo}
+
+
+\subsection{Ecuación de Klein-Gordon}
+
+
+\subsection{Ecuación de Schrödinger dependiente del tiempo}
+
+\subsection{Ecuaciones de Maxwell}
+
+
+\section{Condiciones de borde}
+
+\section{Encontrando soluciones para ecuaciones diferenciales parciales}
+
+Como se mencionó al inicio de este capítulo, las EDPs siguen siendo un área de investigación activa en matemáticas, por lo que no todas ellas tendrán soluciones exactas, o analíticas. Un ejemplo de esto son las \emph{ecuaciones de Navier-Stokes}, que describen el comportamiento de un fluido viscoso, y surgen en el estudio de sistemas como la atmósfera terrestre o las corrientes oceánicas. Estas ecuaciones son particularmente conocidas por ser uno de los \emph{problemas del milenio}, de modo que existe una recompensa monetaria para quien pueda demostrar la existencia (o inexistencia) de soluciones analíticas para cualquier conjunto de condiciones de borde.
+
+Sin embargo, las ecuaciones que listamos en secciones previas sí puden ser resueltas de forma analítica mediante uno de tres métodos que estudiaremos en el curso. Dos de ellos, el método de separación de variables y el método de las funciones de Green los veremos en capítulos siguientes del curso. El tercero corresponde al \textbf{método de las transformadas integrales}, donde diferentes transformadas son útiles para diferentes condiciones de contorno. En este curso, analizaremos únicamente a la transformada de Fourier.
+
+\subsection{Método de la transformada de Fourier}
