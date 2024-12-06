@@ -29,7 +29,6 @@
 \usetikzlibrary{arrows,babel}
 \usepackage[font=small]{caption}
 
-\usepackage{fourier}
 \usepackage[LGR,T1]{fontenc} %% LGR encoding is needed for loading the package gfsneohellenic
 
 
@@ -108,9 +107,24 @@ prefoothook     =\vspace*{-1pt}\end{Gdbleftbar}%
 
 %%%%%%%%%%%%Fancy Chapters%%%%%%%%%%%%%%%%%
 %Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
-\usepackage[Lenny]{fncychap}
-\ChTitleVar{\bfseries\huge\rm}
+\usepackage[Bjornstrup]{fncychap}
+% \usepackage{tgschola}
+
+\usepackage{libertinust1math}
+\usepackage{montserrat}
+
+\ChTitleVar{\bfseries\huge\sffamily\fontfamily{Montserrat-LF}\selectfont}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \usepackage[book]{FiraSans}
+
+\usepackage[default]{sourcesanspro}
+
+\usepackage{titlesec}
+
+\titleformat*{\section}{\Large\bfseries\sffamily\fontfamily{Montserrat-LF}\selectfont}
+\titleformat*{\subsection}{\large\slshape\bfseries\sffamily\fontfamily{Montserrat-LF}\selectfont}
+
 
 %Referencias
 \usepackage[backend=biber]{biblatex}
@@ -130,7 +144,7 @@ prefoothook     =\vspace*{-1pt}\end{Gdbleftbar}%
     {\Large Autor: \par}
 {\large Pedro A. Contreras-Corral \par}
 \vfill
-{\large Enero 2023 \par}
+{\large Diciembre 2024 \par}
 {\large v1.0 \par}
 \end{titlepage}
 
