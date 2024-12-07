@@ -1,3 +1,44 @@
 \chapter{El Método de Separación de Variables}
 
-Ya observamos que podemos hacer uso del método de la transformada de Fourier para reducir una ecuación diferencial en dos variables diferentes
+Ya observamos que podemos hacer uso del método de la transformada de Fourier para reducir una ecuación diferencial en dos variables diferentes a una EDO en una sola variable. Sin embargo, no siempre será cómodo calcular la transformada de Fourier de una función, por lo que sería agradable tener una forma más general de hacer funcionar esta idea.
+
+Para ello, hacemos uso del \textbf{método de separación de variables}, gracias al cual podemos reducir una EDP lineal de $n$ variables en un conjunto de $n$ EDOs para $n$ funciones auxiliares, cada una asociada a una variable independiente de la EDP. Esto lo podemos hacer al proponer que nuestro sistema puede ser descrito mediante una \emph{solución separable}, que consiste en el producto de todas las funciones auxiliares que encontremos mediante la solución de las EDOs.
+
+Para realizar la separación de las variables, haremos uso de $(n-1)$ \emph{constantes de separación}, las que son escogidas, en primera instancia, de forma arbitraria para luego determinarlas gracias a las condiciones de contorno del sistema.
+
+Finalmente, una vez hallamos las soluciones de cada una de las EDOs y planteamos la solución separable del sistema, consideraremos que la solución más general consiste en la \emph{superposición} o \emph{combinación lineal} de todas las posibles soluciones separables del sistema.
+
+Como ejemplo bastante ilustrativo, durante el capítulo resolveremos la ecuación de Helmholtz en diferentes sistemas coordenados, dando origen a diferentes \emph{funciones especiales}, que serán discutidas en mayor profundidad en los capítulos siguientes.
+
+\section{Resolviendo la ecuación de Helmholtz}
+
+Recordemos que la ecuación de Helmholtz es dada por la expresión
+\begin{equation}\label{eq:Helmholtz}
+    \nabla^2 \psi + k^2 \psi = 0 \ ,
+\end{equation}
+donde $k$ es una constante asociada al sistema.
+
+\subsection{Coordenadas cartesianas}
+
+En un sistema cartesiano, el operador laplaciano se define simplemente como
+\begin{equation}
+    \nabla^2 = \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2} \ .
+\end{equation}
+
+De esta forma, dado que nuestra ecuación posee tres variables independientes, podremos reducirla a un sistema de 3 EDOs en las variables $x$, $y$ y $z$. Antes de realizar este procedimiento, plantearemos una solución de la forma
+\begin{equation}\label{eq:ansatz}
+    \psi(x,y,z) = X(x)Y(y)Z(z) \ .
+\end{equation}
+
+Una duda totalmente razonable es por qué considerar una solución de este estilo. La verdad no hay una respuesta directa a esto, más allá de ``\emph{esperemos que funcione}''. Si no fuera el caso, y nuestro sistema comienza a complicarse, puede que sea una mejor idea utilizar algún método alternativo. Sin embargo, cabe mencionar que si los operadores diferenciales (derivadas $n$-ésimas) son aditivos, es decir, no tenemos combinaciones de las variables, una solución de este estilo suele funcionar.
+
+Evaluando la expresión \eqref{eq:ansatz} en la ecuación \eqref{eq:Helmholtz}, podemos escribirla como
+\begin{equation}
+    YZ \frac{d^2X}{dx^2} + XZ \frac{d^2 Y}{dy^2} + XY \frac{d^2Z}{dz^2} + k^2 XYZ = 0 \ ,
+\end{equation}
+donde ahora utilizamos derivadas totales en lugar de parciales, puesto que cada una de las funciones depende únicamente de una variable.
+
+Dividimos ahora por la solución $XYZ$, donde hemos asumido que $\psi(x,y,z) \neq 0$, de modo que, luego de reordenar los términos, la ecuación resulta en
+\begin{equation}
+    \frac{1}{X} \frac{d^2 X}{dx^2} = -k^2 - \frac{1}{Y} \frac{d^2 Y}{dy^2} - \frac{1}{Z} \frac{d^2 Z}{dz^2} \ .
+\end{equation}
