@@ -17,28 +17,32 @@ Hasta el día de hoy, el desarrollo de métodos para resolver EDPs es un área d
 
 \section{Algunas ecuaciones básicas}
 
+A continuación listamos algunos ejemplos de EDPs \emph{lineales} en la función incógnita, y de \emph{segundo orden}. Algunos puntos que mencionar antes de entrar en ellas, es que siempre que veamos una derivada respecto al tiempo, esto quiere decir que la función incógnita \emph{tendrá una evolución temporal}. 
+
+También cabe mencionar que no todos los sistemas físicos pueden ser descritos por ecuaciones ``bien portadas'' como las que listaremos a continuación, ya que por ejemplo, en fenómenos que involucren turbulencias, como la física de plasmas o la física atmosférica, las ecuaciones son no lineales, lo que complica la posibilidad de resolverlas de forma analítica, y se encuentran fuera del alcance de este curso.
+
 \subsection{Ecuación de Laplace}
 
 Esta corresponde a la expresión
 \begin{equation}
-    \nabla^2 \Phi = 0 \ ,
+    \nabla^2 \psi = 0 \ ,
 \end{equation}
 la que surge en el estudio de diferentes sistemas físicos, como por ejemplo:
 \begin{itemize}
     \item el \textbf{potencial electrostático} en una región sin cargas. 
-    \item un \textbf{fluido irrotacional incompresible} en un movimiento estacionario, cuyo campo de velocidades es descrito como $\vec{v} = -\nabla \Phi$.
+    \item un \textbf{fluido irrotacional incompresible} en un movimiento estacionario, cuyo campo de velocidades es descrito como $\vec{v} = -\nabla \psi$.
     \item el \textbf{potencial gravitatorio}.
-    \item una \textbf{distribución de temperatura estacionaria}, donde en este caso $\Phi = T(x,t)$ corresponde al campo de temperaturas de un material.
+    \item una \textbf{distribución de temperatura estacionaria}, donde en este caso $\psi = T(x,t)$ corresponde al campo de temperaturas de un material.
 \end{itemize}
 
 \subsection{Ecuación de Poisson}
 
 Esta corresponde, por llamarlo de una manera, a la generalización de la ecuación de Laplace para cualquier sistema con una función \emph{fuente} $f$ conocida. Es dada por la expresión
 \begin{equation}
-    \nabla^2\Phi = f(\vec{x}) \ .
+    \nabla^2\psi = f(\vec{x}) \ .
 \end{equation}
 
-Esta corresponde a una ecuación \emph{inhomogénea}, cuyas soluciones generales pueden escribirse como $\Phi = \Phi_h + \Phi_p$, donde el primer término corresponde a la solución de la \emph{ecuación homogénea} donde $f(x) = 0$, que en este caso corresponde a la ecuación de Laplace, y el segundo término es una \emph{solución particular} de la ecuación de Poisson.
+Esta corresponde a una ecuación \emph{inhomogénea}, cuyas soluciones generales pueden escribirse como $\psi = \psi_h + \psi_p$, donde el primer término corresponde a la solución de la \emph{ecuación homogénea} donde $f(x) = 0$, que en este caso corresponde a la ecuación de Laplace, y el segundo término es una \emph{solución particular} de la ecuación de Poisson.
 
 Esta puede surgir en situaciones similares a la ecuación de Laplace, pero en las cuales existen \emph{fuentes} para los respectivos campos. Por ejemplo, para el caso electrostático, puede existir una fuente con densidad de carga $\rho(\vec{x})$, de modo que la ecuación que describe el potencial eléctrico en dicha región será
 \begin{equation}
@@ -47,22 +51,70 @@ Esta puede surgir en situaciones similares a la ecuación de Laplace, pero en la
 
 \subsection{Ecuación de Helmholtz}
 
+Es una ecuación que surge al aplicar el método de separación de variables a una ecuación de onda (siendo ambos términos explicados más abajo), de modo que es una especie de \emph{ecuación de onda independiente del tiempo}, o en otros contextos, una \emph{ecuación de difusión independiente del tiempo}. Se escribe como
+\begin{equation}
+    \nabla^2 \psi \pm k^2 \psi = 0 \ .
+\end{equation}
+
+Esta ecuación aparece en el estudio de diversas áreas, como la radiación electromagnética, la sismología, la acústica o membranas.
+
+
 
 \subsection{Ecuación de difusión de calor dependiente del tiempo}
 
+BUSCAR QUÉ DECIR DE ESTA 
+\begin{equation}
+    \nabla^2 \psi - \frac{1}{\alpha} \frac{\partial \psi}{\partial t} = 0 \ ,
+\end{equation}
+donde $\alpha$ corresponde al coeficiente de difusión térmica.
 
 \subsection{Ecuación de onda dependiente del tiempo}
 
+Describe la propagación de una onda $\psi$ tanto espacial como temporalmente. Suele escribirse como
+\begin{equation}
+    \nabla^2 \psi - \frac{1}{v^2}\frac{\partial^2 \psi}{\partial t^2} = 0 \ ,
+\end{equation}
+o bien, definiendo el operador \emph{d'Alembertiano} (comúnmente pronunciado como \emph{box}) como $\square \equiv \frac{1}{v^2} \frac{\partial^2}{\partial t^2} - \nabla^2$,
+\begin{equation}
+    \square \psi = 0 \ .
+\end{equation}
 
 \subsection{Ecuación de Klein-Gordon}
 
+Corresponde a una generalización de la ecuación de onda para trabajar con sistemas cuánticos relativistas, como es el trabajo de la física de partículas. Esta incorpora las constantes $\hbar$ y $c$, que corresponden respectivamente a la constante de Planck reducida, y que es una de las constantes que nos indicará que estamos trabajando con un sistema cuántico; y a la velocidad de la luz, que nos indica que trabajamos con un sistema relativista. Es dada por
+\begin{equation}
+    \square \psi - \frac{m^2c^2}{\hbar^2}\psi = 0 \ .
+\end{equation}
+
 
 \subsection{Ecuación de Schrödinger dependiente del tiempo}
+Esta corresponde al límite no relativista de la ecuación de Klein-Gordon (es decir, cuando $c \sim \infty$) y es la que describe la evolución de un sistema en Mecánica Cuántica. Es dada por
+\begin{equation}
+    i \hbar \frac{\partial \psi}{\partial t}(x,t) = -\frac{\hbar^2}{2m} \nabla^2 \psi(x,t) + V(x) \psi(x,t) = \hat{H}\psi(x,t) \ .
+\end{equation}
 
-\subsection{Ecuaciones de Maxwell}
+% \subsection{Ecuaciones de Maxwell}
+
+% Hasta ahora, todas las ecuaciones listadas anteriormente son lineales en la función $\psi$, que corresponde a nuestra incógnita. A su vez, todas ellas son ecuaciones de segundo orden.
+
+% Las ecuaciones de Maxwell, que corresponden a las ecuaciones diferenciales que describen l, no cumplen ninguna de las condiciones anteriores.
 
 
 \section{Condiciones de borde}
+
+Para una EDP dada, las soluciones dependerán del dominio $\Omega$ en que queramos trabajar, pues no es lo mismo trabajar. Por ejemplo, un potencial electrostático debe cumplir la ecuación de Laplace, pero será distinto en una esfera de radio $r$ que en un cilindro de largo $\ell$ y radio $\rho$. 
+
+Por ello, debemos entregar información adicional a nuestro problema para poder resolver el problema. Esta información suele denominarse \textbf{condiciones de borde}, \textbf{de frontera} o \textbf{de contorno}, ya que tradicionalmente dan información del comportamiento de la función en los límites o bordes $\partial \Omega$ del sistema (véase figura x).
+
+Puede ser útil clasificar las condiciones de contorno en tres tipos, aplicables a EDPs de segundo orden.
+
+\begin{itemize}
+    \item Tenemos condiciones de tipo \textbf{Dirichlet} cuando nos dan información del comportamiento \emph{de la función} en la frontera $\partial \Omega$ de la región en que trabajamos.
+    \item Tenemos condiciones de tipo \textbf{Neumann} cuando tenemos información de la \emph{derivada normal de la función}, es decir $\partial \Phi/\partial n := \hat{n} \cdot \nabla \Phi$, en la frontera $\partial \Omega$.
+    \item Tenemos condiciones de tipo \textbf{Cauchy} cuando tenemos a la vez condiciones de tipo Dirichlet y de tipo Neumann.
+\end{itemize} 
+
+¿Cómo sabemos qué tipo de condición de borde es apropiada para nuestro problema? Es una discusión un tanto complicada que considero que escapa a los contenidos del curso, pero que puede revisar en los capítulos X de X y X de X. La idea, sin embargo, es que esto dependerá tanto del tipo de EDP como de la definición del dominio, es decir, si este es acotado por una superficie (o curva, en el caso de dos variables independientes) abierta o cerrada.
 
 \section{Encontrando soluciones para ecuaciones diferenciales parciales}
 
@@ -71,3 +123,35 @@ Como se mencionó al inicio de este capítulo, las EDPs siguen siendo un área d
 Sin embargo, las ecuaciones que listamos en secciones previas sí puden ser resueltas de forma analítica mediante uno de tres métodos que estudiaremos en el curso. Dos de ellos, el método de separación de variables y el método de las funciones de Green los veremos en capítulos siguientes del curso. El tercero corresponde al \textbf{método de las transformadas integrales}, donde diferentes transformadas son útiles para diferentes condiciones de contorno. En este curso, analizaremos únicamente a la transformada de Fourier.
 
 \subsection{Método de la transformada de Fourier}
+
+Como se discutió anteriormente, la transformada de Fourier puede aplicarse sobre una derivada $n$-ésima de una función sobre, por ejemplo, la variable temporal, de modo que se cumple la propiedad
+\begin{equation}
+\mathcal{F}\left\{ \frac{d^n f}{dt^n} \right\} = (i\omega)^n \mathcal{F}\{f(t)\} \ .
+\end{equation}
+
+Es posible que esta idea les sea familiar de su curso de Ecuaciones Diferenciales, al menos a quienes cursaron Ecuaciones Diferenciales Ordinarias, donde se plantea un método similar para EDOs mediante la transformada de Laplace.
+
+¿Para qué tipo de problemas puede ser útil trabajar con transformada de Fourier? Principalmente para resolver ecuaciones diferenciales en el dominio $(-\infty, \infty)$ con condiciones de borde homogéneas en el infinito. Particularmente, se recomienda utilizarla en ecuaciones diferenciales \emph{lineales} con \emph{coeficientes constantes}, pues en ambos casos podemos hacer uso de la propiedad de la linealidad de la transformada de Fourier.
+
+¿En qué momento esto es útil para resolver EDPs? Supongamos que tenemos una función de dos variables, por ejemplo, de la posición $x$ y del tiempo $t$. Al calcular la transformada de Fourier, lo hacemos \textbf{respecto de una sola variable}, ya sea de la posición, gracias a la cual pasamos al dominio del número de onda, o respecto del tiempo, caso en el que pasamos al dominio de las frecuencias. Por ello, si tenemos una ecuación diferencial que involucra tanto derivadas respecto a la posición como derivadas respecto al tiempo, podemos aplicar la transformada de Fourier respecto de una de las variables, de modo que la segunda actúe como una ``constante'' en el sistema.
+
+Para hacer más clara esta idea, consideremos el siguiente ejemplo.
+
+\begin{ejemplo}
+    Sea la ecuación diferencial dada por
+    \begin{equation} \label{eq:Fourier_EDP}
+        \frac{\partial u}{\partial t} (x,t) - \frac{\partial^2 u}{\partial x^2}(x,t) = 0 \, , x \in \mathbb{R}, \ t>0 \ ,
+    \end{equation}
+    con condiciones de contorno dadas por $u(x,0) = \sin(x), \ x \in \mathbb{R}$. Mediante el método de la transformada de Fourier, encuentre la solución al problema.
+    
+    \textbf{Solución.} Aplicamos la transformada de Fourier \emph{respecto a la coordenada} $x$, de modo que la ecuación \eqref{eq:Fourier_EDP} se transformará en
+    \begin{align}
+        \mathcal{F}\left\{ \frac{\partial u}{\partial t} - \frac{\partial^2 u}{\partial x^2} \right\}(k, t) & = \mathcal{F}\{0\}(k,t) \\
+        \mathcal{F}\left\{ \frac{\partial u}{\partial t} \right\}(k, t) - \mathcal{F}\left\{ \frac{\partial^2 u}{\partial x^2} \right\}(k, t) & = 0 \ .
+    \end{align}
+
+    Al hacer uso de la propiedad de la derivada \emph{respecto de la variable de la transformada}, tenemos que
+    \begin{equation}
+        \mathcal{F}\left\{ \frac{\partial^2 u}{\partial x^2} \right\}(k, t) = (ik)^2 \mathcal{F}\{u\}(k,t) = -k^2 \hat{u}(k,t) \ .
+    \end{equation}
+\end{ejemplo}
