@@ -39,6 +39,45 @@ Evaluando la expresión \eqref{eq:ansatz} en la ecuación \eqref{eq:Helmholtz}, 
 donde ahora utilizamos derivadas totales en lugar de parciales, puesto que cada una de las funciones depende únicamente de una variable.
 
 Dividimos ahora por la solución $XYZ$, donde hemos asumido que $\psi(x,y,z) \neq 0$, de modo que, luego de reordenar los términos, la ecuación resulta en
-\begin{equation}
+\begin{equation} \label{eq:sep_1}
     \frac{1}{X} \frac{d^2 X}{dx^2} = -k^2 - \frac{1}{Y} \frac{d^2 Y}{dy^2} - \frac{1}{Z} \frac{d^2 Z}{dz^2} \ .
 \end{equation}
+
+Hemos llegado al paso en donde se aprecia esta \emph{separación de variables}. Notemos que el lado izquierdo de la ecuación \eqref{eq:sep_1} contiene únicamente términos asociados a la variable $x$, mientras que el lado derecho aún tiene dependencia en $y$ y en $z$. La única posibilidad de que ambos lados sean iguales, dado que dependen de variables distintas, es que ambos son a su vez iguales a una \emph{constante de separación}, que en este caso asumiremos real y llamaremos $\lambda_1$,
+\begin{align}
+    \frac{1}{X} \frac{d^2 X}{dx^2} = \lambda_1 \ , \\
+    -k^2 - \frac{1}{Y} \frac{d^2Y}{dy^2} - \frac{1}{Z} \frac{d^2Z}{dz^2} = \lambda_1 \ . \label{eq:EDO_de_y_z}
+\end{align}
+
+Notemos que, reordenando términos en la ecuación \eqref{eq:EDO_de_y_z}, podemos nuevamente separar las variables mediante una constante $\lambda_2$, de modo que hemos \emph{dividido la EDP original, dependiente de tres variables, en un sistema de tres EDOs},
+\begin{align}
+    \frac{d^2X}{dx^2} - \lambda_1 X & = 0 \ , \label{eq:EDO_de_x}  \\
+    \frac{d^2Y}{dy^2} - \lambda_2 Y & = 0 \ , \label{eq:EDO_de_y}  \\
+    \frac{d^2Z}{dz^2} + (k^2 + \lambda_1 + \lambda_2) Z & = 0 \ . \label{eq:EDO_de_z} 
+\end{align}
+
+Cada una de estas EDOs son resolubles mediante los métodos vistos en su primer curso de ecuaciones diferenciales, y las soluciones dependerán del valor y del signo de las constantes de separación. Analicemos las posibles soluciones de la ecuación \eqref{eq:EDO_de_x}:
+
+\begin{equation}
+    X_{\lambda_1}(x) = \left\{
+    \begin{array}{cc} 
+            c_1 \sinh(\sqrt{\lambda_1} x) + c_2 \cosh(-\sqrt{\lambda_1}x) \ , & \text{si } \lambda_1 > 0 \ , \\
+            c_1 + c_2 x \ , & \text{si } \lambda_1 = 0 \ , \\
+            c_1 \cos(\sqrt{-\lambda_1}x) + c_2 \sin(\sqrt{-\lambda_1}x) \ , & \text{si } \lambda_1 < 0 \ .
+    \end{array}
+    \right.
+\end{equation}
+
+Aquí es importante no olvidar que tenemos una motivación física para realizar estos cálculos, lo que nos ayudará a determinar el signo de la constante de separación. Para la mayoría de los problemas físicos, la solución para $X(x)$ que tiene sentido es aquella en que $\lambda_1$ es negativo, de modo que la solución es una oscilación en la coordenada $x$. Así mismo, podemos hacer un análisis análogo para cada una de las otras ecuaciones, obteniendo soluciones denotadas por $Y_{\lambda_2}(y)$ y $Z_{\lambda_1 \lambda_2}(z)$, donde es importante indicar el subíndice, ya que esta solución es válida para un valor particular de las constantes de separación.
+
+De esta forma, una solución particular a nuestra EDP es dada por
+\begin{equation} \label{eq:sol_particular_cartesianas}
+    \psi_{\lambda_1 \lambda_2}(x,y,z) = X_{\lambda_1}(x) Y_{\lambda_2}(y) Z_{\lambda_1 \lambda_2}(z) \ ,
+\end{equation}
+y la solución general corresponderá a una combinación lineal de la solución \eqref{eq_sol_particular_cartesianas}, correspondiendo a una suma sobre todos los valores posibles de $\lambda_1$ y $\lambda_2$, es decir,
+\begin{equation}
+    \psi(x,y,z) = \sum_{\lambda_1 \lambda_2} C_{\lambda_1 \lambda_2} \psi_{\lambda_1 \lambda_2}(x,y,z) \ ,
+\end{equation}
+donde los coeficientes $C_{\lambda_1 \lambda_2}$ serán obtenidos al imponer las condiciones de contorno del problema, que por lo general nos llevará a un conjunto finito de valores para $\lambda_1$ y $\lambda_2$.
+
+\subsection{Coordenadas cilíndricas}
