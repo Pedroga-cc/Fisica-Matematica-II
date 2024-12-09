@@ -80,4 +80,28 @@ y la solución general corresponderá a una combinación lineal de la solución 
 \end{equation}
 donde los coeficientes $C_{\lambda_1 \lambda_2}$ serán obtenidos al imponer las condiciones de contorno del problema, que por lo general nos llevará a un conjunto finito de valores para $\lambda_1$ y $\lambda_2$.
 
+\newpage
+
 \subsection{Coordenadas cilíndricas}
+
+En este caso, el laplaciano debe definirse de una forma diferente, dada por
+\begin{equation}
+    \nabla^2 = \frac{1}{\rho} \frac{\partial}{\partial \rho} \left( \rho \frac{\partial}{\partial \rho} \right) + \frac{1}{\rho^2} \frac{\partial^2}{\partial \phi^2} + \frac{\partial^2}{\partial z^2} \ , 
+\end{equation}
+de modo que la ecuación de Helmholtz \eqref{eq:Helmholtz} se podrá escribir como
+\begin{equation} \label{eq:Helmholtz_cilindrica}
+    \frac{1}{\rho} \frac{\partial}{\partial \rho} \left( \rho \frac{\partial \psi}{\partial \rho} \right) + \frac{1}{\rho^2} \frac{\partial^2 \psi}{\partial \phi^2} + \frac{\partial^2 \psi}{\partial z^2} + k^2 \psi = 0 \ .
+\end{equation}
+
+Nuevamente plantearemos una solución que sea producto de tres funciones, cada una dependiente de una de las variables del problema, es decir
+\begin{equation}
+    \psi(\rho, \phi, z) = P(\rho) \Phi(\phi) Z(z) \ ,
+\end{equation}
+que al sustituirlas en la expresión \eqref{eq:Helmholtz_cilindrica} resultará en
+\begin{equation}
+    \frac{\Phi Z}{\rho} \frac{d}{d\rho}\left( \rho \frac{dP}{d\rho} \right) + \frac{PZ}{\rho^2} \frac{d^2 \Phi}{d\phi^2} + P\Phi \frac{d^2Z}{dz^2} + k^2 P\Phi Z = 0 \ ,
+\end{equation}
+y dividiendo por $P\Phi Z$, junto a un reordenamiento de los términos, llegamos a la expresión
+\begin{equation}
+    \frac{1}{\rho P} \frac{d}{d\rho} \left( \rho \frac{dP}{d\rho} \right) + \frac{1}{\rho^2 \Phi} \frac{d^2\Phi}{d\phi^2} + k^2 = - \frac{1}{Z} \frac{d^2Z}{dz^2} \ .
+\end{equation}
