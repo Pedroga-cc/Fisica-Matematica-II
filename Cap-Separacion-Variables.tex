@@ -16,7 +16,7 @@ Recordemos que la ecuación de Helmholtz es dada por la expresión
 \begin{equation}\label{eq:Helmholtz}
     \nabla^2 \psi + k^2 \psi = 0 \ ,
 \end{equation}
-donde $k$ es una constante asociada al sistema.
+donde $k$ es una constante asociada al sistema. Desarrollaremos esta ecuación en los tres sistemas de coordenadas más comunes en física.
 
 \subsection{Coordenadas cartesianas}
 
@@ -105,3 +105,67 @@ y dividiendo por $P\Phi Z$, junto a un reordenamiento de los términos, llegamos
 \begin{equation}
     \frac{1}{\rho P} \frac{d}{d\rho} \left( \rho \frac{dP}{d\rho} \right) + \frac{1}{\rho^2 \Phi} \frac{d^2\Phi}{d\phi^2} + k^2 = - \frac{1}{Z} \frac{d^2Z}{dz^2} \ .
 \end{equation}
+
+Dado que a ambos lados de la ecuación tenemos una dependencia en variables diferentes, ambos lados deben ser igual a una constante para no depender de ellas, la que llamaremos $\lambda_1$, de modo que
+\begin{align}
+    \frac{1}{Z} \frac{d^2Z}{dz^2} & = - \lambda_1 \ , \\
+    \frac{1}{\rho P} \frac{d}{d\rho} \left( \rho \frac{dP}{d\rho} \right) + \frac{1}{\rho^2 \Phi} \frac{d^2 \Phi}{d\phi^2} + k^2 & = \lambda_1 \ . \label{eq:EDO_en_rho_phi}
+\end{align}
+
+En este caso, la única solución que da sentido físico a nuestro sistema será la oscilante, donde $\lambda_1 < 0$. Esto ocurre debido a que nuestro sistema debe tener condiciones de borde finitas, lo que no ocurre ni en el caso lineal ni en el caso exponencial, donde $Z(z)  \to \infty$ cuando $z \to \infty$. Por ello, y para evitar escribir raíces en nuestras soluciones, podemos establecer que $\lambda_1 = -\ell^2$, con $\ell$ un valor real positivo. 
+
+Ahora, definiendo un valor auxiliar $n^2 = k^2 + \ell^2$, podemos separar la ecuación \eqref{eq:EDO_en_rho_phi} en una parte que dependa de $\rho$ y una que dependa de $\phi$, de modo que luego de multiplicar por $\rho^2$ y manipular un poco los términos, obtenemos la ecuación
+\begin{equation}
+    \frac{\rho}{P} \frac{d}{d\rho} \left( \rho \frac{dP}{d\rho} \right) + \rho^2 n^2 = - \frac{1}{\Phi} \frac{d^2 \Phi}{d\phi^2} \ , 
+\end{equation}
+e introduciendo una constante de separación $\lambda_2$, obtenemos las siguientes expresiones
+\begin{align}
+    \frac{1}{\Phi} \frac{d^2 \Phi}{d\phi^2} & = - \lambda_2 \ , \\
+    \frac{\rho}{P} \frac{d}{d\rho} \left( \rho \frac{dP}{d\rho} \right) + n^2 \rho^2 & = \lambda_2 \ .
+\end{align}
+
+Las soluciones físicas para la EDO de $\phi$ deberán ser periódicas, dado que $\Phi(\phi + 2\pi) = \Phi(\phi)$, con lo que necesitamos que $\lambda_2 > 0$, ya que el signo menos produce que el término sea negativo. Llamamos $\lambda_2 = m^2$, donde $m$ es un número entero para satisfacer la condición de periodicidad.
+
+Solo nos queda resolver la ecuación radial, es decir, la EDO
+\begin{equation}
+    \rho \frac{d}{d\rho} \left( \rho \frac{dP}{d\rho} \right) + (n^2 \rho^2 - m^2)P = 0 \ ,
+\end{equation}
+ecuación que se conoce como \textbf{ecuación diferencial de Bessel}, cuyas soluciones son las \emph{funciones de Bessel} que estudiaremos más adelante en el curso.
+
+REVISAR EN MÁS DETALLE CÓMO LO HACE EL ALE
+
+\section{Coordenadas esféricas}
+
+En un sistema esférico $(r, \theta,\phi)$ el operador laplaciano se define como
+\begin{equation}
+    \nabla^2 = \frac{1}{r^2 \sin\theta} \left( \sin\theta \frac{\partial}{\partial r}\left( r^2 \frac{\partial}{\partial r} \right) + \frac{\partial}{\partial \theta} \left( \sin\theta \frac{\partial}{\partial \theta} \right) + \frac{1}{\sin\theta} \frac{\partial^2}{\partial \phi^2} \right) \ ,
+\end{equation}
+con lo que la ecuación de Helmholtz queda como
+\begin{equation} \label{eq:Helmholtz_esferica}
+    \nabla^2 = \frac{1}{r^2 \sin\theta} \left( \sin\theta \frac{\partial}{\partial r}\left( r^2 \frac{\partial \psi}{\partial r} \right) + \frac{\partial}{\partial \theta} \left( \sin\theta \frac{\partial \psi}{\partial \theta} \right) + \frac{1}{\sin\theta} \frac{\partial^2 \psi}{\partial \phi^2} \right) + k^2\psi = 0 \ ,
+\end{equation}
+y planteando un \emph{ansatz} de la forma
+\begin{equation}
+    \psi(r,\theta, \phi) = R(r) \Theta(\theta) \Phi(\phi) \ ,
+\end{equation}
+que al ser sustituída en la ecuación \eqref{eq:Helmholtz_esferica} resulta en
+\begin{equation}
+    \frac{\Theta \Phi}{r^2} \frac{d}{dr}\left( r^2 \frac{dR}{dr} \right) + \frac{R\Phi}{r^2\sin\theta} \frac{d}{d \theta} \left( \sin\theta \frac{d\Theta}{d \theta} \right) + \frac{R\Theta}{r^2\sin^2\theta} \frac{d^2\Phi}{d \phi^2} + k^2 R \Theta \Phi = 0 \ .
+\end{equation}
+
+Dividiendo por $R\Theta\Phi$ y reordenando los términos, podemos llegar a la expresión
+\begin{equation}
+    \frac{1}{\Phi} \frac{d^2\Phi}{d\phi^2} = r^2\sin^2\theta \left[ -\frac{1}{Rr^2} \frac{d}{dr}\left( r^2 \frac{dR}{dr} \right) - \frac{1}{\Theta r^2\sin\theta} \frac{d}{d\Theta} \left( \sin\theta \frac{d\Theta}{d\theta} \right) - k^2 \right] \ .
+\end{equation}
+
+En este momento, podemos separar ambos lados de la ecuación al igualarlas a una constante $\lambda_1$, de modo que obtenemos el sistema de ecuaciones
+\begin{align}
+    \frac{1}{\Phi} \frac{d^2\Phi}{d\phi^2} & = \lambda_1 \\
+    r^2\sin^2\theta \left[ -\frac{1}{Rr^2} \frac{d}{dr}\left( r^2 \frac{dR}{dr} \right) - \frac{1}{\Theta r^2\sin\theta} \frac{d}{d\Theta} \left( \sin\theta \frac{d\Theta}{d\theta} \right) - k^2 \right] & = \lambda_1 \ , \label{eq:EDO_theta_phi}
+\end{align}
+y como en la coordenada azimutal $\phi$ debe cumplirse la condición de periodicidad $\Phi(\phi) = \Phi(\phi + 2\pi)$, entonces $\lambda_1<0$, y lo denotamos por $\lambda_1 = -m^2$, con $m$ un número entero. Luego, reemplazamos este valor en la ecuación \eqref{eq:EDO_theta_phi} para poder separarla. Multiplicando por $r^2$, y manipulando un poco los términos, obtenemos la expresión
+\begin{equation}
+    \frac{1}{R} \frac{d}{dr}\left( r^2 \frac{dR}{dr} \right) + k^2r^2 = - \frac{1}{\Theta\sin\theta} \frac{d}{d\Theta}\left( \sin\theta \frac{d\Theta}{d\theta}\right) + \frac{m^2}{\sin^2\theta} \ .
+\end{equation}
+
+En este caso, vale la pena hacer un análisis en función del valor de $m^2$.
