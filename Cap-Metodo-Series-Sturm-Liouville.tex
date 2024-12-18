@@ -1,0 +1,96 @@
+\chapter{El método de series para EDO y una introducción al problema de Sturm-Liouville}
+
+\section{Resolver EDOs por el método de series}
+
+\section{El problema de Sturm-Liouville}
+
+Para el caso de una EDO de segundo orden, lineal (no hay combinación de derivadas en un mismo término) y homogénea (igualable a 0) de la forma
+\begin{equation}
+    \frac{d}{dx}\left[ p(x) \frac{dy}{dx} \right] + q(x) y + \lambda r(x)y = 0 \ , \quad a \leq x \leq b
+\end{equation}
+donde $p(x)$, $p'(x)$, $q(x)$ y $r(x)$ son funciones reales y continuas en el intervalo $[a,b]$ y $\lambda$ es un parámetro a determinar se conoce como una \textbf{ecuación de Sturm-Liouville}. Cabe mencionar que, desde una perspectiva matemáticamente formal, deben también satisfacerse que tanto $p(x)$ como $r(x)$ son funciones definidas positivas en $[a,b]$. A la función $r(x)$ se le denomina \emph{función peso}.
+
+Si revisamos el capítulo anterior, podemos darnos cuenta que todas las EDO que surgen de separar la ecuación de Helmholtz en diferentes sistemas coordenados corresponden a ecuaciones de Sturm-Liouville, donde ya hemos definido diferentes constantes de separación, salvo $\lambda$.
+
+¿Por qué nos interesa esto? Recordamos que un \emph{operador diferencial} es un operador lineal, es decir, puede actuar sobre un elemento de un espacio vectorial (en este caso, una función) y transformarlo en otro elemento del mismo espacio vectorial. Gracias a ello, podemos definir el \emph{operador de Sturm-Liouville} como
+\begin{equation}
+    \mathcal{L} = \frac{d}{dx}\left[p(x) \frac{d}{dx}\right] - q(x) \ ,
+\end{equation}
+de modo que podemos escribir la ecuación de Sturm-Liouville como
+\begin{equation}
+    \mathcal{L}y = -\lambda r(x) y \ ,
+\end{equation}
+que corresponde a la expresión de un problema de autovalores, como los vistos en Álgebra Lineal. Por ende, nos interesaría poder determinar el valor de $\lambda$ a partir de la teoría de operadores, pero esta perspectiva escapa a los objetivos del curso. Sin embargo, podrán encontrar en el apéndice X un desarrollo siguiendo este camino.
+
+La perspectiva que sí nos interesa analizar en este curso, es uno de los resultados de entender la ecuación de Sturm-Liouville como un problema de autovalores: la \textbf{ortogonalidad} de sus autofunciones. Si recordamos, una propiedad de los autovectores de un operador es que, cuando están asociados a diferentes autovalores, ellos son ortogonales entre sí. Una \emph{autofunción} es el equivalente a un autovector en el espacio de funciones, de modo que, usando un producto interno apropiado, las funciones asociadas a dos autovalores $\lambda_m$ y $\lambda_n$, denotadas como $y_m$ e $y_n$ respectivamente, satisfacen la relación
+\begin{equation}
+    \int_a^b w(x) y_m(x) y_n(x) = 0 \ , \quad n \neq m \ .
+\end{equation}
+
+En el caso del problema de Sturm-Liouville, la función peso que definimos en el producto interno corresponde a la función peso $r(x)$ del problema, de modo que sus soluciones deberán satisfacer
+\begin{equation}
+    \int_a^b r(x) y_m(x) y_n(x) = 0 \ , \quad n \neq m \ .
+\end{equation}
+
+También es posible mostrar que los autovalores de esta ecuación siempre serán valores reales, demostración que se encuentra en el apéndice X.
+
+\section{Condiciones de contorno de Sturm-Liouville}
+
+Sea un conjunto de condiciones de contorno \emph{homogéneas} (es decir, si tengo un conjunto de funciones $f_i$ que satisfacen la condición de contorno, cualquier combinación lineal de ellas también la satisface) en $x=a$ y en $x=b$. Si para dos funciones cualesquiera, $f(x)$ y $g(x)$, que satisfacen estas condiciones de contorno se verifica que
+\begin{equation} \label{eq:SM-condicion}
+    p(x)\left[ f^\ast(x) \frac{dg}{dx} - g(x)\frac{df^\ast}{dx} \right] \left. \right|_a^b = 0 \ ,
+\end{equation}
+entonces dichas condiciones de contorno se denominan \textbf{condiciones de contorno de Sturm-Liouville}, las que pueden clasificarse en tres clases, que discutiremos a continuación.
+
+\subsection{Condiciones de contorno periódicas}
+
+En este caso, nos referimos a condiciones de contorno de la forma
+\begin{equation}
+    \begin{dcases}
+        y(a) = y(b) \ , \\
+        y'(a) = y'(b) \ ,
+    \end{dcases}
+\end{equation}
+donde además se verifica que $p(a) = p(b)$. En particular, esta última condición es necesaria para que se satisfaga \eqref{eq:SM-condicion}.
+
+\subsection{Condiciones de contorno de tipo Robin, o regulares}
+
+Estas condiciones son de la forma
+\begin{equation}
+    \begin{dcases}
+        \alpha_1 y(a) + \alpha_2 y'(a) = 0 \ , \quad \alpha_1, \alpha_2 \in \mathbb{R} \ , \\
+        \beta_1 y(b) + \beta_2 y'(b) = 0 \ , \quad \beta_1, \beta_2 \in \mathbb{R} \ , 
+    \end{dcases}
+\end{equation}
+donde $\alpha_1$ y $\alpha_2$ no son iguales a cero simultáneamente, ni tampoco lo son $\beta_1$ y $\beta_2$.
+
+Este caso corresponde a una generalización (más precisamente, una combinación lineal) de las condiciones de Dirichlet y de Neumann. En efecto, observamos que cuando $\alpha_2 = \beta_2 = 0$, recuperamos las condiciones de Dirichlet, $y(a) = y(b) = 0$; mientras que al hacer $\alpha_1 = \beta_1 = 0$, recuperamos las condiciones de Neumann, $y'(a) = y'(b) = 0$.
+
+Se puede comprobar que estas condiciones satisfacen la ecuación \eqref{eq:SM-condicion} tomando complejo conjugado en la primera ecuación del sistema, y observando que se puede interpretar como un sistema de ecuaciones de dos incógnitas, es decir,
+\begin{equation}
+    \begin{pmatrix}
+        f^\ast(a) & {f^\ast}'(a) \\ g(a) & g'(a)
+    \end{pmatrix}
+    \begin{pmatrix}
+        \alpha_1 \\ \alpha_2
+    \end{pmatrix}
+    = 
+    \begin{pmatrix}
+        0 \\ 0
+    \end{pmatrix} \ ,
+\end{equation}
+donde el sistema tendrá infinitas soluciones, de modo que
+\begin{equation}
+    \left| \begin{array}{cc}
+        f^\ast(a) & {f^\ast}'(a) \\ g(a) & g'(a)
+    \end{array}
+    \right| = f^\ast(a) g'(a) - g(a) {f^\ast}'(a) = 0 \ .
+\end{equation}
+
+Mediante un procedimiento análogo para $b$, tenemos que
+\begin{equation}
+    f^\ast(b) g'(b) - g(b) {f^\ast}'(b) = 0 \ ,
+\end{equation}
+de modo que se satisface la expresión \eqref{eq:SM-condicion}.
+
+\subsection{Condiciones de contorno singulares}
