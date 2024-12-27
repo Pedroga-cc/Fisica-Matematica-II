@@ -1,1 +1,18 @@
 \chapter{Funciones de Legendre}
+
+Como vimos anteriormente en el capítulo \ref{chap:MSV}, al resolver la ecuación de Helmholtz en coordenadas esféricas, podemos obtener dos ecucaciones, según el valor de la constante de separación $m^2$. 
+
+Analizaremos en primer lugar el caso en que $m=0$, donde obtenemos la ecuación
+\begin{equation}
+    \frac{1}{\sin\theta} \frac{d}{d\theta}\left( \sin\theta \frac{d\Theta}{d\theta} \right) + \lambda \Theta = 0 \ .
+\end{equation}
+
+Por comodidad, consideremos el cambio de variables $x = \cos\theta$, y llamaremos a $\Theta(\theta) = \Theta(\arccos(x)) = Y(x)$, de modo que
+\begin{equation}
+    \frac{d}{d\theta} = \frac{dx}{d\theta} \frac{d}{dx} = -\sin\theta \frac{d}{dx} \ ,
+\end{equation}
+con lo que podremos escribir la ecuación como
+\begin{equation}
+    \frac{1}{\sin\theta}(-\sin\theta)\frac{d}{dx}\left( \sin\theta (-\sin\theta) \frac{dY}{dx} \right) + \lambda Y = \frac{d}{dx}\left( (1-x^2) \frac{dY}{dx} \right) + \lambda Y = 0 \ ,
+\end{equation}
+expresión que nombraremos como \textbf{ecuación de Legendre}.

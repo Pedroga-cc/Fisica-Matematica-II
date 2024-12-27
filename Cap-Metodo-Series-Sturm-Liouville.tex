@@ -5,7 +5,7 @@
 \section{El problema de Sturm-Liouville}
 
 Para el caso de una EDO de segundo orden, lineal (no hay combinación de derivadas en un mismo término) y homogénea (igualable a 0) de la forma
-\begin{equation}
+\begin{equation} \label{eq:Sturm-Liouville}
     \frac{d}{dx}\left[ p(x) \frac{dy}{dx} \right] + q(x) y + \lambda r(x)y = 0 \ , \quad a \leq x \leq b
 \end{equation}
 donde $p(x)$, $p'(x)$, $q(x)$ y $r(x)$ son funciones reales y continuas en el intervalo $[a,b]$ y $\lambda$ es un parámetro a determinar se conoce como una \textbf{ecuación de Sturm-Liouville}. Cabe mencionar que, desde una perspectiva matemáticamente formal, deben también satisfacerse que tanto $p(x)$ como $r(x)$ son funciones definidas positivas en $[a,b]$. A la función $r(x)$ se le denomina \emph{función peso}.
@@ -38,7 +38,7 @@ También es posible mostrar que los autovalores de esta ecuación siempre serán
 
 Sea un conjunto de condiciones de contorno \emph{homogéneas} (es decir, si tengo un conjunto de funciones $f_i$ que satisfacen la condición de contorno, cualquier combinación lineal de ellas también la satisface) en $x=a$ y en $x=b$. Si para dos funciones cualesquiera, $f(x)$ y $g(x)$, que satisfacen estas condiciones de contorno se verifica que
 \begin{equation} \label{eq:SM-condicion}
-    p(x)\left[ f^\ast(x) \frac{dg}{dx} - g(x)\frac{df^\ast}{dx} \right] \left. \right|_a^b = 0 \ ,
+    p(x)  \left.  \left[ f^\ast(x) \frac{dg}{dx} - g(x)\frac{df^\ast}{dx} \right]\right|_a^b = 0 \ ,
 \end{equation}
 entonces dichas condiciones de contorno se denominan \textbf{condiciones de contorno de Sturm-Liouville}, las que pueden clasificarse en tres clases, que discutiremos a continuación.
 
@@ -94,3 +94,12 @@ Mediante un procedimiento análogo para $b$, tenemos que
 de modo que se satisface la expresión \eqref{eq:SM-condicion}.
 
 \subsection{Condiciones de contorno singulares}
+
+Corresponden a aquellas soluciones que no son ni regulares ni periódicas. Muchas veces corresponden a funciones $p(x)$ que se anulan en los contornos, o coeficientes que se vuelven infinitos en uno o ambos contornos.
+
+Como caso ilustrativo, consideremos el caso en que $p(a) = p(b) = 0$. En este caso, diremos que $x=a$ y $x=b$ son \emph{puntos singulares} de la ecuación de Sturm-Liouville, como se observa al escribir la ecuación \eqref{eq:Sturm-Liouville} en la forma
+\begin{equation}
+    y''(x) + \frac{p'(x)}{p(x)} y'(x) + \frac{q(x)}{p(x)} y(x) + \lambda \frac{r(x)}{p(x)} y(x) = 0 \ .
+\end{equation}
+
+De esta forma, deberá cumplirse que, en general, las soluciones también sean singulares en estos puntos.
