@@ -2,17 +2,186 @@
 
 Como vimos anteriormente en el capítulo \ref{chap:MSV}, al resolver la ecuación de Helmholtz en coordenadas esféricas, podemos obtener dos ecucaciones, según el valor de la constante de separación $m^2$. 
 
-Analizaremos en primer lugar el caso en que $m=0$, donde obtenemos la ecuación
+\section{Ecuación de Legendre}
+
+Analizaremos en primer lugar el caso en que $m=0$, correspondiente a resolver la ecuación de Laplace, donde obtenemos la EDO
 \begin{equation}
     \frac{1}{\sin\theta} \frac{d}{d\theta}\left( \sin\theta \frac{d\Theta}{d\theta} \right) + \lambda \Theta = 0 \ .
 \end{equation}
 
-Por comodidad, consideremos el cambio de variables $x = \cos\theta$, y llamaremos a $\Theta(\theta) = \Theta(\arccos(x)) = Y(x)$, de modo que
+Por comodidad, consideremos el cambio de variables $x = \cos\theta$, y llamaremos a $\Theta(\theta) = \Theta(\arccos(x)) = y(x)$, de modo que
 \begin{equation}
     \frac{d}{d\theta} = \frac{dx}{d\theta} \frac{d}{dx} = -\sin\theta \frac{d}{dx} \ ,
 \end{equation}
 con lo que podremos escribir la ecuación como
 \begin{equation}
-    \frac{1}{\sin\theta}(-\sin\theta)\frac{d}{dx}\left( \sin\theta (-\sin\theta) \frac{dY}{dx} \right) + \lambda Y = \frac{d}{dx}\left( (1-x^2) \frac{dY}{dx} \right) + \lambda Y = 0 \ ,
+    \frac{1}{\sin\theta}(-\sin\theta)\frac{d}{dx}\left( \sin\theta (-\sin\theta) \frac{dy}{dx} \right) + \lambda y = \frac{d}{dx}\left( (1-x^2) \frac{dy}{dx} \right) + \lambda y = 0 \ ,
 \end{equation}
 expresión que nombraremos como \textbf{ecuación de Legendre}.
+
+Observamos que hemos escrito la ecuación de Legendre en la forma de una ecuación de Sturm-Liouville, con $p(x) = 1-x^2$ y $q(x) = r(x) = 1$. Observamos que, dado que $x=\cos\theta$, nuestra ecuación está definida en el intervalo $[-1,1]$. Nos interesa que estos casos extremos posean soluciones finitas, lo que nos permitirá encontrar el valor de $\lambda$ para esta ecuación.
+
+\subsection{Resolviendo la ecuación de Legendre}
+
+En primer lugar, escribimos la ecuación de forma más explícita, es decir,
+\begin{equation}\label{eq:legendre_explicit}
+    (1-x^2)y''(x) - 2x y'(x) + \lambda y(x) = 0 \ .
+\end{equation}
+
+Utilizando el método de series, planteamos soluciones de la forma
+\begin{equation}
+    \begin{dcases}
+        y(x) & = \sum_{k=0}^{\infty} a_k x^k \\
+        y'(x) & = \sum_{k=1}^{\infty} k a_k x^{k-1} \\
+        y''(x) & = \sum_{k=2}^{\infty} (k-1)k a_k x^{k-2} \\
+        & = \sum_{k=0}^{\infty} (k+1) (k+2) a_{k-2} x^k 
+    \end{dcases} \ ,
+\end{equation}
+de modo que sustituyendo en la expresión \eqref{eq:legendre_explicit} tenemos 
+\begin{align}
+    \sum_{k=0}^{\infty} (k+1)(k+2) a_{k+2} x^k - \sum_{k=0}^{\infty} (k-1) k a_k x^k - 2 \sum_{k=1}^{\infty} k a_k x^k + \lambda \sum_{k=0}^{\infty} a_k x^k & = 0 \ , \\
+    \sum_{k=0}^{\infty} \left[ (k+1)(k+2) a_{k+2} - k(k-1)a_k  - 2k a_k + \lambda a_k \right]x^k & = 0 \ ,
+\end{align}
+donde hemos usado que $\sum_{k=1}^{\infty} k = \sum_{k=0}^{\infty} k$. Dado que $x^k = 0$ corresponde a la solución trivial, analizamos la relación entre los coeficientes de nuestra ecuación,
+\begin{equation}
+    (k+1)(k+2) a_{k+2} - [(k-1) k + 2k - \lambda]a_k = 0 \ ,
+\end{equation}
+de donde encontramos la siguiente relación de recurrencia,
+\begin{equation}\label{eq:recurrencia_legendre}
+    a_{k+2} = \frac{k(k+1) - \lambda}{(k+1)(k+2)}a_k \ ,
+\end{equation}
+de modo que dados unos valores para $a_0$ y $a_1$ podremos determinar todos los coeficientes de nuestra expresión. Luego, si desarrollamos los términos pares e impares por separado, podemos observar la siguiente recurrencia,
+\begin{align*}
+    a_2 & = \frac{-\lambda}{2} a_0 \\
+    a_4 & = \frac{2(2+1) - \lambda}{3 \cdot 4} a_2 = \frac{-\lambda(2(2+1)-\lambda)}{4!}a_0 \\
+    a_6 & = \frac{4(4+1) - \lambda}{5 \cdot 6} a_4 = \frac{-\lambda (2(2+1)-\lambda)(4(4+1)-\lambda)}{6!} a_0 \\
+    & \qquad \vdots \\
+    a_n & = \frac{a_0}{n!}\prod_{\ell=0}^{n-2}[\ell (\ell+1) - \lambda] \ ,
+\end{align*}
+mientras que para el caso de coeficientes impares,
+\begin{align*}
+    a_3 & = \frac{1(1+1) - \lambda}{2 \cdot 3}a_1 \\
+    a_5 & = \frac{(3(3+1)-\lambda)}{4 \cdot 5}a_3 = \frac{(1(1+1) - \lambda)(3(3+1)-\lambda)}{5!} a_1 \\
+    a_7 & = \frac{5(5+1) - \lambda}{6 \cdot 7} = \frac{(1(1+1) - \lambda)(3(3+1)-\lambda)(5(5+1) - \lambda)}{7!} a_1 \\
+    & \qquad \vdots \\
+    a_n & = \frac{a_1}{n!}\prod_{\ell=1}^{n-2}[\ell (\ell+1) - \lambda] \ ,
+\end{align*}
+de modo que la solución general para la ecuación de Legendre será la combinación lineal de la solución para los valores pares y la solución para los valores impares,
+\begin{align}
+    y(x) & = a_0 y_{1}(x) + a_1 y_{2}(x) \\
+    & = a_0 \left( \sum_{m=0}^{\infty} b_{m} x^{2m} \right) + a_1 \left( \sum_{m=0}^{\infty} c_{m} x^{2m+1} \right) \\
+    & = \sum_{m=0}^{\infty} \frac{a_0}{(2m)!}\left( \prod_{\ell=0}^{2m-2}[\ell (\ell+1) - \lambda] \right)x^{2m} + \sum_{m=0}^{\infty} \frac{a_1}{(2m+1)!}\left( \prod_{\ell=1}^{2m-1}[\ell (\ell+1) - \lambda] \right)x^{2m+1} \ .
+\end{align}
+
+Con esto, podemos darnos cuenta de que la solución general de la ecuación de Legendre es una serie infinita. ¿Cómo imponemos la condición de finitud a estas expresiones? Podemos hacerlo al estudiar su convergencia para el intervalo en que se encuentran definidas.
+
+Según el criterio de la razón (véase el capítulo 7 del apunte de Física Matemática I), la serie converge para $|x|<1$, independientemente del valor de $\lambda$. Nos queda analizar los casos extremos, es decir, $x=\pm1$.
+
+Para $\lambda \neq n(n+1)$, la serie diverge, puesto que ella se convierte en una serie numérica sin ningún tipo de restricción, que crece indefinidamente. Volveremos a este caso más tarde.
+
+Para $\lambda = n (n+1)$, existirá algún término $a_n=0$ para la solución par o la solución impar, y siguiendo la relación de recurrencia \eqref{eq:recurrencia_legendre}, todo término superior a este se anulará. Luego, basta imponer que el primer coeficiente de la solución de paridad opuesta se anule para así obtener una solución convergente. Es decir, si $n$ es par, $a_1=0$, mientras que si $n$ es impar, escogemos $a_0 = 0$.
+
+De esta forma, nos gustaría poder escribir una expresión general para las soluciones que son válidas en todo el dominio, es decir, cuando $\lambda = n(n+1)$. Notamos que $\ell(\ell+1)-n(n+1) = (\ell - n)(\ell + n + 1)$, podemos encontrar que, para $n$ par,
+\begin{align}
+    y_{1,n}(x) & = \sum_{m=0}^{n/2} b_m x^{2m} = \sum_{m=0}^{n/2} \left(\frac{1}{(2m)!} \prod_{\ell=0}^{2m-2} (\ell-n)(\ell+n+1) \right) x^{2m} \\
+    & = d_{n,1} P_n(x) = \frac{(-1)^{n/2} 2^n \left[ \left(\frac{n}{2}\right)! \right]^2}{n!}P_n(x) \ ,
+\end{align}
+mientras que para $n$ impar,
+\begin{align}
+    y_{2,n}(x) & = \sum_{m=0}^{n/2} b_m x^{2m} = \sum_{m=0}^{n/2} \left(\frac{1}{(2m)!} \prod_{\ell=0}^{2m-2} (\ell-n)(\ell+n+1) \right) x^{2m} \\
+    & = d_{n,2} P_n(x) = \frac{(-1)^{(n+1)/2} 2^{n-1} \left[ \left(\frac{n-1}{2}\right)! \right]^2}{n!}P_n(x) \ ,
+\end{align}
+donde en ambos casos las funciones $P_n(x)$ corresponden a los \textbf{polinomios de Legendre}, definidos como
+\begin{equation}
+    P_n(x) = \sum_{k=0}^{n/2} \frac{(-1)^k (2n-2k)}{2^n k! (n-k)! (n-2k)!}x^{n-2k} \ .
+\end{equation}
+
+\subsection{Función Generatriz}
+
+Para cualquier conjunto de \emph{polinomios ortogonales} $\{P_n(x)\}_{n\in \mathbb{N}}$, se denomina \textbf{función generatriz} (o generadora) de dicho conjunto a la función $G(x,t)$, tal que cuando se desarrolla en una serie de Taylor para $t$, los coeficientes de dicha expansión son los polinomios $P_n(x)$:
+\begin{equation}
+    G(x,t) = \sum_{n=0}^{\infty} P_n(x)t^n \ .
+\end{equation}
+
+En particular, la función generatriz para los polinomios de Legendre es dada por la expresión
+\begin{equation}
+    G(x,t) = \frac{1}{\sqrt{1-2xt + t^2}} \ .
+\end{equation}
+
+\subsection{Propiedades de los Polinomios de Legendre}
+
+
+\subsection{Funciones de Legendre de segunda especie}
+
+
+\section{Ecuación asociada de Legendre}
+
+Hasta ahora, analizamos el caso en que $m=0$ en la EDO axial \eqref{eq:Helmholtz_esferica} que se obtiene de la ecuación de Helmholtz. En lo que resta del capítulo, analizaremos el caso en que $m \neq 0$.
+
+En este caso, la ecuación se puede escribir como
+\begin{equation}
+    \frac{1}{\sin\theta} \frac{d}{d\theta}\left( \sin\theta \frac{d\Theta}{d\theta} \right) + \left(\lambda - \frac{m^2}{\sin^2\theta} \right) \Theta = 0 \ .
+\end{equation}
+
+Realizando nuestro cambio de variable $x = \cos\theta$, y desarrollando de forma más explícita la ecuación, esta toma la forma de la \textbf{ecuación asociada de Legendre},
+\begin{equation}
+    (1-x^2) y''(x) - 2xy'(x) + \left( \lambda - \frac{m^2}{1-x^2} \right) y(x) = 0 \ ,
+\end{equation}
+cuyas soluciones se encuentran definidas en el intervalo $[-1,1]$.
+
+\subsection{Resolviendo la ecuación asociada de Legendre}
+
+Para hacer más fácil el proceso de utilizar el método de series, realizamos la sustitución $y(x) = (1-x^2)^{m/2} u(x)$, y resolvemos para $u(x)$. Esto resulta en la EDO
+\begin{equation}
+    (1-x^2)u''(x) - 2x(m+1)u'(x) + (\lambda - m(m+1))u(x) = 0 \ ,
+\end{equation}
+a partir de la cual podemos plantear una solución de la forma
+\begin{equation}
+    u(x) = \sum_{k=0}^{+\infty} a_k x^k 
+\end{equation} 
+y encontrar la siguiente relación de recurrencia
+\begin{equation}\label{eq:recurrencia_asociadas}
+    a_{k+2} = \frac{k^2 + (2m+1)k - \lambda + m(m+1)}{(k+1)(k+2)} a_k \ ,
+\end{equation}
+que al igual que para la ecuación de Legendre, resultará en series que convergen para $|x|<1$ y, en general, divergen para $|x|=1$, salvo para ciertos valores de $\lambda$. Para encontrar dichos valores, necesitamos que el numerador de la ecuación \eqref{eq:recurrencia_asociadas} sea cero, es decir,
+\begin{equation}
+    \lambda = m(m+1) + k(k+1) + 2mk = (m+k)(m+k+1) \ ,
+\end{equation}
+con lo que, definiendo $n = m+k \geq m$, observamos que nuevamente requeriremos que $\lambda = n(n+1)$, de modo que la serie terminará luego del $(n-m)$-ésimo término.
+
+Podemos hallar de forma explícita las soluciones a esta EDO diferenciando repetidamente la ecuación de Legendre \eqref{eq:legendre_explicit}, al hacer uso de la regla de Leibniz, es decir,
+\begin{equation}
+    \frac{d^m}{dx^m}\left( f_1(x) \cdot f_2(x) \right) = \sum_{s=0}^{m} \binom{m}{s} \frac{d^{m-s}}{dx^{m-s}}f_1(x) \frac{d^s f_2(x)}{dx^s} \ ,
+\end{equation}
+de donde obtenemos que
+\begin{align*}
+    \frac{d^m}{dx^m}\left[ (1-x^2)y''(x) \right] & = \binom{m}{m} (1-x^2) \frac{d^m }{dx^m}y'' + \binom{m}{m-1} (-2x) \frac{d^{m-1}}{dx^{m-1}} y'' + \binom{m}{m-2} (-2) \frac{d^{m-2}}{dx^{m-2}}y'' \\
+    & = (1-x^2) \left(\frac{d^m y}{dx^m}\right)'' - 2mx \left(\frac{d^m y}{dx^m}\right)' - m(m-1)\left(\frac{d^m y}{dx^m}\right)  \\
+    \frac{d^m}{dx^m}\left[ 2x y'(x) \right] & = \binom{m}{m} 2x \frac{d^m}{dx^m}y' + \binom{m}{m-1} 2 \frac{d^{m-1}}{dx^{m-1}}y' \\
+    & = 2x \left(\frac{d^2 y}{dx^2}\right)' + 2m \left(\frac{d^2 y}{dx^2}\right) \\
+    \frac{d^m}{dx^m}\left[ n(n+1)y'(x) \right] & = n(n+1) \frac{d^m}{dx^m}y(x) \ ,
+\end{align*}
+donde hemos usando que $\binom{m}{m} = 1$, $\binom{m}{m-1} = m$, y $\binom{m}{m-2} = \frac{m(m-1)}{2}$. Así, la EDO resulta en
+\begin{equation}
+    (1-x^2)\left(\frac{d^m y}{dx^m}\right)'' - (2mx + 2x) \left(\frac{d^m y}{dx^m}\right)' + [m(m-1) + 2m + n(n+1)]\left(\frac{d^m y}{dx^m}\right) = 0 \ ,
+\end{equation}
+donde al hacer la sustitución $f(x) = y^{(m)}(x)$, obtenemos la EDO para $u(x)$ cuando $\lambda = n(n+1)$. De esta forma, concluímos que las funciones $u(x)$ son proporcionales a $\frac{d^m }{dx^m} P_n(x)$.
+
+De forma convencional (por motivos de normalización), las soluciones $u(x)$ corresponden a los \textbf{polinomios asociadas de Legendre}, expresados como
+\begin{equation} \label{eq:asociadas_legendre}
+    P_n^m(x) = (1-x^2)^{m/2} \frac{d^m}{dx^m}P_n(x) \ .
+\end{equation}
+
+Observamos que cuando $m=0$, recuperamos los polinomios de Legendre, de modo que $P^0_n(x) \equiv P_n(x)$. Sustituyendo la fórmula de Rodrigues para $P_n(x)$ en \eqref{eq:asociadas_legendre}, obtenemos la \emph{fórmula de Rodrigues para los polinomios asociados de Legendre},
+\begin{equation}
+    P_n^m(x) = \frac{1}{2^n n!}(1-x^2)^{m/2} \frac{d^{n+m}}{dx^{n+m}}(x^2-1)^n \ ,
+\end{equation}
+que también es válida para $m<0$.
+
+\subsection{Función generatriz}
+
+\subsection{Propiedades}
+
+
+
+\section{Armónicos Esféricos}
