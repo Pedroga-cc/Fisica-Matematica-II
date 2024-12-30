@@ -173,15 +173,140 @@ De forma convencional (por motivos de normalización), las soluciones $u(x)$ cor
 \end{equation}
 
 Observamos que cuando $m=0$, recuperamos los polinomios de Legendre, de modo que $P^0_n(x) \equiv P_n(x)$. Sustituyendo la fórmula de Rodrigues para $P_n(x)$ en \eqref{eq:asociadas_legendre}, obtenemos la \emph{fórmula de Rodrigues para los polinomios asociados de Legendre},
-\begin{equation}
+\begin{equation} \label{eq:rodrigues-asociados}
     P_n^m(x) = \frac{1}{2^n n!}(1-x^2)^{m/2} \frac{d^{n+m}}{dx^{n+m}}(x^2-1)^n \ ,
 \end{equation}
-que también es válida para $m<0$.
+que también es válida para $m<0$, siempre y cuando $|m|\leq n$.
 
 \subsection{Función generatriz}
 
 \subsection{Propiedades}
 
+A partir de la expresión \eqref{eq:asociadas_legendre}, es posible mostrar, aplicando la fórmula de Leibniz al producto $(n+1)^n (x-1)^n$, que
+\begin{enumerate}[series=asociadas]
+    \item \textbf{Simetría.} Los polinomios $P^{-m}_n$ se pueden obtener a partir de los $P^{m}_n$ siguiendo la relación
+    \begin{equation}
+        P^{-m}_n(x) = (-1)m \frac{(n-m)!}{(n+m)!}P^{m}_n(x)
+    \end{equation}
+\end{enumerate}
+
+A partir de la fórmula de Rodrigues \eqref{eq:rodrigues-asociados}, se pueden demostrar las siguientes propiedades,
+\begin{enumerate}[resume=asociadas]
+    \item Evaluados en los extremos del intervalo $x= \pm 1$, los polinomios asociados de Legendre son nulos, salvo cuando $m=0$.
+    \begin{equation}
+        P_n^m(\pm 1) = \begin{dcases}
+            (\pm 1)^n \ , & \qquad m = 0 \\
+            0 \ , & \qquad m \neq 0
+        \end{dcases} \ .
+    \end{equation}
+
+    \item \textbf{Paridad.} A partir de la paridad de los polinomios de Legendre $P_n(x)$, podemos encontrar que los polinomios asociados pueden ser tanto funciones pares como impares, dependiendo del valor de $m$ y $n$,
+    \begin{equation}
+        P_n^m(-x) = (-1)^{n+m} P_n^m(x) \ .
+    \end{equation}
+
+    \item \textbf{Ortogonalidad.} Los polinomios asociados de Legendre satisfacen las siguientes relaciones de ortogonalidad,
+    \begin{equation}
+        \int_{-1}^1 P_\ell^m(x) P_k^m(x) dx = \frac{2}{2\ell + 1} \frac{(\ell + m)!}{(\ell - m)!} \delta_{\ell, k} \ .
+    \end{equation}
+
+    \item \textbf{Relaciones de recurrencia.} Los polinomios asociados de Legendre satisfacen las siguientes relaciones de recurrencia,
+    \begin{align}
+        (2n+1)x P_n^m(x) & = (n+m) P^m_{n-1}(x) + (n-m+1) P^m_{n+1}(x) \\
+        (2n+1) \sqrt{1-x^2} P_n^m(x) & = P^{m+1}_{m+1}(x) - P^{m+1}_{n-1}(x) \\
+        & = (n+m)(n+m-1)P^{m-1}_{n-1} - (n-m+1)(n-m+2)P^{m-1}_{n+1} 
+    \end{align}
+
+    \item En general, la EDO asociada de Legendre también posee un segundo conjunto de soluciones, no analíticas en $x = \pm 1$, que corresponden a las \emph{funciones asociadas de Legendre de segunda especie}, que se obtienen a partir la ecuación \eqref{eq:asociadas_legendre}, utilizando las funciones de Legendre de segunda especie $Q_n(X)$ como derivando. Por ello, la solución general será dada por
+    \begin{equation}
+        y(x) = C_1 P_n^m(x) + C_2 Q_n^m(x) \ .
+    \end{equation}
+
+    \item La mayoría de los problemas físicos descartan esta segunda solución, ya que en general esperaremos que nuestra solución sea finita en $x = \pm 1$, es decir, en $\theta = 0$ y en $\theta = \pi$, con lo que hacemos $C_2 = 0$.
+\end{enumerate}
+
 
 
 \section{Armónicos Esféricos}
+
+Como último tema de este capítulo, analizaremos qué ocurre al resolver la ecuación de Laplace, es decir, el caso en que $k=0$ en la ecuación de Helmholtz. Mediante el método de separación de variables, llegamos a las siguientes ecuaciones
+\begin{align}
+    \frac{d^2 \Phi}{d\phi^2} + m^2 \Phi & = 0 \label{eq:edo_laplace_phi} \\
+    \frac{1}{\sin \theta} \frac{d}{d\theta}\left( \sin\theta \frac{d\Theta}{d\theta} \right) + \left( \ell(\ell+1) - \frac{m^2}{\sin^2\theta} \right)\Theta & = 0 \label{eq:edo_laplace_theta} \\
+    \frac{d}{dr}\left( r^2 \frac{dR}{dr} \right) - \ell(\ell+1) R & = 0 \ , \label{eq:edo_laplace_r}
+\end{align}
+donde la elección de la constante de separación $\ell(\ell+1)$ proviene de exigir una solución analítica cuando $\cos\theta = \pm 1$. Luego, la solución de la ecuación \eqref{eq:edo_laplace_phi} es oscilante, la solución a la ecuación \eqref{eq:edo_laplace_theta} son los polinomios asociados de Legendre, y la solución para \eqref{eq:edo_laplace_r} es $R_\ell(r) = D_\ell r^\ell + E_\ell r^{-(\ell+1)}$.
+
+Una solución para la ecuación de Laplace en coordenadas esféricas será, por ende,
+\begin{align}
+    \psi_{m\ell}(r,\theta,\phi) & = R_\ell(r) \Theta_{m\ell}(\theta) \Phi_m (\phi) \nonumber \\
+    & = (D_\ell r^\ell + E_\ell r^{-(\ell+1)}) C_{m\ell} P_\ell^m(\cos\theta)(A_m \cos(m\phi) + B_m \sin(m\phi)) \ ,
+\end{align}
+o bien,
+\begin{equation}
+    \psi_{m\ell}(r,\theta,\phi) = R_\ell(r) P_\ell^m(\cos\theta) C_\ell e^{im\phi} \ ,
+\end{equation}
+donde se cumplirá que $- \ell \leq m \leq \ell$.
+
+Comúnmente, nos podemos referir a la parte angular de la solución general como \textbf{funciones armónicas esféricas}, o simplemente, \textbf{Armónicos Esféricos}, los que se definen con una normalización conveniente como
+\begin{equation}
+    Y_\ell^m(\theta, \phi) = (-1)^m \sqrt{\frac{2\ell + 1}{4\pi} \frac{(\ell-m)!}{(\ell+m)!} } P_\ell^m (\cos\theta) e^{im\phi} \ .
+\end{equation}
+
+El factor radical tiene su origen en la normalización de los armónicos esféricos, mientras que el factor $(-1)^m$ es convencional al trabajar en mecánica cuántica en el contexto del momento angular. Esta fase es conocida como \emph{fase de Condon-Shortley}, y a veces es introducida en la definición de los polinomios asociados de Legendre.
+
+\subsection{Propiedades}
+
+\begin{enumerate}
+    \item \textbf{Simetría.} Los armónicos esféricos $Y_\ell^{-m}$ se pueden obtener según la relación
+    \begin{equation}
+        Y_\ell^{-m}(\theta, \phi) = (-1)^m (Y_\ell^m (\theta, \phi))^\ast \ .
+    \end{equation}
+
+    \item \textbf{Paridad.} Los armónicos esféricos pueden ser pares o impares, según el valor de $\ell$,
+    \begin{equation}
+        Y_\ell^m(\pi - \theta, \pi + \phi) = (-1)^\ell Y_\ell^m(\theta, \phi) \ .
+    \end{equation}
+
+    \item \textbf{Ortonormalidad.} Los armónicos esféricos forman un conjunto ortonormal, es decir,
+    \begin{equation}
+        \int_0^{2\pi} \int_0^\pi Y_j^k(\theta, \phi) Y_\ell^m (\theta, \phi) \sin\theta d\theta d\phi = \delta_{j, \ell} \delta_{k, m} \ .
+    \end{equation}
+
+    \item \textbf{Completitud.} EL conjunto de funciones $\{ Y_\ell^m(\theta, \phi) \}_{\ell = 0, m = -\ell}^{\ell = \infty, m = \ell}$ es un \emph{conjunto completo de funciones}, con lo que \emph{forma una base en el espacio de funciones}, lo que se expresa como
+    \begin{equation}
+        \sum_{\ell = 0}^{\infty} \sum_{m = -\ell}^{\ell} (Y_\ell^m (\theta, \phi))^\ast Y_{\ell}^m (\theta', \phi') = \delta(\phi - \phi') \delta(\cos\theta - \cos\theta') \ .
+    \end{equation}
+    
+    \item \textbf{Expansión en términos de Armónicos Esféricos.} Dada la completitud de los armónicos esféricos, cualquier función $f(\theta, \phi)$ cuadrado integrable, es decir, que satisface
+    \begin{equation}
+        \int | f(\theta, \phi) |^2 d\Omega < \infty \ ,
+    \end{equation}
+    puede ser desarrollada en términos de funciones armónicas esféricas,
+    \begin{equation}
+        f(\theta, \phi) = \sum_{\ell = 0}^{\infty} \sum_{m = -\ell}^{\ell} a_{\ell m} Y_\ell^m (\theta, \phi) \ ,
+    \end{equation}
+    donde los coeficientes $a_{\ell m}$ son dados por
+    \begin{equation}
+        a_{\ell m} = \int_{0}^{2\pi} \int_{0}^{\pi} f(\theta, \phi) (Y_\ell^m)^\ast (\theta, \phi) \sin\theta d\theta d\phi \ .
+    \end{equation}
+
+    \item \textbf{Teorema de adición de armónicos esféricos.} Dados dos vectores unitarios $\hat{r}_1$ y $\hat{r}_2$, con direcciones $(\theta_1, \phi_1)$ y $(\theta_2, \phi_2)$, podemos obtener el ángulo $\gamma$ formado entre ambos vectores como
+    \begin{equation}
+        \hat{r}_1 \cdot \hat{r}_2 = \cos\gamma = \sin\theta_1 \sin\theta_2 \cos(\phi_1 - \phi_2) + \cos\phi_1 \cos\phi_2 \ ,
+    \end{equation}
+    y podremos hallar los polinomios de Legendre de este ángulo como
+    \begin{equation}
+        P_\ell(\cos\gamma) = \frac{4\pi}{2\ell + 1} \sum_{m = -\ell}^\ell Y_\ell^m(\theta_1, \phi_1) (Y_\ell^m(\theta_2, \phi_2))^\ast \ .
+    \end{equation}
+
+    En particular, cuando $\gamma=0$, y por ende $\theta_1 = \theta_2 = \theta$ y $\phi_1 = \phi_2 = \phi$, obtenemos que
+    \begin{equation}
+        P_\ell(1) = 1 = \frac{4\pi}{2\ell + 1} \sum_{m = -\ell}^\ell |Y_\ell^m(\theta, \phi)|^2 \ ,
+    \end{equation}
+    y así,
+    \begin{equation}
+        \sum_{m = -\ell}^\ell |Y_\ell^m(\theta, \phi)|^2 = \frac{2\ell + 1}{4\pi} \ .
+    \end{equation}
+
+\end{enumerate}
