@@ -1,1 +1,19 @@
 \chapter{Funciones de Bessel}
+
+Cuando reolvemos la ecuación de Helmholtz en coordenadas cilíndricas, obtenemos una EDO para la coordenada radial de la forma
+\begin{equation}
+    \rho \frac{d}{d\rho}\left( \rho \frac{dP}{d\rho} \right) + (n^2\rho^2 - m^2)P = 0 \ .
+\end{equation}
+
+Haciendo el cambio de variable $x = n\rho$, $\frac{d}{dx} = \frac{1}{n} \frac{d}{d\rho}$, con lo que la ecuación tomará la forma
+\begin{equation}
+    \frac{x}{n} n \frac{d}{dx} \left( \frac{x}{n} n \frac{dy}{dx} \right) + (x^2 - m^2)y(x) = 0 \ ,
+\end{equation}
+o desarrollando más explícitamente la ecuación, obtenemos la \textbf{ecuación de Bessel}
+\begin{equation}
+    x^2 y''(x) + x y'(x) + (x^2 - m^2) y(x) = 0 \ .
+\end{equation}
+
+Si bien, como parte de la ecuación de Helmholtz, se ha impuesto que $m$ es un valor entero, esta no es una restricción propia de la EDO de Bessel, por lo que comúnmente se denota a esta constante como $\nu$, la que puede tomar \emph{valores reales no negativos}.
+
+% Nuevamente, podemos hacer uso del método de Frobenius para resolver la EDO alrededor de $x=0$. Podríamos preguntarnos si esto es posible, ya que $x=0$ corresponde a un punto singular de la ecuación, ya que si consideramos una solución de la forma $y(x) = \sum_n a_n x^n$, en $x=0$, $y(0) = 0$

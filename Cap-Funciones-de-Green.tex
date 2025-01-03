@@ -1,1 +1,130 @@
 \chapter{Funciones de Green}
+
+Hasta ahora, hemos visto maneras de resolver EDPs lineales y \emph{homogéneas}, es decir, que son igualables a cero, sin términos que no dependan de la función incógnita ni sus derivadas.
+
+Sin embargo, muchas situaciones físicas no pueden ser descritas únicamente mediante ecuaciones homogéneas. ¿Cómo podemos resolverlas en este caso?
+
+Una forma de hacerlo es mediante el \textbf{método de las funciones de Green}, gracias a las cuales podemos reducir una EDP lineal e inhomogénea a un problema abordable.
+
+En general, diremos que podemos hacer uso de las funciones de Green cuando tenemos un problema de la forma
+\begin{equation}
+    \mathcal{L}\Psi(\vec{x}) = f(\vec{x}) \ ,
+\end{equation}
+donde $f(\vec{x})$ corresponde a una función \emph{fuente} y $\mathcal{L}$ es un operador diferencial cualquiera. En este caso, buscamos una \textbf{función de Green} $G(\vec{x}, \vec{x}')$ que satisfaga la ecuación
+\begin{equation}\label{eq:condicion_green}
+    \mathcal{L}G(\vec{x}, \vec{x}') = \delta^{(n)}(\vec{x} - \vec{x}') \ ,
+\end{equation}
+donde $\delta^{(n)}$ es la delta de Dirac $n$-dimensional.
+
+\section{Motivación: Potencial electrostático}
+
+En presencia de una carga (o distribución de cargas), el potencial electrostático satisface la \emph{ecuación de Poisson}
+\begin{equation}
+    \nabla^2 \phi = - \frac{\rho(x)}{\varepsilon_0} \ ,
+\end{equation}
+donde $\rho(x)$ es la distribución de cargas en la región considerada.
+
+A partir de la ley de Coulomb, sabemos que podemos describir el potencial eléctrico de una distribución de cargas como
+\begin{equation} \label{eq:potencial_coulomb}
+    \phi(\vec{x}) = \frac{1}{4\pi \varepsilon_0} \int_V \frac{\rho(\vec{x}')}{|\vec{x} - \vec{x}'|} dV' \ ,
+\end{equation}
+donde hemos hecho la elección tradicional de que el potencial de referencia se anula en el infinito.
+
+Observamos que, si definimos nuestra \emph{función de Green} como
+\begin{equation}
+    G(\vec{x}, \vec{x}') = - \frac{1}{4\pi} \frac{1}{|\vec{x} - \vec{x}'|} \ ,
+\end{equation}
+podemos reescribir \eqref{eq:potencial_coulomb} como
+\begin{equation}
+    \phi(x) = \int_V G(\vec{x}, \vec{x}') \left( - \frac{\rho(\vec{x}')}{\varepsilon_0} \right) dV' \ .
+\end{equation}
+
+Esta función de Green debe satisfacer la ecuación \eqref{eq:condicion_green}, que en este caso es dada por
+\begin{equation}
+    \nabla^2 G(\vec{x}, \vec{x}') = \delta^{(3)} (\vec{x} - \vec{x}') \ .
+\end{equation}
+
+De esta forma, observamos que
+\begin{align}
+    \nabla^2 \phi(\vec{x}) & = \nabla^2 \int_V G(\vec{x}, \vec{x}') \left( - \frac{\rho(\vec{x}')}{\varepsilon_0} \right) dV' \\
+    & = \int_V [\nabla^2 G(\vec{x}, \vec{x}')] \left( - \frac{\rho(\vec{x}')}{\varepsilon_0} \right) dV' \\
+    & = \int_V \delta^{(3)}(\vec{x} - \vec{x}') \left( - \frac{\rho(\vec{x}')}{\varepsilon_0} \right) dV'\\
+    & = - \frac{\rho(\vec{x})}{\varepsilon_0} \ ,
+\end{align}
+recuperando la ecuación original.
+
+\section{Encontrando soluciones mediante funciones de Green}
+
+Consideremos una EDP \emph{lineal e inhomogénea} de la forma
+\begin{equation}\label{eq:edp_general}
+    \mathcal{L} \psi(\vec{x}) = \left(\nabla \cdot (p(\vec{x}) \nabla) + q(\vec{x})\right)\psi(\vec{x}) = f(\vec{x}) \ ,
+\end{equation}
+donde $p(\vec{x})$ y $q(\vec{x})$ son funciones conocidas.
+
+Para resolver la EDP, encontramos primero la función de Green que satisface la expresión \eqref{eq:condicion_green}, junto a una solución \emph{particular} de la ecuación \eqref{eq:edp_general} en el punto $\vec{x}'$, podemos hallar una solución general del problema, la que será dada por
+\begin{equation}
+    \psi(\vec{x}) = \oint_{\partial V} \rho(\vec{x})[\psi(\vec{x}') \nabla' G(\vec{x}, \vec{x}') - G(\vec{x}, \vec{x}') \nabla' \psi(\vec{x}')] \cdot d\vec{S}' + \int_V G(\vec{x}, \vec{x}') f(\vec{x}') dV' \ ,
+\end{equation}
+donde $\nabla'$ indica que el operador actúa sobre las componentes de $\vec{x}'$. Aquí, $V$ denota al dominio en que la solución $\psi(\vec{x})$ es válida, y $\partial V$ es su frontera.
+
+¿Cómo sabemos que esta ecuación es válida? Resolvamos la primera integral. Notemos que podemos utilizar el teorema de Gauss, de modo que
+\begin{align}
+    I & = \oint_{\partial V} \rho(\vec{x})[\psi(\vec{x}') \nabla' G(\vec{x}, \vec{x}') - G(\vec{x}, \vec{x}') \nabla' \psi(\vec{x}')] \cdot d\vec{S}' \label{eq:integral_green_superficie} \\
+    & = \int_V \nabla' \cdot \left[ p(\vec{x}') \psi(\vec{x}') \nabla' G(\vec{x}, \vec{x}') - p(\vec{x}') G(\vec{x}, \vec{x}') \nabla' \psi(\vec{x}') \right] dV' \\
+    & = \int_V \left[\psi(\vec{x}') \nabla' \cdot \left[ p(\vec{x}')  \nabla' G(\vec{x}, \vec{x}')\right] + \textcolor{blue}{\nabla \psi(\vec{x}') \cdot (p(\vec{x}') \nabla' G(\vec{x}, \vec{x}') )} \right. \nonumber \\
+    & \qquad \quad \left. -  G(\vec{x}, \vec{x}') \nabla' \cdot \left[p(\vec{x}') \nabla' \psi(\vec{x}')\right] \textcolor{blue}{- \nabla \psi(\vec{x}') \cdot (p(\vec{x}') \nabla' G(\vec{x}, \vec{x}') )} \right] dV' \\
+    & = \int_V \left[ \psi(\vec{x}') \left( \mathcal{L}' G(\vec{x}, \vec{x}') \right) - G(\vec{x}, \vec{x}') \left( \mathcal{L}' \psi(\vec{x}') \right) \right] dV' \\
+    & = \int_V \left[ \psi(\vec{x}') \delta(\vec{x} - \vec{x}') - G(\vec{x}, \vec{x}') f(\vec{x}') \right] dV' \\
+    & = \psi(\vec{x}) - \int_V G(\vec{x}, \vec{x}') f(\vec{x}') dV' \ ,
+\end{align}
+donde hemos definido un nuevo operador diferencial $\mathcal{L}'$ que actúa sobre las componentes primadas, tal que $\mathcal{L}' \psi(\vec{x}') = f(\vec{x}')$.
+
+¿Cómo hallamos una solución en el punto $\vec{x}'$? Haciendo uso de las condiciones de borde del problema.
+
+\textbf{Si las condiciones de borde son de tipo Dirichlet}, sabemos el valor de $\psi(\vec{x}')$ en el borde $\partial V$ de la región en que nos encontramos, por lo que podremos determinar el primer término de la integral sobre $\partial V$ en \eqref{eq:integral_green_superficie}, pero el segundo, que depende de la derivada de $\psi(\vec{x}')$, no estará determinado. Por ello, escogeremos \emph{de forma conveniente} una función de Green que se anule en los bordes, es decir,
+\begin{equation}
+    G(\vec{x}, \vec{x}') = 0 \ , \qquad \forall \ \vec{x}' \in \ \partial V \ .
+\end{equation}
+
+En este caso, la solución general tendrá la forma
+\begin{equation}
+    \psi(\vec{x}) = \int_V G(\vec{x}, \vec{x}') f(\vec{x}') dV + \oint_{\partial V} p(\vec{x}') \psi(\vec{x}') \frac{\partial G(\vec{x}, \vec{x'})}{\partial n'} dS' \ ,
+\end{equation}
+donde $\partial f/\partial n' = (\nabla' f) \cdot \hat{n}$ , con $\hat{n}$ un vector normal a la superficie.
+
+\textbf{Si las condiciones de borde son de tipo Neumann}, conocemos el valor de la derivada $\frac{\partial \psi}{\partial n}(\vec{x}')$ en el borde $\partial V$ de la región en que nos encontramos, por lo que podemos determinar el segundo término de la integral \eqref{eq:integral_green_superficie}, mas no así el primero, por lo que escogemos una función de Green que satisfaga
+\begin{equation} \label{eq:condicion_neumann_green}
+    \frac{\partial G(\vec{x}, \vec{x}')}{\partial n'} = 0 \ , \qquad \forall \ \vec{x}' \in \ \partial V \ .
+\end{equation}
+
+En este caso, la solución general tendrá la forma
+\begin{equation}
+    \psi(\x) = \int_V G(\x, \x') f(\x') dV - \oint_{\partial V} p(\x ') G(\x, \x') \frac{\partial \psi(\x')}{\partial n'} dS' \ .
+\end{equation}
+
+Lamentablemente, en general \emph{no es posible} encontrar una función de Green que satisfaga la condición \eqref{eq:condicion_neumann_green}, siendo un ejemplo de esto el operador laplaciano $\nabla^2$. 
+
+En el caso de este operador, busquemos cómo podemos definir una función de Green adecuada.
+
+Una vez descartada la solución más sencilla posible ($\frac{\partial G(\vec{x}, \vec{x}')}{\partial n'} = 0$), escogemos la segunda más sencilla, igualar la derivada a una constante,
+\begin{equation}
+    \frac{\partial G(\vec{x}, \vec{x}')}{\partial n'} = C \ , \qquad \forall \vec{x}' \in \ \partial V \ .
+\end{equation}
+Para hallar el valor de esta constante, hacemos uso del hecho que toda función de Green debe satisfacer la llamada \emph{condición de consistencia}
+\begin{equation}
+    \oint_{\partial V} \frac{\partial G(\x, \x')}{\partial n'} dS' = \int_V \nabla^2 G(\x,\x') dV' = \int_V \delta^{(3)}(\x - \x') dV = 1 \ ,
+\end{equation}
+donde en el último paso hemos asumido que $\x \in V$. Por ello, el caso más sencillo será suponer que $C = 1/\text{Área}(\partial V)$.
+
+\colorbox{red}{Importante.} Una misma EDP puede dar origen a diferentes funciones de Green, pues estas dependen también de las condiciones de contorno.
+
+\section{Simetría de las funciones de Green}
+
+
+
+
+\section{Método de las imágenes}
+
+
+
+\section{Algunas funciones de Green comunes}
