@@ -31,7 +31,7 @@ A partir de la ley de Coulomb, sabemos que podemos describir el potencial eléct
 donde hemos hecho la elección tradicional de que el potencial de referencia se anula en el infinito.
 
 Observamos que, si definimos nuestra \emph{función de Green} como
-\begin{equation}
+\begin{equation}\label{eq:green_laplaciano}
     G(\vec{x}, \vec{x}') = - \frac{1}{4\pi} \frac{1}{|\vec{x} - \vec{x}'|} \ ,
 \end{equation}
 podemos reescribir \eqref{eq:potencial_coulomb} como
@@ -62,14 +62,14 @@ Consideremos una EDP \emph{lineal e inhomogénea} de la forma
 donde $p(\vec{x})$ y $q(\vec{x})$ son funciones conocidas.
 
 Para resolver la EDP, encontramos primero la función de Green que satisface la expresión \eqref{eq:condicion_green}, junto a una solución \emph{particular} de la ecuación \eqref{eq:edp_general} en el punto $\vec{x}'$, podemos hallar una solución general del problema, la que será dada por
-\begin{equation}
-    \psi(\vec{x}) = \oint_{\partial V} \rho(\vec{x})[\psi(\vec{x}') \nabla' G(\vec{x}, \vec{x}') - G(\vec{x}, \vec{x}') \nabla' \psi(\vec{x}')] \cdot d\vec{S}' + \int_V G(\vec{x}, \vec{x}') f(\vec{x}') dV' \ ,
+\begin{equation}\label{eq:solucion_green}
+    \psi(\vec{x}) = \oint_{\partial V} p(\vec{x})[\psi(\vec{x}') \nabla' G(\vec{x}, \vec{x}') - G(\vec{x}, \vec{x}') \nabla' \psi(\vec{x}')] \cdot d\vec{S}' + \int_V G(\vec{x}, \vec{x}') f(\vec{x}') dV' \ ,
 \end{equation}
 donde $\nabla'$ indica que el operador actúa sobre las componentes de $\vec{x}'$. Aquí, $V$ denota al dominio en que la solución $\psi(\vec{x})$ es válida, y $\partial V$ es su frontera.
 
 ¿Cómo sabemos que esta ecuación es válida? Resolvamos la primera integral. Notemos que podemos utilizar el teorema de Gauss, de modo que
 \begin{align}
-    I & = \oint_{\partial V} \rho(\vec{x})[\psi(\vec{x}') \nabla' G(\vec{x}, \vec{x}') - G(\vec{x}, \vec{x}') \nabla' \psi(\vec{x}')] \cdot d\vec{S}' \label{eq:integral_green_superficie} \\
+    I & = \oint_{\partial V} p(\vec{x})[\psi(\vec{x}') \nabla' G(\vec{x}, \vec{x}') - G(\vec{x}, \vec{x}') \nabla' \psi(\vec{x}')] \cdot d\vec{S}' \label{eq:integral_green_superficie} \\
     & = \int_V \nabla' \cdot \left[ p(\vec{x}') \psi(\vec{x}') \nabla' G(\vec{x}, \vec{x}') - p(\vec{x}') G(\vec{x}, \vec{x}') \nabla' \psi(\vec{x}') \right] dV' \\
     & = \int_V \left[\psi(\vec{x}') \nabla' \cdot \left[ p(\vec{x}')  \nabla' G(\vec{x}, \vec{x}')\right] + \textcolor{blue}{\nabla \psi(\vec{x}') \cdot (p(\vec{x}') \nabla' G(\vec{x}, \vec{x}') )} \right. \nonumber \\
     & \qquad \quad \left. -  G(\vec{x}, \vec{x}') \nabla' \cdot \left[p(\vec{x}') \nabla' \psi(\vec{x}')\right] \textcolor{blue}{- \nabla \psi(\vec{x}') \cdot (p(\vec{x}') \nabla' G(\vec{x}, \vec{x}') )} \right] dV' \\
@@ -82,15 +82,27 @@ donde hemos definido un nuevo operador diferencial $\mathcal{L}'$ que actúa sob
 ¿Cómo hallamos una solución en el punto $\vec{x}'$? Haciendo uso de las condiciones de borde del problema.
 
 \textbf{Si las condiciones de borde son de tipo Dirichlet}, sabemos el valor de $\psi(\vec{x}')$ en el borde $\partial V$ de la región en que nos encontramos, por lo que podremos determinar el primer término de la integral sobre $\partial V$ en \eqref{eq:integral_green_superficie}, pero el segundo, que depende de la derivada de $\psi(\vec{x}')$, no estará determinado. Por ello, escogeremos \emph{de forma conveniente} una función de Green que se anule en los bordes, es decir,
-\begin{equation}
+\begin{equation}\label{eq:condicion_dirichlet_green}
     G(\vec{x}, \vec{x}') = 0 \ , \qquad \forall \ \vec{x}' \in \ \partial V \ .
 \end{equation}
 
 En este caso, la solución general tendrá la forma
-\begin{equation}
+\begin{equation}\label{eq:solucion_dirichlet}
     \psi(\vec{x}) = \int_V G(\vec{x}, \vec{x}') f(\vec{x}') dV + \oint_{\partial V} p(\vec{x}') \psi(\vec{x}') \frac{\partial G(\vec{x}, \vec{x'})}{\partial n'} dS' \ ,
 \end{equation}
-donde $\partial f/\partial n' = (\nabla' f) \cdot \hat{n}$ , con $\hat{n}$ un vector normal a la superficie.
+donde $\partial f/\partial n' = (\nabla' f) \cdot \hat{n}$ , con 
+$\hat{n}$ un vector normal a la superficie.
+
+Sin embargo, muchas veces puede ser difícil hallar directamente una función de Green que satisfaga a la vez \eqref{eq:condicion_dirichlet_green} y \eqref{eq:condicion_green}. Un ejemplo sencillo de esto es el operador laplaciano, cuando $\mathcal{L} = \nabla^2$. En este caso, es útil buscar una solución de la forma
+\begin{equation}\label{eq:green_fundamental}
+    G(\x, \x') = F(\x, \x') + H(\x, \x') \ ,
+\end{equation}
+donde $F(\x, \x')$ satisface la ecuación \eqref{eq:condicion_green} pero no necesariamente la condición de borde \eqref{eq:condicion_dirichlet_green}, mientras que $H(\x, \x')$ satisface la ecuación \emph{homogénea del problema} (es decir, donde no hay funciones fuente) en el interior de la región $V$, pero su valor en $\partial V$ es tal que, sumada a $F(\x, \x')$, resulta en que $G(\x,\x') = 0$ en el borde $\partial V$. Cuando seguimos este procedimiento, la función $F(\x,\x')$ es denominada \textbf{solución fundamental}.
+
+\begin{ejemplo}
+    (Riley, Sección 21.5.3) Encuentre la solución fundamental a la ecuación de Poisson en tres dimensiones que tiende a cero cuando $|\x| \to \infty$.
+\end{ejemplo}
+
 
 \textbf{Si las condiciones de borde son de tipo Neumann}, conocemos el valor de la derivada $\frac{\partial \psi}{\partial n}(\vec{x}')$ en el borde $\partial V$ de la región en que nos encontramos, por lo que podemos determinar el segundo término de la integral \eqref{eq:integral_green_superficie}, mas no así el primero, por lo que escogemos una función de Green que satisfaga
 \begin{equation} \label{eq:condicion_neumann_green}
@@ -102,7 +114,11 @@ En este caso, la solución general tendrá la forma
     \psi(\x) = \int_V G(\x, \x') f(\x') dV - \oint_{\partial V} p(\x ') G(\x, \x') \frac{\partial \psi(\x')}{\partial n'} dS' \ .
 \end{equation}
 
-Lamentablemente, en general \emph{no es posible} encontrar una función de Green que satisfaga la condición \eqref{eq:condicion_neumann_green}, siendo un ejemplo de esto el operador laplaciano $\nabla^2$. 
+Lamentablemente, en general \emph{no es posible} encontrar una función de Green que satisfaga la condición \eqref{eq:condicion_neumann_green}, siendo nuevamente un ejemplo de esto el operador laplaciano $\nabla^2$, ya que las funciones de Green deben satisfacer la \textbf{condición de consistencia}
+\begin{equation}
+    \oint_{\partial V} \frac{\partial G(\x, \x')}{\partial n'} dS' = \int_V \nabla^2 G(\x,\x') dV' = \int_V \delta^{(3)}(\x - \x') dV = 1 \ ,
+\end{equation}
+donde en el último paso hemos asumido que $\x \in V$. 
 
 En el caso de este operador, busquemos cómo podemos definir una función de Green adecuada.
 
@@ -110,21 +126,54 @@ Una vez descartada la solución más sencilla posible ($\frac{\partial G(\vec{x}
 \begin{equation}
     \frac{\partial G(\vec{x}, \vec{x}')}{\partial n'} = C \ , \qquad \forall \vec{x}' \in \ \partial V \ .
 \end{equation}
-Para hallar el valor de esta constante, hacemos uso del hecho que toda función de Green debe satisfacer la llamada \emph{condición de consistencia}
-\begin{equation}
-    \oint_{\partial V} \frac{\partial G(\x, \x')}{\partial n'} dS' = \int_V \nabla^2 G(\x,\x') dV' = \int_V \delta^{(3)}(\x - \x') dV = 1 \ ,
-\end{equation}
-donde en el último paso hemos asumido que $\x \in V$. Por ello, el caso más sencillo será suponer que $C = 1/\text{Área}(\partial V)$.
+Para hallar el valor de esta constante, hacemos uso de la \emph{condición de consistencia}, de modo que el caso más sencillo será suponer que $C = 1/\text{Área}(\partial V)$.
+
 
 \colorbox{red}{Importante.} Una misma EDP puede dar origen a diferentes funciones de Green, pues estas dependen también de las condiciones de contorno.
 
 \section{Simetría de las funciones de Green}
 
+Cuando tenemos el caso particular en que $\mathcal{L} = \nabla^2$, la función de Green \eqref{eq:green_laplaciano} es simétrica bajo el intercambio de argumentos, es decir, $G(\x, \x') = G(\x', \x)$. Podemos buscar cuál es la condición general que permite que esto ocurra, escogiendo $\psi(\x) = \psi(\x'', \x)$, de modo que, según la expresión \eqref{eq:solucion_green},
+\begin{align}
+    \nonumber G(\x'', \x) & = \int_V G(\x, \x') \delta(\x'' - \x') dV' \\ 
+    & \qquad + \oint_{\partial V} p(\x')\left[ G(\x'', \x') \nabla' G(\x, \x') - G(\x, \x') \nabla'G(\x'', \x') \right] \cdot d\vec{S}' \\
+    & = G(\x, \x'') + \oint_{\partial V} p(\x')\left[ G(\x'', \x') \nabla' G(\x, \x') - G(\x, \x') \nabla'G(\x'', \x') \right] \cdot d\vec{S}' \ ,
+\end{align}
+con lo que vemos que la función de Green será simétrica siempre y cuando la integral de superficie se anule en la frontera. Esto ocurre, típicamente, para condiciones de tipo Dirichlet.
 
+\section{Algunas funciones de Green comunes}
 
+\subsection{Ecuación de Laplace}
+
+\subsection{Ecuación de Helmholtz}
 
 \section{Método de las imágenes}
 
+Anteriormente mencionamos que podemos hallar la función de Green para un problema con condiciones de Dirichlet hallando la solución fundamental y una solución que produzca que $G(\x,\x') = 0$ en $\partial V$, como establecimos en \eqref{eq:green_fundamental}. Para ello, podemos hacer uso del \textbf{método de las imágenes}, en el cual hemos de considerar \emph{copias} de nuestra solución fundamental que representen \emph{fuentes} ubicadas en el exterior de nuestra región $V$. Para ello, seguiremos el siguiente procedimiento,
+\begin{enumerate}
+    \item Para una fuente singular $\delta(\x - \x')$ dentro de la región $V$, añadiremos fuentes imágenes \emph{fuera} de $V$, donde las posiciones $\x_n$ e intensidades $q_n$ de estas fuentes las podremos determinar a futuro, de modo que las fuentes externas se pueden expresar como
+    \begin{equation}
+        \sum_{n=1}^N q_n \delta(\x - \x_n) \ , \qquad \x_n \notin \ V \ .
+    \end{equation}
 
+    \item Ya que todas las imágenes se encuentran en el exterior de $V$, la solución fundamental que corresponde a cada una de las fuentes deberá satisfacer la ecuación de Laplace \emph{dentro} de $V$. Por ello, podemos suponer que cada imagen tiene asociada la misma \emph{solución fundamental} que la fuente en el interior de $V$, con lo que la función de Green tomará la forma
+    \begin{equation}
+        G(\x, \x') = F(\x, \x') + \sum_{n=1}^N q_n F(\x,\x_n) \ .
+    \end{equation}
 
-\section{Algunas funciones de Green comunes}
+    \item Ajustamos las posiciones $\x_n$ e intensidades $q_n$ de las imágenes de modo que las condiciones de contorno se satisfagan en $S$. En el caso de las condiciones de Dirichlet, esto es exigir que $G(\x, \x') = 0$, para cualquier $\x' \in \partial V$.
+
+    \item Por último, podemos usar la función de Green hallada para encontrar la solución, sujeta a las condiciones de Dirichlet, que satisfaga \eqref{eq:solucion_dirichlet}.
+\end{enumerate}
+
+En general, no es tarea sencilla encontrar las posiciones e intensidades correctas para cualquier problema, pero sí lo es para ciertos problemas con geometrías simples. Particularmente, este método es útil para problemas en los que los bordes sean \emph{líneas rectas} (problema bidimensional) o \emph{planos} (problema tridimensional), pues en esos casos simplemente supondremos que estos actúan como espejos, de modo que la fuente \emph{verdadera} se refleja simétricamente en este espejo.
+
+\begin{ejemplo}
+    (Riley, Sección 21.5.3) Resuelva la ecuación de Laplace en la región bidimensional $|\x| \leq a$ sujeta a la condición de contorno $u = f(\phi)$ en $|\x| = a$.
+\end{ejemplo}
+
+También es útil mencionar que es válido utilizar el método de las imágenes al trabajar con condiciones de Neumann, donde el procedimiento descrito anteriormente sigue siendo el mismo, pero utilizando las condiciones de Neumann para establecer nuestras imágenes.
+
+\begin{ejemplo}
+    (Riley, Sección 21.5.4) Resuelva la ecuación de Laplace en la región bidimensional $|\x| \leq a$ sujeta a la condición de contorno $\partial u/\partial n = f(\phi)$ en $|\x| = a$, con $\int_0^{2\pi} f(\phi) d\phi = 0$, como requiere la condición de consistencia.
+\end{ejemplo}
