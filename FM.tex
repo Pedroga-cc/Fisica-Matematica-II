@@ -1,13 +1,12 @@
 \documentclass[letterpaper,12pt]{report}
 \usepackage[spanish]{babel}
-% \usepackage[T1]{fontenc}
+\usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{amsfonts,amsmath,color,amssymb,float, amsthm,mathrsfs}  
 \usepackage[right=3cm,left=2cm,top=2cm,bottom=2cm,headsep=0.7cm,footskip=0.5cm]{geometry}
-% \usepackage{enumerate}
 \usepackage{wrapfig} 
-\usepackage[rflt]{floatflt} 
+% \usepackage[rflt]{floatflt} 
 \usepackage{framed}
 \usepackage[most]{tcolorbox}
 \usepackage{xcolor} 
@@ -17,20 +16,16 @@
 \usepackage{esint}
 \usepackage{cancel}
 \usepackage{listings} 
-\usepackage{pstricks, caption}
-\usepackage[colorlinks]{hyperref}
+\usepackage{pstricks}
 \usepackage{csquotes}
 \usepackage{fullpage}
 \usepackage{enumitem}
 \usepackage{etoolbox}
-\usepackage{tcolorbox}
 \usepackage{tikz}
 \usepackage{multicol}
 \usetikzlibrary{arrows,babel}
 \usepackage[font=small]{caption}
 \usepackage{mathtools}
-
-\usepackage[LGR,T1]{fontenc} %% LGR encoding is needed for loading the package gfsneohellenic
 
 
 \decimalpoint
@@ -109,29 +104,42 @@ prefoothook     =\vspace*{-1pt}\end{Gdbleftbar}%
 %%%%%%%%%%%%Fancy Chapters%%%%%%%%%%%%%%%%%
 %Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
 \usepackage[Bjornstrup]{fncychap}
-% \usepackage{tgschola}
 
+\usepackage[default]{sourcesanspro}
 \usepackage{libertinust1math}
 \usepackage{montserrat}
 
 \ChTitleVar{\bfseries\LARGE\sffamily\fontfamily{Montserrat-LF}\selectfont}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% \usepackage[book]{FiraSans}
 
-\usepackage[default]{sourcesanspro}
 
-\usepackage{titlesec}
+\makeatletter
+\renewcommand{\section}{%
+  \@startsection{section}{1}{0mm}% Nombre, nivel, sangría
+  {1.5\baselineskip}% Espacio antes
+  {0.5\baselineskip}% Espacio después
+  {\Large\bfseries\sffamily\fontfamily{Montserrat-LF}\selectfont}} % Formato
+\makeatother
 
-\titleformat*{\section}{\Large\bfseries\sffamily\fontfamily{Montserrat-LF}\selectfont}
-\titleformat*{\subsection}{\large\slshape\bfseries\sffamily\fontfamily{Montserrat-LF}\selectfont}
-
+\makeatletter
+\renewcommand{\subsection}{%
+  \@startsection{subsection}{2}{0mm}% Nombre, nivel, sangría
+  {1.2\baselineskip}% Espacio antes
+  {0.3\baselineskip}% Espacio después
+  {\large\slshape\bfseries\sffamily\fontfamily{Montserrat-LF}\selectfont}} % Formato
+\makeatother
 
 %Referencias
 \usepackage[backend=biber]{biblatex}
 \addbibresource{Referencias.bib}
 
 \newcommand{\x}{\vec{x}}
+
+\usepackage[colorlinks]{hyperref}
+
+
+% \renewcommand\theHtable{Appendix.\thetable}
 
 \begin{document}
 
@@ -162,19 +170,27 @@ Es necesario recordar que esta es la primera versión de este documento, por lo 
 
 Agradezco los aportes de Lixin Lai, Fernanda Mella y Amaro Díaz al facilitarme sus notas y el material del curso de la profesora Ivana Sebestova, así como los de José Huenchual por sus notas del curso de la profesora Ariana Muñoz.
 
+\vfill
+
+\emph{\textquotedblleft ...El trabajo en equipo se convertirá en el método de investigación científica."}
+
+\begin{flushright}
+John Desmond Bernal.
+\end{flushright}
+
+
+
 \tableofcontents
 
-\input{./Cap-Series-Fourier.tex}
-% \input{./Cap-Integrales-Convergencia.tex}
-\input{./Cap-Transformada-de-Fourier.tex}
-\input{./Cap-Ecuaciones-Diferenciales.tex}
-\input{Cap-Separacion-Variables.tex}
-\input{Cap-Metodo-Series-Sturm-Liouville.tex}
-\input{Cap-Funciones-de-Legendre.tex}
-\input{Cap-Funciones-de-Bessel.tex}
-\input{Cap-Funciones-de-Green.tex}
-\input{Cap-Tensores.tex}
-% \input{./Cap-Transformada-de-Laplace.tex}
+\include{Cap-Series-Fourier.tex}
+\include{Cap-Transformada-de-Fourier.tex}
+\include{Cap-Ecuaciones-Diferenciales.tex}
+\include{Cap-Separacion-Variables.tex}
+\include{Cap-Metodo-Series-Sturm-Liouville.tex}
+\include{Cap-Funciones-de-Legendre.tex}
+\include{Cap-Funciones-de-Bessel.tex}
+\include{Cap-Funciones-de-Green.tex}
+\include{Cap-Tensores.tex}
 
 \appendix
 
