@@ -1,2 +1,80 @@
 \chapter{Introducción a los Tensores Cartesianos}
 
+Llegando al último capítulo del curso, nos desviamos un poco de la noción de que este curso se dedica a enseñar métodos matemáticos que pueden ser útiles en Física, para en su lugar introducir cantidades y conceptos con la misma utilidad.
+
+Una de las nociones más importantes que tenemos en física clásica es el hecho de que \emph{los fenómenos físicos son los mismos, y no deben cambiar según el observador}, más allá de que las componentes de las cantidades que los describen puedan hacerlo. Particularmente, nos centraremos en las \emph{transformaciones ortogonales} de un sistema coordenado, referidas de forma más común como \textbf{rotaciones}. 
+
+Por ejemplo, un vector que describe la posición de un objeto en función del tiempo puede ser diferente según el sistema de coordenadas en que se lo describa, pero el movimiento \emph{físico} seguirá siendo el mismo.
+
+Antes de entrar más de lleno en la discusión, recordemos e introduzcamos algunas definiciones.
+
+\begin{defi}
+    Se denomina \textbf{delta de Kronocker} al elemento $\delta_{ij}$, definido en un espacio vectorial de $n$ dimensiones como
+    \begin{equation}
+        \delta_{ij} = \begin{dcases}
+            1, \qquad i = j \\
+            0, \qquad i \neq j
+        \end{dcases} \ .
+    \end{equation} 
+
+    Este elemento puede representarse de forma matricial como la matriz identidad del espacio de dimensión $n$.
+\end{defi}
+
+\begin{defi}
+    Sea un conjunto de vectores unitarios $\{ \hat{e}_i\}_{i=1}^n$ de un espacio $n$-dimensional. Diremos que este forma una \textbf{base ortonormal} si al realizar el producto escalar entre elementos del conjunto, se cumple la relación
+    \begin{equation}
+        \hat{e}_i\cdot \hat{e}_j = \delta_{ij} \ ,
+    \end{equation}
+    donde $\delta_{ij}$ es la delta de Kronecker.
+\end{defi}
+
+\begin{defi}
+    Dado un sistema coordenado en un espacio de $n$ dimensiones, podemos definir el \textbf{vector posición} $\vec{x}$, que une el origen del sistema con punto con coordenadas $x_i$, con $i = 1, 2, \dots, n$ como
+\begin{equation}
+    \vec{x} = \sum_{i=1}^n x_i \hat{e}_i \ ,
+\end{equation}
+donde las \textbf{componentes del vector} en la base $\{ \hat{e}_i\}_{i=1}^n$ puede expresarse como
+\begin{equation}
+    x_i = \vec{x} \cdot \hat{e}_i \ .
+\end{equation}
+\end{defi}
+
+Más allá de que el vector posición es aquel que tiene un sentido \emph{físico} a partir del cual hacer las definiciones, podemos descomponer \emph{cualquier vector} en la base $\{ \hat{e}_i\}_{i=1}^n$ en términos de sus respectivas componentes, sin importar la cantidad que este pueda representar.
+
+Una vez introducidas estas nociones, podemos definir un nuevo sistema coordenado, que llamaremos $x'_i$ y cuya base es $\{ \hat{e}_i'\}_{i=1}^n$, que corresponde a una \emph{rotación} del sistema $x_i$ definido anteriormente, como se ve en la figura X.
+
+Respecto de esta nueva base, un vector $\vec{v}$ cualquiera puede ser descompuesto en sus componentes $v_i'$ \emph{en la base} $\{ \hat{e}_i'\}_{i=1}^n$,
+\begin{equation}
+    \vec{v} = \sum_{i=1}^n v_i' \hat{e}'_i \ .
+\end{equation}
+
+Dado que, si bien dan origen a sistemas de coordenadas diferentes, ambas bases se encuentran en el mismo espacio vectorial, ¿Cómo podemos relacionar ambas bases entre sí? Para ello, haremos uso de una \textbf{matriz de transformación}, definida como
+\begin{equation}
+    A = \begin{pmatrix}
+        a_{11} & a_{12} & \dots & a_{1n} \\
+        a_{21} & a_{22} & \dots & a_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{n1} & a_{n2} & \dots & a_{nn}
+    \end{pmatrix} =
+    \begin{pmatrix}
+        \hat{e}_1 \cdot \hat{e}'_1 & \hat{e}_1 \cdot \hat{e}'_2 & \dots & \hat{e}_1 \cdot \hat{e}'_n \\
+        \hat{e}_2 \cdot \hat{e}'_1 & \hat{e}_2 \cdot \hat{e}'_2 & \dots & \hat{e}_2 \cdot \hat{e}'_n \\
+        \vdots & \vdots & \ddots & \vdots \\
+        \hat{e}_n \cdot \hat{e}'_1 & \hat{e}_n \cdot \hat{e}'_2 & \dots & \hat{e}_n \cdot \hat{e}'_n
+    \end{pmatrix} \ .
+\end{equation}
+
+De este modo, 
+
+\section{Covarianza y contravarianza}
+
+\subsection{Convenio de suma de Einstein}
+
+\section{Tensores Cartesianos}
+
+\section{Operaciones con tensores}
+
+\section{Pseudovectores y pseudotensores}
+
+% \section{Tensores en Coordenadas Generales}
+
