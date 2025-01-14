@@ -2,7 +2,7 @@
 
 Ya observamos que podemos hacer uso del método de la transformada de Fourier para reducir una ecuación diferencial en dos variables diferentes a una EDO en una sola variable. Sin embargo, no siempre será cómodo calcular la transformada de Fourier de una función, por lo que sería agradable tener una forma más general de hacer funcionar esta idea.
 
-Para ello, hacemos uso del \textbf{método de separación de variables}, gracias al cual podemos reducir una EDP lineal de $n$ variables en un conjunto de $n$ EDOs para $n$ funciones auxiliares, cada una asociada a una variable independiente de la EDP. Esto lo podemos hacer al proponer que nuestro sistema puede ser descrito mediante una \emph{solución separable}, que consiste en el producto de todas las funciones auxiliares que encontremos mediante la solución de las EDOs.
+Para ello, hacemos uso del \textbf{método de separación de variables}, gracias al cual podemos reducir una EDP lineal de $n$ variables en un conjunto de $n$ EDOs para $n$ funciones auxiliares, cada una asociada a una variable independiente de la EDP \emph{y que no depende de las otras variables independientes}. Esto lo podemos hacer al proponer que nuestro sistema puede ser descrito mediante una \emph{solución separable}, que consiste en el producto de todas las funciones auxiliares que encontremos mediante la solución de las EDOs.
 
 Para realizar la separación de las variables, haremos uso de $(n-1)$ \emph{constantes de separación}, las que son escogidas, en primera instancia, de forma arbitraria para luego determinarlas gracias a las condiciones de contorno del sistema.
 
@@ -74,7 +74,7 @@ De esta forma, una solución particular a nuestra EDP es dada por
 \begin{equation} \label{eq:sol_particular_cartesianas}
     \psi_{\lambda_1 \lambda_2}(x,y,z) = X_{\lambda_1}(x) Y_{\lambda_2}(y) Z_{\lambda_1 \lambda_2}(z) \ ,
 \end{equation}
-y la solución general corresponderá a una combinación lineal de la solución \eqref{eq_sol_particular_cartesianas}, correspondiendo a una suma sobre todos los valores posibles de $\lambda_1$ y $\lambda_2$, es decir,
+y la solución general corresponderá a una combinación lineal de la solución \eqref{eq:sol_particular_cartesianas}, correspondiendo a una suma sobre todos los valores posibles de $\lambda_1$ y $\lambda_2$, es decir,
 \begin{equation}
     \psi(x,y,z) = \sum_{\lambda_1 \lambda_2} C_{\lambda_1 \lambda_2} \psi_{\lambda_1 \lambda_2}(x,y,z) \ ,
 \end{equation}
@@ -106,15 +106,17 @@ y dividiendo por $P\Phi Z$, junto a un reordenamiento de los términos, llegamos
     \frac{1}{\rho P} \frac{d}{d\rho} \left( \rho \frac{dP}{d\rho} \right) + \frac{1}{\rho^2 \Phi} \frac{d^2\Phi}{d\phi^2} + k^2 = - \frac{1}{Z} \frac{d^2Z}{dz^2} \ .
 \end{equation}
 
-Dado que a ambos lados de la ecuación tenemos una dependencia en variables diferentes, ambos lados deben ser igual a una constante para no depender de ellas, la que llamaremos $\lambda_1$, de modo que
+Dado que a ambos lados de la ecuación tenemos una dependencia en variables diferentes, ambos lados deben ser iguales a una constante para no depender de ellas. Llamaremos a esta constante $\lambda_1$, de modo que
 \begin{align}
     \frac{1}{Z} \frac{d^2Z}{dz^2} & = - \lambda_1 \ , \\
     \frac{1}{\rho P} \frac{d}{d\rho} \left( \rho \frac{dP}{d\rho} \right) + \frac{1}{\rho^2 \Phi} \frac{d^2 \Phi}{d\phi^2} + k^2 & = \lambda_1 \ . \label{eq:EDO_en_rho_phi}
 \end{align}
 
-En este caso, la única solución que da sentido físico a nuestro sistema será la oscilante, donde $\lambda_1 < 0$. Esto ocurre debido a que nuestro sistema debe tener condiciones de borde finitas, lo que no ocurre ni en el caso lineal ni en el caso exponencial, donde $Z(z)  \to \infty$ cuando $z \to \infty$. Por ello, y para evitar escribir raíces en nuestras soluciones, podemos establecer que $\lambda_1 = -\ell^2$, con $\ell$ un valor real positivo. 
+En este caso, pueden ser soluciones físicas tanto el caso en que $\lambda_1>0$, donde obtendremos soluciones oscilantes (como lo hace Riley), o bien que $\lambda_1 < 0$, donde obtendremos soluciones exponenciales (como lo hace Arfken). La solución que escojamos dependerá de las condiciones de borde del problema.
 
-Ahora, definiendo un valor auxiliar $n^2 = k^2 + \ell^2$, podemos separar la ecuación \eqref{eq:EDO_en_rho_phi} en una parte que dependa de $\rho$ y una que dependa de $\phi$, de modo que luego de multiplicar por $\rho^2$ y manipular un poco los términos, obtenemos la ecuación
+% la única solución que da sentido físico a nuestro sistema será la oscilante, donde $\lambda_1 < 0$. Esto ocurre debido a que nuestro sistema debe tener condiciones de borde finitas, lo que no ocurre ni en el caso lineal ni en el caso exponencial, donde $Z(z)  \to \infty$ cuando $z \to \infty$. Por ello, y para evitar escribir raíces en nuestras soluciones, podemos establecer que $\lambda_1 = -\ell^2$, con $\ell$ un valor real positivo. 
+
+Ahora, definiendo un valor auxiliar $n^2 = k^2 + \lambda_1$, podemos separar la ecuación \eqref{eq:EDO_en_rho_phi} en una parte que dependa de $\rho$ y una que dependa de $\phi$, de modo que luego de multiplicar por $\rho^2$ y manipular un poco los términos, obtenemos la ecuación
 \begin{equation}
     \frac{\rho}{P} \frac{d}{d\rho} \left( \rho \frac{dP}{d\rho} \right) + \rho^2 n^2 = - \frac{1}{\Phi} \frac{d^2 \Phi}{d\phi^2} \ , 
 \end{equation}
@@ -130,9 +132,25 @@ Solo nos queda resolver la ecuación radial, es decir, la EDO
 \begin{equation}
     \rho \frac{d}{d\rho} \left( \rho \frac{dP}{d\rho} \right) + (n^2 \rho^2 - m^2)P = 0 \ ,
 \end{equation}
+que al realizar el cambio de variable $x = n\rho$, $dx = n d\rho$, y definiendo $Y(x) = P(\rho) = P(x/n)$, puede reescribirse como
+\begin{equation}
+    x \frac{d}{dx}\left( x \frac{dY}{dx} \right) + (x^2 - m^2)Y = 0 \ ,
+\end{equation}
 ecuación que se conoce como \textbf{ecuación diferencial de Bessel}, cuyas soluciones son las \emph{funciones de Bessel} que estudiaremos más adelante en el curso.
 
-REVISAR EN MÁS DETALLE CÓMO LO HACE EL ALE
+De esta forma, una solución particular de la ecuación de Helmholtz en coordenadas cilíndricas será
+\begin{equation} \label{eq:solucion_particular_cilindricas}
+    \psi_{\lambda_1, m}(\rho, \phi, z) = P_{\lambda_1 m}(\rho) \Phi_m(\phi) Z_{\lambda_1}(z) \ ,
+\end{equation}
+y la solución general será la combinación lineal de las soluciones \eqref{eq:solucion_particular_cilindricas}, con coeficientes a determinar mediante las condiciones de contorno,
+\begin{equation}
+    \psi(\rho, \phi, z) = \sum_{\lambda_1, m} C_{\lambda_1, m} P_{\lambda_1 m}(\rho) \Phi_m(\phi) Z_{\lambda_1}(z) \ .
+\end{equation}
+
+Algo interesante que señalar es que esta solución se mantiene incluso si $k^2$ no es una constante, sino una función de la forma
+\begin{equation}
+    k^2 \to f(\rho) + \frac{g(\phi)}{\rho^2} + h(z) \ .
+\end{equation}
 
 \section{Coordenadas esféricas}
 
@@ -165,7 +183,44 @@ En este momento, podemos separar ambos lados de la ecuación al igualarlas a una
 \end{align}
 y como en la coordenada azimutal $\phi$ debe cumplirse la condición de periodicidad $\Phi(\phi) = \Phi(\phi + 2\pi)$, entonces $\lambda_1<0$, y lo denotamos por $\lambda_1 = -m^2$, con $m$ un número entero. Luego, reemplazamos este valor en la ecuación \eqref{eq:EDO_theta_phi} para poder separarla. Multiplicando por $r^2$, y manipulando un poco los términos, obtenemos la expresión
 \begin{equation}
-    \frac{1}{R} \frac{d}{dr}\left( r^2 \frac{dR}{dr} \right) + k^2r^2 = - \frac{1}{\Theta\sin\theta} \frac{d}{d\Theta}\left( \sin\theta \frac{d\Theta}{d\theta}\right) + \frac{m^2}{\sin^2\theta} \ .
+    \frac{1}{R} \frac{d}{dr}\left( r^2 \frac{dR}{dr} \right) + k^2r^2 = - \frac{1}{\Theta\sin\theta} \frac{d}{d\theta}\left( \sin\theta \frac{d\Theta}{d\theta}\right) + \frac{m^2}{\sin^2\theta} \ .
 \end{equation}
 
-En este caso, vale la pena hacer un análisis en función del valor de $m^2$.
+Introduciendo una segunda constante de separación $\lambda_2$, obtenemos las ecuaciones
+\begin{align}
+    \frac{d}{dr}\left( r^2 \frac{dR}{dr} \right) + (k^2r^2 - \lambda_2) R = 0 \\
+    \frac{1}{\sin\theta} \frac{d}{d\theta}\left( \sin\theta \frac{d\Theta}{d\theta} \right) + \left( \lambda_2 - \frac{m^2}{\sin^2\theta} \right)\Theta = 0 \ .
+\end{align}
+
+En este caso, vale la pena hacer un análisis en función del valor de $m^2$ para la ecuación axial.
+
+\begin{itemize}
+    \item Si $m=0$, hacemos el cambio de variable $x = \cos\theta$, de modo que $dx = -\sin \theta d\theta$. Definiendo una función $Y(x) = \Theta(\theta) = \Theta(\arccos x)$, la EDO toma la forma
+    \begin{equation}
+        \frac{d}{dx}\left[ (1-x^2) \frac{dY}{dx} \right] + \lambda_2 Y = 0 \ ,
+    \end{equation}
+    lo que corresponde a la \textbf{ecuación diferencial de Legendre}, cuyas soluciones son los \emph{polinomios de Legendre}, que se estudiarán en detalle más adelante en el curso. 
+    
+    Dado que nuestra variable $x$ es definida a partir de un coseno, esta estará acotada en su dominio, es decir, si $\theta \in [0, \pi]$, entonces $x \in [-1,1]$. Si además exigimos que la solución sea acotada, podemos demostrar (como se hará más adelante) que $\lambda_2 = \ell(\ell+1)$, con $\ell = 0, 1, 2, \dots$.
+
+    \item Si $m \neq 0$, podemos realizar el mismo cambio de variables, obteniendo la ecuación
+    \begin{equation}
+        \frac{d}{dx}\left[ (1-x^2) \frac{dY}{dx} \right] +  \left( \lambda_2 - \frac{m^2}{1-x^2} \right)Y = 0 \ ,
+    \end{equation}
+    que corresponde a la \textbf{ecuación diferencial asociada de Legendre}, cuyas soluciones son los \emph{polinomios asociados de Legendre}. Nuevamente, una solución acotada requerirá que $\lambda_2 = \ell(\ell+1)$, pero en este caso no puede tomar cualquier valor entero, sino que debe satisfacer $\ell \geq m$.
+\end{itemize}
+
+Por otra parte, en la ecuación radial podemos hacer el cambio de variable $x = kr$, de modo que $dx = k dr$. Definiendo una función $Y(x) = R(r) = R(x/k)$, podemos reescribir la EDO como
+\begin{equation}
+    \frac{d}{dx}\left( x^2 \frac{dY}{dx} \right) + (x^2 - \lambda_2)Y = 0 \ ,
+\end{equation}
+que corresponde a la \textbf{ecuación diferencial esférica de Bessel}, cuyas soluciones son las \emph{funciones esféricas de Bessel}, que serán estudiadas más adelante.
+
+En el caso particular en que $k=0$, recuperamos la ecuación de Laplace, y la ecuación radial se convierte en una EDO de Euler-Cauchy,
+\begin{equation}
+    r^2 R'' + 2r R' - \lambda_2 R = 0 \ ,
+\end{equation}
+con soluciones que dependen del valor de $\lambda_2$. Sin embargo, al exigir soluciones finitas e imponer que $\lambda_2 = \ell(\ell+1)$, solo tenemos una solución posible, de la forma
+\begin{equation}
+    R(r) = A r^\ell + B r^{-(\ell+1)} \ .
+\end{equation}
