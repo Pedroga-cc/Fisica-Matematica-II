@@ -670,7 +670,6 @@
       \field{labeltitlesource}{title}
       \field{title}{Física matemática II}
       \field{year}{2019}
-      \true{nocite}
       \verb{urlraw}
       \verb https://github.com/gfrubi/FM2
       \endverb
@@ -703,6 +702,52 @@
       \field{labeltitlesource}{title}
       \field{title}{Series de Fourier}
       \field{year}{2012}
+      \true{nocite}
+    \endentry
+    \entry{Spiegel_Liu_Lipschutz_2009}{book}{}{}
+      \name{author}{3}{}{%
+        {{hash=5b4e41c0914ea564981e3db366e1ee89}{%
+           family={Spiegel},
+           familyi={S\bibinitperiod},
+           given={Murray\bibnamedelima R.},
+           giveni={M\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=43b0dce2cc8966238118a2bec6068e52}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+        {{hash=e34b010c55f77baaac2ce9b6ffc890a7}{%
+           family={Lipschutz},
+           familyi={L\bibinitperiod},
+           given={Seymour},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \list{location}{1}{%
+        {New York}%
+      }
+      \list{publisher}{1}{%
+        {McGraw-Hill}%
+      }
+      \strng{namehash}{f703fc03fb84f4c6a52150cbafca8ed1}
+      \strng{fullhash}{f703fc03fb84f4c6a52150cbafca8ed1}
+      \strng{fullhashraw}{f703fc03fb84f4c6a52150cbafca8ed1}
+      \strng{bibnamehash}{f703fc03fb84f4c6a52150cbafca8ed1}
+      \strng{authorbibnamehash}{f703fc03fb84f4c6a52150cbafca8ed1}
+      \strng{authornamehash}{f703fc03fb84f4c6a52150cbafca8ed1}
+      \strng{authorfullhash}{f703fc03fb84f4c6a52150cbafca8ed1}
+      \strng{authorfullhashraw}{f703fc03fb84f4c6a52150cbafca8ed1}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{3. ed}
+      \field{isbn}{978-0-07-154855-7}
+      \field{series}{Schaum’s outline series}
+      \field{title}{Mathematical handbook of formulas and tables}
+      \field{year}{2009}
       \true{nocite}
     \endentry
     \entry{Tolstov}{book}{}{}

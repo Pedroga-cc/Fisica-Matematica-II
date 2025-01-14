@@ -4,12 +4,11 @@ Como vimos anteriormente en el capítulo \ref{chap:MSV}, al resolver la ecuació
 
 \section{Ecuación de Legendre}
 
-Analizaremos en primer lugar el caso en que $m=0$, correspondiente a resolver la ecuación de Laplace, donde obtenemos la EDO
+Analizaremos en primer lugar el caso en que $m=0$, correspondiente a resolver la ecuación de Laplace, donde obtuvimos la EDO
 \begin{equation}
-    \frac{1}{\sin\theta} \frac{d}{d\theta}\left( \sin\theta \frac{d\Theta}{d\theta} \right) + \lambda \Theta = 0 \ .
+    \frac{1}{\sin\theta} \frac{d}{d\theta}\left( \sin\theta \frac{d\Theta}{d\theta} \right) + \lambda \Theta = 0 \ ,
 \end{equation}
-
-Por comodidad, consideremos el cambio de variables $x = \cos\theta$, y llamaremos a $\Theta(\theta) = \Theta(\arccos(x)) = y(x)$, de modo que
+que al considerar el cambio de variables $x = \cos\theta$, y llamar a $\Theta(\theta) = \Theta(\arccos(x)) = y(x)$, de modo que
 \begin{equation}
     \frac{d}{d\theta} = \frac{dx}{d\theta} \frac{d}{dx} = -\sin\theta \frac{d}{dx} \ ,
 \end{equation}
@@ -70,7 +69,7 @@ de modo que la solución general para la ecuación de Legendre será la combinac
 \begin{align}
     y(x) & = a_0 y_{1}(x) + a_1 y_{2}(x) \\
     & = a_0 \left( \sum_{m=0}^{\infty} b_{m} x^{2m} \right) + a_1 \left( \sum_{m=0}^{\infty} c_{m} x^{2m+1} \right) \\
-    & = \sum_{m=0}^{\infty} \frac{a_0}{(2m)!}\left( \prod_{\ell=0}^{2m-2}[\ell (\ell+1) - \lambda] \right)x^{2m} + \sum_{m=0}^{\infty} \frac{a_1}{(2m+1)!}\left( \prod_{\ell=1}^{2m-1}[\ell (\ell+1) - \lambda] \right)x^{2m+1} \ .
+    & = \sum_{m=0}^{\infty} \frac{a_0}{(2m)!}\left( \prod_{\ell=0}^{2m-2}[\ell (\ell+1) - \lambda] \right)x^{2m} + \sum_{m=0}^{\infty} \frac{a_1}{(2m+1)!}\left( \prod_{\ell=1}^{2m-1}[\ell (\ell+1) - \lambda] \right)x^{2m+1} \ . \label{eq:Legendre_series_solution}
 \end{align}
 
 Con esto, podemos darnos cuenta de que la solución general de la ecuación de Legendre es una serie infinita. ¿Cómo imponemos la condición de finitud a estas expresiones? Podemos hacerlo al estudiar su convergencia para el intervalo en que se encuentran definidas.
@@ -82,13 +81,13 @@ Para $\lambda \neq n(n+1)$, la serie diverge, puesto que ella se convierte en un
 Para $\lambda = n (n+1)$, existirá algún término $a_n=0$ para la solución par o la solución impar, y siguiendo la relación de recurrencia \eqref{eq:recurrencia_legendre}, todo término superior a este se anulará. Luego, basta imponer que el primer coeficiente de la solución de paridad opuesta se anule para así obtener una solución convergente. Es decir, si $n$ es par, $a_1=0$, mientras que si $n$ es impar, escogemos $a_0 = 0$.
 
 De esta forma, nos gustaría poder escribir una expresión general para las soluciones que son válidas en todo el dominio, es decir, cuando $\lambda = n(n+1)$. Notamos que $\ell(\ell+1)-n(n+1) = (\ell - n)(\ell + n + 1)$, podemos encontrar que, para $n$ par,
-\begin{align}
+\begin{align} \label{eq:y1n_legendre}
     y_{1,n}(x) & = \sum_{m=0}^{n/2} b_m x^{2m} = \sum_{m=0}^{n/2} \left(\frac{1}{(2m)!} \prod_{\ell=0}^{2m-2} (\ell-n)(\ell+n+1) \right) x^{2m} \\
-    & = d_{n,1} P_n(x) = \frac{(-1)^{n/2} 2^n \left[ \left(\frac{n}{2}\right)! \right]^2}{n!}P_n(x) \ ,
+    & = d_{n,1} P_n(x) = \frac{(-1)^{n/2} 2^n \left[ \left(\frac{n}{2}\right)! \right]^2}{n!}P_n(x) \ , \label{eq:y2n_legendre}
 \end{align}
 mientras que para $n$ impar,
 \begin{align}
-    y_{2,n}(x) & = \sum_{m=0}^{n/2} b_m x^{2m} = \sum_{m=0}^{n/2} \left(\frac{1}{(2m)!} \prod_{\ell=0}^{2m-2} (\ell-n)(\ell+n+1) \right) x^{2m} \\
+    y_{2,n}(x) & = \sum_{m=0}^{(n-1)/2} c_m x^{2m+1} = \sum_{m=0}^{n/2} \left(\frac{1}{(2m)!} \prod_{\ell=0}^{2m-2} (\ell-n)(\ell+n+1) \right) x^{2m+1} \\
     & = d_{n,2} P_n(x) = \frac{(-1)^{(n+1)/2} 2^{n-1} \left[ \left(\frac{n-1}{2}\right)! \right]^2}{n!}P_n(x) \ ,
 \end{align}
 donde en ambos casos las funciones $P_n(x)$ corresponden a los \textbf{polinomios de Legendre}, definidos como
@@ -96,23 +95,139 @@ donde en ambos casos las funciones $P_n(x)$ corresponden a los \textbf{polinomio
     P_n(x) = \sum_{k=0}^{n/2} \frac{(-1)^k (2n-2k)}{2^n k! (n-k)! (n-2k)!}x^{n-2k} \ .
 \end{equation}
 
+Otra forma de definirlos es a partir de la \emph{fórmula de Rodrigues}, según la cual pueden expresarse como
+\begin{equation}
+    P_n(x) = \frac{1}{2^n n!} \frac{d^n}{dx^n} (x^2-1)^n \ .
+\end{equation}
+
 \subsection{Función Generatriz}
 
-Para cualquier conjunto de \emph{polinomios ortogonales} $\{P_n(x)\}_{n\in \mathbb{N}}$, se denomina \textbf{función generatriz} (o generadora) de dicho conjunto a la función $G(x,t)$, tal que cuando se desarrolla en una serie de Taylor para $t$, los coeficientes de dicha expansión son los polinomios $P_n(x)$:
+\begin{defi}
+    Para cualquier conjunto de \emph{polinomios ortogonales} $\{P_n(x)\}_{n\in \mathbb{N}}$, se denomina \textbf{función generatriz} (o generadora) de dicho conjunto a la función $G(x,t)$, tal que cuando se desarrolla en una serie de Taylor para $t$, los coeficientes de dicha expansión son los polinomios $P_n(x)$:
 \begin{equation}
     G(x,t) = \sum_{n=0}^{\infty} P_n(x)t^n \ .
 \end{equation}
+\end{defi}
 
 En particular, la función generatriz para los polinomios de Legendre es dada por la expresión
 \begin{equation}
     G(x,t) = \frac{1}{\sqrt{1-2xt + t^2}} \ .
 \end{equation}
+Si observamos esta expresión en detalle, y hacemos $t=r/a$ y $x = \cos\theta$, podemos escribir la función generatriz como
+\begin{equation}
+    G(\theta, r) = \frac{1}{\sqrt{1-2r \cos(\theta)/a + r^2/a^2}} = \frac{a}{\sqrt{a^2-2ar\cos\theta + r^2}} = \frac{a}{|\vec{x}-\vec{a}|} \ , 
+\end{equation} 
+donde $|\vec{x}-\vec{a}|$ es la distancia entre los puntos $\vec{x}$ y $\vec{a}$. Así, obtenemos la relación entre la distancia entre dos puntos del espacio con los Polinomios de Legendre,
+\begin{equation}
+    \frac{1}{|\vec{x} - \vec{a}|} = \frac{1}{a}\sum_{\ell=0}^\infty \left( \frac{r}{a} \right)^\ell P_\ell(\cos\theta) \ .
+\end{equation} 
+En esta expresión, hemos asumido que $r>a$. En caso contrario, deben invertirse las relaciones, ubicando $r$ en el lugar de $a$, y viceversa.
 
-\subsection{Propiedades de los Polinomios de Legendre}
+Podemos utilizar este resultado, por ejemplo, para escribir el potencial electrostático en un punto $\vec{r}$ producido por una carga $q$ en el punto $\vec{a}$,
+\begin{equation}
+    \phi(\vec{r}) = \frac{q}{4\pi \epsilon_0 r} \sum_{\ell=0}^\infty \left( \frac{a}{r} \right)^\ell P_\ell(\cos\theta) \ ,
+\end{equation}
+lo que se asocia a la llamada \emph{expansión multipolar}, que estudiarán en su curso de electrodinámica.
 
+Por otro lado, podemos encontrar explícitamente los polinomios de Legendre a partir de su función generadora mediante
+\begin{equation}
+    P_n(x) = \frac{1}{n!} \left[ \frac{\partial ^n G(t,x)}{\partial t^n} \right] \left. \right|_{t=0} \ .
+\end{equation}
+
+\subsection{Propiedades}
+
+\begin{enumerate}
+    \item \textbf{Normalización.} Los polinomios de Legendre son funciones normalizadas, de modo que $P_n(1) = 1$, para cualquier valor de $n$.
+    \item \textbf{Paridad.} Podemos encontrar que los polinomios de Legendre pueden ser funciones pares o impares según el valor de $n$, ya que
+    \item \begin{equation}
+        P_n(-x) = (1-)^n P_n(x) \ . 
+    \end{equation}
+
+    \item \textbf{Valor en el origen.} A partir de la función generatriz, podemos mostrar que
+    % propiedad de paridad, podemos observar que, como los polinomios son \emph{impares} para $n$ impar, deberá cumplirse que $P_n(0) = 0$, para $n$ impar. Por otro lado, utilizando la función generatriz, podemos obtener que si $n$ es par, entonces
+    \begin{equation}
+        P_n(0) = \begin{dcases}
+            0 \ , \qquad \text{si } n \text{ es impar.} \\
+            (-1)^{n/2} \frac{n!}{2^n ((n/2)!)^2} \ , \qquad \text{si } n \text{ es par.}
+        \end{dcases}
+    \end{equation}
+
+    \item \textbf{Ortogonalidad.} Los polinomios de Legendre satisfacen la relación de ortogonalidad
+    \begin{equation}
+        \int_{-1}^1 P_n(x) P_m(x) dx = \frac{2}{2n+1} \delta_{n,m} \ .
+    \end{equation}
+
+    \item \textbf{Completitud.} Los polinomios de Legendre forman un \emph{conjunto completo} de funciones definidas en $[-1,1]$, por lo que forma una base para dichas funciones, lo que se expresa como
+    \begin{equation}
+        \sum_{n=0}^\infty \frac{2n+1}{2} P_n(x) P_n(x') = \delta(x-x') \ .
+    \end{equation}
+
+    \item \textbf{Serie de Fourier-Legendre.} Dado que los polinomios de Legendre forman un abase en el intervalo $[-1,1]$, podemos expandir cualquier función en una Serie de Fourie-Legendre, tal que
+
+    \begin{equation}
+        f(x) = \sum_{n=0}^\infty a_n P_n(x) \ ,
+    \end{equation}
+    donde 
+    \begin{equation}
+        a_n = \frac{2n+1}{2} \int_{-1}^1 f(x) P_n(x) dx \ .
+    \end{equation}
+     
+    \item \textbf{Relaciones de recurrencia.} Los polinomios de Legendre satisfacen las siguientes relaciones de recurrencia,
+    \begin{align}
+        n P_{n-1}(x) + (n+1) P_{n+1}(x) & = (2n+1) P_n(x) \ , \\
+        (2n+1) P_n(x) & = P'_{n+1}(x) - P'_{n-1}(x) \ .
+    \end{align}    
+\end{enumerate}
 
 \subsection{Funciones de Legendre de segunda especie}
 
+Como discutimos anteriormente, al escoger $\lambda = n(n+1)$ para un número entero $n$, debemos truncar una de las series que aparecen en la ecuación \eqref{eq:Legendre_series_solution}, de modo que la solución se reduce a los polinomios de Legendre. El motivo de hacer esto es hallar una solución que converja en $x = \pm 1$. Sin embargo, si estamos estudiando un problema que no requiere convergencia en los contornos $x = \pm 1$, ¿es necesario descartar la segunda serie infinita?
+
+La respuesta es no, y de hecho ciertos problemas físicos requieren de estas soluciones. Por ello, las llamaremos \textbf{funciones de Legendre de segunda especie}, denotadas por $Q_n(x)$, y que definimos como
+\begin{align}
+    Q_n(x) & = \begin{dcases}
+        d_{1,n} y_{2,n}(x) \ , \qquad \text{ si } n \text{ es par} \ , \\
+        d_{2,n} y_{1,n}(x) \ , \qquad \text{ si } n \text{ es impar} \ ,
+    \end{dcases} \\
+    & = \begin{dcases}
+        (-1)^{n/2} \frac{[(n/2)!]^2}{n!} 2^n y_{2,n}(x) \ , \qquad \text{ si } n \text{ es par} \ , \\
+        (-1)^{(n+1)/2} \frac{[\left(\frac{n-1}{2}\right)!]^2}{n!} 2^{n-1} y_{1,n}(x) \ , \qquad \text{ si } n \text{ es impar} \ ,
+    \end{dcases}
+\end{align}
+donde $y_{1,n}$ e $y_{2,n}$ son las funciones definidas en \eqref{eq:y1n_legendre} y \eqref{eq:y2n_legendre}, respectivamente. Nótese que \emph{a la solución para} $n$ \emph{par, hemos multiplicado los coeficientes de la solución impar}, y viceversa.
+
+Las funciones asociadas de Legendre satisfacen las mismas relaciones de recurrencia que las funciones de Legendre, de modo que
+\begin{align}
+    nQ_{n-1}(x) + (n+1)Q_{n+1}(x) & = (2n+1) x Q_n(x) \ , \\
+    (2n+1)Q_n(x) & = Q'_{n+1}(x) - Q'_{n-1}(x) \ . 
+\end{align}
+
+Pueden encontrar la derivación explícita de estas relaciones en el apunte del profesor Rubilar \cite{Rubilar}.
+
+Otras propiedades relebvantes que estas satisfacen son
+\begin{enumerate}
+    \item \textbf{Paridad.} Se tiene que
+    \begin{equation}
+        Q_n(-x) = (-1)^{n+1} Q_n(x) \ .
+    \end{equation}
+    \item \textbf{Valor en el origen.} Dada su paridad, las relaciones se invierten respecto a los polinomios de Legendre, de modo que
+    \begin{equation}
+        Q_n(0) = \begin{dcases}
+            0 \ , \qquad \text{si } n \text{ es par} \ , \\
+            (-1)^{(n+1)/2} \frac{\left[ \left( \frac{n-1}{2} \right)! \right]^2}{n!} 2^{n-1} \ , \qquad \text{si } n \text{ es par} \ .  
+        \end{dcases}
+    \end{equation}
+    \item \textbf{Valor en el extremo del intervalo.} Los extremos del intervalo son puntos singulares para estas funciones, de modo que
+    \begin{equation}
+        \lim_{x \to 1} Q_n(x) = +\infty \ .
+    \end{equation}
+\end{enumerate} 
+
+En resumen, la solución general de la EDO de Legendre para $\lambda = n(n+1)$, es dada por
+\begin{equation}
+    y(x) = C_1 P_n(x) + C_2 Q_n(x) \ ,
+\end{equation}
+donde los polinomios de Legendre $P_n(x)$ convergen en todo el intervalo $[-1,1]$, incluídos los extremos, mientras que las funciones de segunda especie $Q_n(x)$ convergen en el interior del intervalo $(-1,1)$, mas no en los extremos.
 
 \section{Ecuación asociada de Legendre}
 
