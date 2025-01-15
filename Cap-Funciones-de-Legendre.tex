@@ -295,6 +295,29 @@ que también es válida para $m<0$, siempre y cuando $|m|\leq n$.
 
 \subsection{Función generatriz}
 
+En este caso, podemos hacer uso de la relación entre los polinomios asociados de Legendre y los polinomios de Legendre para obtener la función generatriz de los primeros. En efecto, observamos que derivando $m$ veces la función generatriz de los polinomios de Legendre respecto a $x$, tenemos
+\begin{equation}
+    \frac{d^m G}{dx^m} = \frac{d^m}{dx^m}(1-2xt+t^2)^{-1/2} = \sum_{n=0}^\infty \frac{d^m}{dx^m}P_n(x) t^n \ ,
+\end{equation}
+y multiplicando ambos lados por $(1-x^2)^{m/2}$, tenemos que
+\begin{equation}
+    \frac{d^m G}{dx^m} = (1-x^2)^{m/2} \frac{d^m}{dx^m}(1-2xt+t^2)^{-1/2} = \sum_{n=0}^\infty P^m_n(x) t^n \ .
+\end{equation}
+
+Derivando el lado izquierdo de la ecuación, obtenemos
+\begin{equation}
+    \frac{1 \cdot 3 \cdot 5 \dots (2m-1) (1-x^2)^{m/2} t^m}{(1-2t+t^2)^{m+1/2}} = \sum_{n=0}^\infty P_n^m t^n \ .
+\end{equation}
+Dividimos la expresión por $t^m$, y definimos $r=n-m$, y además notamos que
+\begin{equation}
+    1 \cdot 3 \cdot 5 \dots (2r-1) = \frac{1 \cdot 2 \cdot 3 \dots 2r}{2 \cdot 4 \cdot 6 \dots 2r} = \frac{(2r)!}{2^r r!} \ .
+\end{equation}
+
+De este modo, podemos hallar que
+\begin{equation}
+    G_m(x,t) = \frac{(2m)! (1-x^2)^{m/2}}{2^m m! (1-2xt+t^2)^{m+1/2}} = \sum_{r=0}^\infty P_{r+m}^m(x) t^r \ .
+\end{equation}
+
 \subsection{Propiedades}
 
 A partir de la expresión \eqref{eq:asociadas_legendre}, es posible mostrar, aplicando la fórmula de Leibniz al producto $(n+1)^n (x-1)^n$, que
