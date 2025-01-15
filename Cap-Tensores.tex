@@ -6,6 +6,8 @@ Una de las nociones más importantes que tenemos en física clásica es el hecho
 
 Por ejemplo, un vector que describe la posición de un objeto en función del tiempo puede ser diferente según el sistema de coordenadas en que se lo describa, pero el movimiento \emph{físico} seguirá siendo el mismo.
 
+\section{Transformaciones ortogonales}
+
 Antes de entrar más de lleno en la discusión, recordemos e introduzcamos algunas definiciones.
 
 \begin{defi}
@@ -30,7 +32,7 @@ Antes de entrar más de lleno en la discusión, recordemos e introduzcamos algun
 
 \begin{defi}
     Dado un sistema coordenado en un espacio de $n$ dimensiones, podemos definir el \textbf{vector posición} $\vec{x}$, que une el origen del sistema con punto con coordenadas $x_i$, con $i = 1, 2, \dots, n$ como
-\begin{equation}
+\begin{equation} \label{eq:vector-posicion}
     \vec{x} = \sum_{i=1}^n x_i \hat{e}_i \ ,
 \end{equation}
 donde las \textbf{componentes del vector} en la base $\{ \hat{e}_i\}_{i=1}^n$ puede expresarse como
@@ -65,16 +67,121 @@ Dado que, si bien dan origen a sistemas de coordenadas diferentes, ambas bases s
 \end{equation}
 
 De este modo, 
+\begin{equation} \label{eq:transformacion-coordenadas}
+    \hat{e}'_i = \sum_{j=1}^n a_{ij} \hat{e}_j \ .
+\end{equation}
+Sin embargo, esta definición describe una transformación entre dos bases cualesquiera. Lo que a nosotros nos interesa es trabajar con \emph{transformaciones ortogonales}.
+
+\begin{defi}
+    Una \textbf{transformación ortogonal} es aquella transformación de cambio de base que permite convertir una base ortonormal $\{\hat{e}_i\}_{i=1}^n$ en una nueva base ortonormal $\{\hat{e}'_i\}_{i=1}^n$.
+\end{defi}
+
+Para asegurarnos que la transformación \eqref{eq:transformacion-coordenadas} sea una transformación ortogonal, debe además satisfacer que
+\begin{align}
+    \delta_{ij} & = \hat{e}'_i \cdot \hat{e}'_j \\
+    & = \left( \sum_{k=1}^n a_{ik} \hat{e}_k \right) \left( \sum_{l=1}^n a_{jl} \hat{e}_l \right) \\
+    & = \sum_{k=1}^n \sum_{l=1}^n a_{ik} a_{jl} (\hat{e}_k \cdot \hat{e}_l) \\
+    & = \sum_{k=1}^n \sum_{l=1}^n a_{ik} a_{jl} \delta_{kl} \\
+    & = \sum_{k=1}^n a_{ik} a_{jk} \ , \label{eq:delta-transformacion-ortogonal}
+\end{align}
+o bien, matricialmente,
+\begin{equation}\label{eq:condicion-matricial}
+    A \cdot (A^T) = I \ ,
+\end{equation}
+que al calcular el determinante, observamos que
+\begin{equation}
+    \det(A)^2 = 1 \ , 
+\end{equation}
+de modo que una transformación ortogonal deberá satisfacer que $\det(A) = 1$, caso en que se denomina \emph{transformación propia}, o bien que $\det(A) = -1$, lo que se conoce como \emph{transformación impropia}.
+
+En particular, de \eqref{eq:condicion-matricial} podemos observar que para una transformación ortogonal, $A^T = A^{-1}$, es decir, la transpuesta de la transformación coincide con su inversa, de modo que también se satisface que
+\begin{equation}
+    (A^T) \cdot A = I \ ,
+\end{equation}
+o en notación indicial,
+\begin{equation}
+    \sum_{k=1}^n a_{ki} a_{kj} =  \delta_{ij} \ .
+\end{equation}
+
+De este modo, conociendo las relaciones entre los vectores unitarios, podemos reescribir el vector $\vec{v}$ como
+\begin{equation}
+    \vec{v} = \sum_{i=1}^n v'_i \left( \sum_{j=1}^n a_{ij} \hat{e}_j \right) \ .
+\end{equation}
+
+\subsection{Convenio de suma de Einstein}
+
+Antes de continuar la discusión, es útil introducir el  \textbf{convenio de suma de Einstein}, que establece que en toda expresión donde se repitan dos índices iguales, \emph{existe una suma implícita sobre todo el rango de variación del índice}. Es más, el índice de suma \emph{es una etiqueta arbitraria}, por lo que puede ser renombrada a conveniencia.
+
+Por ejemplo, las expresiones \eqref{eq:vector-posicion} y \eqref{eq:delta-transformacion-ortogonal} pueden reescribirse como
+\begin{align}
+    \vec{v} & = v_i \hat{e}_i \, , \\
+    \delta_{ij} & = a_{ik} a_{jk} \ .
+\end{align}
+
+Además, dado que existe una suma implícita, podemos aplicar la delta de Kronecker para reemplazar índices en una multiplicación, de modo que
+\begin{equation}
+    a_{ij} b_{jk} \delta_{ki} = a_{ij} b_{ji} = a_{kj} b_{jk} \ .
+\end{equation}
 
 \section{Covarianza y contravarianza}
 
-\subsection{Convenio de suma de Einstein}
+En la sección anterior, vimos que podemos reescribir un vector $\vec{x} = x_i \hat{e}_i$ en términos de una segunda base ortonormal $\{\hat{e}'_i\}_{i=1}^n$ como
+\begin{equation} \label{eq:transformacion-vector}
+    \vec{x} = x'_i a_{ij} \hat{e}_j \ .
+\end{equation}
+Comparando esta expresión con $\x = x_i \hat{e}_i$, observamos que \emph{las componentes de un vector} transforman como
+\begin{equation} \label{eq:transformacion-componentes}
+    x'_j = a_{ji} x_i \ , 
+\end{equation}
+donde la inversión de los índices en las componentes de la matriz representa que estamos considerando la matriz transversa.
+
+Nos gustaría poder encontrar una expresión explícita para dicha matriz. Para ello, podemos derivar la expresión \eqref{eq:transformacion-componentes} respecto a las coordenadas $x_i$, obteniendo
+\begin{equation}
+    a_{ji} = \frac{\partial x'_j}{\partial x_i} \ ,
+\end{equation}
+mientras que la transformación inversa satisface
+\begin{equation}
+    a_{ij} = \frac{\partial x_i}{\partial x'_j} \ .
+\end{equation}
+
+De este modo, podemos reescribir la ecuación \eqref{eq:transformacion-componentes}, con lo que \emph{las componentes de los vectores transforman, bajo transformaciones ortogonales, como}
+\begin{equation}
+    x'_i = \frac{\partial x'_i}{\partial x_j} A_j \ .
+\end{equation}
+
+Uno podría esperar que todos los vectores transformaran según esta regla. Sin embargo, veamos qué ocurre para el vector gradiente de un campo escalar, $\nabla\phi$, donde $(\nabla \phi)_j = (\partial \phi/\partial x_j )\vec{e}_j$. Tenemos, por regla de la cadena,
+\begin{equation}
+    (\nabla \phi)'_i = \frac{\partial \phi}{\partial x'_i} = \frac{\partial x_j}{\partial x'_i} \frac{\partial \phi}{\partial x_j} \ ,
+\end{equation}
+que es \emph{una ley de transformación diferente}. Sin embargo, ambas cantidades corresponden a vectores. ¿Cómo explicamos esta diferencia?
+
+El hecho radica en que, en efecto, ambas cantidades son vectores \emph{en coordenadas cartesianas}, pero no necesariamente \emph{en cualquier sistema de coordenadas}. Por ello, es conveniente introducir las nociones de vectores \textbf{covariantes} y vectores \textbf{contravariantes}. En este curso esta distinción no es necesaria, pero quienes deseen trabajar en gravitación o en altas energías, deberán comenzar a tener en cuenta estas nociones.
+
+\begin{defi}
+    Un vector $\vec{v}$ es denominado \textbf{contravariante} cuando, al ser sometido a una transformación ortogonal, transforma según la regla
+    \begin{equation} \label{eq:contravariante}
+        v'_i = \frac{\partial x'_i}{\partial x_j} v_j \ ,
+    \end{equation}
+    y se denomina \textbf{covariante} cuando transforma según la regla
+    \begin{equation} \label{eq:covariante}
+        v'_i = \frac{\partial x_j}{\partial x_i'} v_j \ .
+    \end{equation}
+
+    Las componentes del vector posición siempre transforman como vectores contravariantes.
+\end{defi}
+
+
+Al trabajar en sistemas no cartesianos, es común representar los vectores contravariantes con superíndices en lugar de subíndices, de modo que las reglas \eqref{eq:contravariante} y \eqref{eq:covariante} se suelen escribir como
+\begin{align*}
+    v'^i & = \frac{\partial x'^{i}}{\partial x^j} v^j \ , \\
+    v'_i & = \frac{\partial x^j}{\partial x'^{i}} v_j \ .
+\end{align*}
+
+Al utilizar esta convención, la suma se representa al tener \emph{índices cruzados}, es decir, índices repetidos tanto como superíndice y como subíndice.
 
 \section{Tensores Cartesianos}
 
 \section{Operaciones con tensores}
 
 \section{Pseudovectores y pseudotensores}
-
-% \section{Tensores en Coordenadas Generales}
 
