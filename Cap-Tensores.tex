@@ -68,42 +68,9 @@ Dado que, si bien dan origen a sistemas de coordenadas diferentes, ambas bases s
 
 De este modo, 
 \begin{equation} \label{eq:transformacion-coordenadas}
-    \hat{e}'_i = \sum_{j=1}^n a_{ij} \hat{e}_j \ .
+    \hat{e}'_i = \sum_{j=1}^n a_{ij} \hat{e}_j \ ,
 \end{equation}
-Sin embargo, esta definición describe una transformación entre dos bases cualesquiera. Lo que a nosotros nos interesa es trabajar con \emph{transformaciones ortogonales}.
-
-\begin{defi}
-    Una \textbf{transformación ortogonal} es aquella transformación de cambio de base que permite convertir una base ortonormal $\{\hat{e}_i\}_{i=1}^n$ en una nueva base ortonormal $\{\hat{e}'_i\}_{i=1}^n$.
-\end{defi}
-
-Para asegurarnos que la transformación \eqref{eq:transformacion-coordenadas} sea una transformación ortogonal, debe además satisfacer que
-\begin{align}
-    \delta_{ij} & = \hat{e}'_i \cdot \hat{e}'_j \\
-    & = \left( \sum_{k=1}^n a_{ik} \hat{e}_k \right) \left( \sum_{l=1}^n a_{jl} \hat{e}_l \right) \\
-    & = \sum_{k=1}^n \sum_{l=1}^n a_{ik} a_{jl} (\hat{e}_k \cdot \hat{e}_l) \\
-    & = \sum_{k=1}^n \sum_{l=1}^n a_{ik} a_{jl} \delta_{kl} \\
-    & = \sum_{k=1}^n a_{ik} a_{jk} \ , \label{eq:delta-transformacion-ortogonal}
-\end{align}
-o bien, matricialmente,
-\begin{equation}\label{eq:condicion-matricial}
-    A \cdot (A^T) = I \ ,
-\end{equation}
-que al calcular el determinante, observamos que
-\begin{equation}
-    \det(A)^2 = 1 \ , 
-\end{equation}
-de modo que una transformación ortogonal deberá satisfacer que $\det(A) = 1$, caso en que se denomina \emph{transformación propia}, o bien que $\det(A) = -1$, lo que se conoce como \emph{transformación impropia}.
-
-En particular, de \eqref{eq:condicion-matricial} podemos observar que para una transformación ortogonal, $A^T = A^{-1}$, es decir, la transpuesta de la transformación coincide con su inversa, de modo que también se satisface que
-\begin{equation}
-    (A^T) \cdot A = I \ ,
-\end{equation}
-o en notación indicial,
-\begin{equation}
-    \sum_{k=1}^n a_{ki} a_{kj} =  \delta_{ij} \ .
-\end{equation}
-
-De este modo, conociendo las relaciones entre los vectores unitarios, podemos reescribir el vector $\vec{v}$ como
+por lo que podemos reescribir el vector $\vec{v}$ como
 \begin{equation}
     \vec{v} = \sum_{i=1}^n v'_i \left( \sum_{j=1}^n a_{ij} \hat{e}_j \right) \ .
 \end{equation}
@@ -179,9 +146,325 @@ Al trabajar en sistemas no cartesianos, es común representar los vectores contr
 
 Al utilizar esta convención, la suma se representa al tener \emph{índices cruzados}, es decir, índices repetidos tanto como superíndice y como subíndice.
 
+\section{Transformaciones Ortogonales}
+
+La discusión hecha hasta ahora es válida para cualquier transformación de coordenadas entre dos bases distintas. Para los efectos de este curso, nos interesa trabajar únicamente con \emph{transformaciones ortogonales}.
+
+\begin{defi}
+    Una \textbf{transformación ortogonal} es aquella transformación de cambio de base que permite convertir una base ortonormal $\{\hat{e}_i\}_{i=1}^n$ en una nueva base ortonormal $\{\hat{e}'_i\}_{i=1}^n$.
+\end{defi}
+
+Para asegurarnos que la transformación \eqref{eq:transformacion-coordenadas} sea una transformación ortogonal, debe además satisfacer que
+\begin{align}
+    \delta_{ij} & = \hat{e}'_i \cdot \hat{e}'_j \\
+    & = \left( \sum_{k=1}^n a_{ik} \hat{e}_k \right) \left( \sum_{l=1}^n a_{jl} \hat{e}_l \right) \\
+    & = \sum_{k=1}^n \sum_{l=1}^n a_{ik} a_{jl} (\hat{e}_k \cdot \hat{e}_l) \\
+    & = \sum_{k=1}^n \sum_{l=1}^n a_{ik} a_{jl} \delta_{kl} \\
+    & = \sum_{k=1}^n a_{ik} a_{jk} \ , \label{eq:delta-transformacion-ortogonal}
+\end{align}
+o bien, matricialmente,
+\begin{equation}\label{eq:condicion-matricial}
+    A \cdot (A^T) = I \ ,
+\end{equation}
+que al calcular el determinante, observamos que
+\begin{equation}
+    \det(A)^2 = 1 \ , 
+\end{equation}
+de modo que una transformación ortogonal deberá satisfacer que $\det(A) = 1$, caso en que se denomina \emph{transformación propia}, o bien que $\det(A) = -1$, lo que se conoce como \emph{transformación impropia}.
+
+En particular, de \eqref{eq:condicion-matricial} podemos observar que para una transformación ortogonal, $A^T = A^{-1}$, es decir, la transpuesta de la transformación coincide con su inversa, de modo que también se satisface que
+\begin{equation}
+    (A^T) \cdot A = I \ ,
+\end{equation}
+o en notación indicial,
+\begin{equation}
+    \sum_{k=1}^n a_{ki} a_{kj} =  \delta_{ij} \ .
+\end{equation}
+
 \section{Tensores Cartesianos}
 
-\section{Operaciones con tensores}
+Hasta ahora, hemos discutido las propiedades de los vectores, elementos con los que ya somos familiares. Sin embargo, seguimos sin responder la incógnita de \emph{¿qué es un tensor?}.
+
+Para ello, consideremos dos vectores $\vec{B} = b_i \hat{e}_i$ y $\vec{C} = c_i \hat{e}_i$. El \emph{producto externo} de estos dos vectores corresponde a la cantidad
+\begin{eqnarray}
+    T_{ij} = u_i v_j \ ,
+\end{eqnarray}
+donde observamos que necesitamos de \emph{dos índices} para definir el producto externo. ¿Qué ocurre con esta cantidad si, en lugar de utilizar la base $\hat{e}_i$, utilizamos la base $\hat{e}'_i$? En otras palabras, ¿cómo transforma $T_{ij}$ bajo transformaciones ortogonales? Notamos que
+\begin{equation}
+    T'_{ij} = u'_i v'_j = (a_{ik}u_k)(a_{jl} v_l) = a_{ik} a_{jl} (u_k v_l) =  a_{ik} a_{jl} T_{kl} \ .
+\end{equation}
+
+Observamos pues, que $T_{ij}$ transforma de manera similar a los vectores bajo transformaciones ortogonales. A cantidades que siguen una regla de transformación de este tipo, las llamamos \emph{tensores de rango 2}, pues requerimos de dos matrices de transformación para definirlas adecuadamente. Observamos que, para un espacio de $n$ dimensiones, estos elementos tendrán $n^2$ componentes.
+
+Esta noción puede ampliarse a más dimensiones, según la siguiente definición,
+\begin{defi}
+    Dado un espacio de $n$ dimensiones, el conjunto de $n^r$ cantidades $T_{i_1 i_2 \dots i_r}$ definidas en cada sistema ortogonal de coordenadas, son las componentes de un \textbf{tensor cartesiano de rango} $\mathbf{r}$ si, bajo transformaciones ortogonales, sus valores siguien la regla de transformación
+    \begin{equation}
+        T'_{i_1 i_2 \dots, i_r} = a_{i_1 j_1} a_{i_2 j_2} \dots a_{i_r j_r} T_{j_1 j_2 \dots j_r} \ . 
+    \end{equation}
+\end{defi}
+
+Gracias a esta definición, observamos que los \textbf{vectores}, que tienen una sola matriz de transformación en su definición \eqref{eq:transformacion-vector}, son \emph{tensores de rango 1}. A su vez, los \textbf{escalares} son cantidades que no se ven modificadas frente a una transformación de coordendas, de modo que $\rho' = \rho$. Por ello, podemos considerarlos \emph{tensores de rango 0}.
+
+\subsection{Propiedades}
+
+En este contexto, vale la pena mencionar con algo más de detalle a dos propiedades.
+
+\begin{enumerate}
+    \item Si \emph{todas las componentes de un tensor se anulan en un sistema coordenado ortogonal}, ellas se anularán \emph{en todo sistema coordenado ortogonal}.  Esta propiedad nos interesa, ya que nos indica que la anulación de un tensor \textbf{es una propiedad intrínseca} de este. Por ello, utilizar tensores en Física es tan importante, pues nos permite plantear leyes \emph{que no dependen del sistema coordenado en que trabajamos}, sino únicamente del fenómeno estudiado.
+    
+    Por ejemplo, podemos estar estudiando el momento de inercia de un cuerpo en movimiento, el cual es un tensor de rango 2. Si diera la casualidad de que este es cero en algún sistema coordenado ortogonal, esto quiere decir que en cualquier sistema coordenado ortogonal, el cuerpo \emph{no se encuentra rotando}.
+
+    \item Existen algunos \textbf{tensores invariantes} o \textbf{isotrópicos}, los cuales tienen siempre las mismas componentes \emph{en cualquier sistema coordenado}. Un ejemplo de estos es la delta de Kronecker, pues en cualquier sistema coordenado tendrá las mismas componentes, 1 si $i=j$ y 0 si $i\neq j$.
+    
+    En efecto, podemos observar que la delta de Kronecker transforma como
+    \begin{equation}
+        \delta'_{ij} = a_{ik} a_{jl} \delta_{kl} = a_{ik} a_{jk} = \delta_{ij} \ .
+    \end{equation}
+\end{enumerate}
+
+\section{Álgebra Tensorial}
+
+Dicho rápido y sencillo, hemos visto que los tensores de rango 1 y rango 2 se comportan como vectores columna y como matrices, respectivamente. Por ello, esperaríamos que sea posible definir operaciones tensoriales similares a las definidas para estos elementos, incluyendo la posibilidad de construir tensores a partir de otros.
+
+\begin{itemize}
+    \item \textbf{Adición y sustracción.} Se define la adición (o suma) y sustracción (o resta) de dos tensores \emph{del mismo orden} componente a componente, es decir,
+    \begin{align}
+        S_{ij \dots k} & = V_{ij \dots k} + W_{ij \dots k} \ , \\
+        D_{ij \dots k} & = V_{ij \dots k} - W_{ij \dots k} \ .
+    \end{align}
+    % \item \textbf{Producto por escalar.}
+    \item \textbf{Permutación de índices.} La operación de permutar dos índices de un tensor de rango $r$, define un nuevo tensor de rango $r$. Es decir, dado un tensor $T_{ijk \dots l}$ de rango $r$, la cantidad
+    \begin{equation}
+        B_{ijk \dots l} = T_{ikj \dots l} 
+    \end{equation}
+    es también un tensor de rango $r$.
+
+    \item \textbf{Producto tensorial, o directo.} De manera similar al \emph{producto externo} de dos vectores que calculamos anteriormente, podemos definir el producto entre dos tensores de diferente rango, digamos $r$ y $s$, lo que permite formar un nuevo vector de rango $r+s$,
+    \begin{equation}
+        C_{i_1 i_2 \dots i_{r+s}} = A_{i_1 i_2 \dots i_r} \cdot B_{i_{r+1} i_{r+2} \dots i_{r+s}} \ .
+    \end{equation}
+    
+    En este caso, es relevante respeter la posición de los índices en el producto, pues en general el tensor $C_{ij} = A_i B_j$ será distinto al vector $D_{ij} = A_j B_i$, como consecuencia de la permutación de índices.
+
+    Esta operación incluye, por supuesto, el producto entre un tensor de rango 0 (un escalar) y un tensor de rango $r$, definiendo el \emph{prodcuto por un escalar}.
+
+    \item \textbf{Contracción de índices.} El producto escalar entre dos vectores nos entrega un escalar en lugar de un tensor de orden 2 como consecuencia de la repetición de índices en el producto. De manera similar, la repetición de dos índice dentro de un tensor de orden $r$ (digamos, el $s$-ésimo y el $t$-ésimo índice), es equivalente a un tensor de orden $r-2$,
+    \begin{equation}
+        B_{i_1 i_2 \dots i_{r-2}} = A_{i_1 i_2 \dots j \dots j \dots i_{r-2}} \ ,
+    \end{equation}
+    o de forma equivalente,
+    \begin{equation}
+        B_{i_1 i_2 \dots} = A_{i_1 i_2 \dots i_r} \delta_{i_s i_t} \ .
+    \end{equation}
+
+    \item \textbf{Ley del cociente.} Consideremos el caso en que tenemos una expresión de la forma
+    \begin{equation}\label{eq:ley-cociente}
+        A_{pq \dots k \dots m} B_{ij \dots k \dots n} = C_{pq \dots m ij \dots n} \ ,
+    \end{equation}
+    donde sabemos que $B$ y $C$ son tensores de rango $r$ y $s$, respectivamente, pero desconocemos si $A$ es un tensor. La ley del cociente establece que \emph{si la relación \eqref{eq:ley-cociente} es válida en cualquier sistema de coordenadas, entonces} $A$ es un tensor de orden $s-r+2$. La demostración (para el caso $r=s=2$) puede ser hallada en el capítulo 26, sección 7 de Riley \cite{Riley}.
+    
+    \item \textbf{Simetría.} Cuando un tensor no cambia bajo la permutación de dos de sus índices, 
+    \begin{equation}
+        T_{i_1 i_2 \dots i_s \dots i_t \dots i_r} = T_{i_1 i_2 \dots i_t \dots i_s \dots i_r} \ , 
+    \end{equation}
+    se dice que este es \emph{simétrico} respecto a dichos índices. Si, en cambio,
+    \begin{equation}
+        T_{i_1 i_2 \dots i_s \dots i_t \dots i_r} = - T_{i_1 i_2 \dots i_t \dots i_s \dots i_r} \ ,
+    \end{equation}
+    decimos que el tensor es \emph{antisimétrico} respecto de dichos índices. En general, un tensor de rango $r$ puede escribirse como la suma de un tensor simétrico y un tensor antisimétrico respecto de la misma permutación de índices, de modo que
+    \begin{align}
+        T_{i_1 i_2 \dots i_s \dots i_t \dots i_r} & = \frac{1}{2} (T_{i_1 i_2 \dots i_s \dots i_t \dots i_r} + T_{i_1 i_2 \dots i_t \dots i_s \dots i_r}) + \frac{1}{2}(T_{i_1 i_2 \dots i_s \dots i_t \dots i_r} - T_{i_1 i_2 \dots i_t \dots i_s \dots i_r}) \\
+        & = S_{i_1 i_2 \dots i_s \dots i_t \dots i_r} + A_{i_1 i_2 \dots i_s \dots i_t \dots i_r} \ .
+    \end{align}
+
+    En física, a veces es común utilizar la siguiente notación,
+    \begin{align}
+        T_{i_1 i_2 \dots (i_s| \dots |i_t) \dots i_r} & \equiv S_{i_1 i_2 \dots i_s \dots i_t \dots i_r} \ , \\
+        T_{i_1 i_2 \dots [i_s| \dots |i_t] \dots i_r} & \equiv A_{i_1 i_2 \dots i_s \dots i_t \dots i_r} \ ,
+    \end{align}
+    donde los índices entre paréntesis o corchetes son los índices respecto de los cuales el tensor es simétrico o antisimétrico.
+
+    Un tensor \textbf{completamente simétrico} de rango $r$ es aquel que es simétrico respecto a la permutación de cada par de índices. Este tendrá $\frac{(n+r-1)!}{(n-1)! r!}$ componentes linealmente independientes.
+
+    De forma análoga, un tensor \textbf{completamente antisimétrico} de rango $r$ es aquel que es antisimétrico respecto a la permutación de cada par de índices. Este tendrá $\frac{n!}{(n-r)! r!}$ componentes linealmente independientes. En particular, un tensor de rango $r=n$, tendrá \emph{una única componente linealmente independiente}.
+\end{itemize}
 
 \section{Pseudovectores y pseudotensores}
 
+Hasta ahora, de manera implícita, hemos utilizado transformaciones ortogonales \emph{propias}, es decir, que solo rotan el sistema, pero no modeifican la orientación de los tensores. Sin embargo, al considerar transformaciones \emph{impropias}, que no solo rotan el sistema sino que realizan una inversión de coordenadas o \emph{reflexión} ($x_i \to -x_i$). Cuando también incluimos este tipo de transformaciones, los vectores siguen cumpliendo la regla de transformación \eqref{eq:transformacion-vector}, pero existen ciertas cantidades físicas que comúnmente supondríamos como vectores, pero que bajo una reflexión no transforman de igual manera, como es el caso de aquellas relacionadas a cantidades \emph{angulares}, como la velociadad angular, el torque o el momento angular.
+
+\begin{defi}
+    Las cantidades que transforman según la regla
+    \begin{equation} \label{eq:pseudovector}
+        \vec{v}' = \det(A) A \vec{v} \ ,
+    \end{equation}
+    se denominan \textbf{pseudovectores}, o \textbf{vectores axiales}.
+\end{defi}
+
+De forma análoga, es posible extender esta noción a tensores y \emph{pseudotensores}.
+
+\begin{defi}
+    Los elementos que transforman según la regla
+    \begin{equation}
+        T'_{i_1 i_2 \dots i_r} = \det(A) a_{i_1 j_1} a_{i_2 j_2} \dots a_{i_n j_n} T_{j_1 j_2 \dots j_r} 
+    \end{equation}
+    se denominan \textbf{pseudotensores}.
+\end{defi}
+
+\subsection{Propiedades}
+
+\begin{enumerate}
+    \item La suma y la diferencia de dos pseudotensores del mismo rango es también un pseudotensor del mismo rango.
+    \item El producto tensorial de dos pseudotensores es un tensor cartesiano.
+    \item El producto tensorial de un pseudotensor y un tensor es un pseudotensor.
+    \item La contracción de dos índices de un pseudotensor define un nuevo pseudotensor.
+    \item Un \textbf{pseudoescalar} es una cantidad que cambia de signo bajo una transformación impropia.
+    \item En física, es común considerar únicamente transformaciones propias. En estos casos, la distinción entre tensores y pseudotensores no es necesaria.
+\end{enumerate}
+
+\subsection{Símbolo de Levi-Civita}
+
+\begin{defi}
+    En un espacio $n-$dimensional, se define el \textbf{símbolo de Levi-Civita} como un objeto de $n$ índices \emph{totalmente antisimétrico}, es decir,
+    \begin{equation}
+        \varepsilon_{ijkl\dots} = -\varepsilon_{jikl\dots} = - \varepsilon_{kjil\dots} = - \varepsilon_{ljki} = \varepsilon_{jilk} = \dots \ ,
+    \end{equation}
+    tal que en todo sistema de coordenadas,
+    \begin{equation}
+        \varepsilon_{123 \dots n} = 1 \ .
+    \end{equation}
+
+    De forma equivalente, se puede definir como
+    \begin{equation}
+        \varepsilon_{i_1 \dots i_n} = \begin{dcases}
+            1, \qquad \text{si } i_1 \dots i_n \text{ es una permutación par de } 12 \dots n \ , \\
+            -1, \quad \text{si } i_1 \dots i_n \text{ es una permutación impar de } 12 \dots n \ , \\
+            0, \qquad \text{en otro caso} \ .
+        \end{dcases}
+    \end{equation}
+\end{defi}
+
+\subsubsection*{Propiedades}
+
+El símbolo de Levi-Civita puede ser utilizado para calcular \emph{determinantes}, en particular aquellos de las matrices de transformación, donde 
+\begin{equation}
+    det(A) = a_{1 j_1} a_{2 j_2} \dots a_{n j_n} \varepsilon_{j_1 j_2 \dots j_n} \ , 
+\end{equation}
+de donde se desprende que el símbolo de Levi-Civita transforma, bajo una transformación arbitraria, como
+\begin{equation}
+    \varepsilon'_{i_1 \dots i_n} = \frac{1}{\det(A)} a_{i_1 j_1} a_{i_2 j_2} \dots a_{i_n j_n} \varepsilon_{j_1 j_2 \dots j_n} \ .
+\end{equation}
+Como en las transformaciones ortogonales, $\det(A) = 1/\det(A) = \pm 1$, concluímos que el símbolo de Levi-Civita \emph{transforma como un pseudotensor}.
+
+Otra utilidad de este elemento es la posibilidad de representar productos vectoriales entre dos vectores en notación tensorial, de modo que si $\vec{C} = \vec{A} \times \vec{B}$, podemos escribir
+\begin{equation}
+    C_i = \varepsilon_{ijk} A_j B_k \ .
+\end{equation}
+Como consecuencia, \emph{todo vector que se obtiene a partir del producto vectorial entre dos vectores, es un pseudovector}, lo que explica por qué las cantidades angulares se comportan como pseudovectores.
+
+Otra propiedad interesante es la identidad
+\begin{equation}
+    \varepsilon_{i_1 \dots i_n} = \left| \begin{array}{cccc}
+        \delta_{i_1 1} & \delta_{i_1 2} & \dots & \delta_{i_1 n} \\
+        \delta_{i_2 1} & \delta_{i_2 2} & \dots & \delta_{i_2 n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        \delta_{i_n 1} & \delta_{i_n 2} & \dots & \delta_{i_n n} 
+    \end{array} \right| \ ,
+\end{equation}
+de donde es directo hallar que el producto de dos símbolos de Levi-Civita se puede hallar como
+\begin{equation}
+    \varepsilon_{i_1 i_2 \dots i_n} \varepsilon_{j_1 j_2 \dots j_n} = \left| \begin{array}{cccc}
+        \delta_{i_1 j_1} & \delta_{i_1 j_2} & \dots & \delta_{i_1 j_n} \\
+        \delta_{i_2 j_1} & \delta_{i_2 j_2} & \dots & \delta_{i_2 j_n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        \delta_{i_n j_1} & \delta_{i_n j_2} & \dots & \delta_{i_n j_n} \\
+    \end{array}
+    \right| \ .
+\end{equation}
+
+Por último, limitándonos al símbolo de Levi-Civita en tres dimensiones, este satisface las identidades
+\begin{align}
+    \varepsilon_{ijk} \varepsilon_{lmk} & = \delta_{il} \delta_{jm} - \delta_{im} \delta_{jl} \ , \\
+    \varepsilon_{ijk} \varepsilon_{ljk} & = 2 \delta_{il} \ , \\
+    \varepsilon_{ijk} \varepsilon_{ijk} & = 6 \ .
+\end{align}
+
+
+\subsection{Tensores duales}
+
+A cualquier (pseudo-)tensor totalmente antisimétrico de rango $r$ en $n$ dimensiones se le puede asociar un (pseudo-)tensor totalmente antisimétrico de rango $(n-r)$, pues ambos tienen el mismo número de componentes linealmente independientes.
+
+\begin{defi}
+    Si $A_{i_1 \dots i_r}$ es un tensor totalmente antisimétrico de rango $r$, se define un \textbf{pseudotensor dual} de rango $n-r$ como
+    \begin{equation}
+        \mathcal{A}_{i_1 \dots i_{n-r}} = \frac{1}{r!} \varepsilon_{i_1 \dots i_{n-r} j_1 \dots j_r} A_{j_1 \dots j_r} \ ,
+    \end{equation}
+    mientras que la transformación inversa se define como
+    \begin{equation}
+        A_{i_1 \dots i_{r}} = \frac{1}{(n-r)!} \varepsilon_{i_1 \dots i_{r} j_1 \dots j_{n-r}} \mathcal{A}_{j_1 \dots j_{n-r}} \ .
+    \end{equation}
+\end{defi}
+
+Cuando trabajamos en tres dimensiones, a cualquier tensor de rango 3 totalmente antisimétrico, $A_{ijk}$, le podemos asociar un pseudoescalar dual $\mathcal{A}$, tal que
+\begin{equation}
+    \mathcal{A} = \frac{1}{3!} \varepsilon_{ijk} A_{ijk} \ , \qquad A_{ijk} = \varepsilon_{ijk} \mathcal{A} \ ,
+\end{equation}
+y a cualquier tensor antisimétrico $A_{ij}$ se le puede asociar un pseudovector $\mathcal{A}_i$, tal que
+\begin{equation}
+    \mathcal{A}_i = \frac{1}{2} \varepsilon_{ijk} A_{jk} \ , \qquad A_{ij} = \varepsilon_{ijk} \mathcal{A}_k \ ,
+\end{equation}
+y viceversa.
+
+En Física, el uso de tensores y sus duales nos permite tener cantidades diferentes que contienen la misma información, y que pueden ser útiles en diferentes contextos. Por ejemplo, el \emph{momento multipolar magnético de orden 1}, $M_{ij} = - M_{ji}$, contiene la misma información que el pseudovector \emph{momento magnético}, definido como $\mu_i = \varepsilon_{ijk} M_{jk}/2$.
+
+\section{Análisis tensorial}
+
+En el curso de Física Matemática I, ya estudiaron la noción de \emph{análisis vectorial}, que correspondía al uso del operador nabla en diferentes sistemas coordenados. En este, hicieron uso de las nociones de \emph{campo escalar} y \emph{campo vectorial}. Estas nociones pueden también extenderse a elementos de mayor rango mediante los campos tensoriales.
+\begin{defi}
+    Se define un \textbf{campo tensorial} como la función que asocia a cada punto del espacio con un tensor $T_{i_1 i_2 \dots i_r}$, es decir,
+    \begin{equation}
+        x \mapsto T_{i_1 i_2 \dots i_r}(x) \ .
+    \end{equation}
+\end{defi}
+
+\subsection{Derivación}
+
+Dado que un campo tensorial de rango $r$ consta de $n^r$ cantidades definidas en cada punto del espacio, podemos derivar cada una de estas cantidades respecto a las $n$ coordenadas del espacio, obteniendo $n^{r+1}$ derivadas parciales
+\begin{equation}
+    \frac{\partial T_{i_1 \dots i_r}}{\partial x_j} \equiv \partial_j T_{i_1 \dots i_r} \ ,
+\end{equation}
+que forman un tensor cartesiano de rango $r+1$ bajo transformaciones ortogonales. En efecto,
+\begin{align}
+    (\partial_j T_{i_1 \dots i_r})' & = \frac{\partial T'_{i_1 \dots i_r}}{\partial x'_j} \\
+    & = \frac{\partial}{\partial x'_j}(a_{i_1 j_1} \dots a_{i_r j_r} T_{j_1 \dots j_r}) \\
+    & = a_{i_1 j_1} \dots a_{i_r j_r} \frac{\partial T_{j_1 \dots j_r}}{\partial x'_j} \ .
+\end{align}
+Usando ahora la regla de la cadena, tenemos que
+\begin{equation}
+    \frac{\partial T_{j_1 \dots j_r}(x')}{\partial x'_j} = \frac{\partial T_{j_1 \dots j_r}(x')}{\partial x_k} \frac{\partial x_k}{\partial x'_j} = a_{jk} \frac{\partial T_{j_1 \dots j_r}(x')}{\partial x_k}\ ,
+\end{equation}
+de modo que
+\begin{align}
+    (\partial_j T_{i_1 \dots i_r})' & = a_{i_1 j_1} \dots a_{i_r j_r} \frac{\partial T_{j_1 \dots j_r}(x')}{\partial x_k} \frac{\partial x_k}{\partial x'_j} \\
+    & = a_{i_1 j_1} \dots a_{i_r j_r}  a_{jk} \frac{\partial T_{j_1 \dots j_r}(x')}{\partial x_k} \\
+    & = a_{i_1 j_1} \dots a_{i_r j_r}  a_{jk} (\partial_k T_{j_1 \dots j_r}) \ ,
+\end{align}
+comprobando así que transforma como un tensor de orden $r+1$.
+
+También podemos calcular la derivada de un tensor de rango $r$ respecto de un parámetro $t$ \emph{independiente de las coordenadas}. En este caso, el resultado es también un tensor de orden $r$,
+\begin{equation}
+    \frac{d T'_{i_1 \dots i_r}}{dt} = a_{i_1 j_1} \dots a_{i_r j_r} \frac{dA_{j_1 \dots j_r}}{dt} \ . 
+\end{equation}
+
+De una manera similar, podemos operar sobre este nuevo tensor \emph{derivada} con todas las operaciones tensoriales disponibles. En particular, podemos definir el operador nabla en un espacio de $n$ dimensiones. En notación indicial, dado un campo escalar $\phi$ y un vector $\vec{A}$, tenemos
+\begin{align}
+    \nabla \phi & = \partial_i \phi \ , \\
+    \nabla \cdot \vec{A} & = \partial_i A_i \ , \\
+    (\nabla \times \vec{A})_i & = \varepsilon_{ijk} \partial_j A_k \ , \\
+    \nabla^2 \phi & = \partial_i \partial_i \phi \ .
+\end{align}
+
+\subsection{Integración}
+
+Al igual que tenemos \emph{integrales vectoriales} para campos vectoriales, que puedn dar como resultado un vector o un escalar, podemos definir \emph{integrales tensoriales} para campos tensoriales. En particular, revisaremos las integrales de línea, superficie y volumen.
