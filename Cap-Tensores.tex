@@ -459,7 +459,7 @@ También podemos calcular la derivada de un tensor de rango $r$ respecto de un p
 
 De una manera similar, podemos operar sobre este nuevo tensor \emph{derivada} con todas las operaciones tensoriales disponibles. En particular, podemos definir el operador nabla en un espacio de $n$ dimensiones. En notación indicial, dado un campo escalar $\phi$ y un vector $\vec{A}$, tenemos
 \begin{align}
-    \nabla \phi & = \partial_i \phi \ , \\
+    (\nabla \phi)_i & = \partial_i \phi \ , \\
     \nabla \cdot \vec{A} & = \partial_i A_i \ , \\
     (\nabla \times \vec{A})_i & = \varepsilon_{ijk} \partial_j A_k \ , \\
     \nabla^2 \phi & = \partial_i \partial_i \phi \ .
@@ -468,3 +468,80 @@ De una manera similar, podemos operar sobre este nuevo tensor \emph{derivada} co
 \subsection{Integración}
 
 Al igual que tenemos \emph{integrales vectoriales} para campos vectoriales, que puedn dar como resultado un vector o un escalar, podemos definir \emph{integrales tensoriales} para campos tensoriales. En particular, revisaremos las integrales de línea, superficie y volumen.
+
+\subsubsection*{Integrales de línea}
+
+Una integral de línea sobre un campo tensorial $T_{i_i \dots i_r}(x)$ de rango $r$ a lo largo de una curva $\mathcal{C}$ definida por un parámetro $\lambda$ tal que $\lambda_1 < \lambda < \lambda_2$, genera una tensor de rango $r+1$ definido como
+\begin{equation}
+    C_{j i_1 \dots i_r} = \int_{\mathcal{C}} T_{i_1 \dots i_r} (x) dx_j \ ,
+\end{equation}
+o de forma explícita,
+\begin{equation}
+    C_{j i_1 \dots i_r} =  \int_{\lambda_1}^{\lambda_2} T_{i_1 \dots i_r}(x(\lambda)) \left(\frac{dx_j}{d\lambda}(\lambda) \right) d\lambda \ .
+\end{equation}
+
+En efecto, observamos que
+\begin{align}
+    C'_{j i_1 \dots i_r} & = \int_{\lambda_1}^{\lambda_2} [T'_{i_1 \dots i_r}(x(\lambda))] \left[ \frac{dx'_j}{d\lambda}(x) \right] d\lambda \ , \\
+    & = \int_{\lambda_1}^{\lambda_2} [a_{i_1 j_1} \dots a_{i_r j_r} T_{j_1 \dots j_r}(x(\lambda))] \left[ \frac{d(a_{jk}x_k)}{d\lambda}(x) \right] d\lambda \ , \\
+    & = a_{jk} a_{i_1 j_1} \dots a_{i_r j_r} \int_{\lambda_1}^{\lambda_2} T_{j_1 \dots j_r}(x(\lambda)) \frac{dx_k}{d\lambda}(\lambda) d\lambda \ , \\
+    & = a_{jk} a_{i_1 j_1} \dots a_{i_r j_r} C_{k j_1 \dots j_r} \ .
+\end{align}
+
+\subsubsection*{Integrales de superficie}
+
+Dado un (pseudo)vector $n_i(x)$ unitario y normal a la superficie $S$ en el punto $x_i$, podemos definir la integral de superficie de un campo tensorial $T_{i_i \dots i_r}(x)$ de rango $r$, que será un (pseudo)tensor de rango $r+1$, como
+\begin{equation}
+    C_{j i_1 \dots i_r} = \int_S T_{i_1 \dots i_r} (x) dS_j \ , \qquad dS_j = n_j dS \ ,
+\end{equation}
+donde $dS$ es el elemento de superficie que, por definición, es un escalar.
+
+Comprobamos que esta integral es un tensor, ya que
+\begin{align}
+    C'_{j i_1 \dots i_r} & = \int_S T'_{i_1 \dots i_r}(x) n'_j dS' \ , \\
+    & = \int_S [a_{i_1 j_1} \dots a_{i_r j_r} T_{j_1 \dots j_r}(x)](a_{jk} n_k) dS \ , \\
+    & = a_{jk} a_{i_1 j_1} \dots a_{i_r j_r} \int_S T_{j_1 \dots j_r}(x) n_k dS \ , \\
+    & = a_{jk} a_{i_1 j_1} \dots a_{i_r j_r} C_{k j_1 \dots j_r} \ .
+\end{align}
+
+\subsubsection*{Integrales de volumen}
+
+En este caso, dado un volumen $n-$dimensional, la integral de volumen de un campo tensorial $T_{i_i \dots i_r}(x)$ de rango $r$, es también un tensor de rango $r$, definido como
+\begin{equation}
+    C_{i_1 \dots i_r} = \int_V T_{i_1 \dots i_r}(x) d^n x \ .
+\end{equation}
+
+Efectivamente, observamos que
+\begin{align}
+    C'_{i_1 \dots i_r} & = \int_V T'_{i_1 \dots i_r}(x) d^n x' \ , \\
+    & = \int_V [a_{i_1 j_1} \dots a_{i_r j_r} T_{j_1 \dots j_r}(x)] \left| \frac{\partial x'}{\partial x} \right| d^n x \ , \\
+    & = a_{i_1 j_1} \dots a_{i_r j_r} \int_V T_{j_1 \dots j_r}(x) \det(A) d^n x \ , \qquad \det(A) = 1 \\
+    & = a_{i_1 j_1} \dots a_{i_r j_r} \int_V T_{j_1 \dots j_r}(x) d^n x \ , \\
+    & = a_{i_1 j_1} \dots a_{i_r j_r} C_{j_1 \dots j_r} \ .
+\end{align}
+
+\subsubsection*{Teoremas integrales}
+
+El \textbf{teorema fundamental del cálculo} en varias variables puede ser escrito en notación tensorial como
+\begin{equation}
+    \int_{C_{[A,B]}} (\partial_k T_{i_1 \dots i_r}) dx_k = T_{i_1 \dots i_r}(B) - T_{i_1 \dots i_r}(A) \ ,
+\end{equation}
+donde $C_{[A,B]}$ es una curva que une los puntos $A$ y $B$.
+
+El \textbf{teorema de Gauss} en 3 dimensiones puede escribirse como
+\begin{equation}
+    \int_V \partial_j T_{i_1 \dots k \dots i_r}(x) dV = \oint_{\partial V} T_{i_1 \dots k \dots i_r} (x) dS_j \ ,
+\end{equation}
+y puede generalizarse al caso en el que no necesariamente exista una contracción de índices (no necesariamente hay una divergencia) como
+\begin{equation}
+    \int_V \partial_j T_{i_1 \dots i_r}(x) dV = \oint_{\partial V} T_{i_1 \dots i_r} (x) dS_j \ .
+\end{equation}
+
+El \textbf{teorema de Stokes} se puede escribir de una manera similar, escribiendo los casos donde hay contracción de índices,
+\begin{equation}
+    \int_S \varepsilon_{ijk} \partial_j T_{i_1 \dots k \dots i_r} dS_i = \oint_{\partial S} T_{i_1 \dots k \dots i_r} dx_k \ ,
+\end{equation}
+y el caso en que no necesariamente exista una contracción,
+\begin{equation}
+    \int_S \varepsilon_{ijk} \partial_j T_{i_1 \dots i_r} dS_i = \oint_{\partial S} T_{i_1 \dots i_r} dx_k \ .
+\end{equation}
