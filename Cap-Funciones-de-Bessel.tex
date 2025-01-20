@@ -16,4 +16,200 @@ o desarrollando más explícitamente la ecuación, obtenemos la \textbf{ecuació
 
 Si bien, como parte de la ecuación de Helmholtz, se ha impuesto que $m$ es un valor entero, esta no es una restricción propia de la EDO de Bessel, por lo que comúnmente se denota a esta constante como $\nu$, la que puede tomar \emph{valores reales no negativos}\footnote{Comúnmente, se utilizan letras latinas para denotar números enteros, y letras griegas para números reales}.
 
+\section{Funciones de Bessel}
+
+\subsection{Resolviendo la ecuación de Bessel mediante el método de Series}
+
+Dado que $x=0$ es un punto \emph{singular irregular} de la ecuación de Bessel, podemos utilizar el método de Frobenius y proponer una solución de la forma
+\begin{equation}
+    y(x) = \sum_{k = 0}^\infty a_k x^{s+k} \ ,
+\end{equation}
+que tras derivarla, podemos incluirla en la ecuación de Bessel, obteniendo
+\begin{equation}
+    \sum_{k = 0}^\infty a_k (s + k)(s+ k - 1)x^{k + s} + \sum_{k = 0}^\infty a_k (s+k) x^{s+k} + \sum_{k = 0}^\infty a_{k} x^{s+k + 2} - \sum_{k = 0}^\infty a_k m^2 x^{s+k} = 0 \ .
+\end{equation}
+
+Haciendo $k = 0$, obtenemos el coeficiente que acompañará a $x^s$, la potencia de $x$ más pequeña que aparecerá al lado izquierdo de la ecuación, de modo que, como en general $x^s \neq 0$, tenemos
+\begin{equation}
+    a_0 \left[ s(s-1) + s - m^2 \right] = 0 \ ,
+\end{equation}
+y como por definición $a_0 \neq 0$, obtenemos la \textbf{ecuación indicial}
+\begin{equation}
+    s^2 - m^2 = 0 \ ,
+\end{equation}
+cuyas soluciones son $s = \pm m$.
+
+Haciendo lo mismo para $k = 1$, tenemos la ecuación
+\begin{equation}
+    a_1\left[ (s+1)s + s + 1 - m^2 \right] = 0 \ ,
+\end{equation}
+que puede ser reescrito como
+\begin{equation}
+    a_1(s+1-m)(s+1+m) \ = 0 \ ,
+\end{equation}
+y como anteriormente impusimos que $s=\pm m$, y suponiendo además que $m \neq -1/2$, ninguno de los témrinos indiciales se anula, por lo que requeriremos que $a_1 = 0$.
+
+Siguiendo el mismo proceso con los siguientes términos, podemos llegar a la relación de recurrencia
+\begin{equation}
+    a_{k + 2} = -a_k \frac{1}{(s+m+(k+2))(s-m+(k+2))} \ .
+\end{equation} 
+
+Es más, ya que los coeficientes impares se anulan, podemos escribir la relación de recurrencia únicamente para los coeficientes pares, de modo que
+\begin{equation}
+    a_{2k} = (-1)^k \frac{1}{2^{2k} k! (m + 1) (m + 2) \dots (m + k)}a_0 \ .
+\end{equation}
+
+\subsubsection{Caso $\nu$ no entero}
+
+Si bien $a_0$ es una constante arbitraria, es convencional escoger un valor particular, tal que
+\begin{equation} \label{eq:a0_convencional}
+    a_0 = \frac{1}{2^m \Gamma(1+m)} \ ,
+\end{equation}
+donde definiremos la \textbf{función Gamma} como una extensión del factorial para números no enteros, tal que
+\begin{equation}
+    \Gamma(x) = \int_0^{+\infty} e^{-t} t^{x-1} dt = (x-1) \Gamma(x-1)\ ,
+\end{equation}
+que en el caso en que $x=n$, tendremos que
+\begin{equation}
+    \Gamma(n+1) = n! \ .
+\end{equation}
+
+Gracias a la función Gamma, podemos reescribir nuestra relación de recurrencia como
+\begin{equation}
+    a_{2k} = a_0 (-1)^k \frac{1}{2^{2k} k!} \frac{\Gamma(1+m)}{\Gamma(k+m+1)} \ ,
+\end{equation}
+con lo que una primera solución a la ecuación de Bessel, utilizando \eqref{eq:a0_convencional}, será \textbf{la función de Bessel de primera especie y de orden} $m$, 
+\begin{equation}
+    J_\nu (x) = \sum_{k=0}^\infty \frac{(-1)^k}{k! \Gamma(k+\nu+1)} \left(\frac{x}{2}\right)^{2k+\nu} \ ,
+\end{equation}
+y como la ecuación de Bessel depende \emph{del cuadrado} de $\nu$, también podemos definir la solución para $s = -\nu$ como
+\begin{equation}
+    J_{-\nu} (x) = \sum_{k=0}^\infty \frac{(-1)^k}{k! \Gamma(k-\nu+1)} \left(\frac{x}{2}\right)^{2k-\nu} \ ,
+\end{equation}
+En este caso, dado que $J_{\pm \nu}$ son linealmente independientes, una solución general a la ecuación de Bessel será
+\begin{equation}
+    y(x) = c_1 J_\nu(x) + c_2 J_{-\nu}(x) \ .
+\end{equation}
+Es necesatio aclarar que cuando $\nu$ es \emph{positivo, pero no entero}, $J_\nu(0) = 0$, mientras que $J_{-\nu}(0)$ es divergente.
+
+\subsubsection{Caso $\nu$ entero}
+
+En este caso, podemos nuevamente hallar una solución de la forma 
+\begin{equation}
+    J_n(x) = \sum_{k=0}^\infty \frac{(-1)^k}{k! (k+n)!} \left( \frac{x}{2} \right)^{2k+\nu} \ ,
+\end{equation}
+para las cuales se satisface\footnote{En estricto rigor, hay bastantes sutilezas en esta afirmación. Personalmente considero innecesaria esta discusión, pero si desea profundizar en ella, puede revisar el capítulo de Funciones de Bessel del apunte \cite{Rubilar}.} que
+\begin{equation}
+    J_{-n}(x) = (-1)^n J_n(x) \ ,
+\end{equation}
+de modo que ambas soluciones ya no son linealmente independientes. Por ello, deberemos hallar otra solución a la ecuación de Bessel.
+
+\subsection{Funciones de Bessel de segunda especie, o de Neumann}
+
+Mediante el método de Frobenius, podemos encontrar no solo soluciones en serie de potencias, sino que también soluciones que combinan logaritmos y series de potencias (véase el Teorema de Fuchs en el anexo B). Mediante este método, podemos encontrar que una segunda solución, denominada históricamente \textbf{funciones de Neumann} $N_\nu(x)$, o más recientemente \textbf{funciones de Bessel de segunda especie}, $Y_\nu(x)$, como
+\begin{equation}
+    Y_\nu(x) = N_\nu(x) = \frac{\cos(\pi \nu) J_\nu(x) - J_{-\nu(x)}}{\sin(\pi \nu)} \ , \qquad \nu \notin \mathbb{Z} \ ,
+\end{equation}
+que es linealmente independiente a $J_\nu(x)$. Por ello, podemos definir las soluciones generales de la ecuación de Bessel como
+\begin{equation}
+    y(x) = C_3 J_\nu(x) + C_4 Y_\nu(x) \ .
+\end{equation}
+
+Ahora, esta definición es válida para números \emph{no enteros}. Cuando deseamos trabajar con números enteros, es posible demostrar\footnote{Nuevamente, puede consultar esta afirmación en más detalle en el apunte \cite{Rubilar}.} que esta solución sigue siendo linealmente independiente en el límite en que $\nu \to n$, de modo que
+\begin{equation}
+    Y_n(x) = \lim_{\nu \to n} \frac{\cos(\pi \nu) J_\nu(x) - J_{-\nu(x)}}{\sin(\pi \nu)} \ , \qquad n \in \mathbb{Z} \ .
+\end{equation}
+
+De forma similar a las funciones de Bessel de primera especie, estas satisfacen, para orden entero, 
+\begin{equation}
+    Y_{-n}(x) = (-1)^n Y_n(x) \ ,
+\end{equation}
+
+\subsection{Funciones de Hankel}
+
+También es útil definir, particularmente al estudiar soluciones de la ecuación de onda,  un nuevo conjunto de funciones linealmente independientes, las llamadas \textbf{funciones de Hankel}, que son combinaciones lineales de las funciones de Bessel y Neumann,
+\begin{align}
+    H_\nu^{(1)}(x) & = J_\nu(x) + Y_\nu(x) \ , \\
+    H_\nu^{(2)}(x) & = J_\nu(x) - Y_\nu(x) \ .
+\end{align}
+
+Mediante su representación integral (que mencionaremos más adelante), es posible mostrar\footnote{En este caso, el detalle puede encontrarse en \cite{Arfken}.} que las funciones de Hankel satisfacen las relaciones
+\begin{align}
+    H_\nu^{(1)}(x) = e^{-i\nu\pi} H_{-\nu}^{(1)}(x) \ , \\
+    H_\nu^{(2)}(x) = e^{i\nu\pi} H_{-\nu}^{(2)}(x) \ .
+\end{align}
+
+
+\subsection{Función generatriz (para orden entero)}
+
+En el caso en que $\nu$ es un número entero, podemos escribir una función generatriz de una forma análoga a cualquier polinomio ortogonal. En este caso, esta tiene la forma
+\begin{equation}
+    G(x,t) = \exp\left[ \frac{x}{2} \left( t - \frac{1}{t} \right) \right] = \sum_{n = -\infty}^\infty J_n(x) t^n \ .
+\end{equation}
+Es directo verificar la segunda igualdad al expandir la exponencial en una serie de potencias. Gracias a la función generatriz, podemos hallar de una forma más sencilla algunas propiedades para lzs funciones de Bessel de orden entero.
+
+\subsection{Ceros de las funciones de Bessel}
+
+
+\subsection{Propiedades}
+\begin{enumerate}
+    \item \textbf{Simetría.}
+    \item \textbf{Ortogonalidad.}
+    \item \textbf{Completitud.}
+    \item \textbf{Serie de Fourier-Bessel.}
+    \item \textbf{Representación Integral.}
+    \item \textbf{Comportamiento asintótico.}
+    \item \textbf{Relaciones de Recurrencia.}
+\end{enumerate}
+
+
+\section{Funciones modificadas de Bessel}
+
+¿Qué pasaría si, en la ecuación BESSEL, $x^2$ tuviera signo negativo en lugar de positivo? Es decir, si la ecuación toma la forma
+\begin{equation}
+    x^2 y''(x) + x y'(x) - (x^2 + \nu^2)y(x) = 0 \ . 
+\end{equation}
+
+Esta ecuación es conocida como la \textbf{ecuación modificada de Bessel}, y sus soluciones, a diferencia de las funciones de Bessel, \emph{no son oscilantes}, y su comportamiento es exponencial.
+
+Por suerte, métodos análogos a los utilizados anteriormente nos permiten encontrar soluciones a esta ecuación, las que corresponden a las \textbf{funciones modificadas de Bessel de primera especie}, $I_\nu(x)$, y a las \textbf{funciones modificadas de Bessel de segunda especie}, $K_\nu(x)$, definidas como
+\begin{align}
+    I_\nu(x) & = i^{-\nu} J_\nu(ix) = \sum_{k=0^\infty} \frac{1}{k! \Gamma(k+\nu+1)} \left( \frac{x}{2} \right)^{2k+\nu} \ , \\
+    K_\nu(x) & = \frac{\pi}{2} \left[ \frac{I_{-\nu}(x) - I_\nu(x)}{\sin(\nu \pi)} \right] \ , \qquad \nu \notin \mathbb{Z} \ , \\
+    K_n(x) & = \lim_{\nu \to n} \frac{\pi}{2} \left[ \frac{I_{-\nu}(x) - I_\nu(x)}{\sin(\nu \pi)} \right] \ , \qquad n \in \mathbb{Z} \ .
+\end{align}
+
+\section{Funciones esféricas de Bessel}
+
+Si bien las incluímos en el mismo capítulo dado su nombre, las \textbf{funciones esféricas de Bessel} surgen como soluciones de la parte radial de la ecuación de Helmholtz \emph{en coordenadas esféricas}, donde en la ecuación X hallamos que la ecuación esférica de Bessel es
+\begin{equation}
+    r^2 \frac{d^2R}{dr^2} + 2r \frac{dR}{dr} + [k^2 r^2 - \ell (\ell+1)]R(r) = 0 \ ,
+\end{equation}
+donde $\ell$ es un número entero. Notemos que, bajo la sustitución $R(r) = r^{-1/2} S(r)$, la ecuación toma la forma
+\begin{equation}
+    r^2 S'' + rS' + \left[k^2r^2 - \left(\ell + \frac{1}{2}\right)\right]S = 0 \ ,
+\end{equation}
+que corresponde a la ecuación de Bessel de orden $\ell + 1/2$. Por ello, una solución de esta ecuación será
+\begin{equation}
+    y(r) = C_1 \frac{J_{\ell + 1/2}(kr)}{\sqrt{r}} + C_2 \frac{Y_{\ell + 1/2}(kr)}{\sqrt{r}} \ ,
+\end{equation}
+donde las constantes $C_1$ y $C_2$ se determinan a partir de las condiciones de contorno. En particular, cuando deseamos soluciones que sean finitas en el origen, escogeremos $C_2 = 0$.
+
+Bajo una normalización adecuada, preferimos definir las \textbf{funciones esféricas de Bessel} de primera y segunda especie como
+\begin{align}
+    j_\ell (x) & = \sqrt{\frac{\pi}{2x}} J_{\ell + 1/2}(x) \ , \\
+    y_\ell (x) = n_\ell(x) & = \sqrt{\frac{\pi}{2x}} Y_{\ell + 1/2} \ ,
+\end{align}
+donde, para $\ell$ entero, $Y_{\ell + 1/2}(x) = (-1)^{\ell + 1}J_{-\ell - 1/2}(x)$. Vale la pena hacer notar que
+\begin{align}
+    j_0(x) & = \frac{\sin x}{x} \ , \\
+    y_0(x) & = - \frac{\cos x}{x} \ .
+\end{align}
+
+Para el caso de orden entero, también es posible escribirlas en términos de una serie de potencias, donde
+\begin{align}
+    j_n(x) & = 2^n x^n  \sum_{k=0}^\infty \frac{(-1)^k}{k!} \frac{(k+n)!}{(2k+2n+1)!}x^{2k} \ , \\
+    y_n(x) & = \frac{(-1)^{n+1}}{2^n x^{n+1}} \sum_{k = 0}^\infty \frac{(-1)^k (k-n)!}{k! (2k-2n)!}z^{2k} \ .
+\end{align}
+
 % Nuevamente, podemos hacer uso del método de Frobenius para resolver la EDO alrededor de $x=0$. Podríamos preguntarnos si esto es posible, ya que $x=0$ corresponde a un punto singular de la ecuación, ya que si consideramos una solución de la forma $y(x) = \sum_n a_n x^n$, en $x=0$, $y(0) = 0$
