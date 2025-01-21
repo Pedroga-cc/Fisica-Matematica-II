@@ -1,4 +1,4 @@
-\chapter{El método de series para EDO y una introducción al problema de Sturm-Liouville}
+\chapter{El método de series para EDO y una introducción al problema de Sturm-Liouville} \label{cap:series-sl}
 
 Hasta ahora, hemos estudiado ecuaciones que al cumplir ciertas propiedades, como tener una forma u otra, sabemos hallar una solución de una forma sencilla, como una ecuación de Euler-Cauchy, una EDO lineal de segundo orden con coeficientes constantes, entre otras. Sin embargo, existen algunas ecuaciones que pese a aparentar ser sencillas, no es posible hallar una solución en términos de funciones conocidas, como es el caso de la \emph{ecuación de Airy}
 \begin{equation}
@@ -26,7 +26,7 @@ Antes de discutir la existencia de soluciones para esta ecuación, debemos defin
 \end{defi}
 
 En el caso en que el coeficiente $P(x)$ no se anula en el dominio del sistema, podemos garantizar la existencia de una solución para \eqref{eq:EDO_Series} mediante el siguiente teorema
-\begin{teorema}[de Fuchs]
+\begin{teorema}[de Fuchs]\label{teo:Fuchs}
     Una ecuación diferencial de la forma \eqref{eq:EDO_Series} posee al menos una solución expresable en una serie de potencias en torno a $x=x_0$ si este es un punto ordinario o un punto singular regular de la EDO \eqref{eq:EDO_Series}. La solución será de la forma 
     \begin{equation} \label{eq:solucion_serie}
         y(x) = \sum_{n=0}^\infty a_n(x-x_0)^{n+s} \ , \qquad a_0 \neq 0

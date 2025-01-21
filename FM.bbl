@@ -421,6 +421,39 @@
       \field{year}{1987}
       \true{nocite}
     \endentry
+    \entry{Bessel_function_2025}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=44050ab214b6801dd01044e6a7f3041a}{%
+           family={inglés)},
+           familyi={i\bibinitperiod},
+           given={Wikipedia\bibnamedelima (en},
+           giveni={W\bibinitperiod\bibinitdelim (\bibinitperiod}}}%
+      }
+      \strng{namehash}{44050ab214b6801dd01044e6a7f3041a}
+      \strng{fullhash}{44050ab214b6801dd01044e6a7f3041a}
+      \strng{fullhashraw}{44050ab214b6801dd01044e6a7f3041a}
+      \strng{bibnamehash}{44050ab214b6801dd01044e6a7f3041a}
+      \strng{authorbibnamehash}{44050ab214b6801dd01044e6a7f3041a}
+      \strng{authornamehash}{44050ab214b6801dd01044e6a7f3041a}
+      \strng{authorfullhash}{44050ab214b6801dd01044e6a7f3041a}
+      \strng{authorfullhashraw}{44050ab214b6801dd01044e6a7f3041a}
+      \field{sortinit}{i}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Wikipedia}
+      \field{month}{1}
+      \field{note}{Page Version ID: 1270535814}
+      \field{title}{Bessel Function}
+      \field{year}{2025}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://en.wikipedia.org/w/index.php?title=Bessel_function&oldid=1270535814
+      \endverb
+      \verb{url}
+      \verb https://en.wikipedia.org/w/index.php?title=Bessel_function&oldid=1270535814
+      \endverb
+    \endentry
     \entry{Jackson_2021}{book}{}{}
       \name{author}{1}{}{%
         {{hash=bc51fc62aec5c2fb2968eb631d48cf2a}{%
