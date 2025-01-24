@@ -9,7 +9,7 @@
 % \usepackage[rflt]{floatflt} 
 \usepackage{framed}
 \usepackage[most]{tcolorbox}
-\usepackage{xcolor} 
+\usepackage[svgnames]{xcolor} 
 \colorlet{shadecolor}{green!20}
 \setlength\FrameSep{0.5ex}
 \usepackage{thmtools}
@@ -130,6 +130,33 @@ prefoothook     =\vspace*{-1pt}\end{Gdbleftbar}%
   {\large\slshape\bfseries\sffamily\fontfamily{Montserrat-LF}\selectfont}} % Formato
 \makeatother
 
+%%%%%%%%% Modificamos la forma de los títulos
+
+%%% ******************************************************* added
+\definecolor{titlechap}{HTML}{282829} % color of the chapter title <<<
+\definecolor{numberchap}{HTML}{000945}% color of the chapter number <<<<
+\definecolor{left}{HTML}{2B7EA0}
+\definecolor{right}{HTML}{2a9d8f}
+
+\usepackage{tikz}
+\usetikzlibrary{fadings,positioning}
+\newcommand{\gradient}[1]{
+  \begin{tikzpicture}
+    \node (rect) at (0,0) [shade, left color=left,right color=right,path fading=east,minimum width=\textwidth,minimum height=2.5cm] {};
+    \node(title)[above left = 10pt and -10pt of rect.south west, anchor=south west, font=\CTV, text width=16cm] {\textcolor{titlechap}{#1}};
+    \ifnum\value{chapter}>0 \node[left = 10pt of rect.north east,  anchor=center, font=\CNoV] {\textcolor{numberchap!80}{\thechapter}};\fi%
+\end{tikzpicture}%
+\vskip 40pt%
+}
+
+% \@addtoreset{chapter}{printbibliography}
+
+\renewcommand{\DOCH}{}
+\renewcommand{\DOTI}[1]{\gradient{#1}}
+\renewcommand{\DOTIS}[1]{\gradient{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+
 %Referencias
 \usepackage[backend=biber]{biblatex}
 \addbibresource{Referencias.bib}
@@ -156,7 +183,7 @@ prefoothook     =\vspace*{-1pt}\end{Gdbleftbar}%
 {\large Pedro A. Contreras-Corral \par}
 \vfill
 {\large Enero 2025 \par}
-{\large v1.0 \par}
+{\large v1.0.0 \par}
 \end{titlepage}
 
 \chapter*{Prefacio}
@@ -165,7 +192,7 @@ Este documento ha sido preparado por Pedro Contreras Corral como material de apo
 
 También se han usado como base (en mayor o menor medida) los textos establecidos en la bibliografía, \emph{Mathematical Physics} de Butkov, \emph{Mathematical Methods for Physicists} de Arfken, \emph{Mathematical Methods for Physics and Engineering} de Riley. Junto a ellos, se han usado algunas ideal del libro \emph{Mathematical Physics, a Modern Introduction to its Foundations} de Hassani.
 
-Es necesario recordar que esta es la primera versión de este documento, por lo que es probable que contenga algunos typos y errores menores. En caso de que estos se presenten, serán mencionados en clases para que puedan tomar notas al respecto, y serán corregidos en versiones posteriores del documento.
+Es necesario recordar que esta es la primera versión de este documento, por lo que es probable que contenga algunos typos y errores menores. En caso de que estos se presenten, serán mencionados en clases para que puedan tomar notas al respecto, y serán corregidos en versiones posteriores del documento. De igual manera, algunas demostraciones no se encuentran escritas, de modo que derivo el detalle de ellas a las fuentes respectivas cuando lo considere necesario. En versiones futuras de este documento se actualizarán estas ausencias.
 
 
 Agradezco los aportes de Lixin Lai, Fernanda Mella y Amaro Díaz al facilitarme sus notas y el material del curso de la profesora Ivana Sebestova, así como los de José Huenchual por sus notas del curso de la profesora Ariana Muñoz.
@@ -175,7 +202,7 @@ Agradezco los aportes de Lixin Lai, Fernanda Mella y Amaro Díaz al facilitarme 
 \emph{\textquotedblleft ...El trabajo en equipo se convertirá en el método de investigación científica."}
 
 \begin{flushright}
-John Desmond Bernal.
+Atribuída a John Desmond Bernal.
 \end{flushright}
 
 
@@ -198,6 +225,9 @@ John Desmond Bernal.
 
 
 \nocite{*} %Referencia todo, incluso lo que no está citado.
-\printbibliography[title={Referencias}]
+% \chapter*{Referencias}
+\setcounter{chapter}{0}
+
+\printbibliography[heading=bibintoc, title=Referencias]
 
 \end{document}

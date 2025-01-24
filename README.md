@@ -1,20 +1,15 @@
 # Física-Matemática
-Repositorio de mi apunte (en construcción) de Física Matemática.
+Repositorio de mi apunte del curso Física Matemática II de la UdeC, creado a partir del apunte de Alejandro Saavedra disponible en [su repositorio](https://github.com/AleSaa66/Fisica-Matematica).
 
 
-La versión actualizada del archivo .pdf compilado lo puede encontrar en este [link](https://drive.google.com/file/d/1luIxjjkQiHHaHjIkFwocwK7k4E-3bflC/view?usp=sharing). Además, las demostraciones que no se encuentran en el apunte, estarán en el siguiente documento extra donde puede acceder en este otro [link](https://drive.google.com/file/d/1FVmw5Z-zw75ktq2_cGqdN17xgEpP6msq/view?usp=sharing)
+La versión actualizada del archivo .pdf compilado lo puede encontrar en este [link](https://drive.google.com/file/d/1E_A4k7EziUMChqkPDXmnSgDRSN1bMsYA/view?usp=drive_link).
 
 ## Contenidos:
 
-* Espacio de funciones
-
 * Series de Fourier
 
-* Transformadas de integrales: 
-
-  - Transformada de Fourier
-  - Transformada de Laplace
-  
+* Transformada de Fourier 
+ 
 * Delta de Dirac
 
 * Ecuaciones Diferenciales Parciales: 
@@ -22,10 +17,26 @@ La versión actualizada del archivo .pdf compilado lo puede encontrar en este [l
   - Método de separación de variables
   - Método de las transformadas integrales
   - Método de las funciones de Green
-  
-* Ecuaciones diferenciales por el método de series
+
 
 * Funciones especiales:
 
-  - Función Gamma
   - Funciones de Legendre
+
+  - Funciones asociadas de Legendre
+
+  - Armónicos Esféricos
+
+  - Funciones de Bessel
+
+  - Funciones modificadas de Bessel
+
+  - Funciones esféricas de Bessel
+
+* Tensores Cartesianos
+
+Además, en los apéndices se cubren los siguientes temas:
+
+* Espacio de Funciones
+
+* Ecuaciones diferenciales por el método de series
