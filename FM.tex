@@ -91,16 +91,17 @@
 %%%%%%%%% Modificamos la forma de los títulos
 
 %%% ******************************************************* added
-\definecolor{titlechap}{HTML}{282829} % color of the chapter title <<<
+\definecolor{titlechap}{HTML}{FEF8F8} % color of the chapter title <<<
 \definecolor{numberchap}{HTML}{000945}% color of the chapter number <<<<
 \definecolor{left}{HTML}{2B7EA0}
 \definecolor{right}{HTML}{2a9d8f}
+\definecolor{righter}{HTML}{6EBCB2}
 
 \usepackage{tikz}
 \usetikzlibrary{fadings,positioning}
 \newcommand{\gradient}[1]{
   \begin{tikzpicture}
-    \node (rect) at (0,0) [shade, left color=left,right color=right,path fading=east,minimum width=\textwidth,minimum height=2.5cm] {};
+    \node (rect) at (0,0) [shade, left color=left,middle color=right, right color=righter,minimum width=\textwidth,minimum height=2.5cm] {};
     \node(title)[above left = 10pt and -10pt of rect.south west, anchor=south west, font=\CTV, text width=16cm] {\textcolor{titlechap}{#1}};
     \ifnum\value{chapter}>0 \node[left = 5pt of rect.north east,  anchor=center, font=\CNoV] {\textcolor{numberchap!80}{\thechapter}};\fi%
 \end{tikzpicture}%
@@ -186,11 +187,12 @@ prefoothook     =\vspace*{-1pt}\end{Gdbleftbar}%
 
 \newcommand{\x}{\vec{x}}
 
+% \usepackage[a-1b]{pdfx} % Permite compatibilidad con Chrome
+
 \usepackage[colorlinks]{hyperref}
 
 \usetikzlibrary{calc,shadows,shapes.geometric}
 
-% \renewcommand\theHtable{Appendix.\thetable}
 
 \begin{document}
 
@@ -199,22 +201,8 @@ prefoothook     =\vspace*{-1pt}\end{Gdbleftbar}%
 \newgeometry{top=2cm,bottom=1.5cm, left=1.5cm, right=1.5cm}
 
 \thispagestyle{empty}
-% \begin{tikzpicture}
-%   [   overlay,
-%       remember picture,
-%       mynode/.style={left,fill=yellow!10,general shadow={shadow scale=1, shadow xshift=-0.8ex, shadow yshift=-0.8ex,
-%   opacity=1, fill=gray!50}},
-%   ]
-%       \fill[left!70] (current page.south west) rectangle (current page.north east);
-%       \node[mynode] at ($(current page.north east)+(-1,-6)$) {\fontsize{25}{30}\selectfont \textbf{Apuntes de Física Matemática II}};
-%       \node[mynode] at ($(current page.north east)+(-1.5,-8)$) {\fontsize{20}{24}\selectfont \textsc{Pedro A. Contreras-Corral}};
-%       \node[mynode] at ($(current page.north east)+(-1.8,-10)$) {\fontsize{15}{18}\selectfont Concepción, Enero 2025};
-%       % \node[above right] at ($(current page.south west)+(5,5)$) {\includegraphics[scale=0.5]{}};
-      
-%   \end{tikzpicture}
 
-\begin{tikzpicture}[remember picture,overlay,mynode/.style={left,fill=yellow!10,general shadow={shadow scale=1, shadow xshift=-0.8ex, shadow yshift=-0.8ex,
-    opacity=1, fill=gray!50}},]
+\begin{tikzpicture}[remember picture,overlay]
   \fill[left!70!right] (current page.south west) rectangle (current page.north east);
   
   
