@@ -26,6 +26,8 @@ La constante $T$ la tomaremos como la  menor constante positiva que satisface la
     tiene el mismo período $T$.
 \end{enumerate}
 
+\newpage
+
 \begin{ejemplo}
 Encontrar el período de la función $f(t) = \cos \frac{t}{3} + \cos \frac{t}{4}$.
 \\
@@ -95,11 +97,15 @@ $$f_e(t) = f_e(t + 2\pi)$$
  
 \begin{defi}
 Sea $f: [-a,a] \longrightarrow \mathbb{R}$ perteneciente a $\mathscr{C}[-a,a]$.
+Diremos que $f$ es una \textbf{función par} si y solo si, para todo $x$ en el intervalo $[-a,a]$, se cumple que
+\begin{equation}
+    f(-t) = f(t) \ .
+\end{equation}
+De forma similar, diremos que $f$ es una \textbf{función impar} si y solo si, para todo $x$ en el intervalo $[-a,a]$, se cumple que
 \vspace{-0.1cm}
-\begin{align*}
-    f ~\mbox{es par} &\Leftrightarrow \forall x \in [-a,a] :~ f(-t) = f(t). \\
-    f ~\mbox{es impar} &\Leftrightarrow \forall x \in [-a,a] :~ f(-t) = -f(t).
-\end{align*}
+\begin{equation}
+     f(-t) = -f(t) \ .
+\end{equation}
 \end{defi} 
 
 % \textbf{Observación 1:} 
@@ -315,26 +321,24 @@ Es claro que la serie de Fourier de $f(x) = x^2$ para todo $x\in \mathbb{R}$ rep
 
 La gráfica de $f$ en conjunto con diferentes sumas parciales de su serie de Fourier están representadas en la figura \ref{fig:EjemploFourier1}. 
 
-\begin{figure}[H]
+% \begin{figure}[htb]
     \centering
-    \includegraphics[scale = 0.65]{Figuras/EjemploFourier1.pdf}
-    \caption{Serie de Fourier de la función $f(x) = x^2, -\pi \leq x \leq \pi$, truncada hasta $n = 4$.}
+    \includegraphics[width = 0.8\textwidth]{Figuras/EjemploFourier1.pdf}
+    \captionof{figure}{Serie de Fourier de la función $f(x) = x^2, -\pi \leq x \leq \pi$, truncada hasta $n = 4$.}
     \label{fig:EjemploFourier1}
-\end{figure}
-
-El teorema visto para convergencia uniforme nos garantiza que esta serie converge uniformemente a $f(x) = x^2$ en $[-\pi,\pi]$, es más, al aplicar el criterio de M de Weierstrass a la serie, ésta converge para todo $x \in \mathbb{R}$, pues
-$$\forall  x \in \mathbb{R}: ~ \left|(-1)^n \frac{4}{n^2} \cos(nx)\right| \leq \frac{4}{n^2} = M_n ~~\mbox{y}~~  \sum\limits_{n=1}^{\infty} M_n < \infty.$$
-
+% \end{figure}
+% El teorema visto para convergencia uniforme nos garantiza que esta serie converge uniformemente a $f(x) = x^2$ en $[-\pi,\pi]$, es más, al aplicar el criterio de M de Weierstrass a la serie, ésta converge para todo $x \in \mathbb{R}$, pues
+% $$\forall  x \in \mathbb{R}: ~ \left|(-1)^n \frac{4}{n^2} \cos(nx)\right| \leq \frac{4}{n^2} = M_n ~~\mbox{y}~~  \sum\limits_{n=1}^{\infty} M_n < \infty.$$
 \end{ejemplo}
 
-Podemos usar la expansión en serie de Fourier de $f(x) = x^2$ en $[-\pi,\pi]$ para probar que 
-$$\sum_{n=1}^{\infty} \frac{1}{n^2} = 1 + \frac{1}{4} + \frac{1}{9} + \cdots = \frac{\pi^2}{6}.$$
+% Podemos usar la expansión en serie de Fourier de $f(x) = x^2$ en $[-\pi,\pi]$ para probar que 
+% $$\sum_{n=1}^{\infty} \frac{1}{n^2} = 1 + \frac{1}{4} + \frac{1}{9} + \cdots = \frac{\pi^2}{6}.$$
 
-En efecto, al evaluar $x = \pi$ en \eqref{FourierCuadratica}, obtenemos que 
-$$f(\pi) = \frac{\pi^2}{3} + \sum_{n=1}^{\infty} (-1)^n \frac{4}{n^2} \cos(n\pi) = \frac{\pi^2}{3} + \sum_{n=1}^{\infty} (-1)^{2n} \frac{4}{n^2} = \frac{\pi^2}{3} +  \sum_{n=1}^{\infty} \frac{4}{n^2}.$$
+% En efecto, al evaluar $x = \pi$ en \eqref{FourierCuadratica}, obtenemos que 
+% $$f(\pi) = \frac{\pi^2}{3} + \sum_{n=1}^{\infty} (-1)^n \frac{4}{n^2} \cos(n\pi) = \frac{\pi^2}{3} + \sum_{n=1}^{\infty} (-1)^{2n} \frac{4}{n^2} = \frac{\pi^2}{3} +  \sum_{n=1}^{\infty} \frac{4}{n^2}.$$
 
-Así,
-$$\pi^2 = \frac{\pi^2}{3} + 4 \sum_{n=1}^{\infty} \frac{1}{n^2} \Rightarrow \sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}.$$
+% Así,
+% $$\pi^2 = \frac{\pi^2}{3} + 4 \sum_{n=1}^{\infty} \frac{1}{n^2} \Rightarrow \sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}.$$
 
 \begin{ejemplo} \label{Signo}
 Consideremos la función signo  definida por
@@ -528,91 +532,91 @@ Sustituyendo en $x^3$:
 \end{align*}
 \end{ejemplo}
 
-\section{Fenómeno de Gibbs}
+% \section{Fenómeno de Gibbs}
 
-Cuando queremos aproximar una función $f$ con las sumas parciales de su serie de Fourier, se puede observar un comportamiento particular cerca de los puntos de discontinuidad aislados, por ejemplo, al graficar la serie de Fourier de la función signo para un $n$ alto, ver figura \ref{fig:GibssSign}, se comete un error considerable en las cercanías al punto de discontinuidad, y además este
-error no disminuye si se incluyen más términos en la serie. Este efecto indeseado se denomina \textbf{fenómeno de Gibbs}. 
+% Cuando queremos aproximar una función $f$ con las sumas parciales de su serie de Fourier, se puede observar un comportamiento particular cerca de los puntos de discontinuidad aislados, por ejemplo, al graficar la serie de Fourier de la función signo para un $n$ alto, ver figura \ref{fig:GibssSign}, se comete un error considerable en las cercanías al punto de discontinuidad, y además este
+% error no disminuye si se incluyen más términos en la serie. Este efecto indeseado se denomina \textbf{fenómeno de Gibbs}. 
 
-\begin{figure}[H]
-    \centering \includegraphics[scale = 0.65]{Figuras/FenomenoGibbs.pdf}
-    \caption{Fenómeno de Gibbs en la función signo para $n = 10,30,50$.}
-    \label{fig:GibssSign}
-\end{figure}
+% \begin{figure}[H]
+%     \centering \includegraphics[scale = 0.65]{Figuras/FenomenoGibbs.pdf}
+%     \caption{Fenómeno de Gibbs en la función signo para $n = 10,30,50$.}
+%     \label{fig:GibssSign}
+% \end{figure}
 
-Ilustremos este hecho con un análisis analítico de la función ya estudiada
-$$f(x) = \left\{ \begin{array}{cc}
-     -1,& - \pi \leq x < 0  \\
-     1,&   0 \leq x \leq \pi
-\end{array} \right. .$$
+% Ilustremos este hecho con un análisis analítico de la función ya estudiada
+% $$f(x) = \left\{ \begin{array}{cc}
+%      -1,& - \pi \leq x < 0  \\
+%      1,&   0 \leq x \leq \pi
+% \end{array} \right. .$$
 
-Su serie de Fourier está dada por
-$$\sum_{n=1}^{\infty} \frac{4}{\pi} \frac{\sin[(2n-1)x]}{ (2n-1)}.$$
+% Su serie de Fourier está dada por
+% $$\sum_{n=1}^{\infty} \frac{4}{\pi} \frac{\sin[(2n-1)x]}{ (2n-1)}.$$
 
-Sea 
-$$s_n(x) = \frac{4}{\pi} \sum_{k=1}^n \frac{\sin[(2k-1)x]}{2k-1}$$
+% Sea 
+% $$s_n(x) = \frac{4}{\pi} \sum_{k=1}^n \frac{\sin[(2k-1)x]}{2k-1}$$
 
-su $n$-ésima suma parcial. Derivando y multiplicando por $\pi \sin(x)$, encontramos que 
-\begin{align*}
-   \pi (\sin x)s_n'(x) =4 \sin(x) \sum_{k=1}^n \cos[(2k-1)x] &= 4 \sum_{k=1}^n   \sin(x) \cos[(2k-1)x] \\
-   &= 4 \sum_{k=1}^n  \frac{1}{2}[\sin(x + (2k-1)x) + \sin(x - (2k-1)x)] \\
-   &= 2 \sum_{k=1}^n [\sin(2k x) - \sin([2k-2]x)] \\
-   &= 2 \sin(2nx).
-\end{align*}
+% su $n$-ésima suma parcial. Derivando y multiplicando por $\pi \sin(x)$, encontramos que 
+% \begin{align*}
+%    \pi (\sin x)s_n'(x) =4 \sin(x) \sum_{k=1}^n \cos[(2k-1)x] &= 4 \sum_{k=1}^n   \sin(x) \cos[(2k-1)x] \\
+%    &= 4 \sum_{k=1}^n  \frac{1}{2}[\sin(x + (2k-1)x) + \sin(x - (2k-1)x)] \\
+%    &= 2 \sum_{k=1}^n [\sin(2k x) - \sin([2k-2]x)] \\
+%    &= 2 \sin(2nx).
+% \end{align*}
 
-Luego, 
-\begin{equation*}
-  2 \sin(2nx_c) = 0 ~\Leftrightarrow~ x_c = \frac{m \pi}{2n}, \quad m \in \mathbb{Z}. 
-\end{equation*}
+% Luego, 
+% \begin{equation*}
+%   2 \sin(2nx_c) = 0 ~\Leftrightarrow~ x_c = \frac{m \pi}{2n}, \quad m \in \mathbb{Z}. 
+% \end{equation*}
 
-Nos interesa encontrar el primer máximo de $s_n(x)$, así que tomaremos los valores $m = \pm 1$ de prueba, pues en $m = 0$ no se alcanza un máximo dado que $s_n(0) = 0$. Como $\sin(x_c) \neq 0$, para estos valores de $m$,  $s_n'(x_c) = 0$ y, en consecuencia, $x_c$ son los puntos críticos de $s_n$. 
+% Nos interesa encontrar el primer máximo de $s_n(x)$, así que tomaremos los valores $m = \pm 1$ de prueba, pues en $m = 0$ no se alcanza un máximo dado que $s_n(0) = 0$. Como $\sin(x_c) \neq 0$, para estos valores de $m$,  $s_n'(x_c) = 0$ y, en consecuencia, $x_c$ son los puntos críticos de $s_n$. 
 
-En la siguiente tabla se analizan los signos de $s_n'(x)$.
+% En la siguiente tabla se analizan los signos de $s_n'(x)$.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale = 0.62]{Figuras/EjemploGibbs.pdf}
-    \caption{Tabla con el análisis de signos de $s_n'(x)$ asociada a la función signo.}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[scale = 0.62]{Figuras/EjemploGibbs.pdf}
+%     \caption{Tabla con el análisis de signos de $s_n'(x)$ asociada a la función signo.}
+% \end{figure}
 
-Por el criterio de la primera derivada, vemos que $s_n$ tiene un máximo en $x_n = \frac{\pi}{2n}$. El valor de ese máximo es
-$$s_n \left( \frac{\pi}{2n}\right) = \frac{4}{\pi} \sum_{k=1}^n \frac{\sin[(2k-1)\pi/2n]}{2k-1} = \frac{2}{\pi} \sum_{k=1}^n \frac{\sin[(2k-1)\pi /2n]}{(2k-1) \pi/2n} \left(\frac{\pi}{n} \right).$$
+% Por el criterio de la primera derivada, vemos que $s_n$ tiene un máximo en $x_n = \frac{\pi}{2n}$. El valor de ese máximo es
+% $$s_n \left( \frac{\pi}{2n}\right) = \frac{4}{\pi} \sum_{k=1}^n \frac{\sin[(2k-1)\pi/2n]}{2k-1} = \frac{2}{\pi} \sum_{k=1}^n \frac{\sin[(2k-1)\pi /2n]}{(2k-1) \pi/2n} \left(\frac{\pi}{n} \right).$$
 
-Notemos que la sumatoria 
-$$ \sum_{k=1}^n \frac{\sin[(2k-1)\pi /2n]}{(2k-1) \pi/2n} \left(\frac{\pi}{n} \right)$$
+% Notemos que la sumatoria 
+% $$ \sum_{k=1}^n \frac{\sin[(2k-1)\pi /2n]}{(2k-1) \pi/2n} \left(\frac{\pi}{n} \right)$$
 
-es una suma de Riemann para la función $\sin y/y$ en $[0,\pi]$ para la partición regular $0 = x_0 < x_1  <  \cdots< x_n =  \pi$ con $x_i = (\pi/n) i$, $i = 0,1, \dots, n$ y eligiendo el punto medio de cada intervalo $[x_{k-1},x_k]$,
-$$ \frac{x_{k-1} + x_k}{2} = (2k-1) \frac{\pi}{2n}, \quad  k = 1, \dots, n,$$
+% es una suma de Riemann para la función $\sin y/y$ en $[0,\pi]$ para la partición regular $0 = x_0 < x_1  <  \cdots< x_n =  \pi$ con $x_i = (\pi/n) i$, $i = 0,1, \dots, n$ y eligiendo el punto medio de cada intervalo $[x_{k-1},x_k]$,
+% $$ \frac{x_{k-1} + x_k}{2} = (2k-1) \frac{\pi}{2n}, \quad  k = 1, \dots, n,$$
 
-para evaluar $\sin y/y$. Entonces, 
-$$\int_0^{\pi} \frac{\sin y}{y} \,dy \approx \frac{\pi}{2} s_n\left( \frac{\pi}{2n}\right).$$
+% para evaluar $\sin y/y$. Entonces, 
+% $$\int_0^{\pi} \frac{\sin y}{y} \,dy \approx \frac{\pi}{2} s_n\left( \frac{\pi}{2n}\right).$$
 
-Como 
-$$\int_0^{\pi} \frac{\sin y}{y} \,dy ~~ \mbox{converge} ~\Rightarrow~ \lim_{n \to + \infty} s_n\left( \frac{\pi}{2n} \right) = \frac{2}{\pi} \int_0^{\pi} \frac{\sin y}{y} \,dy.$$
+% Como 
+% $$\int_0^{\pi} \frac{\sin y}{y} \,dy ~~ \mbox{converge} ~\Rightarrow~ \lim_{n \to + \infty} s_n\left( \frac{\pi}{2n} \right) = \frac{2}{\pi} \int_0^{\pi} \frac{\sin y}{y} \,dy.$$
 
-Usando un método numérico de integración (o su calculadora de integrales favorita), 
-$$\int_0^{\pi} \frac{\sin y}{y} \,dy \approx 1.85193\dots$$
+% Usando un método numérico de integración (o su calculadora de integrales favorita), 
+% $$\int_0^{\pi} \frac{\sin y}{y} \,dy \approx 1.85193\dots$$
 
-Por lo tanto, 
-$$\lim_{n \to + \infty} s_n\left( \frac{\pi}{2n} \right) \approx 1.179.$$
+% Por lo tanto, 
+% $$\lim_{n \to + \infty} s_n\left( \frac{\pi}{2n} \right) \approx 1.179.$$
 
-Así, las aproximaciones exceden el valor real de $f(0^+) = 1$ por $0.179$ o $8.95\%$ del salto de $f(0^-)$ a $f(0^+)$. 
+% Así, las aproximaciones exceden el valor real de $f(0^+) = 1$ por $0.179$ o $8.95\%$ del salto de $f(0^-)$ a $f(0^+)$. 
 
-En general, se puede demostrar el siguiente teorema, debido a M. B$\hat{\mbox{o}}$cher \cite{Bôcher}:
+% En general, se puede demostrar el siguiente teorema, debido a M. B$\hat{\mbox{o}}$cher \cite{Bôcher}:
 
-\begin{teorema}
-Sea $f$ una función de variable real, con período $2\pi$. Supongamos que $f$ y $f'$ son ambas continuas excepto para un número finito de discontinuidades de salto en el intervalo $[-\pi,\pi]$. Sea $s_n(x)$ la suma parcial de orden $n$ de Fourier. Entonces, en un punto $a$ de discontinuidad, las gráficas de las funciones $s_n(x)$ convergen al segmento vectical (ver figura \ref{Gibbs}) de longitud 
-$$L = \frac{2}{\pi} Si(\pi) |f(a^+) - f(a^-)| \approx 1.179 |f(a^+) - f(a^-)|$$
+% \begin{teorema}
+% Sea $f$ una función de variable real, con período $2\pi$. Supongamos que $f$ y $f'$ son ambas continuas excepto para un número finito de discontinuidades de salto en el intervalo $[-\pi,\pi]$. Sea $s_n(x)$ la suma parcial de orden $n$ de Fourier. Entonces, en un punto $a$ de discontinuidad, las gráficas de las funciones $s_n(x)$ convergen al segmento vectical (ver figura \ref{Gibbs}) de longitud 
+% $$L = \frac{2}{\pi} Si(\pi) |f(a^+) - f(a^-)| \approx 1.179 |f(a^+) - f(a^-)|$$
 
-centrada en el punto 
-$$\left(a, \frac{f(a^+) + f(a^-)}{2} \right),$$
+% centrada en el punto 
+% $$\left(a, \frac{f(a^+) + f(a^-)}{2} \right),$$
 
-donde $Si(x)$ es la función seno integral definida por
-$$Si(x) = \int_0^x \frac{\sin t}{t} \,dt.$$
-\end{teorema}
+% donde $Si(x)$ es la función seno integral definida por
+% $$Si(x) = \int_0^x \frac{\sin t}{t} \,dt.$$
+% \end{teorema}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale = 0.51]{Figuras/Gibbs.pdf}
-    \caption{Fenómeno de Gibbs en un punto de discontinuidad. Adaptado de \cite{UFRO}, pág. 202.}
-    \label{Gibbs}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[scale = 0.51]{Figuras/Gibbs.pdf}
+%     \caption{Fenómeno de Gibbs en un punto de discontinuidad. Adaptado de \cite{UFRO}, pág. 202.}
+%     \label{Gibbs}
+% \end{figure}

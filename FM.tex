@@ -1,24 +1,25 @@
-\documentclass[letterpaper,12pt]{report}
+\documentclass[letterpaper,12pt, twoside]{book}
 \usepackage[spanish]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{amsfonts,amsmath,color,amssymb,float, amsthm,mathrsfs}  
-\usepackage[right=3cm,left=2cm,top=2cm,bottom=2cm,headsep=0.7cm,footskip=0.5cm]{geometry}
+\usepackage[top=2cm,bottom=1.5cm, inner=1.5cm, outer=4cm,includeheadfoot, headheight=16pt]{geometry}
+% \usepackage[showframe,headsep=1cm,headheight=2cm, top=2cm, right=3cm,left=2cm,includeheadfoot]{geometry}
 \usepackage{wrapfig} 
 % \usepackage[rflt]{floatflt} 
 \usepackage{framed}
 \usepackage[most]{tcolorbox}
 \usepackage[svgnames]{xcolor} 
 \colorlet{shadecolor}{green!20}
-\setlength\FrameSep{0.5ex}
+% \setlength\FrameSep{0.5ex}
 \usepackage{thmtools}
 \usepackage{esint}
 \usepackage{cancel}
 \usepackage{listings} 
 \usepackage{pstricks}
 \usepackage{csquotes}
-\usepackage{fullpage}
+% \usepackage{fullpage}
 \usepackage{enumitem}
 \usepackage{etoolbox}
 \usepackage{tikz}
@@ -26,6 +27,7 @@
 \usetikzlibrary{arrows,babel}
 \usepackage[font=small]{caption}
 \usepackage{mathtools}
+\usepackage{float}
 
 
 \decimalpoint
@@ -37,8 +39,86 @@
 \DeclareMathOperator{\real}{Re}
 \DeclareMathOperator{\im}{Im}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%Fancy Chapters%%%%%%%%%%%%%%%%%
+%Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
+\usepackage[Bjornstrup]{fncychap}
+
+\usepackage[default]{sourcesanspro}
+\usepackage{libertinust1math}
+\usepackage{montserrat}
+
+\ChTitleVar{\bfseries\LARGE\sffamily\fontfamily{Montserrat-LF}\selectfont}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{fancyhdr}
+
+\fancyhead[LO, RE]{\thepage}
+\fancyhead[LE]{\leftmark}
+\fancyhead[RO]{\rightmark}
+\fancyfoot{}
+
+\fancypagestyle{plain}{
+  \fancyhead[LO, RE]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+\usepackage{xpatch}
+\newlength{\chaptertopskip}
+\setlength{\chaptertopskip}{10pt}
+\makeatletter
+\xpatchcmd{\@makechapterhead}{\vspace*{50\p@}}{\vspace*{\chaptertopskip}}{\typeout{Success}}{\typeout{Failure!!!}}
+\makeatother
+
+\makeatletter
+\renewcommand{\section}{%
+  \@startsection{section}{1}{0mm}% Nombre, nivel, sangría
+  {1.5\baselineskip}% Espacio antes
+  {0.5\baselineskip}% Espacio después
+  {\Large\bfseries\sffamily\fontfamily{Montserrat-LF}\selectfont}} % Formato
+\makeatother
+
+\makeatletter
+\renewcommand{\subsection}{%
+  \@startsection{subsection}{2}{0mm}% Nombre, nivel, sangría
+  {1.2\baselineskip}% Espacio antes
+  {0.3\baselineskip}% Espacio después
+  {\large\bfseries\sffamily\fontfamily{Montserrat-LF}\selectfont}} % Formato
+\makeatother
+
+%%%%%%%%% Modificamos la forma de los títulos
+
+%%% ******************************************************* added
+\definecolor{titlechap}{HTML}{282829} % color of the chapter title <<<
+\definecolor{numberchap}{HTML}{000945}% color of the chapter number <<<<
+\definecolor{left}{HTML}{2B7EA0}
+\definecolor{right}{HTML}{2a9d8f}
+
+\usepackage{tikz}
+\usetikzlibrary{fadings,positioning}
+\newcommand{\gradient}[1]{
+  \begin{tikzpicture}
+    \node (rect) at (0,0) [shade, left color=left,right color=right,path fading=east,minimum width=\textwidth,minimum height=2.5cm] {};
+    \node(title)[above left = 10pt and -10pt of rect.south west, anchor=south west, font=\CTV, text width=16cm] {\textcolor{titlechap}{#1}};
+    \ifnum\value{chapter}>0 \node[left = 5pt of rect.north east,  anchor=center, font=\CNoV] {\textcolor{numberchap!80}{\thechapter}};\fi%
+\end{tikzpicture}%
+\vskip 40pt%
+}
+
+% \@addtoreset{chapter}{printbibliography}
+
+\renewcommand{\DOCH}{}
+\renewcommand{\DOTI}[1]{\gradient{#1}}
+\renewcommand{\DOTIS}[1]{\gradient{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+
 %%%%%%%%%Entornos: Teoremas, Defs,etc%%%%%%%
 \theoremstyle{definition}
+
+\definecolor{MyPurple}{HTML}{44006C}
 
 \newtheorem{defis}{Definiciones}[section]
 \newtheorem{corolario}{Corolario}[section] 
@@ -54,17 +134,17 @@
    {\end{protoproof} \end{shaded}}
 
 \newenvironment{Rdbleftbar}{%
-  \def\FrameCommand{\textcolor{red}{\vrule width0.6pt}\hspace{0.15em}\textcolor{red}{\vrule width0.6pt} \hspace{0.5em}}%
+  \def\FrameCommand{\textcolor{MyPurple!80}{\vrule width0.6pt}\hspace{0.15em}\textcolor{MyPurple!80}{\vrule width0.6pt} \hspace{0.5em}}%
   \MakeFramed {\advance\hsize-\width \FrameRestore}}%
  {\endMakeFramed}
 
  \newenvironment{Bdbleftbar}{%
-  \def\FrameCommand{\vrule width0.6pt\hspace{0.15em}\vrule width0.6pt \hspace{0.5em}}%
+  \def\FrameCommand{\textcolor{left}{\vrule width0.6pt}\hspace{0.15em}\textcolor{left}{\vrule width0.6pt}\hspace{0.5em}}%
   \MakeFramed {\advance\hsize-\width \FrameRestore}}%
  {\endMakeFramed}
 
 \newenvironment{Gdbleftbar}{%
-  \def\FrameCommand{\textcolor{green}{\vrule width0.6pt}\hspace{0.15em}\textcolor{green}{\vrule width0.6pt} \hspace{0.5em}}%
+  \def\FrameCommand{\textcolor{right!80}{\vrule width0.6pt}\hspace{0.15em}\textcolor{right!80}{\vrule width0.6pt} \hspace{0.5em}}%
   \MakeFramed {\advance\hsize-\width \FrameRestore}}%
  {\endMakeFramed}
  
@@ -99,63 +179,6 @@ numberwithin=chapter,
 postheadhook    =\vspace*{\parskip}\begin{Gdbleftbar}\vspace*{-5pt},%
 prefoothook     =\vspace*{-1pt}\end{Gdbleftbar}%
 ]{lema}   
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%Fancy Chapters%%%%%%%%%%%%%%%%%
-%Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
-\usepackage[Bjornstrup]{fncychap}
-
-\usepackage[default]{sourcesanspro}
-\usepackage{libertinust1math}
-\usepackage{montserrat}
-
-\ChTitleVar{\bfseries\LARGE\sffamily\fontfamily{Montserrat-LF}\selectfont}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-\makeatletter
-\renewcommand{\section}{%
-  \@startsection{section}{1}{0mm}% Nombre, nivel, sangría
-  {1.5\baselineskip}% Espacio antes
-  {0.5\baselineskip}% Espacio después
-  {\Large\bfseries\sffamily\fontfamily{Montserrat-LF}\selectfont}} % Formato
-\makeatother
-
-\makeatletter
-\renewcommand{\subsection}{%
-  \@startsection{subsection}{2}{0mm}% Nombre, nivel, sangría
-  {1.2\baselineskip}% Espacio antes
-  {0.3\baselineskip}% Espacio después
-  {\large\slshape\bfseries\sffamily\fontfamily{Montserrat-LF}\selectfont}} % Formato
-\makeatother
-
-%%%%%%%%% Modificamos la forma de los títulos
-
-%%% ******************************************************* added
-\definecolor{titlechap}{HTML}{282829} % color of the chapter title <<<
-\definecolor{numberchap}{HTML}{000945}% color of the chapter number <<<<
-\definecolor{left}{HTML}{2B7EA0}
-\definecolor{right}{HTML}{2a9d8f}
-
-\usepackage{tikz}
-\usetikzlibrary{fadings,positioning}
-\newcommand{\gradient}[1]{
-  \begin{tikzpicture}
-    \node (rect) at (0,0) [shade, left color=left,right color=right,path fading=east,minimum width=\textwidth,minimum height=2.5cm] {};
-    \node(title)[above left = 10pt and -10pt of rect.south west, anchor=south west, font=\CTV, text width=16cm] {\textcolor{titlechap}{#1}};
-    \ifnum\value{chapter}>0 \node[left = 10pt of rect.north east,  anchor=center, font=\CNoV] {\textcolor{numberchap!80}{\thechapter}};\fi%
-\end{tikzpicture}%
-\vskip 40pt%
-}
-
-% \@addtoreset{chapter}{printbibliography}
-
-\renewcommand{\DOCH}{}
-\renewcommand{\DOTI}[1]{\gradient{#1}}
-\renewcommand{\DOTIS}[1]{\gradient{#1}}
-
-%%%%%%%%%%%%%%%%%%%%%%%
 
 %Referencias
 \usepackage[backend=biber]{biblatex}
@@ -165,10 +188,87 @@ prefoothook     =\vspace*{-1pt}\end{Gdbleftbar}%
 
 \usepackage[colorlinks]{hyperref}
 
+\usetikzlibrary{calc,shadows,shapes.geometric}
 
 % \renewcommand\theHtable{Appendix.\thetable}
 
 \begin{document}
+
+\frontmatter
+
+\newgeometry{top=2cm,bottom=1.5cm, left=1.5cm, right=1.5cm}
+
+\thispagestyle{empty}
+% \begin{tikzpicture}
+%   [   overlay,
+%       remember picture,
+%       mynode/.style={left,fill=yellow!10,general shadow={shadow scale=1, shadow xshift=-0.8ex, shadow yshift=-0.8ex,
+%   opacity=1, fill=gray!50}},
+%   ]
+%       \fill[left!70] (current page.south west) rectangle (current page.north east);
+%       \node[mynode] at ($(current page.north east)+(-1,-6)$) {\fontsize{25}{30}\selectfont \textbf{Apuntes de Física Matemática II}};
+%       \node[mynode] at ($(current page.north east)+(-1.5,-8)$) {\fontsize{20}{24}\selectfont \textsc{Pedro A. Contreras-Corral}};
+%       \node[mynode] at ($(current page.north east)+(-1.8,-10)$) {\fontsize{15}{18}\selectfont Concepción, Enero 2025};
+%       % \node[above right] at ($(current page.south west)+(5,5)$) {\includegraphics[scale=0.5]{}};
+      
+%   \end{tikzpicture}
+
+\begin{tikzpicture}[remember picture,overlay,mynode/.style={left,fill=yellow!10,general shadow={shadow scale=1, shadow xshift=-0.8ex, shadow yshift=-0.8ex,
+    opacity=1, fill=gray!50}},]
+  \fill[left!70!right] (current page.south west) rectangle (current page.north east);
+  
+  
+  \node[rounded corners,fill=right!70,text =right!5,regular polygon,regular polygon sides=6, minimum size=2.5 cm,inner sep=0,ultra thick] at ($(current page.west)+(2.5,-5)$) {\LARGE \bfseries };
+  
+  \foreach \i in {2.5,...,22}
+  {
+      \node[rounded corners,right!60,draw,regular polygon,regular polygon sides=6, minimum size=\i cm,ultra thick] at ($(current page.west)+(2.5,-5)$) {} ;
+  }
+  
+  \foreach \i in {0.5,...,22}
+  {d
+  \node[rounded corners,right!60,draw,regular polygon,regular polygon sides=6, minimum size=\i cm,ultra thick] at ($(current page.north west)+(2.5,0)$) {} ;
+  }
+  
+  % \foreach \i in {0.5,...,22}
+  % {
+  % \node[rounded corners,right!75,draw,regular polygon,regular polygon sides=6, minimum size=\i cm,ultra thick] at ($(current page.north east)+(0,-9.5)$) {} ;
+  % }
+  
+  \foreach \i in {21,...,6}
+  {
+  \node[left!65,rounded corners,draw,regular polygon,regular polygon sides=6, minimum size=\i cm,ultra thick] at ($(current page.south east)+(-0.2,-0.45)$) {} ;
+  }
+  
+  
+  \node[left, right!5, text width=0.625*\paperwidth, align=right, minimum height=3cm, rounded corners] at ($(current page.north east)+(-1,-9.5)$)
+  {
+  {\fontsize{25}{30} \selectfont \bfseries Apuntes de Física Matemática II}
+  };
+  
+  \node[left,right!10, text width=0.625*\paperwidth, align=right, minimum height=2cm, rounded corners] at ($(current page.north east)+(-1,-11)$)
+  {
+  {\LARGE \textit{Pedro A. Contreras-Corral}}
+  };
+  
+  \node[left, right!5, text width=0.625*\paperwidth, align=right, minimum height=2cm, rounded corners] at ($(current page.north east)+(-1,-13)$)
+  {
+  {\fontsize{15}{18}\selectfont Universidad de Concepción}
+  };
+
+      %   \node[mynode] at ($(current page.north east)+(-1,-6)$) {\fontsize{25}{30}\selectfont \textsc{\textbf{Apuntes de Física Matemática II}}};
+      % \node[mynode] at ($(current page.north east)+(-1.5,-8)$) {\fontsize{20}{24}\selectfont \textit{Pedro A. Contreras-Corral}};
+      % \node[mynode] at ($(current page.north east)+(-1.8,-10)$) {\fontsize{15}{18}\selectfont Concepción, Enero 2025};
+      % \node[above right] at ($(current page.south west)+(5,5)$) {\includegraphics[scale=0.5]{}};
+
+\end{tikzpicture}
+  
+\newpage
+
+\thispagestyle{empty}
+
+
+\newpage
 
 \begin{titlepage}
  \drop=0.1\textheight
@@ -176,15 +276,26 @@ prefoothook     =\vspace*{-1pt}\end{Gdbleftbar}%
     \vspace*{\baselineskip}
     \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}
     \rule{\textwidth}{0.4pt}\\[\baselineskip]
-    {\scshape\bfseries\Huge\fontfamily{Montserrat-LF}\selectfont Física Matemática II} \\[0.2\baselineskip]
+    {\scshape\bfseries\Huge\fontfamily{Montserrat-LF}\selectfont Apuntes de Física Matemática II} \\[0.2\baselineskip]
     \rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt}
     \rule{\textwidth}{1.6pt}\\[\baselineskip]
-    {\Large Autor: \par}
+    {\Large Por: \par}
 {\large Pedro A. Contreras-Corral \par}
-\vfill
 {\large Enero 2025 \par}
-{\large v1.0.0 \par}
+\vfill
+{\large Versión 1.0.0 \par}
 \end{titlepage}
+
+\mbox{} 
+\vfill
+\textcopyright\ 2025, Pedro Contreras Corral % Derechos de autor
+
+% Versión 1.0.0
+
+Documento publicado bajo la licencia X.
+\vspace{1cm} 
+
+\restoregeometry
 
 \chapter*{Prefacio}
 
@@ -209,6 +320,10 @@ Atribuída a John Desmond Bernal.
 
 \tableofcontents
 
+\mainmatter
+
+\pagestyle{fancy}
+
 \include{Cap-Series-Fourier.tex}
 \include{Cap-Transformada-de-Fourier.tex}
 \include{Cap-Ecuaciones-Diferenciales.tex}
@@ -218,11 +333,13 @@ Atribuída a John Desmond Bernal.
 \include{Cap-Funciones-de-Green.tex}
 \include{Cap-Tensores.tex}
 
+
 \appendix
 
 \include{./Cap-Espacio-de-Funciones.tex}
 \include{Cap-Metodo-Series-Sturm-Liouville.tex}
 
+\backmatter
 
 \nocite{*} %Referencia todo, incluso lo que no está citado.
 % \chapter*{Referencias}
