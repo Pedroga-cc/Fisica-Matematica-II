@@ -1,42 +1,5 @@
-\chapter{El método de series para EDO y el problema de Sturm-Liouville} \label{cap:series-sl}
+\chapter{El problema de Sturm-Liouville} \label{cap:series-sl}
 
-Hasta ahora, hemos estudiado ecuaciones que al cumplir ciertas propiedades, como tener una forma u otra, sabemos hallar una solución de una forma sencilla, como una ecuación de Euler-Cauchy, una EDO lineal de segundo orden con coeficientes constantes, entre otras. Sin embargo, existen algunas ecuaciones que pese a aparentar ser sencillas, no es posible hallar una solución en términos de funciones conocidas, como es el caso de la \emph{ecuación de Airy}
-\begin{equation}
-    y'' + xy = 0 \ .
-\end{equation}
-En estos casos, podemos hacer uso del llamado \emph{método de series de potencias} para obtener una solución que, si bien no tiene una forma compacta, nos permite resolver dichos problemas, y encontrar aproximaciones válidas.
-
-\section{Resolver EDOs por el método de series}
-
-Consideremos una ecuación lineal de segundo orden cuyos coeficientes son polinomios en la variable independiente del problema, de la forma
-\begin{equation} \label{eq:EDO_Series}
-    \frac{d^2 y}{dx} + P(x) \frac{dy}{dx} + Q(x) y(x) = R(x) \ .
-\end{equation}
-
-En general, consideraremos que $P(x)$, $Q(x)$ y $R(x)$ son funciones \emph{analíticas} de $x$ en, al menos, un punto $x=x_0$ a menos que se indique lo contrario.
-
-Antes de discutir la existencia de soluciones para esta ecuación, debemos definir las nociones de punto \emph{ordinario} y de punto \emph{singular}.
-
-\begin{defi}
-    Dada una ecuación diferencial de la forma \eqref{eq:EDO_Series}, decimos que un punto $x_0$ es un \textbf{punto ordinario} de la ecuación si las funciones $P(x)$ y $Q(x)$ son \emph{analíticas} en $x=x_0$. En caso de que $P(x)$ o $Q(x)$ diverjan en $x = x_0$, diremos que $x_0$ es un \textbf{punto singular}. 
-\end{defi}
-
-\begin{defi}
-    Dado un punto singular $x=x_0$ para una EDO de la forma \eqref{eq:EDO_Series}, diremos que $x_0$ es un \textbf{punto singular regular} si tanto $(x-x_0)P(x)$ como $(x-x_0)^2Q(x)$ son analíticas en $x=x_0$. En caso contrario, $x_0$ es un \textbf{punto singular irregular, o esencial}.
-\end{defi}
-
-En el caso en que el coeficiente $P(x)$ no se anula en el dominio del sistema, podemos garantizar la existencia de una solución para \eqref{eq:EDO_Series} mediante el siguiente teorema
-\begin{teorema}[de Fuchs]\label{teo:Fuchs}
-    Una ecuación diferencial de la forma \eqref{eq:EDO_Series} posee al menos una solución expresable en una serie de potencias en torno a $x=x_0$ si este es un punto ordinario o un punto singular regular de la EDO \eqref{eq:EDO_Series}. La solución será de la forma 
-    \begin{equation} \label{eq:solucion_serie}
-        y(x) = \sum_{n=0}^\infty a_n(x-x_0)^{n+s} \ , \qquad a_0 \neq 0
-    \end{equation}
-    para un número $s$ real y positivo, o bien, de la forma 
-    \begin{equation}
-        y(x) = y_0 \ln(x-a) + \sum_{n=0}^\infty b_n (x-a)^{n+r} \ , \qquad b_0 \neq 0 
-    \end{equation}
-    para algún número $r$ real y positivo, donde $y_0$ es una solución de la forma \eqref{eq:solucion_serie}.
-\end{teorema}
 
 % \begin{ejemplo}
 %     Encuentre una solución en serie de potencias alrededor de $x_0=0$ para la ecuación de Airy

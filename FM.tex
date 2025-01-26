@@ -4,7 +4,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{amsfonts,amsmath,color,amssymb,float, amsthm,mathrsfs}  
-\usepackage[top=2cm,bottom=1.5cm, inner=1.5cm, outer=4cm,includeheadfoot, headheight=16pt]{geometry}
+\usepackage[top=2cm,bottom=1.5cm, inner=2cm, outer=4.5cm,includeheadfoot, headheight=16pt]{geometry}
 % \usepackage[showframe,headsep=1cm,headheight=2cm, top=2cm, right=3cm,left=2cm,includeheadfoot]{geometry}
 \usepackage{wrapfig} 
 % \usepackage[rflt]{floatflt} 
@@ -12,7 +12,7 @@
 \usepackage[most]{tcolorbox}
 \usepackage[svgnames]{xcolor} 
 \colorlet{shadecolor}{green!20}
-% \setlength\FrameSep{0.5ex}
+\setlength\FrameSep{0.5ex}
 \usepackage{thmtools}
 \usepackage{esint}
 \usepackage{cancel}
@@ -28,6 +28,9 @@
 \usepackage[font=small]{caption}
 \usepackage{mathtools}
 \usepackage{float}
+
+\usepackage{marginnote}
+\renewcommand*{\marginfont}{\bfseries\footnotesize}
 
 
 \decimalpoint
@@ -101,14 +104,12 @@
 \usetikzlibrary{fadings,positioning}
 \newcommand{\gradient}[1]{
   \begin{tikzpicture}
-    \node (rect) at (0,0) [shade, left color=left,middle color=right, right color=righter,minimum width=\textwidth,minimum height=2.5cm] {};
-    \node(title)[above left = 10pt and -10pt of rect.south west, anchor=south west, font=\CTV, text width=16cm] {\textcolor{titlechap}{#1}};
+    \node (rect) at (0,0) [shade, left color=left,middle color=right, right color=white,minimum width=17cm,minimum height=2.5cm] {};
+    \node(title)[above left = 10pt and -10pt of rect.south west, anchor=south west, font=\CTV, text width=14cm] {\textcolor{titlechap}{#1}};
     \ifnum\value{chapter}>0 \node[left = 5pt of rect.north east,  anchor=center, font=\CNoV] {\textcolor{numberchap!80}{\thechapter}};\fi%
 \end{tikzpicture}%
 \vskip 40pt%
 }
-
-% \@addtoreset{chapter}{printbibliography}
 
 \renewcommand{\DOCH}{}
 \renewcommand{\DOTI}[1]{\gradient{#1}}
@@ -126,7 +127,7 @@
 
 \newtheorem{protoexample}{Ejemplo}[section]
 \newenvironment{ejemplo}
-   {\colorlet{shadecolor}{orange!15}\begin{shaded}\begin{protoexample}}
+   {\colorlet{shadecolor}{righter!15}\begin{shaded}\begin{protoexample}}
    {\end{protoexample}\end{shaded}}
 
 \newtheorem*{protoproof}{Demostración}
@@ -175,11 +176,11 @@ prefoothook     =\vspace*{-1pt}\end{Gdbleftbar}%
 ]{propo}  
 
 \declaretheorem[%
-name            = Lema,%
+name            = Propiedad,%
 numberwithin=chapter,
 postheadhook    =\vspace*{\parskip}\begin{Gdbleftbar}\vspace*{-5pt},%
 prefoothook     =\vspace*{-1pt}\end{Gdbleftbar}%
-]{lema}   
+]{propiedad}   
 
 %Referencias
 \usepackage[backend=biber]{biblatex}
@@ -287,7 +288,7 @@ Documento publicado bajo la licencia X.
 
 \chapter*{Prefacio}
 
-Este documento ha sido preparado por Pedro Contreras Corral como material de apoyo para el curso Física Matemática II. En cuanto a su contenido, se han utilizado como base las notas de clase de las ocasiones en que el curso fue dictado por el profesor Guillermo Rubilar, y las profesoras Ariana Muñoz e Ivana Sebestova, además del apunte preparado por Alejandro Saavedra como ayudante de esta última, que también fue utilizado como base para el \emph{template} de este documento.
+Este documento ha sido preparado por Pedro Contreras Corral como material de apoyo para el curso Física Matemática II. En cuanto a su contenido, se han utilizado como base las notas de clase de las ocasiones en que el curso fue dictado por el profesor Guillermo Rubilar, y las profesoras Ariana Muñoz e Ivana Sebestova, además del apunte preparado por Alejandro Saavedra como ayudante de esta última, a quien agradezco permitirme utilizar su apunte como base para el \emph{template} de este documento, así como para el contenido de los primeros dos capítulos.
 
 También se han usado como base (en mayor o menor medida) los textos establecidos en la bibliografía, \emph{Mathematical Physics} de Butkov, \emph{Mathematical Methods for Physicists} de Arfken, \emph{Mathematical Methods for Physics and Engineering} de Riley. Junto a ellos, se han usado algunas ideal del libro \emph{Mathematical Physics, a Modern Introduction to its Foundations} de Hassani.
 

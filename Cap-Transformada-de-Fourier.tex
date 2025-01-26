@@ -1,25 +1,24 @@
 \chapter{Transformada de Fourier}
 
-\section{Definiciones}
+% \section{Definiciones}
 
-Aprendimos que la serie de Fourier de $f \in \mathscr{C}[-L/2,L/2]$ está dada por 
-\begin{equation}
-  f(x) = \sum_{n=-\infty}^{\infty} c_n e^{i \frac{2n\pi}{L}x},  \label{Transformada1}
+En el capítulo anterior, aprendimos que la serie de Fourier de $f \in \mathscr{C}[-L/2,L/2]$ está dada por 
+\begin{equation} \label{Transformada1}
+  f(x) = \sum_{n=-\infty}^{\infty} c_n e^{i \frac{2n\pi}{L}x} \ ,  
 \end{equation}
-
 donde 
-\begin{equation}
-  c_n = \frac{1}{L} \int_{-L/2}^{L/2} f(x) e^{-i\frac{2n\pi}{L}x} \,dx, \quad n \in \mathbb{Z}. \label{Transformada2}
+\begin{equation} \label{Transformada2}
+  c_n = \frac{1}{L} \int_{-L/2}^{L/2} f(x) e^{-i\frac{2n\pi}{L}x} \,dx, \quad n \in \mathbb{Z} \ . 
 \end{equation}
 
 Una consecuencia inmediata de la expansión en serie de Fourier es que la función $f(x)$ representada por la serie resulta periódica, con período $L$. Por lo tanto, decimos que la serie de Fourier permite \emph{expandir funciones periódicas}. Sin embargo, no todas las funciones son periódicas, y nos interesará expandirlas dentro de algún intervalo de validez. Necesitamos, entonces, algún modo de expandir, en una base ortonormal, funciones no periódicas. 
 
-Podemos decir que el conjunto de coeficientes $\{c_n\}$ también definen a $f(x)$. Este conjunto de números $c_n$ puede ser entendido como una función en la variable $n$, escrita como $c(n)$, definida para un conjunto \underline{discreto} de valores de la variable independiente (en lugar de un intervalo continuo).  La función $c(n)$ es a menudo llamada el \textbf{espectro de Fourier} de $f(x)$ y puede ser graficado, asumiendo $c(n)$ real, como sigue.
+Podemos decir que el conjunto de coeficientes $\{c_n\}$ también definen a $f(x)$. Este conjunto de números $c_n$ puede ser entendido como una función en la variable $n$, escrita como $c(n)$, definida para un conjunto \emph{discreto} de valores de la variable independiente (en lugar de un intervalo continuo).  La función $c(n)$ es a menudo llamada el \textbf{espectro de Fourier} de $f(x)$ y puede ser graficado, asumiendo $c(n)$ real, como sigue.
 
 \vspace{-0.5cm}
 \begin{figure}[H]
     \centering
-    \includegraphics[scale = 0.4]{Figuras/Espectro1.pdf}
+    \includegraphics[width = 12cm]{Figuras/Espectro1.pdf}
     \caption{Espectro de Fourier.}
 \end{figure}
 
@@ -47,28 +46,28 @@ Usando las definiciones anteriores en las ecuaciones \eqref{Transformada1} y \eq
   c_L(k) &= \frac{L}{2\pi} \frac{1}{L} \int_{-L/2}^{L/2} f(x) e^{-ikx} dx = \frac{1}{2\pi} \int_{-L/2}^{L/2} f(x) e^{-ikx} dx.
 \end{align*}
 
-Al hacer $L \to \infty$, la función $f$ puede considerarse como una
-función no-periódica arbitraria definida en todo el intervalo $(-\infty, \infty)$, mientras que la primera suma ``se convierte"  en una integral:
+Al hacer $L \to \infty$, la función $f$ puede considerarse como una función no-periódica arbitraria definida en todo el intervalo $(-\infty, \infty)$, mientras que la primera suma ``se convierte'' en una integral:
 \begin{align*}
     f(x)&= \int_{-\infty}^{\infty} c(k) e^{ikx} \,dk, \\
   c(k) &= \lim_{L\to + \infty} c_L(k) =  \frac{1}{2\pi}  \int_{-\infty}^{\infty} f(x) e^{-ikx} dx.
 \end{align*}
 
-De aquí, definimos la \textbf{transformada de Fourier} de la función $f(x)$ como 
-\begin{shaded}
-  \begin{equation}
- \tilde{f}(k) := \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} f(x) e^{-ikx} dx \label{T.Fourier} ,
-\end{equation}  
-\end{shaded}
+\begin{defi} \marginnote{Transformada de Fourier}
+    Dada una función $f$ no periódica definida en $\mathscr{C}(-\infty, \infty)$, definimos su \textbf{transformada de Fourier} como 
+    \begin{equation}\label{T.Fourier}
+        \boxed{\tilde{f}(k) := \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} f(x) e^{-ikx} dx \ .} 
+    \end{equation}  
+\end{defi}
 
-de modo que la \textbf{transformada inversa} resulta ser
-\begin{shaded}
-  \begin{equation}
- f(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} \tilde{f}(k) e^{ikx} \,dk. \label{I.Fourier}
-\end{equation}  
-\end{shaded}
+Note que la transformada de Fourier es la extensión natural del concepto de series de Fourier para funciones no periódicas. Además, al ser $n$ una variable discreta, y $k$ continua, podemos decir que la transformada de Fourier es la generalización del concepto de series de Fourier cuando las funciones pertenecen a un espacio vectorial de dimensión continua.
 
- Note que la transformada de Fourier es la extensión natural del concepto de series de Fourier para funciones no periódicas. Además, al ser $n$ una variable discreta, y $k$ continua, podemos decir que la transformada de Fourier es la generalización del concepto de series de Fourier cuando las funciones pertenecen a un espacio vectorial de dimensión continua.
+\begin{defi}\marginnote{Transformada inversa de Fourier}
+    Se define la \textbf{transformada inversa de Fourier} como
+      \begin{equation}\label{I.Fourier}
+     \boxed{f(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} \tilde{f}(k) e^{ikx} \,dk \ .} 
+    \end{equation}  
+\end{defi}
+
 
 \textbf{Observaciones:}
 \begin{itemize}
@@ -127,7 +126,7 @@ de modo que la \textbf{transformada inversa} resulta ser
 \end{itemize}
 
 
-\begin{defi}
+\begin{defi} \marginnote{Función absolutamente integrable}
 Si $f(x)$ es tal que 
 $$\int_{-\infty}^{\infty} |f(x)| \,dx < \infty,$$
 
@@ -219,19 +218,24 @@ Luego,
 \end{equation*}
 
 Haciendo el cambio de variable $u = x + \frac{i\omega}{2\alpha}$, obtenemos que \footnote{}
-\begin{equation}
-    \hat{f}(\omega) = \frac{n}{\sqrt{2\pi}} e^{- \left( \frac{\omega^2}{4\alpha} \right)} \int_{-\infty}^{\infty} e^{-\alpha u^2} \,du.
+\begin{equation}\label{eq:Fourier-Gaussiana}
+    \hat{f}(\omega) = \frac{n}{\sqrt{2\pi}} e^{- \left( \frac{\omega^2}{4\alpha} \right)} \int_{-\infty}^{\infty} e^{-\alpha u^2} \,du = \frac{n}{\sqrt{2\alpha}} e^{- \left( \frac{\omega^2}{4\alpha} \right)} \ ,
 \end{equation}
-
-Como
+donde hemos usado que 
 \begin{equation}
-\int_{-\infty}^{\infty} e^{-\alpha x^2} \,dx = \sqrt{\frac{\pi}{\alpha}}, \quad \alpha > 0,    
+\int_{-\infty}^{\infty} e^{-\alpha x^2} \,dx = \sqrt{\frac{\pi}{\alpha}}, \quad \alpha > 0 \ . 
 \end{equation} 
-obtenemos que 
-\begin{equation}
-\hat{f}(\omega) = \frac{n}{\sqrt{2\alpha}} e^{- \left( \frac{\omega^2}{4\alpha} \right)}.  \label{eq:Fourier-Gaussiana}  
-\end{equation}
-\vfill
+% obtenemos que 
+% \begin{equation}
+% \hat{f}(\omega) =  
+% \end{equation}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.8\textwidth]{Figuras/EjemploTransformada2.pdf}
+    \caption{Distribución gaussiana y su transformada de Fourier para $n=1$ y $\alpha =1$ .}
+    \label{Espectro3}
+\end{figure}
     \footnoterule
     
     {\footnotesize
@@ -283,12 +287,7 @@ obtenemos que
 % obtenemos que 
 % $$\tilde{f}(k) = \frac{n}{2\pi}\sqrt{\frac{\pi}{\alpha}}e^{- \left( \frac{k^2}{4\alpha} \right)}.$$
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale = 0.6]{Figuras/EjemploTransformada2.pdf}
-    \caption{Distribución gaussiana y su transformada de Fourier para $n=1$ y $\alpha =1$ .}
-    \label{Espectro3}
-\end{figure}
+
 
 \begin{figure}[H]
     \centering
@@ -298,54 +297,11 @@ obtenemos que
 \end{figure}
 \end{ejemplo}
 
-\begin{ejemplo}[Paridad]
-Si $f(x) \in \mathbb{R}$ e impar, entonces
-\begin{align*}
-     \tilde{f}(k) &= \frac{1}{2\pi} \int_{-\infty}^{\infty} f(x) e^{-ikx} dx \\
-&= \frac{1}{2\pi} \int_{-\infty}^0 f(x) e^{-ikx} \,dx + \frac{1}{2\pi} \int_{0}^{\infty} f(x) e^{-ikx} \, dx  \\
- &= -\frac{1}{2\pi} \int_{\infty}^0 f(-x) e^{ikx} \,dx + \frac{1}{2\pi} \int_{0}^{\infty} f(x) e^{-ikx} \, dx \\
-     &= -\frac{1}{2\pi} \int_{0}^{\infty} f(x) e^{ikx} \,dx + \frac{1}{2\pi} \int_{0}^{\infty} f(x) e^{-ikx} \, dx  \\
-      &= -\frac{1}{2\pi} \int_{0}^{\infty} f(x) [e^{ikx} - e^{-ikx}  ] \,dx \\
-     &= -\frac{2i}{2\pi} \int_{0}^{\infty} f(x) \sin(kx) \,dx \equiv - i  \tilde{f}_S(k),
-     \end{align*}
-     
-     donde $\tilde{f}_S$ es conocida como la \textbf{transformada seno de Fourier} de la función $f(x)$, y viene definida por \cite{Mauch} 
-     $$\boxed{\tilde{f}_S(k) = \frac{1}{\pi}  \int_{0}^{\infty} f(x) \sin(kx) \,dx}$$
-     
-Análogamente a la definición de la  transformada seno de Fourier, si $f(x) \in \mathbb{R}$ y par, entonces 
-\begin{align*}
-     \tilde{f}(k) = \frac{1}{2\pi} \int_{-\infty}^{\infty} f(x) e^{-ikx} dx &= \frac{1}{2\pi} \int_{-\infty}^0 f(x) e^{-ikx} \,dx + \frac{1}{2\pi} \int_{0}^{\infty} f(x) e^{-ikx} \, dx  \\
-     &= -\frac{1}{2\pi} \int_{\infty}^0 f(-x) e^{ikx} \,dx + \frac{1}{2\pi} \int_{0}^{\infty} f(x) e^{-ikx} \, dx \\
-     &= \frac{1}{2\pi} \int_{0}^{\infty} f(x) e^{ikx} \,dx + \frac{1}{2\pi} \int_{0}^{\infty} f(x) e^{-ikx} \, dx \\
-     &= \frac{1}{2\pi} \int_{0}^{\infty} f(x) [e^{ikx} + e^{-ikx}  ] \,dx \\
-     &= \frac{2}{2\pi} \int_{0}^{\infty} f(x) \cos(kx) \,dx \equiv  \tilde{f}_C(k),
-     \end{align*}
-     
-donde $\tilde{f}_C$ es conocida como la \textbf{transformada coseno de Fourier} de la función $f(x)$, y viene definida por \cite{Mauch}
-     $$\boxed{\tilde{f}_C(k) = \frac{1}{\pi}  \int_{0}^{\infty} f(x) \cos(kx) \,dx}$$
-
-\textbf{Observación: } Esta forma de escribir la transformada seno y coseno de Fourier es convencional, por el factor $1/\pi$.
-\end{ejemplo}
-
-\begin{comment}
-\begin{ejemplo}
-Consideremos ahora una función $f(x) \notin L^1$. Sea $f(x) = \sign(x)$  tal que $f(x) \notin L^1$, ya que $\int\limits_{-\infty}^{\infty}  |f(x)| \,dx$ diverge. Intentemos de todas maneras evaluar la transformada de Fourier, teniendo en cuenta que $f$ es real e impar.
-
-\begin{align*}
-    \tilde{f}(k) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \sign(x) e^{-ikx} \,dx &= -\frac{i}{\pi} ^*\int_{0}^{\infty} \sin kx \,dx \qquad \mbox{(Integral de Cesàro)} \\
-    &= \left\{ \begin{array}{cl}
-        \frac{1}{i \pi k},  & k \neq 0  \\
-         0, & k = 0
-    \end{array} \right. .
-\end{align*}
-
-\end{ejemplo}    
-\end{comment}
 
 \section{Propiedades de la transformada de Fourier}
 
-\begin{propo}
-Sean $f, g \in L^1$ y $\alpha, \beta \in \mathbb{C}.$
+\begin{propiedad} 
+\textbf{Propiedades de la Transformada de Fourier.} Sean $f, g \in L^1$ y $\alpha, \beta \in \mathbb{C}.$
 
 \begin{enumerate}
     \item \textbf{Linealidad}: $$\mathcal{F}\{\alpha f(x) + \beta g(x)\}(k) = \alpha \mathcal{F}\{f(x)\}(k) + \beta \mathcal{F}\{g(x)\}(k).$$ 
@@ -366,11 +322,10 @@ Sean $f, g \in L^1$ y $\alpha, \beta \in \mathbb{C}.$
 
     % \item \textbf{Escalonamiento:} $$\mathcal{F}\{f(\alpha x)\}(k) = \frac{1}{|\alpha|}\mathcal{F}\{f(x)\}\left(\frac{k}{ \alpha}\right), \quad\alpha \neq 0.$$
 \end{enumerate}
-\end{propo}
+\end{propiedad}
 
 \begin{demo}
-A modo de ejemplo, se demostrará los puntos 1. y 2., el resto se encontrará en el documento extra de las demostraciones del apunte. 
-
+A modo de ejemplo, se demostrará los puntos 1 y 2.
 \begin{enumerate}
     \item Por la definición \eqref{T.Fourier} de la transformada de Fourier y usando el hecho de que las funciones son absolutamente convergentes, tenemos
     \begin{align*}
@@ -466,9 +421,136 @@ Por lo tanto,
 $$\int_{-\infty}^{\infty}  \frac{\sin^2(k)}{k^2} \,dk = \pi.$$
 \end{ejemplo}
 
+\section{Transformadas seno y coseno}
+
+\begin{ejemplo}[Paridad]
+Si $f(x) \in \mathbb{R}$ e impar, entonces
+\begin{align*}
+     \tilde{f}(k) &= \frac{1}{2\pi} \int_{-\infty}^{\infty} f(x) e^{-ikx} dx \\
+&= \frac{1}{2\pi} \int_{-\infty}^0 f(x) e^{-ikx} \,dx + \frac{1}{2\pi} \int_{0}^{\infty} f(x) e^{-ikx} \, dx  \\
+ &= -\frac{1}{2\pi} \int_{\infty}^0 f(-x) e^{ikx} \,dx + \frac{1}{2\pi} \int_{0}^{\infty} f(x) e^{-ikx} \, dx \\
+     &= -\frac{1}{2\pi} \int_{0}^{\infty} f(x) e^{ikx} \,dx + \frac{1}{2\pi} \int_{0}^{\infty} f(x) e^{-ikx} \, dx  \\
+      &= -\frac{1}{2\pi} \int_{0}^{\infty} f(x) [e^{ikx} - e^{-ikx}  ] \,dx \\
+     &= -\frac{2i}{2\pi} \int_{0}^{\infty} f(x) \sin(kx) \,dx \equiv - i  \tilde{f}_S(k),
+     \end{align*}
+     
+     donde $\tilde{f}_S$ es conocida como la \textbf{transformada seno de Fourier} de la función $f(x)$, y viene definida por \cite{Mauch} 
+     $$\boxed{\tilde{f}_S(k) = \frac{1}{\pi}  \int_{0}^{\infty} f(x) \sin(kx) \,dx}$$
+     
+Análogamente a la definición de la  transformada seno de Fourier, si $f(x) \in \mathbb{R}$ y par, entonces 
+\begin{align*}
+     \tilde{f}(k) = \frac{1}{2\pi} \int_{-\infty}^{\infty} f(x) e^{-ikx} dx &= \frac{1}{2\pi} \int_{-\infty}^0 f(x) e^{-ikx} \,dx + \frac{1}{2\pi} \int_{0}^{\infty} f(x) e^{-ikx} \, dx  \\
+     &= -\frac{1}{2\pi} \int_{\infty}^0 f(-x) e^{ikx} \,dx + \frac{1}{2\pi} \int_{0}^{\infty} f(x) e^{-ikx} \, dx \\
+     &= \frac{1}{2\pi} \int_{0}^{\infty} f(x) e^{ikx} \,dx + \frac{1}{2\pi} \int_{0}^{\infty} f(x) e^{-ikx} \, dx \\
+     &= \frac{1}{2\pi} \int_{0}^{\infty} f(x) [e^{ikx} + e^{-ikx}  ] \,dx \\
+     &= \frac{2}{2\pi} \int_{0}^{\infty} f(x) \cos(kx) \,dx \equiv  \tilde{f}_C(k),
+     \end{align*}
+     
+donde $\tilde{f}_C$ es conocida como la \textbf{transformada coseno de Fourier} de la función $f(x)$, y viene definida por \cite{Mauch}
+     $$\boxed{\tilde{f}_C(k) = \frac{1}{\pi}  \int_{0}^{\infty} f(x) \cos(kx) \,dx}$$
+
+\textbf{Observación: } Esta forma de escribir la transformada seno y coseno de Fourier es convencional, por el factor $1/\pi$.
+\end{ejemplo}
+
+\section{Delta de Dirac}
+
+Es común en física utilizar el concepto de \emph{pulso con duración infinitamente corta}. Por ejemplo, un cuerpo en movimiento por un golpe repentino alcanza un momentum igual al impulso del golpe, matemáticamente,
+\begin{equation*}
+    mv = I = \int_{t_0}^{t_0+\tau} F(t) dt \ ,
+\end{equation*}
+donde $F(t)$ es la fuerza y $\tau$ es la duracción de la acción de la fuerza. Al referirnos a un \emph{golpe}, insinuamos que la duración es lo suficientemente pequeña como para que el cambio en el momentum sea casi instantáneo. Sin embargo, para que esto sea posible, la fuerza debería haber sido infinita durante el golpe, y cero en otros lados.
+
+Sin embargo, lo más probable es que la función se parezca a la figura X, donde $h$ es muy grande y $\tau$ muy pequeño, tal que el área debajo de la curva corresponde al impulso $I$. Para esto, necesitaríamos conocer la forma exacta de $F(t)$, lo que no siempre es posible. Para resolver este problema, aproximamos un pulso de esta forma por la \emph{`función'\footnote{Existe toda una discusión respecto al hecho de que este elemento no es una función propiamente dicha. Esta será omitida durante el curso.} Delta de Dirac}, que será de gran utilidad en diferentes áreas de la Física.
+
+\begin{defi}\marginnote{Delta de Dirac}
+    Se define la \textbf{Delta de Dirac} centrada en $x=a$ como la función
+    \begin{equation}
+        \delta(x-a) = \begin{dcases}
+            0 \ , \qquad x \neq a \ ,
+            \infty \ , \qquad x = a \ ,
+        \end{dcases}
+    \end{equation}
+    tal que la integral de $\delta(x)$ está normalizada,
+    \begin{equation}
+        \int_{-\infty}^{\infty} \delta(x-a) dx = 1 \ ,
+    \end{equation}
+    y que para cualquier función $f(x)$ continua, satisface
+    \begin{equation}
+        \int_{-\infty}^{\infty} \delta(x-a) f(x) dx = f(a) \ .
+    \end{equation}
+\end{defi}
+
+\begin{propiedad}
+    \textbf{Propiedades de la Delta de Dirac.}
+    \begin{enumerate}
+        \item Si $\delta'(x)$ denota a la derivada de la delta de Dirac, y $f'(x)$ representa la derivada de $f(x)$, entonces se satisface
+        \begin{equation}
+            \int_{-\infty}^{\infty} \delta'(x) f(x) dx = - f'(0) \ .
+        \end{equation}
+
+        Esta idea se puede generalizar a derivadas de orden superior, tal que, asumiendo que $f$ es $m$ veces diferenciable
+        \begin{equation}
+            \int_{-\infty}^{\infty} \delta^{(m)}(x) f(x) dx = - f^{(m)}(0) \ .
+        \end{equation}
+
+        \item Dada la \textbf{función escalón de Heaviside}, definida como
+        \begin{equation}
+            \begin{dcases}
+                0 \ , \qquad x < 0 \ ,
+                1 \ , \qquad x > 0 \ ,
+            \end{dcases}
+        \end{equation}
+        entonces la delta de Dirac puede entenderse como su derivada, es decir,
+        \begin{equation}
+            \delta(x) = \frac{dH}{dx} \ .
+        \end{equation}
+        
+        \item Dada una función continua $\phi(x)$, la delta de Dirac satisface
+        \begin{equation}
+            \phi(x+a) \delta(x) = \phi(a) \delta(x) \ ,
+        \end{equation}
+        y en particular,
+        \begin{equation}
+            x \delta(x) = 0 \ .
+        \end{equation}
+        \item A partir de las reglas de cambio de variables, podemos obtener que
+        \begin{equation}
+            \delta(g(x)) = \sum_i \frac{\delta(x-x_i)}{|g'(x_i)|} \ ,
+        \end{equation}
+        donde $x_i$ son las raíces de la función $g$, es decir, $g(x_i) = 0$, y que además satisfacen $g'(x_i) \neq 0$, para todo $x_i$.
+        \item Como caso particular de la propiedad anterior, tenemos que
+        \begin{equation}
+            \delta(ax) = \frac{1}{|a|}\delta(x) \ , \qquad a \neq 0 \ .
+        \end{equation}
+        Como consecuencia,
+        \begin{equation}
+            \delta(-x) = \delta(x) \ .
+        \end{equation}
+    \end{enumerate}
+\end{propiedad}
+
+\subsection{Representación integral}
+
+La delta de Dirac puede ser representada como
+\begin{equation}
+    \delta(x-a) = \frac{1}{2\pi} \int_{-\infty}^{\infty} e^{ik(x-a)} dk \ .
+\end{equation}
+
+Podemos observar que esta definición es similar a la transformada de Fourier inversa de $e^{-ika}$. En efecto, utilizando la definición de la delta de Dirac, tenemos que
+\begin{equation}
+    \tilde{f}(k) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty \delta(x-a) e^{-ikx} dx = \frac{1}{\sqrt{2\pi}} e^{-ika} \ .
+\end{equation}
+
+\begin{ejemplo}
+    Determine la transformada de Fourier de las funciones $\sin(\alpha x)$ y $\cos(\alpha x)$.
+\end{ejemplo}
+
+\subsection{Delta de Dirac tridimensional}
+
+
 \section{Convolución}
 
-\begin{defi}
+\begin{defi}\marginnote{Convolución}
 Sean $f(x)$ y $g(x)$ dos funciones reales, se define la operación \textbf{convolución} de dos funciones $f$ y $g$ como 
 \begin{equation}
  (f*g)(x) := \int_{-\infty}^{\infty} f(y) g(x-y) \,dy.   \label{Convolucion}
