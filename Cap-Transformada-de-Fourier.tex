@@ -11,18 +11,26 @@ donde
   c_n = \frac{1}{L} \int_{-L/2}^{L/2} f(x) e^{-i\frac{2n\pi}{L}x} \,dx, \quad n \in \mathbb{Z} \ . 
 \end{equation}
 
-Una consecuencia inmediata de la expansión en serie de Fourier es que la función $f(x)$ representada por la serie resulta periódica, con período $L$. Por lo tanto, decimos que la serie de Fourier permite \emph{expandir funciones periódicas}. Sin embargo, no todas las funciones son periódicas, y nos interesará expandirlas dentro de algún intervalo de validez. Necesitamos, entonces, algún modo de expandir, en una base ortonormal, funciones no periódicas. 
+Una consecuencia inmediata de la expansión en serie de Fourier es que la función $f(x)$ representada por la serie resulta periódica, con período $L$. Por lo tanto, decimos que la serie de Fourier permite \emph{expandir funciones periódicas}. 
 
-Podemos decir que el conjunto de coeficientes $\{c_n\}$ también definen a $f(x)$. Este conjunto de números $c_n$ puede ser entendido como una función en la variable $n$, escrita como $c(n)$, definida para un conjunto \emph{discreto} de valores de la variable independiente (en lugar de un intervalo continuo).  La función $c(n)$ es a menudo llamada el \textbf{espectro de Fourier} de $f(x)$ y puede ser graficado, asumiendo $c(n)$ real, como sigue.
+Sin embargo, no todas las funciones son periódicas, y nos interesará expandirlas dentro de algún intervalo de validez. Necesitamos, entonces, algún modo de expandir, en una base ortonormal, funciones no periódicas. 
+
+Podemos decir que el conjunto de coeficientes $\{c_n\}$ también definen a $f(x)$. Este conjunto de números $c_n$ puede ser entendido como una función en la variable $n$, escrita como $c(n)$, definida para un conjunto \emph{discreto} de valores de la variable independiente (en lugar de un intervalo continuo).  
+\begin{defi}\marginnote{Espectro de Fourier}
+    Se define como el \textbf{espectro de Fourier} a la función de variable discreta $c(n)$, definida a partir de los coeficientes de Fourier \eqref{Transformada2}.
+\end{defi}
+
+El espectro de una función puede ser graficado, asumiendo $c(n)$ real, como se observa en la figura \ref{fig:espectro-fourier}.
 
 \vspace{-0.5cm}
 \begin{figure}[H]
     \centering
     \includegraphics[width = 12cm]{Figuras/Espectro1.pdf}
     \caption{Espectro de Fourier.}
+    \label{fig:espectro-fourier}
 \end{figure}
 
-En lugar de graficar $c$ vs $n$, podemos graficar $c$ vs \emph{el número de onda}, que corresponde a la frecuencia asociada a la parte espacial:
+En lugar de graficar $c$ vs $n$, podemos graficar $c$ vs $k$, el \emph{número de onda}, que corresponde a la frecuencia asociada a la parte espacial:
 $$k = \frac{2\pi n}{L}.$$
 
 Si $L \to \infty$, entonces las frecuencias se encuentran estrechamente espaciadas debido a que la diferencia entre valores consecutivos de $k$ es
@@ -32,7 +40,8 @@ En otras palabras, para $L \to \infty$, $\Delta k$ es pequeño. Con este cambio 
 
 \begin{figure}
     \centering
-    \includegraphics[scale = 0.4]{Figuras/Espectro2.pdf}    \caption{Espectro de Fourier cuando $L \to + \infty$.}
+    \includegraphics[scale = 0.4]{Figuras/Espectro2.pdf}
+    \caption{Espectro de Fourier cuando $L \to + \infty$.}
     \label{Espectro1}
 \end{figure}
 
@@ -73,7 +82,7 @@ Note que la transformada de Fourier es la extensión natural del concepto de ser
 \begin{itemize}
     \item Otras notaciones usadas son: $\tilde{f}(k) = \hat{f}(x) = g(k) = \mathcal{F}\{f(x)\}(k)$.
     
-    \item El factor $1/\sqrt{2\pi}$ en la definición \eqref{T.Fourier} es convencional. Lo importante es que se cumpla la identidad
+    \item El factor $1/\sqrt{2\pi}$ en la definición \eqref{T.Fourier} es convencional. Lo importante es que se cumpla la identidad conocida como \textbf{integral de Fourier}
     \begin{equation}
         f(x) = \int_{-\infty}^{\infty} \left[\frac{1}{2\pi} \int_{-\infty}^{\infty} f(\xi) e^{-ik\xi} d\xi \right] e^{ikx} \,dk.
       \label{IntegralFourier}
@@ -301,14 +310,14 @@ donde hemos usado que
 \section{Propiedades de la transformada de Fourier}
 
 \begin{propiedad} 
-\textbf{Propiedades de la Transformada de Fourier.} Sean $f, g \in L^1$ y $\alpha, \beta \in \mathbb{C}.$
+\textbf{Propiedades de la Transformada de Fourier.} Sean las funciones $f, g \in L^1$ y los escalares $\alpha, \beta \in \mathbb{C}$.
 
 \begin{enumerate}
     \item \textbf{Linealidad}: $$\mathcal{F}\{\alpha f(x) + \beta g(x)\}(k) = \alpha \mathcal{F}\{f(x)\}(k) + \beta \mathcal{F}\{g(x)\}(k).$$ 
     
-    \item Si $f$ es real, entonces $$\tilde{f}(-k) = \tilde{f}^\ast(k).$$
-    
-    % $$ \mathcal{F}\{f(x)\}(-k) = (\mathcal{F}\{f(x)\}(k))^*.$$
+    \item Si $f$ es real, entonces 
+    % $$\tilde{f}(-k) = \tilde{f}^\ast(k).$$
+    $$ \mathcal{F}\{f(x)\}(-k) = (\mathcal{F}\{f(x)\}(k))^*.$$
     
     \item \textbf{Traslación}: $$\mathcal{F}\{f(x+a)\}(k) = e^{ika} \mathcal{F}\{f(x)\}(k), \quad a \in \mathbb{R}.$$
     
