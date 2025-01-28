@@ -647,7 +647,7 @@ Sin embargo, lo más probable es que la función se parezca a la figura X, donde
 \subsection{Representación integral}
 
 La delta de Dirac puede ser representada como
-\begin{equation}
+\begin{equation} \label{eq:Dirac-Integral}
     \delta(x-a) = \frac{1}{2\pi} \int_{-\infty}^{\infty} e^{ik(x-a)} dk \ .
 \end{equation}
 
@@ -658,13 +658,145 @@ Podemos observar que esta definición es similar a la transformada de Fourier in
 
 \begin{ejemplo}
     Determine la transformada de Fourier de las funciones $\sin(\alpha x)$ y $\cos(\alpha x)$.
+
+    Observamos que, para $f(x) = \sin(\alpha x)$, tendremos
+    \begin{align*}
+        \mathcal{F}\{\sin(\alpha x)\}(k) & = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty \sin(\alpha x) e^{-ikx} dx \\
+        & = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty \left( \frac{e^{i\alpha x} - e^{-i\alpha x}}{2i} \right) e^{-ikx} dx \\
+        & = \frac{1}{2i} \left\{ \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty e^{i(\alpha - k)x} dx - \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty e^{-i(\alpha+k)x} dx \right\} \\
+        & = \frac{1}{2i} \left\{ \sqrt{2\pi} \delta(\alpha-k) - \sqrt{2\pi} \delta(\alpha+k) \right\} \ , 
+    \end{align*}
+    donde hemos usado la definición de la delta de Dirac \eqref{eq:Dirac-Integral}. Luego,
+    \begin{equation}
+        \boxed{\mathcal{F}\{\sin(\alpha x)\}(k) = \sqrt{\frac{\pi}{2}}i[\delta(k+\alpha) - \delta(k-\alpha)] \ .}
+    \end{equation}
+
+    De forma análoga, para $f(x) = \cos(\alpha x)$, tendremos
+    \begin{align*}
+        \mathcal{F}\{\cos(\alpha x)\}(k) & = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty \cos(\alpha x) e^{-ikx} dx \\
+        & = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty \left( \frac{e^{i\alpha x} + e^{-i\alpha x}}{2} \right) e^{-ikx} dx \\
+        & = \frac{1}{2} \left\{ \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty e^{i(\alpha - k)x} dx + \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty e^{-i(\alpha+k)x} dx \right\} \\
+        & = \frac{1}{2} \left\{ \sqrt{2\pi} \delta(\alpha-k) + \sqrt{2\pi} \delta(\alpha+k) \right\} \ , 
+    \end{align*}
+    donde hemos usado la definición de la delta de Dirac \eqref{eq:Dirac-Integral}. Luego,
+    \begin{equation}
+        \boxed{\mathcal{F}\{\sin(\alpha x)\}(k) = \sqrt{\frac{\pi}{2}}[\delta(k+\alpha) + \delta(k-\alpha)] \ .}
+    \end{equation}
+
 \end{ejemplo}
 
 \subsection{Delta de Dirac tridimensional}
 
-Por último, 
+Por último, mencionaremos que es común en Física utilizar una delta de Dirac en tres (o más) dimensiones para describir distribuciones puntuales en el espacio, como lo puede ser una carga eléctrica puntual. Para ello, utilizamos una definición análoga al caso unidimensional, donde
+\begin{equation}
+    \delta^{(3)}(\vec{x}-\vec{a}) = 0 \, \quad \vec{x} \neq \vec{a} \ ,
+\end{equation}
+donde $\vec{x} = x \hat{x} + y \hat{y} + z\hat{z}$ es el vector posición de nuestro sistema coordenado, y $\vec{a} = a_x \hat{x} + a_y \hat{y} + a_z \hat{z}$ es un vector cualquiera que localiza a nuestro punto en el espacio. Para cualquier campo escalar, se cumplirá queda
+\begin{equation}
+    \int_V \delta^{(3)} (\vec{x}-\vec{a}) f(\vec{x}) dV = \left\{\begin{array}{cc}
+        f(\vec{a}) \ , & \text{si } \vec{a} \in V \ , \\
+        0 \ , & \text{si } \vec{a} \notin V \ .
+    \end{array}\right.
+\end{equation}
+
+En coordenadas cartesianas, esta corresponde únicamente al producto de tres deltas de Dirac unidimensionales, una por cada coordenada del sistema, tal que
+\begin{equation}
+    \delta^{(3)}(\vec{x} - \vec{a}) = \delta(x-a_x) \delta(y - a_y) \delta(z - a_z) \ ,
+\end{equation}
+mientras que en un sistema de coordenadas curvilíneas ortogonales, cuyas coordenadas son $(\xi_1, \xi_2, \xi_3)$, y factores de escala 
+\begin{equation}
+    h_i = \left\| \frac{\partial \vec{x}}{\partial \xi_i} \right\| = \left[ \left( \frac{\partial x}{\partial \xi_i} \right)^2 + \left( \frac{\partial y}{\partial \xi_i} \right)^2 + \left( \frac{\partial z}{\partial \xi_i} \right)^2 \right]^2 \ , \quad i = 1, 2, 3 \ ,
+\end{equation}
+la delta de Dirac será dada por
+\begin{equation}
+    \delta^{(3)}(\vec{x}-\vec{x}_0) = \frac{1}{h_1 h_2 h_3} \delta(\xi_1 - \xi_{10}) \delta(\xi_2 - \xi_{20}) \delta(\xi_3 - \xi_{30}) \ .
+\end{equation}
+
+\begin{demo}
+    Proponemos un ansatz de la forma
+    \begin{equation*}
+        \delta^{(3)} (\x-\x_0) = A(\xi_1, \xi_2, \xi_3) \delta(\xi_1 - \xi_{10}) \delta(\xi_2 - \xi_{20}) \delta(\xi_3 - \xi_{30}) \ ,
+    \end{equation*}
+    donde $A(\xi_1, \xi_2, \xi_3)$ es una función que depende de las coordenadas.
+
+    Este ansatz deberá satisfacer la condición de normalización de la delta de Dirac, 
+    \begin{align*}
+        \delta_{\mathbb{R}^3} \delta^{(3)} (\x - \x_0) dV & = \int A(\xi_1, \xi_2, \xi_3) \delta(\xi_1 - \xi_{10}) \delta(\xi_2 - \xi_{20}) \delta(\xi_3 - \xi_{30}) h_1 h_2 h_3 d\xi_1 d\xi_2 d\xi_3 \\ 
+        & = A(\xi_{10}, \xi_{20}, \xi_{30}) h_1(\xi_{10}, \xi_{20}, \xi_{30}) h_2(\xi_{10}, \xi_{20}, \xi_{30}) h_3(\xi_{10}, \xi_{20}, \xi_{30}) \\
+        & = 1 \ ,
+    \end{align*}
+    con lo que podemos proponer que $A(\xi_1, \xi_2, \xi_3) = (h_1 h_2 h_3)^{-1}$, con lo que la delta de Dirac en un sistema curvilíneo ortogonal arbitrario está dada por
+    \begin{equation*}
+        \delta^{(3)}(\vec{x}-\vec{x}_0) = \frac{1}{h_1 h_2 h_3} \delta(\xi_1 - \xi_{10}) \delta(\xi_2 - \xi_{20}) \delta(\xi_3 - \xi_{30}) \ .
+    \end{equation*}
+\end{demo}
+
+En particular, para \textbf{coordenadas esféricas}, la delta de Dirac es dada por
+\begin{equation}
+    \boxed{\delta^{(3)}(\vec{x} - \vec{x}_0) = \frac{1}{r^2 \sin\theta} \delta(r-r_0) \delta(\theta-\theta_0) \delta(\phi - \phi_0) \ ,}
+\end{equation}
+mientras que en \textbf{coordenadas cilíndricas}, será dada por
+\begin{equation}
+    \boxed{\delta^{(3)}(\x - \x_0) = \frac{1}{\rho} \delta(\rho - \rho_0) \delta(\phi-\phi_0) \delta(z-z_0) \ .}
+\end{equation}
+
+Mención aparte merece el caso en que el problema tiene simetría azimutal o axial. De acuerdo con la propiedad de normalización, $\int_V \delta^{(3)}(\vec{x}-\x_0) = 1$. Si omitimos la existencia de la delta en la coordenada azimutal $\phi$, esta integral se cumplirá únicamente si definimos la delta como
+\begin{align*}
+    \delta^{(3)}(\x - \x_0) & = \frac{1}{2\pi} \left( \frac{1}{r^2\sin\theta} \delta(r-r_0) \delta(\theta-\theta_0) \right) \ ,
+    & = \frac{1}{2\pi} \left( \frac{1}{\rho} \delta(\rho - \rho_0) \delta(z-z_0) \right) \ ,
+\end{align*}
+ya que la integral de normalización incluirá un término de la forma
+\begin{align*}
+    \int_0^{2\pi} r^2 \sin \theta d\phi & = 2\pi r^2 \sin \theta \ , \\
+    \int_0^{2\pi} \rho d\phi & = 2\pi \rho \ .
+\end{align*}
+
+Si en el caso esférico tenemos simetría axial, entonces
+\begin{align*}
+    \delta^{(3)}(\x - \x_0) = \frac{1}{2r^2} \delta(r - r_0) \delta(\phi - \phi_0) \ ,
+\end{align*}
+ya que
+\begin{equation*}
+    \int_0^\pi r^2 \sin \theta d\theta = 2r^2 \ .
+\end{equation*}
+
+Por último, si tenemos tanto simetría axial como azimutal, entonces
+\begin{align*}
+    \delta^{(3)}(\x - \x_0) = \frac{1}{4\pi r^2} \delta(r - r_0) \ ,
+\end{align*}
+ya que
+\begin{equation*}
+    \int_0^{2\pi} d\phi \int_0^\pi r^2 \sin \theta d\theta = 4\pi r^2 \ .
+\end{equation*}
+
+\begin{ejemplo}
+    \emph{Considere un anillo de carga $Q$ distribuida uniformemente y radio $a$ ubicado en el plano $xy$ con su centro en el origen. Encuentre la densidad volumétrica de carga en coordenadas cilíndricas y en coordenadas esféricas.}
+
+    Recordamos que una densidad de carga, integrada sobre la región de interés, debe corresponderse con la carga total del sistema, es decir,
+    \begin{equation*}
+        \int_V \rho(\x) dV = Q \ .
+    \end{equation*}
+
+    Además, para una carga puntual $Q$ situada en el punto $\x_0$, podemos describir su densidad como
+    \begin{equation*}
+        \rho(\x) = Q \delta^{(3)}(\x-\x_0) \ .
+    \end{equation*}
+
+    Usaremos un enfoque similar a aquel de la carga puntual, pero considerando que el anillo es un objeto en dos dimensiones. Dado que la carga se distribuye uniformemente sobre el anillo, podemos suponer que el sistema tiene simetría azimutal. Además, como se ubica en el plano $xy$, esto quiere decir que $z_0 = 0$, y que $\theta_0 = \pi/2$. De esta forma, la densidad de carga del sistema será dada por
+    \begin{align*}
+        \rho(\x) & = Q \frac{1}{2\pi \rho} \delta(\rho - a) \delta(z) \ , \\
+        & = Q \frac{1}{2\pi r^2 \sin\theta} \delta(r-a) \delta(\theta - \pi/2) \ .
+    \end{align*}
+    
+    Es directo comprobar que, en ambos casos,
+    \begin{equation*}
+        \int_V \rho(\x) = Q \ .
+    \end{equation*}
+\end{ejemplo}
 
 \section{Convolución}
+
+Imaginemos algún tipo de \emph{estímulo} físico, por ejemplo, una fuerza en el tiempo, $f(t)$. Consideremos que la respuesta a este estímulo puede ser modelada mediante la función $g(x,t) = g(x-t)$, como puede ser, por ejemplo, el movimiento de una partícula en la posición $x$ frente a esta fuerza. Si el sistema es \emph{lineal}, entonces la respuesta total en el punto $x$ al estímulo global $\{f(t) : t \in \mathbb{R} \}$ será la \emph{suma} de todas las contribuciones infinitesimales $[dt f(t)] g(x,t)$. Matemáticamente, a estas contribuciones las llamamos \textbf{convolución}.
 
 \begin{defi}\marginnote{Convolución}
 Sean $f(x)$ y $g(x)$ dos funciones reales, se define la operación \textbf{convolución} de dos funciones $f$ y $g$ como 
@@ -674,32 +806,34 @@ Sean $f(x)$ y $g(x)$ dos funciones reales, se define la operación \textbf{convo
 
 \end{defi}
 
-\textbf{Idea física:} Sea $f(t)$ algún \emph{estímulo} físico, como puede serlo una fuerza en el tiempo $t$, la densidad de carga en la posición $x$, etc. Sea $g(x,t) = g(x-t)$ la respuesta en $x$ a un estímulo en $t$. Si el sistema es \textit{lineal}, la respuesta total en el punto $x$ al estímulo global $\{f(t) : t \in \mathbb{R}\}$ será la "suma" de todas las contribuciones $[dt\, f(t)] g(x,t)$, que es la convolución $(f*g)(x)$. 
+% \textbf{Idea física:} Sea $f(t)$ algún \emph{estímulo} físico, como puede serlo una fuerza en el tiempo $t$, la densidad de carga en la posición $x$, etc. Sea $g(x,t) = g(x-t)$ la respuesta en $x$ a un estímulo en $t$. Si el sistema es \textit{lineal}, la respuesta total en el punto $x$ al estímulo global $\{f(t) : t \in \mathbb{R}\}$ será la "suma" de todas las contribuciones $[dt\, f(t)] g(x,t)$, que es la convolución $(f*g)(x)$. 
 
-Por ejemplo, el potencial electrostático debido a una densidad de carga $\rho(\Vec{x})$ se puede escribir como
-$$\phi(\Vec{x}) = \int_{V} \frac{\rho(\Vec{x}\,')}{|\Vec{x} - \Vec{x}\,'|} \, dV' = \rho * f(\Vec{x}),$$
+Si nuestro estímulo es el potencial electrostático debido a una densidad de carga $\rho(\Vec{x})$, nuestra respuesta total, que corresponde al potencial electrostático $\phi(\x)$, se puede escribir como
+\begin{equation}
+    \phi(\Vec{x}) = \int_{V} \frac{\rho(\Vec{x}\,')}{|\Vec{x} - \Vec{x}\,'|} \, dV' = \rho * f(\Vec{x}) \ ,
+\end{equation}
 donde  $f(\Vec{x}) = 1/|\Vec{x}|$.
-
-\begin{figure}[H]
+\begin{figure}[htbp]
     \centering
-    \includegraphics[scale = 0.55]{Figuras/Distribucion-Cargas.pdf}
+    \includegraphics[width = 8cm]{Figuras/Distribucion-Cargas.pdf}
     \caption{Distribución de carga de densidad $\rho(\Vec{x})$.}
     \label{fig:PotencialDistribucion}
 \end{figure}
 
-\textbf{Idea matemática:} La interpretación matemática de la convolución está ilustrada en la figura \ref{fig:IdeaConvolucion}.
+Matemáticamente, podemos entender la convolución $f * g$ como \emph{el grado de traslape} entre dos pulsos, $f(y)$ y $g(-y)$, cuando uno $g(-y)$ se encuentra desplazado en $x$ unidades. Esta idea se puede observar en la figura \ref{fig:IdeaConvolucion}.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
     \centering
-    \includegraphics[scale = 0.55]{Figuras/Idea-Convolucion.pdf}
+    \includegraphics[width=10cm]{Figuras/Idea-Convolucion.pdf}
     \caption{Idea matemática de la convolución. En (a), se expresa cada función en términos de la variable de integración $y$. En (b), se refleja la gráfica de $g(y)$ con respecto al eje vertical, es decir, $g(y) \rightarrow g(-y)$. En (c), se traslada la gráfica de $g(-y)$, $x$ unidades. Luego, se traslapan las gráficas de $f(y)$ y $g(x-y)$ de tal forma que el área sombreada corresponde al valor de $f * g$ para ese valor de $x$.}
     \label{fig:IdeaConvolucion}
 \end{figure}
 
-Entonces, $f * g$ mide el grado de traslape entre $f(y)$ y $g(-y)$, luego de trasladar $g$ a una distancia $x$.
+% Entonces, $f * g$ mide el grado de traslape entre $f(y)$ y $g(-y)$, luego de trasladar $g$ a una distancia $x$.
 
-\begin{propo}[Propiedades de la convolución]
-Sean $f(x)$, $g(x)$ y $h(x)$  funciones reales, se verifica:
+\begin{propiedad}\textbf{Propiedades de la convolución.}
+
+Sean $f(x)$, $g(x)$ y $h(x)$  funciones reales. Entonces, se verifican las siguientes propiedades:
 
 \begin{enumerate}
     \item \textbf{Conmutatividad:}$$f(x) * g(x) = g(x) * f(x).$$
@@ -708,9 +842,9 @@ Sean $f(x)$, $g(x)$ y $h(x)$  funciones reales, se verifica:
     
     \item \textbf{Distributividad:} $$f(x)*[g(x)+h(x)] = f(x)*g(x) + f(x)*h(x).$$ 
 \end{enumerate}
-\end{propo}
+\end{propiedad}
 
-% \newpage
+\newpage
 
 \begin{teorema}[de convolución de Fourier]
 Sean $f(x)$, $g(x)$ y $h(x)$  funciones reales y sean $\tilde{f}(k)$, $\tilde{g}(k)$ y $\tilde{h}(k)$ sus correspondientes transformadas de Fourier. 
