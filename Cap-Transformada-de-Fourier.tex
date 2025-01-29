@@ -430,10 +430,10 @@ Si $f(x)$ y $g(x)$ son funciones reales y si $\tilde{f}(k)$ y $\tilde{g}(k)$ son
 
 \begin{itemize}
     \item[(i)] (Primer teorema)
-    $$\int_{-\infty}^{\infty} |\tilde{f}(k)|^2\, dk = \frac{1}{2\pi} \int_{-\infty}^{\infty} |f(x)|^2 \, dx. $$
+    $$\int_{-\infty}^{\infty} |\tilde{f}(k)|^2\, dk = \int_{-\infty}^{\infty} |f(x)|^2 \, dx. $$
     
     \item[(ii)] (Segundo teorema)
-    $$\int_{-\infty}^{\infty} \tilde{f}(k) \tilde{g}(-k) \, dk = \frac{1}{2\pi} \int_{-\infty}^{\infty} f(x) g(x) \, dx. $$
+    $$\int_{-\infty}^{\infty} \tilde{f}(k) \tilde{g}(-k) \, dk = \int_{-\infty}^{\infty} f(x) g(x) \, dx. $$
     
 \end{itemize}
 \end{teorema}
@@ -442,19 +442,18 @@ Si $f(x)$ y $g(x)$ son funciones reales y si $\tilde{f}(k)$ y $\tilde{g}(k)$ son
 Notemos que (i) es consecuencia de (ii) al tomar $g(x) = f(x)$ real tal que $f^*(x) = f(x)$ y $\tilde{g}(-k) = \tilde{f}^*(k)$. Luego, nos bastará demostrar el segundo teorema de Parseval.
 
 Usando la definición \eqref{T.Fourier}, tenemos que 
-$$\tilde{g}(-k) = \frac{1}{2\pi} \int_{-\infty}^{\infty} g(x) e^{ikx} \,dx.$$
+$$\tilde{g}(-k) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} g(x) e^{ikx} \,dx.$$
 
 Luego, 
-$$\int_{-\infty}^{\infty} \tilde{f}(k) \tilde{g}(-k) \,dk = \int_{-\infty}^{\infty} \tilde{f}(k) \,dk \int_{-\infty}^{\infty} \frac{1}{2\pi} g(x) e^{ikx} \,dx.$$
+$$\int_{-\infty}^{\infty} \tilde{f}(k) \tilde{g}(-k) \,dk = \int_{-\infty}^{\infty} \tilde{f}(k) \,dk \int_{-\infty}^{\infty} \frac{1}{\sqrt{2\pi}} g(x) e^{ikx} \,dx.$$
 
 Supongamos que podemos intercambiar el orden de integración, por ejemplo, al suponer que las integrales 
 $$\int_{-\infty}^{\infty} \tilde{f}(k) e^{ikx} \,dk ~~\mbox{y}~~ \int_{-\infty}^{\infty} g(x) e^{ikx} \,dx$$
-
 son absolutamente integrables. Entonces,
-$$\int_{-\infty}^{\infty} \tilde{f}(k) \tilde{g}(-k) \,dk = \frac{1}{2\pi} \int_{-\infty}^{\infty} g(x) \left(  \int_{-\infty}^{\infty}  \tilde{f}(k) e^{ikx} \,dk\right) \,dx.$$
+$$\int_{-\infty}^{\infty} \tilde{f}(k) \tilde{g}(-k) \,dk = \int_{-\infty}^{\infty} g(x) \left( \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} \tilde{f}(k) e^{ikx} \,dk\right) \,dx.$$
 
-Ahora, aplicando la transformada inversa de Fourier dada por \eqref{I.Fourier}, concluimos que
-$$\int_{-\infty}^{\infty} \tilde{f}(k) \tilde{g}(-k) \,dk = \frac{1}{2\pi} \int_{-\infty}^{\infty} f(x) g(x)  \,dx.$$
+Aplicando la transformada inversa de Fourier dada por \eqref{I.Fourier}, concluimos que
+$$\int_{-\infty}^{\infty} \tilde{f}(k) \tilde{g}(-k) \,dk = \int_{-\infty}^{\infty} f(x) g(x)  \,dx.$$
 
 \end{demo}
 
@@ -611,7 +610,7 @@ Sin embargo, lo más probable es que la función se parezca a la figura X, donde
         \item Dada la \textbf{función escalón de Heaviside}, definida como
         \begin{equation}
             \begin{dcases}
-                0 \ , \qquad x < 0 \ ,
+                0 \ , \qquad x < 0 \ , \\
                 1 \ , \qquad x > 0 \ ,
             \end{dcases}
         \end{equation}
@@ -680,7 +679,7 @@ Podemos observar que esta definición es similar a la transformada de Fourier in
     \end{align*}
     donde hemos usado la definición de la delta de Dirac \eqref{eq:Dirac-Integral}. Luego,
     \begin{equation}
-        \boxed{\mathcal{F}\{\sin(\alpha x)\}(k) = \sqrt{\frac{\pi}{2}}[\delta(k+\alpha) + \delta(k-\alpha)] \ .}
+        \boxed{\mathcal{F}\{\cos(\alpha x)\}(k) = \sqrt{\frac{\pi}{2}}[\delta(k+\alpha) + \delta(k-\alpha)] \ .}
     \end{equation}
 
 \end{ejemplo}
@@ -721,7 +720,7 @@ la delta de Dirac será dada por
 
     Este ansatz deberá satisfacer la condición de normalización de la delta de Dirac, 
     \begin{align*}
-        \delta_{\mathbb{R}^3} \delta^{(3)} (\x - \x_0) dV & = \int A(\xi_1, \xi_2, \xi_3) \delta(\xi_1 - \xi_{10}) \delta(\xi_2 - \xi_{20}) \delta(\xi_3 - \xi_{30}) h_1 h_2 h_3 d\xi_1 d\xi_2 d\xi_3 \\ 
+        \int_{\mathbb{R}^3} \delta^{(3)} (\x - \x_0) dV & = \int A(\xi_1, \xi_2, \xi_3) \delta(\xi_1 - \xi_{10}) \delta(\xi_2 - \xi_{20}) \delta(\xi_3 - \xi_{30}) h_1 h_2 h_3 d\xi_1 d\xi_2 d\xi_3 \\ 
         & = A(\xi_{10}, \xi_{20}, \xi_{30}) h_1(\xi_{10}, \xi_{20}, \xi_{30}) h_2(\xi_{10}, \xi_{20}, \xi_{30}) h_3(\xi_{10}, \xi_{20}, \xi_{30}) \\
         & = 1 \ ,
     \end{align*}
@@ -851,10 +850,13 @@ Sean $f(x)$, $g(x)$ y $h(x)$  funciones reales y sean $\tilde{f}(k)$, $\tilde{g}
 
 \begin{itemize}
     \item Si $\tilde{h}(k) = \tilde{f}(k) \tilde{g}(k)$, entonces 
-$$ h(x) = \frac{1}{2\pi} (f * g)(x) = \frac{1}{2\pi} (g * f)(x) = \frac{1}{2\pi} \int_{-\infty}^{\infty} f(y) g(x-y) \,dy.$$ 
+$$ h(x) = \frac{1}{\sqrt{2\pi}} (f * g)(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} f(y) g(x-y) \,dy.$$ 
 
     \item Si $h(x) = f(x) g(x)$, entonces
-$$\Tilde{h}(k) = (\Tilde{f} * \Tilde{g})(k) = (\Tilde{g} * \Tilde{f})(k) = \int_{-\infty}^{\infty} \Tilde{f}(y) \Tilde{g}(k-y) \,dy.$$
+    \begin{equation}
+        \Tilde{h}(k) = \frac{1}{\sqrt{2\pi}}(\Tilde{f} * \Tilde{g})(k) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} \Tilde{f}(y) \Tilde{g}(k-y) \,dy.
+    \end{equation}
+% $$$$
 \end{itemize}
 \end{teorema}
 
@@ -864,37 +866,37 @@ $$\Tilde{h}(k) = (\Tilde{f} * \Tilde{g})(k) = (\Tilde{g} * \Tilde{f})(k) = \int_
 \begin{itemize}
     \item Supongamos que  $\tilde{h}(k) = \tilde{f}(k) \tilde{g}(k)$. Aplicando la transformada de Fourier inversa dada por \eqref{I.Fourier}, tenemos que 
 \begin{align*}
-   h(x) = \mathcal{F}^{-1} \{\tilde{h}(k)\} &=  \mathcal{F}^{-1} \{\tilde{f}(k) \tilde{g}(k)\} \\
-   &= \int_{-\infty}^{\infty} \tilde{f}(k) \tilde{g}(k) e^{ikx} \,dk \\
-   &= \frac{1}{2\pi} \int_{-\infty}^{\infty}  \left( \int_{-\infty}^{\infty} f(y) e^{-ik y} \,dy \right) \tilde{g}(k)  e^{ikx}  \,dk.
+   h(x) = \mathcal{F}^{-1} \{\tilde{h}(k)\} & = \mathcal{F}^{-1} \{\tilde{f}(k) \tilde{g}(k)\} \\
+   & = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} \tilde{f}(k) \tilde{g}(k) e^{ikx} \,dk \\
+   & = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty}  \left( \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} f(y) e^{-ik y} \,dy \right) \tilde{g}(k)  e^{ikx}  \,dk.
 \end{align*}
 
 Si el intercambio de orden de integración es posible, entonces 
 \begin{align*}
-  h(x) &= \frac{1}{2\pi} \int_{-\infty}^{\infty}  f(y)  \left( \int_{-\infty}^{\infty}  \tilde{g}(k)  e^{ikx} e^{-ik y}\,d k \right) \,dy \\
-   &= \frac{1}{2\pi} \int_{-\infty}^{\infty}  f(y)  \left( \int_{-\infty}^{\infty}  \tilde{g}(k)  e^{ik(x-y)}\,d k \right) \,dy \\
-   &= \frac{1}{2\pi} \int_{-\infty}^{\infty}  f(y) g(x-y) \,dy = \frac{1}{2\pi} (f * g)(x).
+  h(x) &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty}  f(y)  \left( \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty}  \tilde{g}(k)  e^{ikx} e^{-ik y}\,d k \right) \,dy \\
+   & = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty}  f(y)  \left( \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty}  \tilde{g}(k)  e^{ik(x-y)}\,d k \right) \,dy \\
+   & = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty}  f(y) g(x-y) \,dy = \frac{1}{\sqrt{2\pi}} (f * g)(x).
 \end{align*}
 
 Como la convolución es conmutativa:
-$$h(x) = \frac{1}{2\pi} (f * g)(x) = \frac{1}{2\pi} (g * f)(x)  = \frac{1}{2\pi} \int_{-\infty}^{\infty}  f(y) g(x-y) \,dy.$$
+$$h(x) = \frac{1}{2\pi} (f * g)(x) = \frac{1}{2\pi} (g * f)(x)  = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty}  f(y) g(x-y) \,dy.$$
 
 \item  Supongamos que $h(x) = f(x) g(x)$. Aplicando la transformada de Fourier dada por \eqref{T.Fourier}, tenemos que 
 \begin{align*}
    \Tilde{h}(k) &=  \mathcal{F} \{f(x) g(x)\} \\
-   &= \frac{1}{2\pi} \int_{-\infty}^{\infty} f(x) g(x) e^{-ikx} \,dx \\
-   &=  \frac{1}{2\pi} \int_{-\infty}^{\infty} \left( \int_{-\infty}^{\infty} \Tilde{f}(y) e^{iyx} \,dy \right) g(x) e^{-ikx} \,dx.
+   &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} f(x) g(x) e^{-ikx} \,dx \\
+   &=  \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} \left( \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} \Tilde{f}(y) e^{iyx} \,dy \right) g(x) e^{-ikx} \,dx.
 \end{align*}
 
 Si el intercambio de orden de integración es posible, entonces 
 \begin{align*}
-   \Tilde{h}(k) &=  \frac{1}{2\pi} \int_{-\infty}^{\infty} \Tilde{f}(y) \left( \int_{-\infty}^{\infty} g(x) e^{iyx}  e^{-ikx}\,dx \right) \,dy \\
-   &=  \int_{-\infty}^{\infty} \Tilde{f}(y) \left( \frac{1}{2\pi} \int_{-\infty}^{\infty} g(x) e^{-i(k-y)x} \,dx \right) \,dy \\
-   &=  \int_{-\infty}^{\infty} \Tilde{f}(y) \Tilde{g}(k-y) \,dy. 
+   \Tilde{h}(k) &=  \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} \Tilde{f}(y) \left( \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} g(x) e^{iyx}  e^{-ikx}\,dx \right) \,dy \\
+   &=  \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} \Tilde{f}(y) \left( \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} g(x) e^{-i(k-y)x} \,dx \right) \,dy \\
+   &=  \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} \Tilde{f}(y) \Tilde{g}(k-y) \,dy. 
 \end{align*}
 
 Por lo tanto,
-$$\Tilde{h}(k) =  (\Tilde{f} * \Tilde{g})(k) = (\Tilde{g} * \Tilde{f})(k) = \int_{-\infty}^{\infty} \Tilde{f}(y) \Tilde{g}(k-y) \,dy.$$
+$$\Tilde{h}(k) =  \frac{1}{\sqrt{2\pi}} (\Tilde{f} * \Tilde{g})(k) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} \Tilde{f}(y) \Tilde{g}(k-y) \,dy.$$
 \end{itemize}
 
 \end{demo}
