@@ -617,6 +617,39 @@
       \field{year}{2009}
       \true{nocite}
     \endentry
+    \entry{Niksirat_2018}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=018ad67558b553101d3cfd33f8c8894e}{%
+           family={Niksirat},
+           familyi={N\bibinitperiod},
+           given={Mohammad},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Department of Mathematical Sciences, University of Alberta, Canada}%
+      }
+      \strng{namehash}{018ad67558b553101d3cfd33f8c8894e}
+      \strng{fullhash}{018ad67558b553101d3cfd33f8c8894e}
+      \strng{fullhashraw}{018ad67558b553101d3cfd33f8c8894e}
+      \strng{bibnamehash}{018ad67558b553101d3cfd33f8c8894e}
+      \strng{authorbibnamehash}{018ad67558b553101d3cfd33f8c8894e}
+      \strng{authornamehash}{018ad67558b553101d3cfd33f8c8894e}
+      \strng{authorfullhash}{018ad67558b553101d3cfd33f8c8894e}
+      \strng{authorfullhashraw}{018ad67558b553101d3cfd33f8c8894e}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Differential Equations: Partial and boundary value problems}
+      \field{year}{2018}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://sites.ualberta.ca/~niksirat/PDE/PDE.html
+      \endverb
+      \verb{url}
+      \verb https://sites.ualberta.ca/~niksirat/PDE/PDE.html
+      \endverb
+    \endentry
     \entry{Rainville}{book}{}{}
       \name{author}{1}{}{%
         {{hash=70c7d7090361cdd9fcad926f56f0c92a}{%
