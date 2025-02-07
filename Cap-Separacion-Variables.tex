@@ -1,14 +1,58 @@
-\chapter{El Método de Separación de Variables} \label{chap:MSV}
+\chapter{El Método de Separación de Va\-riables} \label{chap:MSV}
 
 Ya observamos que podemos hacer uso del método de la transformada de Fourier para reducir una ecuación diferencial en dos variables diferentes a una EDO en una sola variable. Sin embargo, no siempre será cómodo calcular la transformada de Fourier de una función, por lo que sería agradable tener una forma más general de hacer funcionar esta idea.
 
-Para ello, hacemos uso del \textbf{método de separación de variables}, gracias al cual podemos reducir una EDP lineal de $n$ variables en un conjunto de $n$ EDOs para $n$ funciones auxiliares, cada una asociada a una variable independiente de la EDP \emph{y que no depende de las otras variables independientes}. Esto lo podemos hacer al proponer que nuestro sistema puede ser descrito mediante una \emph{solución separable}, que consiste en el producto de todas las funciones auxiliares que encontremos mediante la solución de las EDOs.
+Para ello, hacemos uso del \textbf{método de separación de variables}, gracias al cual podemos reducir una EDP lineal de $n$ variables en un conjunto de $n$ EDOs para $n$ funciones auxiliares, cada una asociada a una variable independiente de la EDP \emph{y que no depende de las otras variables independientes}. Antes de ello, introduciremos la siguiente definición.
 
-Para realizar la separación de las variables, haremos uso de $(n-1)$ \emph{constantes de separación}, las que son escogidas, en primera instancia, de forma arbitraria para luego determinarlas gracias a las condiciones de contorno del sistema.
+\begin{defi}\marginnote{Función separable}
+    Una función de $n$ variables $u(x_1, x_2, \dots, x_n)$ se dice \textbf{separable} si puede escribirse como producto de dos o más funciones diferentes, donde cada una de ellas depende de variables distintas, es decir,
+    \begin{equation}
+        u(x_1, x_2, \dots, x_n) = f(x_1, x_2, \dots, x_k) g(x_{k+1}, x_{k+2}, \dots, k_n) \ ,
+    \end{equation}
+    y se dice \textbf{completamente separable} cuando puede escribirse como el producto de $n$ funciones de una sola variable,
+    \begin{equation}
+        u(x_1, x_2, \dots, x_n) = X_1(x_1) X_2(x_2) \dots X_n(x_n) \ .
+    \end{equation}
+\end{defi}
 
-Finalmente, una vez hallamos las soluciones de cada una de las EDOs y planteamos la solución separable del sistema, consideraremos que la solución más general consiste en la \emph{superposición} o \emph{combinación lineal} de todas las posibles soluciones separables del sistema.
+% \begin{defi}\marginnote{Ecuación separable}
+%     Diremos que una ecuación diferencial parcial \emph{lineal} es \textbf{separable} si sus soluciones son funciones completamente separables.
+% \end{defi} %% En realidad creo que esto no es correcto.
 
-Como ejemplo bastante ilustrativo, durante el capítulo resolveremos la ecuación de Helm\-holtz en diferentes sistemas coordenados, dando origen a diferentes \emph{funciones especiales}, que serán discutidas en mayor profundidad en los capítulos siguientes.
+\begin{propo} \marginnote{Método de Separación de Variables}
+    \textbf{Método de Separación de Variables} \par
+
+    Dada una EDP lineal de $n$ variables, podemos intentar resolverla mediante el método de separación de variables siguiendo el siguiente algoritmo:
+    \begin{enumerate}
+        \item Identificamos las variables independientes $x_i$ de nuestra ecuación.
+        \item Proponemos una solución (o \emph{ansatz}) completamente separable a nuestra ecuación, correspondiente al producto de $n$ funciones auxiliares, donde cada función depende de solo una variable $x_i$.
+        \item Reemplazamos la solución propuesta en el paso anterior en nuestra ecuación diferencial.
+        \item Dividimos la ecuación diferencial por la solución separable.
+        \item  Reordenamos la ecuación, de modo que a un lado de la igualdad quede una ecuación que depende únicamente de una de las variables.
+        \item Dado que ambos lados de la igualdad obtenida en el paso anterior depende de variables diferentes, \emph{separamos las variables}. Con esto nos referimos al hecho que la igualdad será válida únicamente si ambos lados son iguales a una \emph{constante de separación} $\lambda_i$, por lo que igualamos ambas ecuaciones a esta constante.
+        \item Hemos reducido nuestra EDP original a un sistema formado por una EDO en la variable $x_i$, y una EDP de $n-1$ variables.
+        \item Repetimos el paso 6, hasta haber introducido $n-1$ constantes de separación.
+        \item Nuestra EDP se ha convertido en un sistema de $n$ EDOs, las que en principio podemos resolver, hallando las $n$ funciones auxiliares de nuestro ansatz.
+        \item Imponemos las restricciones físicas que correspondan a nuestro problema, como puede ser el no incluir soluciones con parte imaginaria. De ser posible, imponemos también las condiciones de borde sobre las EDO, siempre y cuando ellas dependan de una sola variable. 
+        \item Hallamos una solución particular a nuestra EDP, correspondiente al producto de las $n$ funciones auxiliares.
+        \item La solución general corresponderá a la combinación lineal de todas las posibles soluciones particulares, es decir, a la suma sobre las $n-1$ constantes de separación.
+        \item Imponemos las condiciones de borde de nuestro problema.
+    \end{enumerate}
+\end{propo}
+
+Una duda totalmente razonable es por qué consideramos soluciones separables. La verdad no hay una respuesta directa a esto, más allá de ``\emph{esperemos que funcione}''. Si no fuera el caso, y nuestro sistema comienza a complicarse, puede que sea una mejor idea utilizar algún método alternativo. Sin embargo, cabe mencionar que si los operadores diferenciales (derivadas $n$-ésimas) presentes en nuestra ecuación son aditivos, es decir, no tenemos combinaciones de las variables, una solución de este estilo suele funcionar.
+
+
+
+%  Esto lo podemos hacer al proponer que nuestro sistema puede ser descrito mediante una \emph{solución separable}, que consiste en el producto de todas las funciones auxiliares que encontremos mediante la solución de las EDOs.
+
+
+
+% Para realizar la separación de las variables, haremos uso de $(n-1)$ \emph{constantes de separación}, las que son escogidas, en primera instancia, de forma arbitraria para luego determinarlas gracias a las condiciones de contorno del sistema.
+
+% Finalmente, una vez hallamos las soluciones de cada una de las EDOs y planteamos la solución separable del sistema, consideraremos que la solución más general consiste en la \emph{superposición} o \emph{combinación lineal} de todas las posibles soluciones separables del sistema.
+
+Es posible que el algoritmo descrito anteriormente no sea tan claro de entender en primera instancia. Por ello, como ejemplo bastante ilustrativo, durante el capítulo resolveremos la ecuación de Helm\-holtz en diferentes sistemas coordenados, dando origen a diferentes \emph{funciones especiales}, que serán discutidas en mayor profundidad en los capítulos siguientes.
 
 \section{Resolviendo la ecuación de Helmholtz}
 
@@ -30,7 +74,7 @@ De esta forma, dado que nuestra ecuación posee tres variables independientes, p
     \psi(x,y,z) = X(x)Y(y)Z(z) \ .
 \end{equation}
 
-Una duda totalmente razonable es por qué considerar una solución de este estilo. La verdad no hay una respuesta directa a esto, más allá de ``\emph{esperemos que funcione}''. Si no fuera el caso, y nuestro sistema comienza a complicarse, puede que sea una mejor idea utilizar algún método alternativo. Sin embargo, cabe mencionar que si los operadores diferenciales (derivadas $n$-ésimas) son aditivos, es decir, no tenemos combinaciones de las variables, una solución de este estilo suele funcionar.
+% Una duda totalmente razonable es por qué considerar una solución de este estilo. La verdad no hay una respuesta directa a esto, más allá de ``\emph{esperemos que funcione}''. Si no fuera el caso, y nuestro sistema comienza a complicarse, puede que sea una mejor idea utilizar algún método alternativo. Sin embargo, cabe mencionar que si los operadores diferenciales (derivadas $n$-ésimas) son aditivos, es decir, no tenemos combinaciones de las variables, una solución de este estilo suele funcionar.
 
 Evaluando la expresión \eqref{eq:ansatz} en la ecuación \eqref{eq:Helmholtz}, podemos escribirla como
 \begin{equation}
@@ -49,14 +93,14 @@ Hemos llegado al paso en donde se aprecia esta \emph{separación de variables}. 
     -k^2 - \frac{1}{Y} \frac{d^2Y}{dy^2} - \frac{1}{Z} \frac{d^2Z}{dz^2} = \lambda_1 \ . \label{eq:EDO_de_y_z}
 \end{align}
 
-Notemos que, reordenando términos en la ecuación \eqref{eq:EDO_de_y_z}, podemos nuevamente separar las variables mediante una constante $\lambda_2$, de modo que hemos \emph{dividido la EDP original, dependiente de tres variables, en un sistema de tres EDOs},
+Notemos que, reordenando términos en la ecuación \eqref{eq:EDO_de_y_z}, podemos nuevamente separar las variables mediante una constante $\lambda_2$, de modo que hemos \emph{dividido la EDP original, dependiente de tres variables, en un sistema de tres EDOs, introduciendo dos constantes de separación},
 \begin{align}
     \frac{d^2X}{dx^2} - \lambda_1 X & = 0 \ , \label{eq:EDO_de_x}  \\
     \frac{d^2Y}{dy^2} - \lambda_2 Y & = 0 \ , \label{eq:EDO_de_y}  \\
     \frac{d^2Z}{dz^2} + (k^2 + \lambda_1 + \lambda_2) Z & = 0 \ . \label{eq:EDO_de_z} 
 \end{align}
 
-Cada una de estas EDOs son resolubles mediante los métodos vistos en su primer curso de ecuaciones diferenciales, y las soluciones dependerán del valor y del signo de las constantes de separación. Analicemos las posibles soluciones de la ecuación \eqref{eq:EDO_de_x}:
+Cada una de estas EDOs son resolubles mediante los métodos vistos en su primer curso de Ecuaciones Diferenciales, y las soluciones dependerán del valor y del signo de las constantes de separación. Analicemos las posibles soluciones de la ecuación \eqref{eq:EDO_de_x}:
 
 \begin{equation}
     X_{\lambda_1}(x) = \left\{
@@ -80,7 +124,7 @@ y la solución general corresponderá a una combinación lineal de la solución 
 \end{equation}
 donde los coeficientes $C_{\lambda_1 \lambda_2}$ serán obtenidos al imponer las condiciones de contorno del problema, que por lo general nos llevará a un conjunto finito de valores para $\lambda_1$ y $\lambda_2$.
 
-\newpage
+% \newpage
 
 \subsection{Coordenadas cilíndricas}
 
@@ -122,11 +166,11 @@ Ahora, definiendo un valor auxiliar $n^2 = k^2 + \lambda_1$, podemos separar la 
 \end{equation}
 e introduciendo una constante de separación $\lambda_2$, obtenemos las siguientes expresiones
 \begin{align}
-    \frac{1}{\Phi} \frac{d^2 \Phi}{d\phi^2} & = - \lambda_2 \ , \\
+    \frac{1}{\Phi} \frac{d^2 \Phi}{d\phi^2} & = - \lambda_2 \ , \label{eq:EDO_en_Phi} \\
     \frac{\rho}{P} \frac{d}{d\rho} \left( \rho \frac{dP}{d\rho} \right) + n^2 \rho^2 & = \lambda_2 \ .
 \end{align}
 
-Las soluciones físicas para la EDO de $\phi$ deberán ser periódicas, dado que $\Phi(\phi + 2\pi) = \Phi(\phi)$, con lo que necesitamos que $\lambda_2 > 0$, ya que el signo menos produce que el término sea negativo. Llamamos $\lambda_2 = m^2$, donde $m$ es un número entero para satisfacer la condición de periodicidad.
+Las soluciones físicas para la EDO de $\phi$ deberán ser periódicas, dado que $\Phi(\phi + 2\pi) = \Phi(\phi)$, con lo que necesitamos que $\lambda_2 > 0$, ya que el signo menos en \eqref{eq:EDO_en_Phi} produce que el lado derecho de la igualdad sea negativo. Llamamos $\lambda_2 = m^2$, donde $m$ es un número entero para satisfacer la condición de periodicidad.
 
 Solo nos queda resolver la ecuación radial, es decir, la EDO
 \begin{equation}
@@ -160,13 +204,13 @@ En un sistema esférico $(r, \theta,\phi)$ el operador laplaciano se define como
 \end{equation}
 con lo que la ecuación de Helmholtz queda como
 \begin{equation} \label{eq:Helmholtz_esferica}
-    \nabla^2 = \frac{1}{r^2 \sin\theta} \left( \sin\theta \frac{\partial}{\partial r}\left( r^2 \frac{\partial \psi}{\partial r} \right) + \frac{\partial}{\partial \theta} \left( \sin\theta \frac{\partial \psi}{\partial \theta} \right) + \frac{1}{\sin\theta} \frac{\partial^2 \psi}{\partial \phi^2} \right) + k^2\psi = 0 \ ,
+    \frac{1}{r^2 \sin\theta} \left( \sin\theta \frac{\partial}{\partial r}\left( r^2 \frac{\partial \psi}{\partial r} \right) + \frac{\partial}{\partial \theta} \left( \sin\theta \frac{\partial \psi}{\partial \theta} \right) + \frac{1}{\sin\theta} \frac{\partial^2 \psi}{\partial \phi^2} \right) + k^2\psi = 0 \ ,
 \end{equation}
-y planteando un \emph{ansatz} de la forma
+por lo que planteamos un \emph{ansatz} de la forma
 \begin{equation}
     \psi(r,\theta, \phi) = R(r) \Theta(\theta) \Phi(\phi) \ ,
 \end{equation}
-que al ser sustituída en la ecuación \eqref{eq:Helmholtz_esferica} resulta en
+que al ser sustituído en la ecuación \eqref{eq:Helmholtz_esferica} resulta en
 \begin{equation}
     \frac{\Theta \Phi}{r^2} \frac{d}{dr}\left( r^2 \frac{dR}{dr} \right) + \frac{R\Phi}{r^2\sin\theta} \frac{d}{d \theta} \left( \sin\theta \frac{d\Theta}{d \theta} \right) + \frac{R\Theta}{r^2\sin^2\theta} \frac{d^2\Phi}{d \phi^2} + k^2 R \Theta \Phi = 0 \ .
 \end{equation}
@@ -225,22 +269,31 @@ con soluciones que dependen del valor de $\lambda_2$. Sin embargo, al exigir sol
     R(r) = A r^\ell + B r^{-(\ell+1)} \ .
 \end{equation}
 
+Así, una solución particular será dada por
+\begin{equation}
+    \psi_{\ell, m}(r, \theta, \phi) = R_\ell(r) \Phi_m(\phi) \Theta_{\ell, m}(\theta) \ ,
+\end{equation}
+y la solución general corresponde a su combinación lineal con coeficientes a determinar mediante las condiciones de contorno,
+\begin{equation}
+    \psi(r, \theta, \phi) = \sum_{\ell, m} R_\ell(r) \Phi_m(\phi) \Theta_{\ell, m}(\theta) \ .
+\end{equation}
+
 \section{El método de series para EDO}
 
 Hasta ahora, hemos estudiado ecuaciones que al cumplir ciertas propiedades, como tener una forma u otra, sabemos hallar una solución de una forma sencilla, como una ecuación de Euler-Cauchy, una EDO lineal de segundo orden con coeficientes constantes, entre otras. Sin embargo, existen algunas ecuaciones que pese a aparentar ser sencillas, no es posible hallar una solución en términos de funciones conocidas, como es el caso de la \emph{ecuación de Airy}
 \begin{equation}
-    y'' + xy = 0 \ .
+    y'' - xy = 0 \ .
 \end{equation}
 En estos casos, podemos hacer uso del llamado \emph{método de series de potencias} para obtener una solución que, si bien no tiene una forma compacta, nos permite resolver dichos problemas, y encontrar aproximaciones válidas.
 
 % \section{Resolver EDOs por el método de series}
 
-Consideremos una ecuación lineal de segundo orden cuyos coeficientes son polinomios en la variable independiente del problema, de la forma
+Consideremos una ecuación diferencial ordinaria, lineal y de segundo orden cuyos coeficientes son polinomios en la variable independiente del problema, de la forma
 \begin{equation} \label{eq:EDO_Series}
-    \frac{d^2 y}{dx} + P(x) \frac{dy}{dx} + Q(x) y(x) = R(x) \ .
+    \frac{d^2 y}{dx} + P(x) \frac{dy}{dx} + Q(x) y(x) = 0 \ .
 \end{equation}
 
-En general, consideraremos que $P(x)$, $Q(x)$ y $R(x)$ son funciones \emph{analíticas} de $x$ en, al menos, un punto $x=x_0$ a menos que se indique lo contrario.
+En general, consideraremos que $P(x)$ y $Q(x)$ son funciones \emph{analíticas} de $x$ en, al menos, un punto $x=x_0$ a menos que se indique lo contrario.
 
 Antes de discutir la existencia de soluciones para esta ecuación, debemos definir las nociones de punto \emph{ordinario} y de punto \emph{singular}.
 
@@ -252,15 +305,134 @@ Antes de discutir la existencia de soluciones para esta ecuación, debemos defin
     Dado un punto singular $x=x_0$ para una EDO de la forma \eqref{eq:EDO_Series}, diremos que $x_0$ es un \textbf{punto singular regular} si tanto $(x-x_0)P(x)$ como $(x-x_0)^2Q(x)$ son analíticas en $x=x_0$. En caso contrario, $x_0$ es un \textbf{punto singular irregular, o esencial}.
 \end{defi}
 
-En el caso en que el coeficiente $P(x)$ no se anula en el dominio del sistema, podemos garantizar la existencia de una solución para \eqref{eq:EDO_Series} mediante el siguiente teorema
+En el caso en que el coeficiente $P(x)$ no se anula en el dominio del sistema, podemos garantizar la existencia de una solución para \eqref{eq:EDO_Series} mediante el siguiente teorema\footnote{En este apunte hemos omitido gran parte de la discusión sobre la naturaleza de este tipo de soluciones. Si desea revisarla en más detalle, puede consultar el capítulo 3, sección 5 de \cite{Butkov}.}
 \begin{teorema}[de Fuchs]\label{teo:Fuchs}
     Una ecuación diferencial de la forma \eqref{eq:EDO_Series} posee al menos una solución expresable en una serie de potencias en torno a $x=x_0$ si este es un punto ordinario o un punto singular regular de la EDO \eqref{eq:EDO_Series}. La solución será de la forma 
     \begin{equation} \label{eq:solucion_serie}
         y(x) = \sum_{n=0}^\infty a_n(x-x_0)^{n+s} \ , \qquad a_0 \neq 0
     \end{equation}
     para un número $s$ real y positivo, o bien, de la forma 
-    \begin{equation}
-        y(x) = y_0 \ln(x-a) + \sum_{n=0}^\infty b_n (x-a)^{n+r} \ , \qquad b_0 \neq 0 
+    \begin{equation}\label{eq:solucion_logaritmo}
+        y(x) = y_0 \ln(x-x_0) + \sum_{n=0}^\infty b_n (x-x_0)^{n+r} \ , \qquad b_0 \neq 0 
     \end{equation}
     para algún número $r$ real y positivo, donde $y_0$ es una solución de la forma \eqref{eq:solucion_serie}.
+
+    A la solución de la forma \eqref{eq:solucion_serie} se le conoce como \textbf{serie de Frobenius}, mientras que a una solución de la forma \eqref{eq:solucion_logaritmo} se le suele denominar \textbf{serie generalizada de Frobenius}.
 \end{teorema}
+
+\begin{propo} \marginnote{Método de Frobenius}
+    \textbf{Método de Frobenius.}
+
+    Dada una EDO lineal de segundo orden de la forma \eqref{eq:EDO_Series}, podemos proponer una solución en forma de serie de Frobenius \eqref{eq:solucion_serie}, que en general, podrá ser diferenciada al menos dos veces dentro de su radio de convergencia. Podremos determinar los coeficientes de nuestra serie siguiendo el siguiente algoritmo:\footnotemark[2]
+    \begin{enumerate}
+        \item Hallamos la primera y segunda derivada de nuestra serie, re-indexando, de ser necesario, de modo que siempre empecemos nuestra suma en $k=0$. Esto es,
+        \begin{align}
+            y'(x)  & = \sum_{k=0}^\infty (k+s) A_k x^{k+s-1} 
+            % \nonumber
+            \ ,
+            \\
+            % & = sA_0 x^{s-1} + \sum_{k=1}^\infty (k+s) A_k x^{k+s-1} \nonumber \\
+            % & = sA_0 x^{s-1} + \sum_{k=0}^\infty (k+s+1) A_{k+1} x^{k+s} \\
+            y''(x) & = \sum_{k=0}^\infty (k+s-1)(k+s) A_k x^{k+s-2} \ .
+            % \nonumber \\
+            % & = s(s-1)A_0 x^{s-2} + \sum_{k=1}^\infty (k+s-1)(k+s) A_k x^{k+s-2} \nonumber \\
+            % & = s(s-1)A_0 x^{s-2} + \sum_{k=0}^\infty (k+s)(k+s+1) A_{k+1} x^{k+s-1} 
+        \end{align}
+        \item Sustituimos las derivadas en nuestra EDO homogénea \eqref{eq:EDO_Series}. Multiplicamos la ecuación por $x^2$, y luego de manipulaciones algebraicas, obtenemos la expresión
+        \begin{equation}\label{eq:metodo_frobenius_EDO}
+            [s(s-1) + p(x)s + q(x)]A_0 x^s + \sum_{k=1}^\infty [(k+s-1)(k+s) + p(x)(k+s) + q(x)]A_k x^{k+s} = 0 \ ,
+        \end{equation}
+        donde $p(x) = xP(x)$ y $q(x) = x^2 Q(x)$.\footnotemark
+        \item Dado que la ecuación \eqref{eq:metodo_frobenius_EDO} es nula término a término y asumiendo que el coeficiente $A_0$ es no nulo, podemos obtener la \emph{ecuación indicial} para $k=0$,
+        \begin{equation} \label{eq:ecuacion_indicial}
+            I(s) = s(s-1) + p(0)s + q(0) \ .
+        \end{equation}
+        \item Igualando a cero las potencias superiores de $x$, nos lleva a las \emph{relaciones de recurrencia} de la forma
+        \begin{equation}
+            A_k = f(j,s) A_j \ ,
+        \end{equation}
+        donde $j$ es un índice tal que $j > k$. Usualmente, podemos hacer que estas dependan de solo uno o dos coeficientes, típicamente $A_0$ y $A_1$.
+        \item A partir de nuestras condiciones de contorno, podemos determinar los valores de los coeficientes $A_k$. Además, es posible determinar el valor de $s$ a partir de la ecuación indicial \eqref{eq:ecuacion_indicial}.
+        \item La solución general a nuestra ecuación dependerá de las raíces $s_1$ y $s_2$ de la ecuación indicial:
+        \begin{itemize}
+            \item[a.] Si $s_1$ y $s_2$ son tales que su diferencia \emph{no es un número entero}, entonces la solución general es de la forma
+            \begin{align}
+                y(x) & = C_1 y_1(x) + C_2 y_2(x) \nonumber \\
+                & = C_1 \left( x^{s_1} \sum_{k=0}^\infty a_k x^k \right) + C_2 \left( x^{s_2} \sum_{k=0}^\infty a_k x^k \right)  \ .
+            \end{align}
+            \item[b.] Si $s_1 = s_2$, entonces el método de Frobenius nos entrega solo una solución, y la segunda solución será una serie de Frobenius generalizada \eqref{eq:solucion_logaritmo}, de modo que la solución general será
+            \begin{align}
+                y(x) & = C_1 y_1(x) + C_2 y_2(x) \nonumber \\
+                & = C_1 \left( x^{s} \sum_{k=0}^\infty a_k x^k \right) + C_2 \left( \alpha y_1(x) \ln(x) + \sum_{k=0}^\infty b_n x^{k+s}  \right) \ ,
+            \end{align}
+            donde $\alpha$ es una constante a determinar.
+            \item[c.] Si $s_1$ y $s_2$ son tales que su diferencia \emph{sí es un número entero}, existirá al menos una solución en forma de serie de potencias, correspondiente a la raíz mayor, mientras que la segunda puede ser tanto una serie de potencias (a.) o una solución logarítmica (b.).  
+        \end{itemize}
+    \end{enumerate}
+\end{propo}
+\footnotetext[2]{{Por simplicidad y para no sobrecargar la notación, consideraremos el caso en que $x_0 = 0$. Sin embargo, el procedimiento sigue siendo válido para $x_0 \neq 0$.}}
+\footnotetext{{Puede encontrar algo más de información respecto a esta elección en el capítulo 6 de \cite{Zill_2013}. Para efectos de este curso, confíen en que funciona.}}
+
+\begin{teorema}
+    Si $x=x_0$ es un punto ordinario de la ecuación \eqref{eq:EDO_Series}, entonces podemos hallar la solución general a partir de una serie de potencias mediante el método de Frobenius con $s=0$, con ciertas modificaciones, las que son:
+    \begin{enumerate}
+        \item Nos interesa que las derivadas puedan expresarse en términos de $x^n$, re-indexando de ser necesario.
+        \item No multiplicamos la ecuación por $x^2$.
+        \item Omitimos este paso.
+    \end{enumerate}
+    
+    Esto dará origen a dos soluciones, $y_1$ e $y_2$, las que son linealmente independientes.
+\end{teorema}
+
+\begin{ejemplo}
+    Encuentre una solución a la ecuación de Airy
+    \begin{equation}
+        y'' - xy = 0 \ ,
+    \end{equation}
+    utilizando el método de series alrededor de $x_0 = 0$.
+
+    \textbf{Solución.} Según la estructura \eqref{eq:EDO_Series}, tenemos que $P(x) = 0$ y $Q(x) = -x$. Como $P(x)$ y $Q(x)$ son funciones analíticas en $\mathbb{R}$ (función constante y lineal, respectivamente) y en particular en $x_0 = 0$, entonces $x_0 = 0$ es un punto ordinario de la EDO, por lo que podemos utilizar el método de Frobenius con $s=0$. Entonces, postulamos una solución de la forma
+    \begin{equation}
+        y(x) = \sum_{n=0}^\infty a_n x^n \ .
+    \end{equation}
+
+    Calculando las derivadas, tenemos
+    \begin{align}
+        y'(x)  & = \sum_{n=1}^\infty na_n x^{n-1} = \sum_{n=0}^\infty (n+1) a_{n+1} x^n \ , \\
+        y''(x) & = \sum_{n=2}^\infty n(n-1) a_n x^{n-2} = \sum_{n=0}^\infty (n+2) (n+1) a_{n+2} x^n \ .
+    \end{align}
+
+    Reemplazamos en nuestra ecuación original, obteniendo la expresión 
+    \begin{align}
+        \sum_{n=0}^\infty (n+2) (n+1) a_{n+2} x^n - x \sum_{n=0}^\infty a_n x^n & = 0 \\
+        \sum_{n=0}^\infty (n+2) (n+1) a_{n+2} x^n - \sum_{n=0}^\infty a_n x^{n+1} & = 0 \\
+        2a_2 + \sum_{n=1}^\infty (n+2) (n+1) a_{n+2} x^n - \sum_{n=1}^\infty a_{n-1} x^{n} & = 0 \ .
+    \end{align}
+
+    Igualamos la expresión a cero término a término, ya que buscamos una solución no trivial. Esto conlleva a que $a_2 = 0$, y a la relación de recurrencia
+    \begin{align}
+        (n+2)(n+1) a_{n+2} & = a_{n-1} \ , \\
+        a_{n-2} & = \frac{a_{n-1}}{(n+1)(n+2)} \ .
+    \end{align}
+
+    Desarrollemos esta relación de recurrencia. Notamos que
+    \begin{align*}
+        n = 1; & \quad a_3 = \frac{a_0}{2 \cdot 3} \\
+        n = 2; & \quad a_4 = \frac{a_1}{3 \cdot 4} \\
+        n = 3; & \quad a_5 = \frac{a_2}{4 \cdot 5} = 0 \\
+        n = 4; & \quad a_6 = \frac{a_3}{5 \cdot 6} = \frac{a_0}{2 \cdot 3 \cdot 5 \cdot 6} \\
+        n = 5; & \quad a_7 = \frac{a_4}{6 \cdot 7} = \frac{a_1}{3 \cdot 4 \cdot 6 \cdot 7} \\
+        n = 6; & \quad a_8 = \frac{a_5}{7 \cdot 8} = 0 \\
+        n = 7; & \quad a_9 = \frac{a_6}{8 \cdot 9} = \frac{a_0}{2 \cdot 3 \cdot 5 \cdot 6 \cdot 8 \cdot 9} \ ,
+    \end{align*}
+    y así sucesivamente. Por lo tanto, tenemos que
+    \begin{align}
+        y(x) & = a_0 + a_1x + a_2 x^2 + a_3 x^3 + \dots \\
+        & = a_0 \left( 1 + \frac{x^3}{2 \cdot 3} + \frac{x^6}{2 \cdot 3 \cdot 5 \cdot 6} + \frac{x^9}{2 \cdot 3 \cdot 5 \dot 6 \cdot 8 \cdot 9} + \dots \right) \\
+        & \qquad + a_1 \left( x + \frac{x^4}{3 \cdot 4} + \frac{x^7}{3 \cdot 4 \cdot 6 \cdot 7} + \frac{x^{10}}{3 \cdot 4 \cdot 6 \cdot 7 \cdot 9 \cdot 10} + \dots  \right) \\
+        & = a_0 \left( 1 + \sum_{n=1}^\infty \frac{x^{3n}}{2 \cdot 3 \cdot 5 \cdot 6 \cdot \dots \cdot (3n-1) \cdot (3n)} \right) \\
+        & \qquad + a_1 \left( x + \sum_{n=1}^\infty \frac{x^{3n+1}}{3 \cdot 4 \cdot 6 \cdot 7 \cdot \dots \cdot (3n) \cdot (3n+1)}  \right) \\
+        & = a_0 \operatorname{Ai}(x) + a_1 \operatorname{Bi}(x) \ ,
+    \end{align}
+    donde $\operatorname{Ai}$ y $\operatorname{Bi}$ son las \emph{funciones de Airy}, que son linealmente independientes entre sí.
+\end{ejemplo}

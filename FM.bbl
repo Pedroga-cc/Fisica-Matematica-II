@@ -890,6 +890,64 @@
       \field{year}{1962}
       \true{nocite}
     \endentry
+    \entry{Frobenius_Wikipedia}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=b6aea1a416c89509a7df1cbb69249cb6}{%
+           family={{Wikipedia contributors}},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhashraw}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{bibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorbibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authornamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhashraw}{b6aea1a416c89509a7df1cbb69249cb6}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://en.wikipedia.org/w/index.php?title=Frobenius_method&oldid=1226431177}}
+      \field{note}{[Online; accessed 7-February-2025]}
+      \field{title}{Frobenius method --- {Wikipedia}{,} The Free Encyclopedia}
+      \field{year}{2024}
+      \true{nocite}
+    \endentry
+    \entry{Zill_2013}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=ce0689f2d52c5a0939d5509701e4f498}{%
+           family={Zill},
+           familyi={Z\bibinitperiod},
+           given={Dennis\bibnamedelima G.},
+           giveni={D\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \list{location}{1}{%
+        {India}%
+      }
+      \list{publisher}{1}{%
+        {Cengage Learning}%
+      }
+      \strng{namehash}{ce0689f2d52c5a0939d5509701e4f498}
+      \strng{fullhash}{ce0689f2d52c5a0939d5509701e4f498}
+      \strng{fullhashraw}{ce0689f2d52c5a0939d5509701e4f498}
+      \strng{bibnamehash}{ce0689f2d52c5a0939d5509701e4f498}
+      \strng{authorbibnamehash}{ce0689f2d52c5a0939d5509701e4f498}
+      \strng{authornamehash}{ce0689f2d52c5a0939d5509701e4f498}
+      \strng{authorfullhash}{ce0689f2d52c5a0939d5509701e4f498}
+      \strng{authorfullhashraw}{ce0689f2d52c5a0939d5509701e4f498}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{Décima edición}
+      \field{isbn}{978-81-315-2282-0}
+      \field{title}{A first course in differential equations with modeling applications}
+      \field{year}{2013}
+    \endentry
   \enddatalist
 \endrefsection
 \endinput
