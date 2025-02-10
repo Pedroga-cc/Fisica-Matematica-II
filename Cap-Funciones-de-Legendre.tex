@@ -4,21 +4,23 @@ Como vimos anteriormente en el capítulo \ref{chap:MSV}, al resolver la ecuació
 
 \section{Ecuación de Legendre}
 
-Analizaremos en primer lugar el caso en que $m=0$, correspondiente a resolver la ecuación de Laplace, donde obtuvimos la EDO
+Analizaremos en primer lugar el caso en que $m=0$, donde luego del cambio de variables $x = \cos \theta$, obtuvimos la EDO
+% \begin{equation}
+%     \frac{1}{\sin\theta} \frac{d}{d\theta}\left( \sin\theta \frac{d\Theta}{d\theta} \right) + \lambda \Theta = 0 \ ,
+% \end{equation}
+% que al considerar el cambio de variables $x = \cos\theta$, y llamar a $\Theta(\theta) = \Theta(\arccos(x)) = y(x)$, de modo que
+% \begin{equation}
+%     \frac{d}{d\theta} = \frac{dx}{d\theta} \frac{d}{dx} = -\sin\theta \frac{d}{dx} \ ,
+% \end{equation}
+% con lo que podremos escribir la ecuación como
 \begin{equation}
-    \frac{1}{\sin\theta} \frac{d}{d\theta}\left( \sin\theta \frac{d\Theta}{d\theta} \right) + \lambda \Theta = 0 \ ,
-\end{equation}
-que al considerar el cambio de variables $x = \cos\theta$, y llamar a $\Theta(\theta) = \Theta(\arccos(x)) = y(x)$, de modo que
-\begin{equation}
-    \frac{d}{d\theta} = \frac{dx}{d\theta} \frac{d}{dx} = -\sin\theta \frac{d}{dx} \ ,
-\end{equation}
-con lo que podremos escribir la ecuación como
-\begin{equation}
-    \frac{1}{\sin\theta}(-\sin\theta)\frac{d}{dx}\left( \sin\theta (-\sin\theta) \frac{dy}{dx} \right) + \lambda y = \frac{d}{dx}\left( (1-x^2) \frac{dy}{dx} \right) + \lambda y = 0 \ ,
+    % \frac{1}{\sin\theta}(-\sin\theta)\frac{d}{dx}\left( \sin\theta (-\sin\theta) \frac{dy}{dx} \right) + \lambda y = 
+    \frac{d}{dx}\left( (1-x^2) \frac{dy}{dx} \right) + \lambda y = 0 \ ,
 \end{equation}
 expresión que nombraremos como \textbf{ecuación de Legendre}.
 
-Observamos que hemos escrito la ecuación de Legendre en la forma de una ecuación de Sturm-Liouville, con $p(x) = 1-x^2$ y $q(x) = r(x) = 1$. Observamos que, dado que $x=\cos\theta$, nuestra ecuación está definida en el intervalo $[-1,1]$. Nos interesa que estos casos extremos posean soluciones finitas, lo que nos permitirá encontrar el valor de $\lambda$ para esta ecuación.
+% Observamos que hemos escrito la ecuación de Legendre en la forma de una ecuación de Sturm-Liouville, con $p(x) = 1-x^2$ y $q(x) = r(x) = 1$. Observamos que,
+Dado que $x=\cos\theta$, nuestra ecuación está definida en el intervalo $[-1,1]$. Nos interesa que estos casos extremos posean soluciones finitas, lo que nos permitirá encontrar el valor de $\lambda$ para esta ecuación.
 
 \subsection{Resolviendo la ecuación de Legendre}
 
@@ -27,14 +29,15 @@ En primer lugar, escribimos la ecuación de forma más explícita, es decir,
     (1-x^2)y''(x) - 2x y'(x) + \lambda y(x) = 0 \ .
 \end{equation}
 
-Utilizando el método de series, planteamos soluciones de la forma
+Utilizando el método de series, observamos que $P(x) = -2x/(1-x^2)$, y que $Q(x) = \lambda/(1-x^2)$. Ambas expresiones tienen puntos singulares en $x = \pm 1$, pero $x=0$ es un punto ordinario. Por ello, planteamos soluciones de la forma
 \begin{equation}
-    \begin{dcases}
-        y(x) & = \sum_{k=0}^{\infty} a_k x^k \\
-        y'(x) & = \sum_{k=1}^{\infty} k a_k x^{k-1} \\
-        y''(x) & = \sum_{k=2}^{\infty} (k-1)k a_k x^{k-2} \\
-        & = \sum_{k=0}^{\infty} (k+1) (k+2) a_{k-2} x^k 
-    \end{dcases} \ ,
+    % \begin{dcases}
+        y(x) = \sum_{k=0}^{\infty} a_k x^k \ ,
+        %  \\
+    %     y'(x) & = \sum_{k=1}^{\infty} k a_k x^{k-1} \\
+    %     y''(x) & = \sum_{k=2}^{\infty} (k-1)k a_k x^{k-2} \\
+    %     & = \sum_{k=0}^{\infty} (k+1) (k+2) a_{k-2} x^k 
+    % \end{dcases} \ ,
 \end{equation}
 de modo que sustituyendo en la expresión \eqref{eq:legendre_explicit} tenemos 
 \begin{align}

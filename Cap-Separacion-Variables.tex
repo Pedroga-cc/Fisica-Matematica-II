@@ -436,3 +436,47 @@ En el caso en que el coeficiente $P(x)$ no se anula en el dominio del sistema, p
     \end{align}
     donde $\operatorname{Ai}$ y $\operatorname{Bi}$ son las \emph{funciones de Airy}, que son linealmente independientes entre sí.
 \end{ejemplo}
+
+\begin{ejemplo}
+    Considere la ecuación de Hermite
+    \begin{equation}
+        y'' - 2x y' + \lambda y = 0 \ , \qquad x \in \mathbb{R} \ ,
+    \end{equation}
+    donde $\lambda$ es un valor constante. Encuentre la solución general en serie de potencias.
+
+    \textbf{Solución.} Según la estructura \eqref{eq:EDO_Series}, tenemos que $P(x) = -2x$ y $Q(x) = \lambda$. Como $P(x)$ y $Q(x)$ son funciones analíticas en $\mathbb{R}$ (función lineal y constante, respectivamente) y en particular en $x_0 = 0$. Entonces, $x_0 = 0$ es un punto ordinario de la EDO, por lo que podemos utilizar el método de Frobenius con $s=0$. Entonces, postulamos una solución de la forma
+    \begin{equation}
+        y(x) = \sum_{n=0}^\infty a_n x^n \ .
+    \end{equation}
+
+    Reemplazamos en la ecuación original, obteniendo
+    \begin{align}
+        \sum_{n=0}^\infty (n+2)(n+1)a_{n+2}x^n - 2x \sum_{n=0}^\infty (n+1) a_{n+1}x^n + \lambda \sum_{n=0}^\infty a_n x^n & = 0 \\
+        \sum_{n=0}^\infty (n+2)(n+1)a_{n+2}x^n - 2 \sum_{n=0}^\infty (n+1) a_{n+1}x^n+1 + \lambda \sum_{n=0}^\infty a_n x^n & = 0 \\
+        % 2 a_2 + \sum_{n=1}^\infty (n+2)(n+1)a_{n+2}x^n - \sum_{n=1}^\infty 2n a_{n}x^n + \lambda a_0 + \lambda \sum_{n=1}^\infty a_n x^n & = 0 \\
+        2 a_2 + \lambda a_0 + \sum_{n=1}^\infty [(n+2)(n+1)a_{n+2} - 2na_n + \lambda a_n]x^n & = 0 \ .
+    \end{align}
+
+    Para que la igualdad a cero sea verdadera, descartando la solución trivial ($x=0$), deberán cumplirse las relaciones de recurrencia
+    \begin{equation}
+        a_2 = - \frac{\lambda}{2}a_0 \ , \qquad a_{n+2} = \frac{2n-\lambda}{(n+1)(n+2)}a_n \ .
+    \end{equation}
+    Observamos que
+    \begin{align*}
+        n=1; & \quad a_3 = \frac{2-\lambda}{2 \cdot 3} a_1 \\
+        n=2; & \quad a_4 = \frac{4-\lambda}{3 \cdot 4} a_2 = - \frac{(4-\lambda) \lambda}{2 \cdot 3 \cdot 4} a_0 \\
+        n=3; & \quad a_5 = \frac{6-\lambda}{4 \cdot 5} a_3 = \frac{(6-\lambda)(2-\lambda)}{2 \cdot 3 \cdot 4 \cdot 5} a_1 \\
+        n=4; & \quad a_6 = \frac{8-\lambda}{5 \cdot 6}a_4 = - \frac{(8-\lambda)(4-\lambda)\lambda}{2 \cdot 3 \cdot 4 \cdot 5 \cdot 6} a_0 \\
+        n=5; & \quad a_7 = \frac{10-\lambda}{6 \cdot 7} a_5 = \frac{(10-\lambda)(6-\lambda)(2-\lambda)}{2 \cdot 3 \cdot 4 \cdot 5 \cdot 6 \cdot 7} a_1 \ ,
+    \end{align*}
+    y así sucesivamente. Luego, 
+    \begin{align}
+        y(x) & = a_0 + a_1x + a_2 x^2 + a_3 x^3 + \dots \nonumber \\
+        & = a_0 \left( 1 - \frac{\lambda}{2}x^2 - \frac{(4-\lambda)\lambda}{2 \cdot 3 \cdot 4}x^4 - \frac{(8-\lambda)(4-\lambda)\lambda}{2 \cdot 3 \cdot 4 \cdot 5 \cdot 6}x^6 + \dots \right) \nonumber \\
+        & \qquad + a_1 \left( x + \frac{2-\lambda}{2 \cdot 3}x^3 + \frac{(6-\lambda)(2-\lambda)}{2 \cdot 3 \cdot 4 \cdot 5} x^5 + \frac{(10-\lambda)(6-\lambda)(2-\lambda)}{2 \cdot 3 \cdot 4 \cdot 5 \cdot 6 \cdot 7}x^7 + \dots \right) \nonumber \\
+        & = a_0 \left( 1 - \sum_{n=1}^\infty \frac{\lambda(4-\lambda) \dots (4n - 4 - \lambda)}{(2n)!} x^{2n} \right) \nonumber \\
+        & \qquad + a_1 \left( x + \sum_{n=1}^\infty \frac{(2-\lambda)(6-\lambda)\dots (4n-2-\lambda)}{(2n+1)!} x^{2n+1} \right) \ .
+    \end{align}
+
+    En el caso en que $\lambda$ sea un número par no negativo, una de las dos series se hace finita. Es más, cuando $\lambda = 2n$, y normalizando por una constante adecuada, obtenemos los \emph{polinomios de Hermite} $H_n(x)$, que surgen como soluciones a la ecuación de Schrödinger para un oscilador armónico cuántico.
+\end{ejemplo}
