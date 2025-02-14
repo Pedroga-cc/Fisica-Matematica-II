@@ -190,6 +190,32 @@
       \field{title}{Mathematical methods for physicists}
       \field{year}{2005}
     \endentry
+    \entry{Barea}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=d189a498a8f11e3b2675c548a6ba32a3}{%
+           family={Barea},
+           familyi={B\bibinitperiod},
+           given={José},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Departamento de Física, Facultad de Ciencias Físicas y Matemáticas, Universidad de Concepción}%
+      }
+      \strng{namehash}{d189a498a8f11e3b2675c548a6ba32a3}
+      \strng{fullhash}{d189a498a8f11e3b2675c548a6ba32a3}
+      \strng{fullhashraw}{d189a498a8f11e3b2675c548a6ba32a3}
+      \strng{bibnamehash}{d189a498a8f11e3b2675c548a6ba32a3}
+      \strng{authorbibnamehash}{d189a498a8f11e3b2675c548a6ba32a3}
+      \strng{authornamehash}{d189a498a8f11e3b2675c548a6ba32a3}
+      \strng{authorfullhash}{d189a498a8f11e3b2675c548a6ba32a3}
+      \strng{authorfullhashraw}{d189a498a8f11e3b2675c548a6ba32a3}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{Notas de clase de Física Matemática I}}
+      \field{year}{2021}
+    \endentry
     \entry{Bôcher}{article}{}{}
       \name{author}{1}{}{%
         {{hash=cb5c94197e103c1aa07ac4dcdec3e828}{%
@@ -522,6 +548,45 @@
       \field{title}{Analyis I}
       \field{year}{1968}
       \true{nocite}
+    \endentry
+    \entry{Lebedev_Silverman_1972}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=cdf7634ddab5172da89c7640c48ab20c}{%
+           family={Lebedev},
+           familyi={L\bibinitperiod},
+           given={Nikolaj\bibnamedelima Nikolaevič},
+           giveni={N\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=1aac8980e2eebb785552ae79cae04ece}{%
+           family={Silverman},
+           familyi={S\bibinitperiod},
+           given={Richard\bibnamedelima A.},
+           giveni={R\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \list{location}{1}{%
+        {New York}%
+      }
+      \list{publisher}{1}{%
+        {Dover publ}%
+      }
+      \strng{namehash}{1f9abe418468c1842f745f92329b0b2e}
+      \strng{fullhash}{1f9abe418468c1842f745f92329b0b2e}
+      \strng{fullhashraw}{1f9abe418468c1842f745f92329b0b2e}
+      \strng{bibnamehash}{1f9abe418468c1842f745f92329b0b2e}
+      \strng{authorbibnamehash}{1f9abe418468c1842f745f92329b0b2e}
+      \strng{authornamehash}{1f9abe418468c1842f745f92329b0b2e}
+      \strng{authorfullhash}{1f9abe418468c1842f745f92329b0b2e}
+      \strng{authorfullhashraw}{1f9abe418468c1842f745f92329b0b2e}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{Rev. english ed}
+      \field{isbn}{978-0-486-60624-8}
+      \field{title}{Special functions and their applications}
+      \field{year}{1972}
     \endentry
     \entry{Marsden}{book}{}{}
       \name{author}{2}{}{%

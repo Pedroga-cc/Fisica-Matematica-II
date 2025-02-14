@@ -51,6 +51,54 @@
       \field{year}{2009}
       \true{nocite}
     \endentry
+    \entry{Andino}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=ddb4d4f8a54233417fed60f20ef7903d}{%
+           family={Andino},
+           familyi={A\bibinitperiod},
+           given={F},
+           giveni={F\bibinitperiod}}}%
+        {{hash=47388eedf7079018a8903ba9220bbe24}{%
+           family={Recarte},
+           familyi={R\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=30881953d6a54905873cfa75a5419d28}{%
+           family={Spilsbury},
+           familyi={S\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {UNAH}%
+      }
+      \strng{namehash}{ffb819d10e5af78f4249e441edbf7cb2}
+      \strng{fullhash}{ffb819d10e5af78f4249e441edbf7cb2}
+      \strng{fullhashraw}{ffb819d10e5af78f4249e441edbf7cb2}
+      \strng{bibnamehash}{ffb819d10e5af78f4249e441edbf7cb2}
+      \strng{authorbibnamehash}{ffb819d10e5af78f4249e441edbf7cb2}
+      \strng{authornamehash}{ffb819d10e5af78f4249e441edbf7cb2}
+      \strng{authorfullhash}{ffb819d10e5af78f4249e441edbf7cb2}
+      \strng{authorfullhashraw}{ffb819d10e5af78f4249e441edbf7cb2}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Revista de la escuela de física}
+      \field{number}{1}
+      \field{title}{La función delta de Dirac}
+      \field{volume}{2}
+      \field{year}{2014}
+      \true{nocite}
+      \field{pages}{60\bibrangedash 61}
+      \range{pages}{2}
+      \verb{urlraw}
+      \verb https://pdfs.semanticscholar.org/648b/67463802aae055392666c8f305a2b23c5977.pdf
+      \endverb
+      \verb{url}
+      \verb https://pdfs.semanticscholar.org/648b/67463802aae055392666c8f305a2b23c5977.pdf
+      \endverb
+    \endentry
     \entry{Apostol1}{book}{}{}
       \name{author}{1}{}{%
         {{hash=2f3c53379375348c5fda1da34ae122f2}{%
@@ -142,6 +190,32 @@
       \field{title}{Mathematical methods for physicists}
       \field{year}{2005}
     \endentry
+    \entry{Barea}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=d189a498a8f11e3b2675c548a6ba32a3}{%
+           family={Barea},
+           familyi={B\bibinitperiod},
+           given={José},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Departamento de Física, Facultad de Ciencias Físicas y Matemáticas, Universidad de Concepción}%
+      }
+      \strng{namehash}{d189a498a8f11e3b2675c548a6ba32a3}
+      \strng{fullhash}{d189a498a8f11e3b2675c548a6ba32a3}
+      \strng{fullhashraw}{d189a498a8f11e3b2675c548a6ba32a3}
+      \strng{bibnamehash}{d189a498a8f11e3b2675c548a6ba32a3}
+      \strng{authorbibnamehash}{d189a498a8f11e3b2675c548a6ba32a3}
+      \strng{authornamehash}{d189a498a8f11e3b2675c548a6ba32a3}
+      \strng{authorfullhash}{d189a498a8f11e3b2675c548a6ba32a3}
+      \strng{authorfullhashraw}{d189a498a8f11e3b2675c548a6ba32a3}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{Notas de clase de Física Matemática I}}
+      \field{year}{2021}
+    \endentry
     \entry{Bôcher}{article}{}{}
       \name{author}{1}{}{%
         {{hash=cb5c94197e103c1aa07ac4dcdec3e828}{%
@@ -170,6 +244,7 @@
       \field{title}{On Gibb's Phenomenon}
       \field{volume}{1914}
       \field{year}{1914}
+      \true{nocite}
       \field{pages}{41\bibrangedash 47}
       \range{pages}{7}
       \verb{doi}
@@ -297,49 +372,6 @@
       \field{year}{1937}
       \true{nocite}
     \endentry
-    \entry{Andino}{article}{}{}
-      \name{author}{2}{}{%
-        {{hash=1538987913bb7e10548cfb30d519c44a}{%
-           family={F.\bibnamedelimi Andino},
-           familyi={F\bibinitperiod\bibinitdelim A\bibinitperiod},
-           given={M.\bibnamedelimi Recarte},
-           giveni={M\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
-        {{hash=30881953d6a54905873cfa75a5419d28}{%
-           family={Spilsbury},
-           familyi={S\bibinitperiod},
-           given={M.},
-           giveni={M\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {UNAH}%
-      }
-      \strng{namehash}{8ba54088547344a42965767c48549665}
-      \strng{fullhash}{8ba54088547344a42965767c48549665}
-      \strng{fullhashraw}{8ba54088547344a42965767c48549665}
-      \strng{bibnamehash}{8ba54088547344a42965767c48549665}
-      \strng{authorbibnamehash}{8ba54088547344a42965767c48549665}
-      \strng{authornamehash}{8ba54088547344a42965767c48549665}
-      \strng{authorfullhash}{8ba54088547344a42965767c48549665}
-      \strng{authorfullhashraw}{8ba54088547344a42965767c48549665}
-      \field{sortinit}{F}
-      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Revista de la escuela de física}
-      \field{number}{1}
-      \field{title}{La función delta de Dirac}
-      \field{volume}{2}
-      \field{year}{2014}
-      \true{nocite}
-      \field{pages}{60\bibrangedash 61}
-      \range{pages}{2}
-      \verb{urlraw}
-      \verb https://pdfs.semanticscholar.org/648b/67463802aae055392666c8f305a2b23c5977.pdf
-      \endverb
-      \verb{url}
-      \verb https://pdfs.semanticscholar.org/648b/67463802aae055392666c8f305a2b23c5977.pdf
-      \endverb
-    \endentry
     \entry{Hassani}{book}{}{}
       \name{author}{1}{}{%
         {{hash=8ba916cccb3e030aa5eb420a3f5230e4}{%
@@ -421,36 +453,73 @@
       \field{year}{1987}
       \true{nocite}
     \endentry
-    \entry{Riley}{book}{}{}
-      \name{author}{2}{}{%
-        {{hash=0125aa9e4d19d55d30e2744a98f28d06}{%
-           family={K.\bibnamedelimi F.\bibnamedelimi Riley},
-           familyi={K\bibinitperiod\bibinitdelim F\bibinitperiod\bibinitdelim R\bibinitperiod},
-           given={M.P.\bibnamedelimi Hobson},
-           giveni={M\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
-        {{hash=dfbc319a09d77ddf6146efd4cf4f3428}{%
-           family={Bence},
-           familyi={B\bibinitperiod},
-           given={S.\bibnamedelimi J.},
-           giveni={S\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+    \entry{Bessel_function_2025}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=44050ab214b6801dd01044e6a7f3041a}{%
+           family={inglés)},
+           familyi={i\bibinitperiod},
+           given={Wikipedia\bibnamedelima (en},
+           giveni={W\bibinitperiod\bibinitdelim (\bibinitperiod}}}%
       }
-      \list{publisher}{1}{%
-        {Cambridge University Press}%
-      }
-      \strng{namehash}{2b143b058600fbaaa0838610f4db421b}
-      \strng{fullhash}{2b143b058600fbaaa0838610f4db421b}
-      \strng{fullhashraw}{2b143b058600fbaaa0838610f4db421b}
-      \strng{bibnamehash}{2b143b058600fbaaa0838610f4db421b}
-      \strng{authorbibnamehash}{2b143b058600fbaaa0838610f4db421b}
-      \strng{authornamehash}{2b143b058600fbaaa0838610f4db421b}
-      \strng{authorfullhash}{2b143b058600fbaaa0838610f4db421b}
-      \strng{authorfullhashraw}{2b143b058600fbaaa0838610f4db421b}
-      \field{sortinit}{K}
-      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \strng{namehash}{44050ab214b6801dd01044e6a7f3041a}
+      \strng{fullhash}{44050ab214b6801dd01044e6a7f3041a}
+      \strng{fullhashraw}{44050ab214b6801dd01044e6a7f3041a}
+      \strng{bibnamehash}{44050ab214b6801dd01044e6a7f3041a}
+      \strng{authorbibnamehash}{44050ab214b6801dd01044e6a7f3041a}
+      \strng{authornamehash}{44050ab214b6801dd01044e6a7f3041a}
+      \strng{authorfullhash}{44050ab214b6801dd01044e6a7f3041a}
+      \strng{authorfullhashraw}{44050ab214b6801dd01044e6a7f3041a}
+      \field{sortinit}{i}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Mathematical Methods for Physics and Engineering}
-      \field{year}{2006}
+      \field{journaltitle}{Wikipedia}
+      \field{month}{1}
+      \field{note}{Page Version ID: 1270535814}
+      \field{title}{Bessel Function}
+      \field{year}{2025}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://en.wikipedia.org/w/index.php?title=Bessel_function&oldid=1270535814
+      \endverb
+      \verb{url}
+      \verb https://en.wikipedia.org/w/index.php?title=Bessel_function&oldid=1270535814
+      \endverb
+    \endentry
+    \entry{Jackson_2021}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=bc51fc62aec5c2fb2968eb631d48cf2a}{%
+           family={Jackson},
+           familyi={J\bibinitperiod},
+           given={John\bibnamedelima David},
+           giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \list{location}{1}{%
+        {Hoboken, NY}%
+      }
+      \list{publisher}{1}{%
+        {Wiley}%
+      }
+      \strng{namehash}{bc51fc62aec5c2fb2968eb631d48cf2a}
+      \strng{fullhash}{bc51fc62aec5c2fb2968eb631d48cf2a}
+      \strng{fullhashraw}{bc51fc62aec5c2fb2968eb631d48cf2a}
+      \strng{bibnamehash}{bc51fc62aec5c2fb2968eb631d48cf2a}
+      \strng{authorbibnamehash}{bc51fc62aec5c2fb2968eb631d48cf2a}
+      \strng{authornamehash}{bc51fc62aec5c2fb2968eb631d48cf2a}
+      \strng{authorfullhash}{bc51fc62aec5c2fb2968eb631d48cf2a}
+      \strng{authorfullhashraw}{bc51fc62aec5c2fb2968eb631d48cf2a}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{Third edition, international adaption}
+      \field{isbn}{978-1-119-77076-3}
+      \field{title}{Classical electrodynamics}
+      \field{year}{2021}
+      \true{nocite}
     \endentry
     \entry{Lang}{book}{}{}
       \name{author}{1}{}{%
@@ -479,6 +548,45 @@
       \field{title}{Analyis I}
       \field{year}{1968}
       \true{nocite}
+    \endentry
+    \entry{Lebedev_Silverman_1972}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=cdf7634ddab5172da89c7640c48ab20c}{%
+           family={Lebedev},
+           familyi={L\bibinitperiod},
+           given={Nikolaj\bibnamedelima Nikolaevič},
+           giveni={N\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=1aac8980e2eebb785552ae79cae04ece}{%
+           family={Silverman},
+           familyi={S\bibinitperiod},
+           given={Richard\bibnamedelima A.},
+           giveni={R\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \list{location}{1}{%
+        {New York}%
+      }
+      \list{publisher}{1}{%
+        {Dover publ}%
+      }
+      \strng{namehash}{1f9abe418468c1842f745f92329b0b2e}
+      \strng{fullhash}{1f9abe418468c1842f745f92329b0b2e}
+      \strng{fullhashraw}{1f9abe418468c1842f745f92329b0b2e}
+      \strng{bibnamehash}{1f9abe418468c1842f745f92329b0b2e}
+      \strng{authorbibnamehash}{1f9abe418468c1842f745f92329b0b2e}
+      \strng{authornamehash}{1f9abe418468c1842f745f92329b0b2e}
+      \strng{authorfullhash}{1f9abe418468c1842f745f92329b0b2e}
+      \strng{authorfullhashraw}{1f9abe418468c1842f745f92329b0b2e}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{Rev. english ed}
+      \field{isbn}{978-0-486-60624-8}
+      \field{title}{Special functions and their applications}
+      \field{year}{1972}
     \endentry
     \entry{Marsden}{book}{}{}
       \name{author}{2}{}{%
@@ -574,6 +682,39 @@
       \field{year}{2009}
       \true{nocite}
     \endentry
+    \entry{Niksirat_2018}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=018ad67558b553101d3cfd33f8c8894e}{%
+           family={Niksirat},
+           familyi={N\bibinitperiod},
+           given={Mohammad},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Department of Mathematical Sciences, University of Alberta, Canada}%
+      }
+      \strng{namehash}{018ad67558b553101d3cfd33f8c8894e}
+      \strng{fullhash}{018ad67558b553101d3cfd33f8c8894e}
+      \strng{fullhashraw}{018ad67558b553101d3cfd33f8c8894e}
+      \strng{bibnamehash}{018ad67558b553101d3cfd33f8c8894e}
+      \strng{authorbibnamehash}{018ad67558b553101d3cfd33f8c8894e}
+      \strng{authornamehash}{018ad67558b553101d3cfd33f8c8894e}
+      \strng{authorfullhash}{018ad67558b553101d3cfd33f8c8894e}
+      \strng{authorfullhashraw}{018ad67558b553101d3cfd33f8c8894e}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Differential Equations: Partial and boundary value problems}
+      \field{year}{2018}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://sites.ualberta.ca/~niksirat/PDE/PDE.html
+      \endverb
+      \verb{url}
+      \verb https://sites.ualberta.ca/~niksirat/PDE/PDE.html
+      \endverb
+    \endentry
     \entry{Rainville}{book}{}{}
       \name{author}{1}{}{%
         {{hash=70c7d7090361cdd9fcad926f56f0c92a}{%
@@ -600,6 +741,42 @@
       \field{title}{Special functions}
       \field{year}{1960}
       \true{nocite}
+    \endentry
+    \entry{Riley}{book}{}{}
+      \name{author}{3}{}{%
+        {{hash=472a518b9636a2472d23017a59043889}{%
+           family={Riley},
+           familyi={R\bibinitperiod},
+           given={K.\bibnamedelimi F.},
+           giveni={K\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=f81ebfc218ed573f729122c9112ee997}{%
+           family={Hobson},
+           familyi={H\bibinitperiod},
+           given={M.P.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=dfbc319a09d77ddf6146efd4cf4f3428}{%
+           family={Bence},
+           familyi={B\bibinitperiod},
+           given={S.\bibnamedelimi J.},
+           giveni={S\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{c41b519ee78de49eecfbe43f545302c8}
+      \strng{fullhash}{c41b519ee78de49eecfbe43f545302c8}
+      \strng{fullhashraw}{c41b519ee78de49eecfbe43f545302c8}
+      \strng{bibnamehash}{c41b519ee78de49eecfbe43f545302c8}
+      \strng{authorbibnamehash}{c41b519ee78de49eecfbe43f545302c8}
+      \strng{authornamehash}{c41b519ee78de49eecfbe43f545302c8}
+      \strng{authorfullhash}{c41b519ee78de49eecfbe43f545302c8}
+      \strng{authorfullhashraw}{c41b519ee78de49eecfbe43f545302c8}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Mathematical Methods for Physics and Engineering}
+      \field{year}{2006}
     \endentry
     \entry{UFRO}{article}{}{}
       \name{author}{2}{}{%
@@ -636,6 +813,7 @@
       \field{title}{Series de Fourier y fenómeno de Gibbs}
       \field{volume}{5}
       \field{year}{2003}
+      \true{nocite}
       \field{pages}{185\bibrangedash 224}
       \range{pages}{40}
       \verb{urlraw}
@@ -670,7 +848,6 @@
       \field{labeltitlesource}{title}
       \field{title}{Física matemática II}
       \field{year}{2019}
-      \true{nocite}
       \verb{urlraw}
       \verb https://github.com/gfrubi/FM2
       \endverb
@@ -705,6 +882,52 @@
       \field{year}{2012}
       \true{nocite}
     \endentry
+    \entry{Spiegel_Liu_Lipschutz_2009}{book}{}{}
+      \name{author}{3}{}{%
+        {{hash=5b4e41c0914ea564981e3db366e1ee89}{%
+           family={Spiegel},
+           familyi={S\bibinitperiod},
+           given={Murray\bibnamedelima R.},
+           giveni={M\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=43b0dce2cc8966238118a2bec6068e52}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+        {{hash=e34b010c55f77baaac2ce9b6ffc890a7}{%
+           family={Lipschutz},
+           familyi={L\bibinitperiod},
+           given={Seymour},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \list{location}{1}{%
+        {New York}%
+      }
+      \list{publisher}{1}{%
+        {McGraw-Hill}%
+      }
+      \strng{namehash}{f703fc03fb84f4c6a52150cbafca8ed1}
+      \strng{fullhash}{f703fc03fb84f4c6a52150cbafca8ed1}
+      \strng{fullhashraw}{f703fc03fb84f4c6a52150cbafca8ed1}
+      \strng{bibnamehash}{f703fc03fb84f4c6a52150cbafca8ed1}
+      \strng{authorbibnamehash}{f703fc03fb84f4c6a52150cbafca8ed1}
+      \strng{authornamehash}{f703fc03fb84f4c6a52150cbafca8ed1}
+      \strng{authorfullhash}{f703fc03fb84f4c6a52150cbafca8ed1}
+      \strng{authorfullhashraw}{f703fc03fb84f4c6a52150cbafca8ed1}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{3. ed}
+      \field{isbn}{978-0-07-154855-7}
+      \field{series}{Schaum’s outline series}
+      \field{title}{Mathematical handbook of formulas and tables}
+      \field{year}{2009}
+      \true{nocite}
+    \endentry
     \entry{Tolstov}{book}{}{}
       \name{author}{1}{}{%
         {{hash=4c3ef7033750c1eca2b84350030ad277}{%
@@ -731,6 +954,64 @@
       \field{title}{Fourier Series}
       \field{year}{1962}
       \true{nocite}
+    \endentry
+    \entry{Frobenius_Wikipedia}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=b6aea1a416c89509a7df1cbb69249cb6}{%
+           family={{Wikipedia contributors}},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhashraw}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{bibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorbibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authornamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhashraw}{b6aea1a416c89509a7df1cbb69249cb6}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://en.wikipedia.org/w/index.php?title=Frobenius_method&oldid=1226431177}}
+      \field{note}{[Online; accessed 7-February-2025]}
+      \field{title}{Frobenius method --- {Wikipedia}{,} The Free Encyclopedia}
+      \field{year}{2024}
+      \true{nocite}
+    \endentry
+    \entry{Zill_2013}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=ce0689f2d52c5a0939d5509701e4f498}{%
+           family={Zill},
+           familyi={Z\bibinitperiod},
+           given={Dennis\bibnamedelima G.},
+           giveni={D\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \list{location}{1}{%
+        {India}%
+      }
+      \list{publisher}{1}{%
+        {Cengage Learning}%
+      }
+      \strng{namehash}{ce0689f2d52c5a0939d5509701e4f498}
+      \strng{fullhash}{ce0689f2d52c5a0939d5509701e4f498}
+      \strng{fullhashraw}{ce0689f2d52c5a0939d5509701e4f498}
+      \strng{bibnamehash}{ce0689f2d52c5a0939d5509701e4f498}
+      \strng{authorbibnamehash}{ce0689f2d52c5a0939d5509701e4f498}
+      \strng{authornamehash}{ce0689f2d52c5a0939d5509701e4f498}
+      \strng{authorfullhash}{ce0689f2d52c5a0939d5509701e4f498}
+      \strng{authorfullhashraw}{ce0689f2d52c5a0939d5509701e4f498}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{Décima edición}
+      \field{isbn}{978-81-315-2282-0}
+      \field{title}{A first course in differential equations with modeling applications}
+      \field{year}{2013}
     \endentry
   \enddatalist
 \endrefsection

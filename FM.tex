@@ -183,6 +183,16 @@ postheadhook    =\vspace*{\parskip}\begin{Gdbleftbar}\vspace*{-5pt},%
 prefoothook     =\vspace*{-1pt}\end{Gdbleftbar}%
 ]{propiedad}   
 
+\newtcolorbox{obs}[2][]{enhanced,
+  attach boxed title to top center={yshift=-3mm,yshifttext=-1mm},
+  colback=right!5!white,
+  colframe=left!75!black,
+  colbacktitle=numberchap!80!white,
+  title=#2,
+  boxed title style={size=small,colframe=numberchap!50!black},
+  #1
+}
+
 %Referencias
 \usepackage[backend=biber]{biblatex}
 \addbibresource{Referencias.bib}
