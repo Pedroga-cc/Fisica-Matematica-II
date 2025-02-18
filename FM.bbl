@@ -742,6 +742,45 @@
       \field{year}{1960}
       \true{nocite}
     \endentry
+    \entry{Reimberg2015}{misc}{}{}
+      \name{author}{2}{}{%
+        {{hash=f25f9183e7457f09cd1030e2ffd97d35}{%
+           family={Reimberg},
+           familyi={R\bibinitperiod},
+           given={Paulo\bibnamedelimb H.\bibnamedelimi F.},
+           giveni={P\bibinitperiod\bibinitdelim H\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=4b104db8d913d21bd6cc824672d6967a}{%
+           family={Abramo},
+           familyi={A\bibinitperiod},
+           given={L.\bibnamedelimi Raul},
+           giveni={L\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \strng{namehash}{c3e3a99deeaf156867eed85244863ca8}
+      \strng{fullhash}{c3e3a99deeaf156867eed85244863ca8}
+      \strng{fullhashraw}{c3e3a99deeaf156867eed85244863ca8}
+      \strng{bibnamehash}{c3e3a99deeaf156867eed85244863ca8}
+      \strng{authorbibnamehash}{c3e3a99deeaf156867eed85244863ca8}
+      \strng{authornamehash}{c3e3a99deeaf156867eed85244863ca8}
+      \strng{authorfullhash}{c3e3a99deeaf156867eed85244863ca8}
+      \strng{authorfullhashraw}{c3e3a99deeaf156867eed85244863ca8}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{math-ph}
+      \field{eprinttype}{arXiv}
+      \field{title}{A completeness-like relation for Bessel functions}
+      \field{year}{2015}
+      \verb{eprint}
+      \verb 1310.1128
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/1310.1128
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/1310.1128
+      \endverb
+    \endentry
     \entry{Riley}{book}{}{}
       \name{author}{3}{}{%
         {{hash=472a518b9636a2472d23017a59043889}{%
