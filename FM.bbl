@@ -19,6 +19,47 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global/global}
+    \entry{Abramowitz_Stegun_1972}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=b30c3e9da438d36efb5827b2fe852284}{%
+           family={Abramowitz},
+           familyi={A\bibinitperiod},
+           given={Milton},
+           giveni={M\bibinitperiod}}}%
+        {{hash=94cadaf0db044088c2558aa77e72748b}{%
+           family={Stegun},
+           familyi={S\bibinitperiod},
+           given={Irene\bibnamedelima A.},
+           giveni={I\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \list{location}{1}{%
+        {New York}%
+      }
+      \list{publisher}{1}{%
+        {Dover publ}%
+      }
+      \strng{namehash}{63984f02de086b7d6004b5486dbf6cab}
+      \strng{fullhash}{63984f02de086b7d6004b5486dbf6cab}
+      \strng{fullhashraw}{63984f02de086b7d6004b5486dbf6cab}
+      \strng{bibnamehash}{63984f02de086b7d6004b5486dbf6cab}
+      \strng{authorbibnamehash}{63984f02de086b7d6004b5486dbf6cab}
+      \strng{authornamehash}{63984f02de086b7d6004b5486dbf6cab}
+      \strng{authorfullhash}{63984f02de086b7d6004b5486dbf6cab}
+      \strng{authorfullhashraw}{63984f02de086b7d6004b5486dbf6cab}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{Unabridged, unaltered and corr. republ. of the 1964 ed}
+      \field{isbn}{978-0-486-61272-0}
+      \field{series}{Dover books on advanced mathematics}
+      \field{title}{Handbook of mathematical functions: with formulas, graphs and mathematical tables [conference under the auspices of the National science foundation and the Massachussetts institute of technology]}
+      \field{year}{1972}
+      \true{nocite}
+    \endentry
     \entry{Agarwal}{book}{}{}
       \name{author}{2}{}{%
         {{hash=298309568a5acd6461af744fdc4741ba}{%

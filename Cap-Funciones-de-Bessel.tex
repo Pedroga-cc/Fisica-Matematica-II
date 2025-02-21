@@ -254,8 +254,8 @@ De forma similar a las funciones de Bessel de primera especie, estas satisfacen,
 \begin{defi} \marginnote{Funciones de Hankel}
     Se definen las \textbf{funciones de Hankel} $H_\nu^{(1)}(x)$ y $H_\nu^{(2)}(x)$ como dos soluciones linealmente independientes para la EDO de Bessel \eqref{eq:EDO_Bessel}, dadas por
     \begin{align}
-        H_\nu^{(1)}(x) & = J_\nu(x) + Y_\nu(x) \ , \\
-        H_\nu^{(2)}(x) & = J_\nu(x) - Y_\nu(x) \ .
+        H_\nu^{(1)}(x) & = J_\nu(x) + i Y_\nu(x) \ , \\
+        H_\nu^{(2)}(x) & = J_\nu(x) - i Y_\nu(x) \ .
     \end{align}
 \end{defi}
 
@@ -328,11 +328,11 @@ De igual manera, a veces es necesario utilizar los ceros de las derivadas de las
     \textbf{Propiedades de las funciones de Bessel}
 
     \begin{enumerate}
-        \item \textbf{Normalización.} Dada una raíz $\alpha_{\nu, n}$ de la función de Bessel de orden $\nu$, se satisface que
-        \begin{equation}
-            \int_0^a r \left[J_\nu\left( \alpha_{\nu, n} \frac{x}{a} \right)\right]^2 dr = \frac{a^2}{2} \left[ J_{\nu+1}(\alpha_{\nu, n}) \right]^2 \ . 
-        \end{equation}
-        \item \textbf{Ortogonalidad.} Para valores de $\nu$ no negativos, para $a > 0$ y para $n, m \in \mathbb{N}$, se tiene que
+        % \item \textbf{Normalización.} Dada una raíz $\alpha_{\nu, n}$ de la función de Bessel de orden $\nu$, se satisface que
+        % \begin{equation}
+        %     \int_0^a r \left[J_\nu\left( \alpha_{\nu, n} \frac{x}{a} \right)\right]^2 dr = \frac{a^2}{2} \left[ J_{\nu+1}(\alpha_{\nu, n}) \right]^2 \ . 
+        % \end{equation}
+        \item \textbf{Ortogonalidad respecto a las raíces.} Para valores de $\nu$ no negativos, para $a > 0$ y para $n, m \in \mathbb{N}$, se tiene que
         \begin{equation}
             \int_0^a x J_{\nu} \left( \frac{\alpha_{\nu, n}}{a} x \right) J_\nu\left( \frac{\alpha_{\nu, m}}{a} x \right) dx = \frac{a^2}{2} [J'_\nu(\alpha_{\nu, n})]^2 \delta_{n, m} = \frac{a^2}{2} [J_{\nu+1}(\alpha_{\nu, n})]^2 \delta_{n, m} \ .
         \end{equation}
@@ -345,6 +345,7 @@ De igual manera, a veces es necesario utilizar los ceros de las derivadas de las
         % \begin{equation}
         %     \int_a^b x J_\nu(u x) J_\nu(bx) dx = \frac{1}{u^2-v^2} \left[ vx J_\nu(ux) J0_\nu(vx) - ux J_\nu(vx) J'_\nu(ux) \right]_a^b \delta_{u,v} \ .
         % \end{equation} 
+        \item \textbf{Ortogonalidad respecto al orden.} Las funciones de Bessel, en general, \emph{no son ortogonales respecto a los índices}, es decir, $\left\langle J_\mu(x), J_\nu(x) \right\rangle \neq 0$.
         \item \textbf{Completitud.} Las funciones de Bessel (de orden no negativo) forman un \emph{conjunto completo} de funciones en el intervalo $[0,a]$, lo que se puede representar aproximadamente como \cite{Reimberg2015}
         \begin{equation}
             \sum_{k=1}^\infty \frac{J_{\nu-1} \left(\frac{ \alpha_{\mu, k}}{a}x \right) J_{\nu-1} \left(\frac{\alpha_{\mu, k}}{a} y \right)}{\left[J_{\mu+1}(\alpha_{\mu, k})\right]^2} = \frac{a}{2x} \delta\left( \frac{x}{a} - \frac{y}{a} \right) \ ,
@@ -378,7 +379,7 @@ De igual manera, a veces es necesario utilizar los ceros de las derivadas de las
         \begin{equation}
             J_0(x) + 2\sum_{n=1}^\infty J_{2n}(x) = 1 \ .
         \end{equation}
-        \item \textbf{Comportamiento asintótico.} En el límite en que $x$ toma valores \emph{muy grandes}, generalmente entendido como $x \gg |\nu^2 - 1/4|$, tal que
+        \item \textbf{Comportamiento asintótico.} En el límite en que $x$ toma valores \emph{muy grandes}, generalmente entendido como $x \gg |\nu^2 - 1/4|$, podemos representar las funciones de Bessel como
         \begin{align}
             J_\nu(x) & \approx \sqrt{\frac{2}{\pi x}} \cos\left( x - \frac{\nu \pi}{2} - \frac{\pi}{4} \right) \ , \\
             Y_\nu(x) & \approx \sqrt{\frac{2}{\pi x}} \sin\left( x - \frac{\nu \pi}{2} - \frac{\pi}{4} \right) \ , \\
@@ -413,7 +414,7 @@ Esta ecuación es conocida como la \textbf{ecuación modificada de Bessel}, y su
     Un conjunto particular de soluciones a la ecuación modificada de Bessel \eqref{eq:Bessel_modificada} corresponde a las \textbf{funciones modificadas de Bessel de primera especie}, $I_\nu(x)$, y a las \textbf{funciones modificadas de Bessel de segunda especie}, $K_\nu(x)$, definidas como
     \begin{align}
         I_\nu(x) & = i^{-\nu} J_\nu(ix) = \sum_{k=0^\infty} \frac{1}{k! \Gamma(k+\nu+1)} \left( \frac{x}{2} \right)^{2k+\nu} \ , \\
-        K_\nu(x) & = \frac{\pi}{2} \left[ \frac{I_{-\nu}(x) - I_\nu(x)}{\sin(\nu \pi)} \right] \ , \qquad \nu \notin \mathbb{Z} \ .
+        K_\nu(x) & = i^{\nu + 1} \frac{\pi}{2} H_\nu^{(1)}(ix) = \frac{\pi}{2} \left[ \frac{I_{-\nu}(x) - I_\nu(x)}{\sin(\nu \pi)} \right] \ , \qquad \nu \notin \mathbb{Z} \ .
     \end{align}
 \end{defi}
 
@@ -424,19 +425,104 @@ De forma análoga a lo ocurrido para las funciones de Bessel de segunda especie,
 
 \begin{figure}[htbp]
     \centering
-    \begin{subfigure}{\textwidth}
-        \centering
-        \includegraphics[width = 10cm]{Figuras/Bessel-modified-first-kind.pdf}
-        \caption{\label{fig:Bessel_modificada_primera}}
-    \end{subfigure}
-    \begin{subfigure}{\textwidth}
-        \centering
-        \includegraphics[width = 10cm]{Figuras/Bessel-modified-second-kind.pdf}
-        \caption{\label{fig:Bessel_modificada_segunda}}
-    \end{subfigure}
-    \caption{Funciones de Bessel modificadas de \subref{fig:Bessel_modificada_primera} primera especie y \subref{fig:Bessel_modificada_segunda} segunda especie. Figura adaptada a partir de \href{https://github.com/gfrubi/FM2/blob/master/figuras-editables/fig-Bessel.py}{este} código. La adaptación se encuentra \href{aa}{aquí}.}
-    \label{fig:Bessel_modificada}
+    \includegraphics[width = 10cm]{Figuras/Bessel-modified-first-kind.pdf}
+    \caption{Funciones de Bessel modificadas de primera especie. Figura adaptada a partir de \href{https://github.com/gfrubi/FM2/blob/master/figuras-editables/fig-Bessel.py}{este} código. La adaptación se encuentra \href{aa}{aquí}.}
+    \label{fig:Bessel_modificada_primera}
 \end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width = 10cm]{Figuras/Bessel-modified-second-kind.pdf}
+    \caption{Funciones de Bessel modificadas de segunda especie. Figura adaptada a partir de \href{https://github.com/gfrubi/FM2/blob/master/figuras-editables/fig-Bessel.py}{este} código. La adaptación se encuentra \href{aa}{aquí}.}
+    \label{fig:Bessel_modificada_segunda}
+\end{figure}
+
+% \begin{figure}[htbp]
+%     \centering
+%     \begin{subfigure}{\textwidth}
+%         \centering
+%         \includegraphics[width = 10cm]{Figuras/Bessel-modified-first-kind.pdf}
+%         \caption{\label{fig:Bessel_modificada_primera}}
+%     \end{subfigure}
+%     \begin{subfigure}{\textwidth}
+%         \centering
+%         \includegraphics[width = 10cm]{Figuras/Bessel-modified-second-kind.pdf}
+%         \caption{\label{fig:Bessel_modificada_segunda}}
+%     \end{subfigure}
+%     \caption{Funciones de Bessel modificadas de \subref{fig:Bessel_modificada_primera} primera especie y \subref{fig:Bessel_modificada_segunda} segunda especie. Figura adaptada a partir de \href{https://github.com/gfrubi/FM2/blob/master/figuras-editables/fig-Bessel.py}{este} código. La adaptación se encuentra \href{aa}{aquí}.}
+%     \label{fig:Bessel_modificada}
+% \end{figure}
+
+\subsection{Propiedades}
+
+\begin{propiedad}
+    \textbf{Propiedades de las funciones modificadas de Bessel.}
+
+    \begin{enumerate}
+        \item \textbf{Comportamiento asintótico.} En el límite en que $x$ toma valores \emph{muy grandes}, generalmente entendido como $x \gg |\nu^2 - 1/4|$, podemos representar las funciones de Bessel como
+        \begin{align}
+            I_\nu(x) & = \frac{1}{\sqrt{2\pi x}} e^x \ , \\
+            K_\nu(x) & = \sqrt{\frac{\pi}{2x}} e^{-x} \ . 
+        \end{align}
+        \item \textbf{Relaciones de recurrencia.} Las funciones modificadas de Bessel satisfacen las siguientes relaciones de recurrencia,
+        \begin{align}
+            I_{\nu - 1}(x) - I_{\nu + 1}(x) & =   \frac{2\nu}{x} I_\nu(x) \ , \\
+            K_{\nu - 1}(x) - K_{\nu + 1}(x) & = - \frac{2\nu}{x} K_\nu(x) \ , \\
+            I_{\nu - 1}(x) + I_{\nu + 1}(x) & =   2 I'_\nu(x) \ , \\
+            K_{\nu - 1}(x) + K_{\nu + 1}(x) & = - 2 K'_\nu(x) \ .
+        \end{align}
+        \item \textbf{Relaciones con derivadas.} A partir de las relaciones de recurrencia, podemos hallar las relaciones
+        \begin{align}
+            x^{\nu} I_{\nu - 1}(x)    & = \frac{d}{dx}[x^\nu    I_\nu(x)] \ , \\
+            - x^{\nu} K_{\nu - 1}(x)  & = \frac{d}{dx}[x^\nu    K_\nu(x)] \ , \\
+            x^{-\nu} I_{\nu + 1}(x)   & = \frac{d}{dx}[x^{-\nu} I_\nu(x)] \ , \\
+            - x^{-\nu} K_{\nu + 1}(x) & = \frac{d}{dx}[x^{-\nu} K_\nu(x)] \ .
+        \end{align}
+    \end{enumerate}
+\end{propiedad}
+
+\begin{ejemplo}
+    \textbf{(Butkov, sección 9.11.)} Considere un cilindro circular sólido de radio $b$ y longitud $L$. Las bases del cilindro se mantienen a temperatura cero, $u(z = 0, t) = u(z = L, t) = 0$, mientras que su superficie lateral es mantenida a una temperatura $u(\rho = b, t) = T_1$ constante. Encuentre la distribución de temperatura en el interior del cilindro en el estado estacionario.
+
+    \textbf{Solución.} Cuando nos referimos a \emph{estado estacionario}, nos referimos al caso en que la temperatura se mantenga constante en el tiempo. Dado este requisito, la ecuación de difusión del calor se convertirá en la ecuación de Laplace, pues
+    \begin{equation*}
+        \nabla^2 u = \frac{1}{\alpha^2} \cancelto{0}{\frac{\partial u}{\partial t}} = 0 \ .
+    \end{equation*}
+    Dado que el sistema es un cilindro, también imponemos la condición de periodicidad sobre la variable angular, es decir, $u(\rho, \phi, z) = u(\rho, \phi + 2\pi, z)$. Realizando separación de variables, tendremos las ecuaciones
+    \begin{align*}
+        \frac{d^2 Z}{dz^2} & = \lambda_1 Z \ , \\
+        \frac{d^2 \Phi}{d\phi^2} & = \lambda_2 \Phi \ , \\
+        \frac{d}{d\rho}\left( \rho \frac{dP}{d\rho} \right) + \left[ \rho \lambda_1 + \frac{\lambda_2}{\rho} \right] & = 0 \ .
+    \end{align*} 
+    Imponiendo nuestras condiciones de contorno, concluimos que $\lambda_1 = -n^2 \pi^2/L^2$ para $n = 1, 2, 3, \dots$ (solución oscilante), y $\lambda_2 = -m^2$ para $m = 0, 1, 2, \dots$ Así, la ecuación para $P$ se convierte en
+    \begin{equation*}
+        \frac{d}{d\rho}\left( \rho \frac{dP}{d\rho} \right) - \left[ \rho \frac{n^2\pi^2}{L^2} + \frac{m^2}{\rho} \right] = 0 \ ,
+    \end{equation*} 
+    lo que corresponde a la EDO modificada de Bessel. Esto se aprecia de forma más clara bajo el cambio de variable $x = n\pi \rho/L$, $P(\rho) = y(x)$, donde tendremos
+    \begin{equation*}
+        x^2 \frac{d^2 y}{dy^2} + x \frac{dy}{dx} - (x^2 + m^2)y = 0 \ .
+    \end{equation*}
+
+    Esta EDO tiene por solución general a las funciones modificadas de Bessel, tal que
+    \begin{equation*}
+        P_{mn}(\rho) = A_{mn} I_m\left( \frac{n\pi \rho}{L} \right) + B_{mn} K_m\left( \frac{n\pi \rho}{L} \right) \ .
+    \end{equation*}
+
+    Ahora, dado que trabajamos con un cilindro de radio finito, $\rho \to \infty$ no es parte de nuestro dominio, por lo que la función $I_m(x)$ está definida para nuestro problema. En cambio, dado que $\rho = 0$ es parte de nuestro dominio, y la función $K_m(x)$ diverge para $x = 0$, descartamos esta solución imponiendo que $B_{mn} = 0$.
+
+    Por otro lado, dado que nuestro sistema posee simetría axial como consecuencia de la condición de contorno $u(\rho = b) = T_1$, pues este valor es válido para cualquier valor de $\phi$, podemos concluir que basta con considerar el caso en que $m=0$, de modo que la solución para $P(\rho)$ es dada por
+    \begin{equation*}
+        P_n(\rho) = A_n I_0\left( \frac{n \pi \rho}{L} \right) \ ,
+    \end{equation*}
+    mientras que la solución general al problema es de la forma
+    \begin{equation*}
+        u(\rho, \phi, z) = \sum_{n=1}^\infty A_n \sin\left( \frac{n \pi z}{L} \right) I_0 \left( \frac{n \pi \rho}{L} \right) \ ,
+    \end{equation*}
+    donde el coeficiente $A_n$ se obtiene imponiendo la condición de contorno $u(\rho = b) = T_1$. Queda como ejercicio para el lector comprobar que luego de imponer la condición de contorno, la solución a nuestro problema será
+    \begin{equation*}
+        u(\rho, \phi, z) = \frac{4T_1}{\pi} \sum_{n=1, 3, 5, \dots}^\infty \frac{1}{n} \frac{I_0(n \pi \rho/L) \sin(n \pi z/L)}{I_0(n \pi b/L)} \ .
+    \end{equation*}
+\end{ejemplo}
 
 % las que corresponden a las \textbf{funciones modificadas de Bessel de primera especie}, $I_\nu(x)$, y a las \textbf{funciones modificadas de Bessel de segunda especie}, $K_\nu(x)$, definidas como
 % \begin{align}
@@ -447,35 +533,169 @@ De forma análoga a lo ocurrido para las funciones de Bessel de segunda especie,
 
 \section{Funciones esféricas de Bessel}
 
-Si bien las incluímos en el mismo capítulo dado su nombre, las \textbf{funciones esféricas de Bessel} surgen como soluciones de la parte radial de la ecuación de Helmholtz \emph{en coordenadas esféricas}, donde en la ecuación X hallamos que la ecuación esférica de Bessel es
+Hemos discutido que las funciones de Bessel surgen como solución de la \emph{EDO radial} que surge de separar la ecuación de Helmholtz para coordenadas cilíndricas, que denominamos EDO de Bessel. De manera análoga, la EDO radial que surge en coordenadas esféricas es denominada \textbf{ecuación esférica de Bessel}, y es dada por
 \begin{equation}
-    r^2 \frac{d^2R}{dr^2} + 2r \frac{dR}{dr} + [k^2 r^2 - \ell (\ell+1)]R(r) = 0 \ ,
+    x^2 \frac{d^2y}{dx^2} + 2x \frac{dy}{dx} + (x^2 - \ell(\ell+1))y = 0 \ ,
 \end{equation}
-donde $\ell$ es un número entero. Notemos que, bajo la sustitución $R(r) = r^{-1/2} S(r)$, la ecuación toma la forma
-\begin{equation}
-    r^2 S'' + rS' + \left[k^2r^2 - \left(\ell + \frac{1}{2}\right)\right]S = 0 \ ,
+donde hemos realizado el cambio de variables $x = kr$.
+
+% Si bien las incluímos en el mismo capítulo dado su nombre, las \textbf{funciones esféricas de Bessel} surgen como soluciones de la parte radial de la ecuación de Helmholtz \emph{en coordenadas esféricas}, donde en la ecuación X hallamos que la ecuación esférica de Bessel es
+% \begin{equation}
+%     r^2 \frac{d^2R}{dr^2} + 2r \frac{dR}{dr} + [k^2 r^2 - \ell (\ell+1)]R(r) = 0 \ ,
+% \end{equation}
+% donde $\ell$ es un número entero. 
+Notemos que, bajo la sustitución $y(x) = x^{-1/2} S(x)$, la ecuación toma la forma
+\begin{equation} \label{eq:EDO_esferica_Bessel}
+    x^2 \frac{d^2 S}{dx^2} + x \frac{dS}{dx} + \left[x^2 - \left(\ell + \frac{1}{2}\right)^2\right]S = 0 \ ,
 \end{equation}
-que corresponde a la ecuación de Bessel de orden $\ell + 1/2$. Por ello, una solución de esta ecuación será
+que al comparar con \eqref{eq:EDO_Bessel}, notamos que corresponde a la ecuación de Bessel de orden $\ell + 1/2$. Por ello, una solución de esta ecuación será
 \begin{equation}
-    y(r) = C_1 \frac{J_{\ell + 1/2}(kr)}{\sqrt{r}} + C_2 \frac{Y_{\ell + 1/2}(kr)}{\sqrt{r}} \ ,
+    y(x) = C_1 \frac{J_{\ell + 1/2}(x)}{\sqrt{x}} + C_2 \frac{Y_{\ell + 1/2}(x)}{\sqrt{x}} \ ,
 \end{equation}
 donde las constantes $C_1$ y $C_2$ se determinan a partir de las condiciones de contorno. En particular, cuando deseamos soluciones que sean finitas en el origen, escogeremos $C_2 = 0$.
 
-Bajo una normalización adecuada, preferimos definir las \textbf{funciones esféricas de Bessel} de primera y segunda especie como
-\begin{align}
-    j_\ell (x) & = \sqrt{\frac{\pi}{2x}} J_{\ell + 1/2}(x) \ , \\
-    y_\ell (x) = n_\ell(x) & = \sqrt{\frac{\pi}{2x}} Y_{\ell + 1/2} \ ,
-\end{align}
-donde, para $\ell$ entero, $Y_{\ell + 1/2}(x) = (-1)^{\ell + 1}J_{-\ell - 1/2}(x)$. Vale la pena hacer notar que
+\begin{defi} \marginnote{Funciones esféricas de Bessel}
+    Las \textbf{funciones esféricas de Bessel} de primera y segunda especie corresponden a las soluciones de la ecuación esférica de Bessel \eqref{eq:EDO_esferica_Bessel} dadas por
+    \begin{align}
+        j_\ell(x) & = \sqrt{\frac{\pi}{2x}} J_{\ell + 1/2}(x) \ , \\
+        y_\ell(x) = n_\ell(x) & = \sqrt{\frac{\pi}{2x}} Y_{\ell + 1/2}(x) \ .
+    \end{align}
+\end{defi}
+
+% Bajo una normalización adecuada, preferimos definir las \textbf{funciones esféricas de Bessel} de primera y segunda especie como
+% \begin{align}
+%     j_\ell (x) & = \sqrt{\frac{\pi}{2x}} J_{\ell + 1/2}(x) \ , \\
+%     y_\ell (x) = n_\ell(x) & = \sqrt{\frac{\pi}{2x}} Y_{\ell + 1/2} \ ,
+% \end{align}
+% donde, para $\ell$ entero, $Y_{\ell + 1/2}(x) = (-1)^{\ell + 1}J_{-\ell - 1/2}(x)$. 
+Vale la pena hacer notar que
 \begin{align}
     j_0(x) & = \frac{\sin x}{x} \ , \\
     y_0(x) & = - \frac{\cos x}{x} \ .
 \end{align}
+Además, cuando $\ell$ corresponde a un número entero, las funciones esféricas de Bessel satisfacen que
+\begin{equation}
+    y_{\ell+1/2}(x) = (-1)^{\ell+1} j_{-\ell - 1/2}(x) \ ,
+\end{equation}
+lo que es consecuencia de su relación con las funciones de Bessel de orden semientero.
 
-Para el caso de orden entero, también es posible escribirlas en términos de una serie de potencias, donde
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width = 12cm]{Figuras/Bessel-Esferica-first-kind.pdf}
+    \caption{Funciones esféricas de Bessel de orden entero para $n$ entre 0 y 5. Adaptación de \href{https://github.com/gfrubi/FM2/blob/master/figuras-editables/fig-Bessel.py}{este} código. La adaptación se encuentra \href{aa}{aquí}.}
+    \label{fig:esferica_bessel_primera}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width = 12cm]{Figuras/Bessel-Esferica-second-kind.pdf}
+    \caption{Funciones esféricas de Neumann de orden entero para $n$ entre 0 y 5. Adaptación de \href{https://github.com/gfrubi/FM2/blob/master/figuras-editables/fig-Bessel.py}{este} código. La adaptación se encuentra \href{aa}{aquí}.}
+    \label{fig:esferica_bessel_segunda}
+\end{figure}
+
+\subsection{Función generatriz (para orden entero)}
+
+Las funciones esféricas de Bessel de orden entero pueden obtenerse a partir de las siguientes funciones generatrices
 \begin{align}
-    j_n(x) & = 2^n x^n  \sum_{k=0}^\infty \frac{(-1)^k}{k!} \frac{(k+n)!}{(2k+2n+1)!}x^{2k} \ , \\
-    y_n(x) & = \frac{(-1)^{n+1}}{2^n x^{n+1}} \sum_{k = 0}^\infty \frac{(-1)^k (k-n)!}{k! (2k-2n)!}z^{2k} \ .
-\end{align}
+    G_j(x,t) & = \frac{1}{x} \cos \left( \sqrt{x^2 - 2xt} \right) = \sum_{n=0}^\infty \frac{t^n}{n!} j_{n-1}(x) \ , \\
+    G_y(x,t) & = \frac{1}{x} \sin \left( \sqrt{x^2 - 2xt} \right) = \sum_{n=0}^\infty \frac{t^n}{n!} y_{n-1}(x) \ .
+\end{align} 
+
+\subsection{Ceros de las funciones esféricas de Bessel}
+
+Al igual que en el caso de las funciones de Bessel, no es posible hallar las raíces de las funciones esféricas de Bessel de forma analítica, por lo que en la tabla \ref{tab:alphanun_esferica} presentamos algunos ceros para funciones de orden entero. A su vez, en la tabla \ref{tab:betanun_esferica} presentamos los ceros de su primera derivada.
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{ccccccc}
+    \hline $\alpha_{n,p}$ & $n=1$ & $n=2$ & $n=3$ & $n=4$ & $n=5$ \\ \hline 
+    $\nu=0$ & 3.1416 &  6.2832 &  9.4248 & 12.5664 & 15.7080 \\
+    $\nu=1$ & 4.4934 &  7.7253 & 10.9041 & 14.0662 & 17.2208 \\
+    $\nu=2$ & 5.7635 &  9.0950 & 12.3229 & 15.5146 & 18.6890 \\
+    $\nu=3$ & 6.9879 & 10.4171 & 13.6980 & 16.9236 & 20.1218 \\
+    $\nu=4$ & 8.1826 & 11.7049 & 15.0397 & 18.3013 & 21.5254 \\
+    \hline 
+    \end{tabular} 
+    \caption{Las primeras raíces $\alpha_{n,p}$ de $j_n(x)$, $n=0,1,2,3,4$. Valores tomados del capítulo 14 de \cite{Arfken}.}
+    \label{tab:alphanun_esferica}
+\end{table}
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{ccccccc}
+    \hline $\beta_{n,p}$ & $n=1$ & $n=2$ & $n=3$ & $n=4$ & $n=5$ \\ \hline 
+    $\nu=0$ & 4.4934 & 7.7253 & 10.9041 & 14.0662 & 17.2208 \\
+    $\nu=1$ & 2.0816 & 5.9404 &  9.2058 & 12.4044 & 15.5792 \\
+    $\nu=2$ & 3.3421 & 7.2899 & 10.6139 & 13.8461 & 17.0429 \\
+    $\nu=3$ & 4.5141 & 8.5838 & 11.9727 & 15.2445 & 18.4681 \\
+    $\nu=4$ & 5.6467 & 9.8404 & 13.2956 & 16.6093 & 19.8624 \\
+    \hline 
+    \end{tabular} 
+    \caption{Las primeras raíces $\beta_{n,p}$ de $j'_n(x)$, $n=0,1,2,3,4$. Valores tomados del capítulo 14 de \cite{Arfken}.}
+    \label{tab:betanun_esferica}
+\end{table}
+
+\subsection{Propiedades}
+
+\begin{propiedad}
+    \textbf{Propiedades de las funciones esféricas de Bessel.}
+
+    \begin{enumerate}
+        \item \textbf{Ortogonalidad respecto a las raíces.} A partir de la ortogonalidad de las funciones de Bessel, tenemos que
+        \begin{equation}
+            \int_0^a j_n\left( \alpha_{n,p} \frac{x}{a} \right) j_n\left( \alpha_{n,q} \frac{x}{a}  \right) r^2 \ dr = \frac{a^3}{2} \left[ j_{n+1}(\alpha_{np}) \right]^2 \delta_{pq} \ .
+        \end{equation}
+        \item \textbf{Ortogonalidad respecto al orden.} Tenemos que, a diferencia de las funciones de Bessel, las funciones esféricas de Bessel son ortogonales respecto a su orden, tal que
+        \begin{equation}
+            \int_{-\infty}^{+\infty} j_m(x) j_n(x) dx = \frac{\pi}{2n+1} \delta_{mn} \ .
+        \end{equation}
+        \item \textbf{Funciones esféricas de Hankel.} De forma análoga a las funciones de Bessel, podemos definir las funciones esféricas de Hankel como
+        \begin{align}
+            h_\ell^{(1)}(x) & = \sqrt{\frac{\pi}{2x}}H_{\ell + 1/2}^{(1)}(x) = j_n(x) + i y_n(x) \ , \\
+            h_\ell^{(2)}(x) & = \sqrt{\frac{\pi}{2x}}H_{\ell + 1/2}^{(2)}(x) = j_n(x) - i y_n(x) \ .
+        \end{align}
+        \item \textbf{Expansión en serie de potencias.} Para el caso de orden entero, es posible representar las funciones esféricas de Bessel en términos de una serie de potencias, donde
+        \begin{align}
+            j_n(x) & = 2^n x^n  \sum_{k=0}^\infty \frac{(-1)^k}{k!} \frac{(k+n)!}{(2k+2n+1)!}x^{2k} \ , \\
+            y_n(x) & = \frac{(-1)^{n+1}}{2^n x^{n+1}} \sum_{k = 0}^\infty \frac{(-1)^k (k-n)!}{k! (2k-2n)!}z^{2k} \ .
+        \end{align}
+        \item \textbf{Comportamiento asintótico.} A partir del comportamiento asintótico de las funciones de Bessel, tenemos que
+        \begin{align}
+            j_n(x) & \approx \frac{1}{x} \sin\left( x - \frac{n\pi}{2} \right) \ , \\
+            y_n(x) & \approx - \frac{1}{x} \cos\left( x - \frac{n\pi}{2} \right) \ , \\
+            h_n^{(1)}(x) = H_n^{(2)}(x)^\ast & = \approx (-i)^{n+1} \frac{e^{ix}}{x} = - \frac{e^{i(x-n\pi/2)}}{x} \ .
+        \end{align}
+        \item \textbf{Relaciones de recurrencia.} Cualquier función esférica de Bessel satisface las relaciones de recurrencia
+        \begin{align}
+            f_{n-1}(x) + f_{n+1}(x) & = \frac{2n+1}{x} f_n(x) \ , \\
+            n f_{n-1}(x) - (n+1) f_{n+1}(x) & = (2n+1) f'_n(x) \ .
+        \end{align}
+        \item \textbf{Relaciones con derivadas.} Las funciones esféricas de Bessel de orden $n$ pueden obtenerse a partir de las funciones de orden 0 mediante sucesivas derivaciones, esto es,
+        \begin{align}
+            j_n(x) & = (-1)^n x^n \left( \frac{1}{x} \frac{d}{dx} \right)^n \left( \frac{\sin x}{x} \right) \ , \\
+            y_n(x) & = (-1)^n x^n \left( \frac{1}{x} \frac{d}{dx} \right)^n \left( \frac{\cos x}{x} \right) \ , \\
+            h_n^{(1)}(x) & = -i (-1)^n x^n \left( \frac{1}{x} \frac{d}{dx} \right)^n \left( \frac{e^{ix}}{x} \right) \ , \\
+            h_n^{(2)}(x) & = i (-1)^n x^n \left( \frac{1}{x} \frac{d}{dx} \right)^n \left( \frac{e^{-ix}}{x} \right) \ .
+        \end{align}
+        \item \textbf{Funciones esféricas modificadas de Bessel.} Puede darse el caso en que la ecuación esférica de Bessel tenga la forma de la ecuación modificada de Bessel para orden $1/2$. En ese caso,se definen las \emph{funciones esféricas de Bessel modificadas} como
+        \begin{align}
+            i_n(x) & = \sqrt{\frac{\pi}{2x}} I_{n+1/2}(x) \ , \\
+            k_n(x) & = \sqrt{\frac{2}{\pi x}} K_{n+1/2}(x) \ .
+        \end{align} 
+        Nótese que el factor de escala para $k_n$ es diferente al utilizado para el resto de las funciones esféricas de Bessel.
+    \end{enumerate}
+\end{propiedad}
+
+
 
 % Nuevamente, podemos hacer uso del método de Frobenius para resolver la EDO alrededor de $x=0$. Podríamos preguntarnos si esto es posible, ya que $x=0$ corresponde a un punto singular de la ecuación, ya que si consideramos una solución de la forma $y(x) = \sum_n a_n x^n$, en $x=0$, $y(0) = 0$
+
+\begin{ejemplo}
+    \textbf{(Arfken 7$^{\boldsymbol{\circ}}$ Edición, Ejemplo 14.7.1)} Considere una partícula cuántica libre de masa $m$ y con energía $E$. Encuentre el valor mínimo de energía para el cual la función de onda del sistema tiene una solución física.
+
+    \textbf{Solución.} Esta situación puede ser descrita mediante la ecuación de Schrödinger,
+    \begin{equation*}
+        - \frac{\hbar^2}{2m} \nabla^2 \psi = E\psi \ .
+    \end{equation*}
+
+\end{ejemplo}

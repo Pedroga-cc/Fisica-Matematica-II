@@ -72,34 +72,33 @@ plt.savefig('./Figuras/Bessel-modified-second-kind.pdf')
 
 # #$j_{n}(x)$:
 
-x = linspace(0,10,1000)
+x = np.linspace(0,10,1000)
 
-fig = figure(figsize=(8,6))
-for n in range(5):
-    plot(x,spherical_jn(n,x),colores[n], dashes=dasheses[n],label='$n= $'+str(n), linewidth=2)
-grid()
-xlabel(r'$x$',fontsize=15)
-ylabel(r'$j_n(x)$',fontsize=15)
+fig = plt.figure(figsize=(8,6))
+for n in range(6):
+    plt.plot(x,spherical_jn(n,x),colores[n], linestyle=linestyles[n],label='$n= $'+str(n), linewidth=2)
+plt.grid()
+plt.xlabel(r'$x$',fontsize=15)
+plt.ylabel(r'$j_n(x)$',fontsize=15)
 #title(ur'Funciones Esféricas de Bessel de $1^{\circ}$ especie a orden entero',fontsize=12)
-legend(loc='best',fontsize=12)
-ylim(-0.5,1.1)
-savefig('../figs/fig-Bessel-Esferica-j.pdf')
+plt.legend(loc='best',fontsize=12, ncols=3)
+plt.ylim(-0.5,1.1)
+plt.savefig('./Figuras/Bessel-Esferica-first-kind.pdf')
 
 
 # #$n_{n}(x)$:
 
-x = linspace(-20,20,1000)
-fig = figure(figsize=(8,6))
+x = np.linspace(-20,20,1000)
+fig = plt.figure(figsize=(8,6))
 for n in range(6):
-    plot(x,spherical_yn(n,x),colores[n], dashes=dasheses[n],label='$n= $'+str(n), linewidth=2)
-grid()
-xlabel(r'$x$',fontsize=15)
-ylabel(r'$y_n(x)$',fontsize=15)
-#title(ur'Funciones Esféricas de Bessel de $2^{\circ}$ especie a orden entero',fontsize=12)
-legend(loc='best',fontsize=12)
-ylim(-1,1)
-savefig('../figs/fig-Bessel-Esferica-y.pdf')
-
+    plt.plot(x,spherical_yn(n,x),colores[n], linestyle=linestyles[n],label='$n= $'+str(n), linewidth=2)
+plt.grid()
+plt.xlabel(r'$x$',fontsize=15)
+plt.ylabel(r'$y_n(x)$',fontsize=15)
+#title(ur'Funciones Esféricas de Bessel de $1^{\circ}$ especie a orden entero',fontsize=12)
+plt.legend(loc='best',fontsize=12, ncols=3)
+plt.ylim(-0.5,1.1)
+plt.savefig('./Figuras/Bessel-Esferica-second-kind.pdf')
 
 # #$i_{n}(x)$:
 
