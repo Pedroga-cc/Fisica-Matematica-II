@@ -691,11 +691,61 @@ Al igual que en el caso de las funciones de Bessel, no es posible hallar las ra�
 % Nuevamente, podemos hacer uso del método de Frobenius para resolver la EDO alrededor de $x=0$. Podríamos preguntarnos si esto es posible, ya que $x=0$ corresponde a un punto singular de la ecuación, ya que si consideramos una solución de la forma $y(x) = \sum_n a_n x^n$, en $x=0$, $y(0) = 0$
 
 \begin{ejemplo}
-    \textbf{(Arfken 7$^{\boldsymbol{\circ}}$ Edición, Ejemplo 14.7.1)} Considere una partícula cuántica libre de masa $m$ y con energía $E$. Encuentre el valor mínimo de energía para el cual la función de onda del sistema tiene una solución física.
+    \textbf{(Arfken 7$^{\boldsymbol{\circ}}$ Edición, Ejemplo 14.7.1)} Considere una partícula cuántica libre de masa $m$ y con energía $E$ que se mueve dentro de una esfera de radio $a$. Encuentre el valor mínimo de energía para el cual la función de onda del sistema tiene una solución física. Para esto, considere que
+    \begin{enumerate}
+        \item La función de onda $\psi(r)$ es finita dentro de la esfera, es decir, para $0 \leq r \leq a$.
+        \item En los bordes de la esfera, $\psi(a) = 0$.
+    \end{enumerate} 
 
-    \textbf{Solución.} Esta situación puede ser descrita mediante la ecuación de Schrödinger,
+    \textbf{Solución.} Esta situación puede ser descrita mediante la ecuación de Schrödinger independiente del tiempo,
     \begin{equation*}
-        - \frac{\hbar^2}{2m} \nabla^2 \psi = E\psi \ .
+        - \frac{\hbar^2}{2m} \nabla^2 \psi = (E - V(r)) \psi \ ,
+    \end{equation*}
+    donde podemos modelar el potencial como un pozo cuadrado, tal que
+    \begin{equation*}
+        V(r) = \left\{ \begin{array}{cc}
+            0 \ , & \quad r \leq a \ , \\
+            \infty \ , & \quad r > a \ .
+        \end{array} \right.
+    \end{equation*}
+    Luego, en el interior de la esfera, la ecuación de Schrödinger correspondiente será
+    \begin{equation*}
+        - \frac{\hbar^2}{2m} \nabla^2 \psi = E \psi \ .
+    \end{equation*}
+    
+    Realizamos separación de variables, obteniendo la ecuación radial
+    \begin{equation*}
+        \frac{d^2R}{dr^2} + \frac{2}{r} \frac{dR}{dr} + \left[ k^2 - \frac{\ell(\ell+1)}{r^2} \right]R = 0 \ ,
+    \end{equation*}
+    que corresponde a la ecuación esférica de Bessel, con $k^2 = 2mE/\hbar^2$. Así, la solución general para $R$ será dada por
+    \begin{equation*}
+        R(r) = A j_\ell(kr) + By_\ell(kr) \ .
+    \end{equation*}
+    Descartamos la presencia de las funciones de segunda especie, pues estas no son finitas en $r = 0$, para lo cual imponemos que $B = 0$. Por otra parte, imponiendo la condición de borde $\psi(a) = R(a) = 0$, necesitamos que $j_\ell(ka) = 0$, de donde concluimos que
+    \begin{equation*}
+        k = \frac{\alpha_{\ell,i}}{a} \ ,
+    \end{equation*}
+    donde $\alpha_{\ell,i}$ es la $i$-ésima raíz positiva de $j_\ell$. Luego, la solución para la ecuación radial tendrá la forma
+    \begin{equation*}
+        R(r) = A j_\ell \left( \frac{\alpha_{\ell,i}}{a} r \right) \ .
     \end{equation*}
 
+    De la definición de $k^2$, observamos que el menor valor de energía se corresponderá con el menor valor de $k^2$, que a su vez corresponderá a la primera raíz positiva de $j_\ell$, siendo esta la que corresponde para $\ell = 0$. De la tabla \ref{tab:alphanun_esferica}, observamos que esta corresponde a $\alpha_{0,1} \approx 3.1416 = \pi$, de modo que el menor valor de energía posible corresponde a
+    \begin{equation*}
+        E_{\min} = \frac{\hbar^2 k_{\min}^2}{2m} = \frac{\hbar^2}{2m} \left(\frac{\pi}{a}\right)^2 = \frac{\pi^2 \hbar^2}{2ma^2} = \frac{h^2}{8ma^2} \ .
+    \end{equation*}
+
+    Para finalizar, algunas observaciones,
+    \begin{itemize}
+        \item Esta \emph{energía mínima posible} es comúnmente denominada energía del \textbf{estado fundamental}, \textbf{estado basal} o \textbf{\emph{groundstate}}, o bien \textbf{energía del punto cero}. Por ejemplo, el átomo de hidrógeno posee una energía mínima $E_{\min} = -13.6$ eV.
+        
+        \item La energía de este sistema \emph{cuántico} no es continua, sino que solo puede tomar valores discretos, correspondientes a autovalores de la ecuación de Schrödinger.
+        
+        \item Para cualquier partícula encerrada dentro de una esfera, el valor mínimo de energía siempre será positivo.
+
+        \item En este ejemplo, la energía mínima dependerá del valor de $\ell$, de modo que si deseamos encontrar la energía mínima del $\ell$-ésimo estado, esta será dada por
+        \begin{equation*}
+            E_{\ell_{\min}} = \frac{\hbar^2 \alpha_{\ell, 1}}{2ma^2} \ .
+        \end{equation*}
+    \end{itemize}
 \end{ejemplo}
