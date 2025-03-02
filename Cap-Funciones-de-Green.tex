@@ -162,7 +162,7 @@ Por analogía al caso de las condiciones de Dirichlet, podríamos pensar en esco
 \end{equation}
 con lo que la solución general tendría la forma
 % En este caso, la solución general tendrá la forma
-\begin{equation}
+\begin{equation}\label{eq:solucion_neumann}
     \psi(\x) = \int_V G(\x, \x') f(\x') dV - \oint_{\partial V} p(\x ') G(\x, \x') \frac{\partial \psi(\x')}{\partial n'} dS' \ .
 \end{equation}
 
@@ -171,6 +171,12 @@ Lamentablemente, en general \emph{no es posible} encontrar una función de Green
     \frac{\partial G(\vec{x}, \vec{x}')}{\partial n'} = C \ , \qquad \forall \vec{x}' \in \ \partial V \ .
 \end{equation}
 Para hallar el valor de esta constante, hacemos uso de la \emph{condición de consistencia}, de modo que el caso más sencillo será suponer que $C = 1/\text{Área}(\partial V)$.
+
+De ser posible esta elección, la solución tendrá la forma
+\begin{equation}\label{eq:solucion_neumann}
+    \psi(\x) = \int_V G(\x, \x') f(\x') dV - \oint_{\partial V} p(\x ') G(\x, \x') \frac{\partial \psi(\x')}{\partial n'} dS' + \underbrace{\frac{1}{A} \oint_{\partial V} p(\x) \psi(\x') \ dS'}_{\langle \psi(\x') \rangle_{\partial V}} \ .
+\end{equation}
+Aquí, la notación $\langle \psi(\x') \rangle_{\partial V}$ representa una especie de \emph{valor promedio ponderado} sobre el contorno $\partial V$. Este promedio actuará como una constante que puede ser determinada libremente. Es más, si el contorno $\partial V$ de la región es el infinito, este término puede ser fijado a cero, pues no requeriremos de este término para que la solución tenga sentido físico.
 
 % \begin{ejemplo}
 %     \textbf{(Riley, Sección 21.5.4)} Resuelva la ecuación de Laplace en la región bidimensional $|\x| \leq a$ sujeta a la condición de contorno $\partial \Psi/\partial n = f(\phi)$ en $|\x| = a$. Considere que la condición de consistencia implica que $\int_0^{2\pi} f(\phi) d\phi = 0$.
@@ -208,6 +214,130 @@ A continuación, listamos algunas situaciones en que una función de Green será
         \item Cualquier otra condición que satisfaga la expresión \eqref{eq:condicion_simetria}.
     \end{enumerate}
 \end{propiedad}
+
+\section{Método de las imágenes}
+
+Anteriormente mencionamos que podemos hallar la función de Green para un problema con condiciones de Dirichlet hallando la solución fundamental y una solución que produzca que $G(\x,\x') = 0$ en $\partial V$, como establecimos en \eqref{eq:green_fundamental}. Para ello, podemos hacer uso del \textbf{método de las imágenes}, en el cual hemos de considerar \emph{copias} de nuestra solución fundamental que representen \emph{fuentes} ubicadas en el exterior de nuestra región $V$. Este método es de gran utilidad en problemas de electrostática que presenten geometrías altamente simétricas, y será aplicado en este contexto en el curso de Electrodinámica I.
+\begin{propo} \marginnote{Método de las imágenes}
+    \textbf{Método de las imágenes.} Es posible hallar una función de Green para una ecuación inhomogénea al sumar a la solución fundamental $F(\x, \x')$ diferentes copias (o \emph{imágenes}) de la ella misma, ubicadas \emph{fuera} de la región $V$ en la que deseamos resolver la ecuación. Para ello, seguiremos el siguiente procedimiento,
+    \begin{enumerate}
+        \item Para una fuente singular $\delta(\x - \x')$ dentro de la región $V$, añadiremos fuentes imágenes \emph{fuera} de $V$, donde las posiciones $\x_n$ e intensidades $q_n$ de estas fuentes las podremos determinar a futuro, de modo que las fuentes externas se pueden expresar como
+        \begin{equation}
+            \sum_{n=1}^N q_n \delta(\x - \x_n) \ , \qquad \x_n \notin \ V \ .
+        \end{equation}
+    
+        \item Ya que todas las imágenes se encuentran en el exterior de $V$, la solución fundamental que corresponde a cada una de las fuentes deberá satisfacer la ecuación de Laplace \emph{dentro} de $V$. Por ello, podemos suponer que cada imagen tiene asociada la misma \emph{solución fundamental} que la fuente en el interior de $V$, con lo que la función de Green tomará la forma
+        \begin{equation}
+            G(\x, \x') = F(\x, \x') + \sum_{n=1}^N q_n F(\x,\x_n) \ .
+        \end{equation}
+    
+        \item Ajustamos las posiciones $\x_n$ e intensidades $q_n$ de las imágenes de modo que las condiciones de contorno se satisfagan en $S$. En el caso de las condiciones de Dirichlet, esto es exigir que $G(\x, \x') = 0$, para cualquier $\x' \in \partial V$.
+    
+        \item Por último, podemos usar la función de Green hallada para encontrar la solución, sujeta a las condiciones de Dirichlet, que satisfaga \eqref{eq:solucion_dirichlet}.
+    \end{enumerate}
+\end{propo}
+
+En general, no es tarea sencilla encontrar las posiciones e intensidades correctas para cualquier problema, pero sí lo es para ciertos problemas con geometrías simples. Particularmente, este método es útil para problemas en los que los bordes sean \emph{líneas rectas} (problema bidimensional) o \emph{planos} (problema tridimensional), pues en esos casos simplemente supondremos que estos actúan como espejos, de modo que la fuente \emph{verdadera} se refleja simétricamente en este espejo.
+
+\begin{ejemplo}
+    \textbf{(Riley, Sección 21.5.3)} Resuelva la ecuación de Laplace en la región bidimensional $|\x| \leq a$ sujeta a la condición de contorno $u = h(\phi)$ en $|\x| = a$, dada una carga fuente ubicada en $\x_0$.
+
+    \textbf{Solución.} Nuestro problema corresponde a un disco de radio $a$ sujeto a condiciones de Dirichlet. Como queremos que nuestra función de Green satisfaga que $G(\x, \x_0) = 0$ para $|\x| = a$, podemos suponer que nuestra \emph{carga imagen} se encuentra fuera del disco en una posición $\x_1 = (a^2/|\x_0|^2)\x_0$, de modo que, suponiendo que la intensidad de la carga imagen es $-1$, nuestra función de Green toma la forma (véase la siguiente sección para la deducción detallada de la función de Green para el Laplaciano en 2D)
+    \begin{equation*}
+        G(\x, \x_0) = \frac{1}{2\pi} \ln(|\x - \x_0|) - \frac{1}{2\pi} \ln(|\x - \x_1|) + C \ .
+    \end{equation*}
+
+    Del hecho que $G(\x, \x_0) = 0$ para $|\x| = a$, tenemos que
+    \begin{align*}
+        2\pi C & = \ln(|\x - \x_1|) - \ln(|\x - \x_0|) \\
+        & = \ln\left( \frac{|\x - \x_1|}{|\x - \x_0|} \right) \\
+        & = \ln \left( \frac{\sqrt{a^4/x_0^2 - 2 a^3 \cos(\phi - \phi_0)/x_0 + a^2}}{|\x - \x_0|} \right) \\
+        & = \ln \left( \frac{\sqrt{(a^2/x_0^2)}\cancel{|\x - \x_0|}}{\cancel{|\x - \x_0|}} \right) \\
+        & = - \ln \left( \frac{x_0}{a} \right)
+        % \\
+        % & = \ln\left( \sqrt{\frac{a^2}{x_0^2}} \right) \ ,
+    \end{align*}
+    donde $x_0 = |\x_0|$. Así,
+    \begin{equation*}
+        C = - \frac{1}{2\pi} \ln \frac{x_0}{a} \ ,
+    \end{equation*}
+    y nuestra función de Green toma la forma 
+    \begin{equation*}
+        G(\x, \x_0) = \frac{1}{2\pi} \left[ \ln|\x - \x_0| - \ln\left| \x - \frac{a^2}{x_0^2} \x_0 \right| - \ln \frac{x_0}{a} \right] \ .
+    \end{equation*}
+
+    Conociendo nuestra función de Green, podemos utilizar la ecuación \eqref{eq:solucion_dirichlet} para hallar una solución a nuestro problema. Como trabajamos con la ecuación de Laplace, $f(\x_0) = 0$, de modo que solo sobrevive la integral sobre el contorno de nuestra región en \eqref{eq:solucion_dirichlet}, con lo cual
+    \begin{equation*}
+        \psi(\x) = \oint_C \psi(\x') \frac{\partial G(\x, \x')}{\partial n'} \ d\ell' = \int_0^{2\pi} \psi(\x') \left. \frac{\partial G}{\partial \rho'}\right|_{\rho' = a} a \ d\phi' \ .
+    \end{equation*}
+
+    Para nuestra función de Green,
+    \begin{align*}
+        \frac{\partial G}{\partial \rho'} & = \hat{x}' \cdot \nabla' G(\x,\x') \\
+        & = \hat{x}' \cdot \nabla' G(\x',\x) \\
+        & = \frac{\x'}{2\pi x'} \cdot \left( \frac{\x' - \x}{|\x' - \x|^2} - \frac{\x' - (a^2/x^2)\x}{|\x' - (a^2/x^2)\x|^2} \right) \ .
+    \end{align*}
+    que en $\rho' = a$ satisface que
+    \begin{align*}
+        \left. \frac{\partial G}{\partial \rho'} \right|_{\rho' = a} & = \frac{\x'}{2\pi a} \cdot \left( \frac{\x' - \x}{|\x' - \x|^2} - \frac{\x' - (a^2/x^2)\x}{(a^2/x^2)|\x' - \x|^2} \right) \\
+        & = \frac{\x'}{2\pi a} \cdot \frac{(a^2/x^2)\x' - (a^2/x^2) \x - \x' + (a^2/x^2)\x }{(a^2/x^2)|\x' - \x|^2} \\
+        & = \frac{1}{2\pi a} \frac{a^2 - x^2}{|\x' - \x|^2} \\
+        & = \frac{1}{2\pi a} \frac{a^2 - \rho^2}{a^2 + \rho^2 - 2a\rho \cos(\phi' - \phi)} \ .
+    \end{align*}
+    
+    De esta manera, concluimos que una solución a nuestro problema puede ser hallada como
+    \begin{equation*}
+        u(\rho, \phi) = \frac{1}{2\pi} \int_0^{2\pi}  \frac{(a^2 - \rho^2) f(\phi') \ d\phi'}{a^2 + \rho^2 - 2a\rho \cos(\phi' - \phi)} \ .
+    \end{equation*}
+\end{ejemplo}
+
+También es útil mencionar que es válido utilizar el método de las imágenes al trabajar con condiciones de Neumann, donde el procedimiento descrito anteriormente sigue siendo el mismo, pero utilizando las condiciones de Neumann para establecer nuestras imágenes.
+
+\begin{ejemplo}
+    \textbf{(Riley, Sección 21.5.4)} Resuelva la ecuación de Laplace en la región bidimensional $|\x| \leq a$ sujeta a la condición de contorno $\partial u/\partial n = f(\phi)$ en $|\x| = a$, con $\int_0^{2\pi} f(\phi) d\phi = 0$, como requiere la condición de consistencia.
+
+    \textbf{Solución.} La geometría del problema es la misma que la del ejemplo anterior. Por ello, podemos suponer que la carga imagen se encuentra en la misma posición $\x_1 = (a^2/x_0^2) \x_0$, donde nuevamente $\x_0$ corresponde a la carga fuente dentro del círculo. Sin embargo, ahora no asumiremos la intensidad de la carga imagen, sino que la dejaremos como un parámetro $q$. De esta forma, la función de Green será de la forma
+    \begin{equation*}
+        G(\x, \x_0) = \frac{1}{2\pi} \left( \ln |\x - \x_0| + q \ln |\x - \x_1| + C \right) \ .
+    \end{equation*}
+
+    En este caso, la derivada radial (normal) de esta función es dada por
+    \begin{equation*}
+        \frac{\partial G}{\partial \rho} = \frac{\x}{|\x|} \cdot \nabla G(\x, \x_0) = \frac{\x}{2\pi |\x|} \cdot \left[ \frac{\x - \x_0}{|\x - \x_0|^2} + q \frac{\x - \x_1}{|\x - \x_1|^2} \right] \ ,
+    \end{equation*}
+    que evaluada en $\rho = a$, tenemos que
+    \begin{equation*}
+        \left. \frac{\partial G}{\partial \rho} \right|_{\rho = a} = \frac{1}{2\pi a} \frac{1}{|\x - \x_0|^2} \left[ |\x|^2 + qx_0^2 - (1+q) \x \cdot \x_0 \right] \ .
+    \end{equation*} 
+
+    Como se discutió anteriormente, en problemas con condiciones de tipo Neumann es conveniente escoger que esta derivada se iguale a alguna constante, típicamente el inverso del valor del ``área'' del contorno de nuestra región. Dado que estamos trabajando en una región bidimensional, esta ``área'' corresponde al perímetro del círculo, de modo que
+    \begin{equation*}
+        \left. \frac{\partial G}{\partial \rho} \right|_{\rho = a} = \frac{1}{2\pi a} \ ,
+    \end{equation*}
+    lo que se cumple escogiendo $q = 1$. Así, observamos que para un problema con la misma geometría, las condiciones de contorno afectarán al valor de la intensidad $q$ de la carga imagen.
+
+    Podemos encontrar la solución a nuestro problema a partir de la ecuación \eqref{eq:solucion_neumann}, donde al tratarse de la ecuación de Laplace, $f(x) = 0$, con lo que la solución será de la forma
+    \begin{equation*}
+        \psi(\x) = \langle \psi(\x) \rangle_{C} - \oint_{\partial V} G(\x', \x) f(\x') \ d\ell' 
+    \end{equation*}
+
+    Así, la función de Green adecuada, al ser evaluada en $\rho' = a$, tomará el valor
+    \begin{align*}
+        G(\x',\x)|_{\rho' = a} & = \frac{1}{2\pi} \left[ \ln |\x' - \x| + \ln |\x' - (a^2/x^2)\x| + C \right] \\
+        & = \frac{1}{2\pi} \left[ \ln\left( |\x' - \x| |\x - (a^2/x^2)\x| \right) + C \right] \\
+        & = \frac{1}{2\pi} \left[ \ln\left( |\x' - \x|^2 \right) + \ln\frac{a}{x} C \right] \\
+        & = \frac{1}{2\pi} \left[ \ln(a^2 + \rho^2 - 2 a \rho \cos(\phi' - \phi)) + \ln \frac{a}{\rho} + C \right] \ ,
+    \end{align*}
+    donde la constante $C$, es una constante arbitraria. Entonces,
+    \begin{align*}
+        \psi(\rho, \phi) & = \langle \psi(\x) \rangle_C - \frac{a}{2\pi} \int_0^{2\pi} f(\phi') \ln[a^2 + \rho^2 - 2a\rho \cos(\phi' - \phi)] \ d\phi' \\
+        & \qquad - \frac{a}{2\pi} \left(\ln \frac{a}{\rho} + C \right) \int_0^{2\pi} f(\phi') \ d\phi' \\
+        & = \langle \psi(\x) \rangle_C - \frac{a}{2\pi} \int_0^{2\pi} f(\phi') \ln[a^2 + \rho^2 - 2a\rho \cos(\phi' - \phi)] \ d\phi' \ ,
+    \end{align*}
+    donde hemos usado la condición dada en el enunciado, $\int_0^{2\pi} f(\phi) d\phi = 0$. 
+
+\end{ejemplo}
+
 
 \section{Algunas funciones de Green comunes}
 
@@ -290,41 +420,107 @@ En este caso, nuestro operador diferencial corresponde a $p(x) = 1$ y $q(x) = k^
 
 \subsubsection{Caso tridimensional}
 
+En coordenadas esféricas centradas en $\x'$, nuestra función de Green satisface
+\begin{equation}
+    (\nabla^2 + k^2) G(r) = \frac{1}{r^2} \frac{d}{dr}\left( r^2 \frac{dG}{dr} \right) + k^2 G(r) = \delta^{(3)}(r) \ ,
+\end{equation}
+de modo que al considerar $r \neq 0$, obtenemos la ecuación
+\begin{equation}
+    \frac{1}{r^2} \frac{d}{dr}\left( r^2 \frac{dG}{dr} \right) + k^2 G(r) = 0 \ .
+\end{equation}
 
+Bajo el cambio de variable $u(r) = r G(r)$, podemos reescribir la ecuación anterior como
+\begin{equation}
+    \frac{d^2 u}{dr^2} + k^2 u = 0 \ ,
+\end{equation}
+que corresponde a la ecuación de un oscilador armónico simple. Luego, las soluciones son de la forma
+\begin{equation}\label{eq:solucion_green_Helmholtz}
+    G(r) = \alpha \frac{e^{ikr}}{r} + \beta \frac{e^{-ikr}}{r} \ ,
+\end{equation}
+donde nuevamente, $\alpha$ y $\beta$ son coeficientes a determinar. Mediante el teorema de Gauss aplicado a la condición de consistencia \eqref{eq:condicion_consistencia}, sobre una esfera de rario $R$ centrada en $r=0$, de modo que
+\begin{equation}
+    \oint_{\partial V}  \nabla G \cdot \ d\vec{S} + k^2 \int_V G \ dV = \oint_{\partial V} \frac{dG}{dr} r^2 \ d\Omega + k^2 \int_V G r^2 \ dr \ d\Omega = 1 \ .
+\end{equation}
+
+La primera integral es directa, puesto que el integrando no depende del ángulo sólido $\Omega$. La segunda integral, por otro lado, debe ser resuelta con más cuidado. Tenemos que
+\begin{align*}
+    1 & = 4\pi R^2 \left. \frac{dG}{dr}\right|_R + 4\pi k^2 \int_0^R G r^2 \ dr \nonumber \\
+    & = 4\pi R^2 \left[\frac{1}{R} (\alpha ik e^{ikR} - \beta ik e^{-ikR}) - \frac{1}{R^2} (\alpha e^{ikR} + \beta e^{-ikR}) \right] + 4\pi k^2 \int_0^R \left[ \alpha e^{ikr} + \beta e^{-ikr} \right] r \ dr \nonumber \\
+    & = 4\pi \left[ \alpha (ikR-1)e^{ikR} - \beta (1+ikR)e^{-ikR} + \alpha (1-ikR)e^{ikR} + \beta (1+ikR) e^{-ikR} - (\alpha + \beta) \right] \nonumber \\
+    & = -4\pi (\alpha + \beta) \ ,
+\end{align*}
+de modo que nuestros coeficientes deben satisfacer
+\begin{equation}
+    \alpha + \beta = - \frac{1}{4\pi} \ .
+\end{equation}
+Luego, podemos escribir la solución \eqref{eq:solucion_green_Helmholtz} en términos del coeficiente $\beta$ como
+\begin{equation}
+    G(r) = - \frac{1}{4\pi} \frac{e^{ikr}}{r} - 2i\beta \frac{\sin(kr)}{r} \ ,
+\end{equation}
+donde el segundo término corresponde a una solución de la ecuación de Helmholtz homogénea, pues es proporcional a la función esférica de Bessel $j_0(kr)$. Luego, considerando $\beta = 0$ por este motivo, es posible escoger la solución fundamental de la ecuación de Helmholtz como
+\begin{equation} \marginnote{Solución fundamental de la ecuación de Helmholtz en 3D}
+    \boxed{G(\x - \x') = - \frac{1}{4\pi} \frac{e^{ik|\x - \x'|}}{|\x - \x'|} \ .}
+\end{equation}
+
+\begin{obs}{Observación}
+    Una elección igual de válida habría sido escribir la ecuación \eqref{eq:solucion_green_Helmholtz} en términos de $\alpha$, donde de igual forma obtendríamos un término proporcional a la función esférica de Bessel $j_0(kr)$. Luego, escogiendo $\alpha = 0$, obtendríamos la solución
+    \begin{equation}
+        \boxed{G_2(\x - \x') = - \frac{1}{4\pi} \frac{e^{-ik|\x - \x'|}}{|\x - \x'|} \ .}
+    \end{equation}
+    
+    Dependerá de la fuente que estén consultando cuál de las dos soluciones se prefiere.
+\end{obs}
 
 \subsubsection{Caso bidimensional}
 
-\section{Método de las imágenes}
+En un sistema de coordenadas polares centrado en $\x'$, nuestra función de Green satisface
+\begin{equation}
+    (\nabla^2 + k^2)G(\rho) = \frac{1}{\rho} \frac{d}{d\rho} \left( \rho \frac{dG}{d\rho} \right) + k^2 G(\rho) = \delta^{(2)}(\rho) \ ,
+\end{equation}
+que para $\rho \neq 0$ corresponde a la ecuación
+\begin{equation}
+    \frac{1}{\rho} \frac{d}{d\rho} \left( \rho \frac{dG}{d\rho} \right) + k^2 G = 0 \ .
+\end{equation}
 
-Anteriormente mencionamos que podemos hallar la función de Green para un problema con condiciones de Dirichlet hallando la solución fundamental y una solución que produzca que $G(\x,\x') = 0$ en $\partial V$, como establecimos en \eqref{eq:green_fundamental}. Para ello, podemos hacer uso del \textbf{método de las imágenes}, en el cual hemos de considerar \emph{copias} de nuestra solución fundamental que representen \emph{fuentes} ubicadas en el exterior de nuestra región $V$. Para ello, seguiremos el siguiente procedimiento,
-\begin{propo} \marginnote{Método de las imágenes}
-    \textbf{Método de las imágenes.} prefacio
+Bajo el cambio de variable $x = k\rho$, esta se reduce a la ecuación de Bessel de orden 0,
+\begin{equation}
+    x \frac{d}{dx}\left( x \frac{dG}{dx} \right)  + x^2 G(x) = 0 \ ,
+\end{equation}
+con soluciones de la forma
+\begin{equation}\label{eq:solucion_green_Helmholtz_2d}
+    G(\rho) = \alpha J_0(k\rho) + \beta Y_0(k\rho) = \tilde{\alpha} H_0^{(1)}(k\rho) + \tilde{\beta} H_0^{(2)}(k\rho) \ .
+\end{equation}
+Preferiremos utilizar la solución en términos de funciones de Hankel, pues es la elección habitual.
 
-    \begin{enumerate}
-        \item Para una fuente singular $\delta(\x - \x')$ dentro de la región $V$, añadiremos fuentes imágenes \emph{fuera} de $V$, donde las posiciones $\x_n$ e intensidades $q_n$ de estas fuentes las podremos determinar a futuro, de modo que las fuentes externas se pueden expresar como
-        \begin{equation}
-            \sum_{n=1}^N q_n \delta(\x - \x_n) \ , \qquad \x_n \notin \ V \ .
-        \end{equation}
-    
-        \item Ya que todas las imágenes se encuentran en el exterior de $V$, la solución fundamental que corresponde a cada una de las fuentes deberá satisfacer la ecuación de Laplace \emph{dentro} de $V$. Por ello, podemos suponer que cada imagen tiene asociada la misma \emph{solución fundamental} que la fuente en el interior de $V$, con lo que la función de Green tomará la forma
-        \begin{equation}
-            G(\x, \x') = F(\x, \x') + \sum_{n=1}^N q_n F(\x,\x_n) \ .
-        \end{equation}
-    
-        \item Ajustamos las posiciones $\x_n$ e intensidades $q_n$ de las imágenes de modo que las condiciones de contorno se satisfagan en $S$. En el caso de las condiciones de Dirichlet, esto es exigir que $G(\x, \x') = 0$, para cualquier $\x' \in \partial V$.
-    
-        \item Por último, podemos usar la función de Green hallada para encontrar la solución, sujeta a las condiciones de Dirichlet, que satisfaga \eqref{eq:solucion_dirichlet}.
-    \end{enumerate}
-\end{propo}
+Integrando la ecuación original sobre un círculo $S$ de radio $R$ centrado en $\rho = 0$, obtenemos
+\begin{equation}
+    \oint_{\partial S} \nabla G \cdot d\vec{S} + k^2 \int_S G \ dS = \oint \left. \frac{dG}{d\rho}\right|_R R \ d\phi + 2\pi \int_0^R G \rho \ d\rho = 1 \ .
+\end{equation}
 
-En general, no es tarea sencilla encontrar las posiciones e intensidades correctas para cualquier problema, pero sí lo es para ciertos problemas con geometrías simples. Particularmente, este método es útil para problemas en los que los bordes sean \emph{líneas rectas} (problema bidimensional) o \emph{planos} (problema tridimensional), pues en esos casos simplemente supondremos que estos actúan como espejos, de modo que la fuente \emph{verdadera} se refleja simétricamente en este espejo.
-
-\begin{ejemplo}
-    (Riley, Sección 21.5.3) Resuelva la ecuación de Laplace en la región bidimensional $|\x| \leq a$ sujeta a la condición de contorno $u = f(\phi)$ en $|\x| = a$.
-\end{ejemplo}
-
-También es útil mencionar que es válido utilizar el método de las imágenes al trabajar con condiciones de Neumann, donde el procedimiento descrito anteriormente sigue siendo el mismo, pero utilizando las condiciones de Neumann para establecer nuestras imágenes.
-
-\begin{ejemplo}
-    (Riley, Sección 21.5.4) Resuelva la ecuación de Laplace en la región bidimensional $|\x| \leq a$ sujeta a la condición de contorno $\partial u/\partial n = f(\phi)$ en $|\x| = a$, con $\int_0^{2\pi} f(\phi) d\phi = 0$, como requiere la condición de consistencia.
-\end{ejemplo}
+Nuevamente, la primera integral se calcula directamente, ya que no existe dependencia de $\phi$, mientras que la segunda necesita un tratamiento más delicado. Recordemos que las funciones de Hankel, al ser funciones de Bessel, satisfacen las identidades $H_0^{\prime \, (1)}(x) = - H_1^{(1)}(x)$ y $x H_0^{(1)}(x) = [xH_1^{(1)}(x)]'$. Entonces, tenemos que
+\begin{align*}
+    1 & = 2\pi \left[ kR (\tilde{\alpha} H_0^{\prime \, (1)}(kR) + \tilde{\beta} H_0^{\prime \, (2)}(kR))  + \int_0^{kR} \left(\tilde{\alpha} H_0^{(1)}(x) + \tilde{\beta} H_0^{(2)}(x) \right) x \ dx \right] \\
+    & = 2\pi \left[ - kR (\tilde{\alpha} H_1^{(1)}(kR) + \tilde{\beta} H_1^{(2)}(kR)) + \int_0^{kR} \left(\tilde{\alpha} \frac{d}{dx} \left( x H_1^{(1)}(x) \right) + \tilde{\beta} \frac{d}{dx} \left( x H_1^{(2)}(x) \right) \right) \ dx \right] \\
+    & = 2\pi \left[ - kR (\tilde{\alpha} H_1^{(1)}(kR) + \tilde{\beta} H_1^{(2)}(kR)) + kR \left(\tilde{\alpha} H_1^{(1)}(kR) + \tilde{\beta} H_1^{(2)}(kR) \right) \right. \\
+    & \left. \qquad - \lim_{x \to 0} \left( \tilde{\alpha} x H_1^{(1)}(x) - \tilde{\beta} x H_1^{(2)}(x) \right) \right] \\
+    & = 2\pi \left[ \tilde{\alpha} \frac{2i}{\pi} - \tilde{\beta} \frac{2i}{\pi} \right] \\
+    & = 4i (\tilde{\alpha} - \tilde{\beta}) \ ,
+\end{align*}
+de modo que nuestros coeficientes deberán satisfacer la condición
+\begin{equation}
+    \tilde{\alpha} - \tilde{\beta} = - \frac{i}{4} \ .
+\end{equation}
+Luego, la solución \eqref{eq:solucion_green_Helmholtz_2d} se puede escribir, en términos de $\tilde{\beta}$, como
+\begin{equation}
+    - \frac{i}{4} H_0^{(1)}(k\rho) + \tilde{\beta} \left( H_0^{(1)}(k\rho) + H_0^{(2)}(k\rho) \right) = - \frac{i}{4} H_0^{(1)}(k\rho) + 2 \tilde{\beta} J_0(k\rho) \ .
+\end{equation}
+Al igual que en el caso tridimensional, la solución proporcional a la función de Bessel de orden 0 corresponde a una solución del problema homogéneo, de modo que si $\tilde{\beta = 0}$, la solución fundamental de la ecuación de Helmholtz en 2D corresponde a
+\begin{equation} \marginnote{Solución fundamental de la ecuación de Helmholtz en 2D}
+    \boxed{G(\x - \x') = - \frac{i}{4} H_0^{(1)}(k|\x - \x'|) \ .}
+\end{equation}
+\begin{obs}{Observación}
+    Al igual que en el caso anterior, la elección de $\tilde{\alpha} = 0$ conduce a una segunda solución posible, la que corresponde a 
+    \begin{equation}
+        \boxed{G_2(\x - \x') = \frac{i}{4} H_0^{(2)}(k|\x - \x'|) \ .}
+    \end{equation}
+\end{obs}
