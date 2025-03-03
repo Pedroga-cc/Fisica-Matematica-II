@@ -4,14 +4,14 @@ Llegando al último capítulo del curso, nos desviamos un poco de la noción de 
 
 Una de las nociones más importantes que tenemos en física clásica es el hecho de que \emph{los fenómenos físicos son los mismos, y no deben cambiar según el observador}, más allá de que las componentes de las cantidades que los describen puedan hacerlo. Particularmente, nos centraremos en las \emph{transformaciones ortogonales} de un sistema coordenado, referidas de forma más común como \textbf{rotaciones}. 
 
-Por ejemplo, un vector que describe la posición de un objeto en función del tiempo puede ser diferente según el sistema de coordenadas en que se lo describa, pero el movimiento \emph{físico} seguirá siendo el mismo.
+Por ejemplo, un vector que describe la posición de un objeto en función del tiempo puede ser diferente según el sistema de coordenadas en que se lo describa, pero el movimiento \emph{físico} del objeto seguirá siendo el mismo.
 
 \section{Transformaciones ortogonales}
 
 Antes de entrar más de lleno en la discusión, recordemos e introduzcamos algunas definiciones.
 
-\begin{defi}
-    Se denomina \textbf{delta de Kronocker} al elemento $\delta_{ij}$, definido en un espacio vectorial de $n$ dimensiones como
+\begin{defi} \marginnote{Delta de Kronecker}
+    Se denomina \textbf{delta de Kronecker} al elemento $\delta_{ij}$, definido en un espacio vectorial de $n$ dimensiones como
     \begin{equation}
         \delta_{ij} = \begin{dcases}
             1, \qquad i = j \\
@@ -22,20 +22,22 @@ Antes de entrar más de lleno en la discusión, recordemos e introduzcamos algun
     Este elemento puede representarse de forma matricial como la matriz identidad del espacio de dimensión $n$.
 \end{defi}
 
-\begin{defi}
-    Sea un conjunto de vectores unitarios $\{ \hat{e}_i\}_{i=1}^n$ de un espacio $n$-dimensional. Diremos que este forma una \textbf{base ortonormal} si al realizar el producto escalar entre elementos del conjunto, se cumple la relación
+\newpage
+
+\begin{defi} \marginnote{Base ortonormal}
+    Sea un conjunto de vectores unitarios $\left\{ \hat{e}_i\right\}_{i=1}^n$ de un espacio $n$-dimensional. Diremos que este forma una \textbf{base ortonormal} si al realizar el producto escalar entre elementos del conjunto, se cumple la relación
     \begin{equation}
         \hat{e}_i\cdot \hat{e}_j = \delta_{ij} \ ,
     \end{equation}
     donde $\delta_{ij}$ es la delta de Kronecker.
 \end{defi}
 
-\begin{defi}
+\begin{defi} \marginnote{Vector posición}
     Dado un sistema coordenado en un espacio de $n$ dimensiones, podemos definir el \textbf{vector posición} $\vec{x}$, que une el origen del sistema con punto con coordenadas $x_i$, con $i = 1, 2, \dots, n$ como
 \begin{equation} \label{eq:vector-posicion}
     \vec{x} = \sum_{i=1}^n x_i \hat{e}_i \ ,
 \end{equation}
-donde las \textbf{componentes del vector} en la base $\{ \hat{e}_i\}_{i=1}^n$ puede expresarse como
+donde las \textbf{componentes del vector} en la base $\{ \hat{e}_i\}_{i=1}^n$ pueden expresarse como
 \begin{equation}
     x_i = \vec{x} \cdot \hat{e}_i \ .
 \end{equation}
@@ -43,7 +45,14 @@ donde las \textbf{componentes del vector} en la base $\{ \hat{e}_i\}_{i=1}^n$ pu
 
 Más allá de que el vector posición es aquel que tiene un sentido \emph{físico} a partir del cual hacer las definiciones, podemos descomponer \emph{cualquier vector} en la base $\{ \hat{e}_i\}_{i=1}^n$ en términos de sus respectivas componentes, sin importar la cantidad que este pueda representar.
 
-Una vez introducidas estas nociones, podemos definir un nuevo sistema coordenado, que llamaremos $x'_i$ y cuya base es $\{ \hat{e}_i'\}_{i=1}^n$, que corresponde a una \emph{rotación} del sistema $x_i$ definido anteriormente, como se ve en la figura X.
+Una vez introducidas estas nociones, podemos definir un nuevo sistema coordenado, que llamaremos $x'_i$ y cuya base es $\{ \hat{e}_i'\}_{i=1}^n$, que corresponde a una \emph{rotación} del sistema $x_i$ definido anteriormente, como se ve en la figura \ref{fig:bases-ortonormales}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=6cm]{Figuras/fig-rotacion-bases.pdf}
+    \caption{Una transformación ortogonal de dos bases ortonotmales en 3 dimensiones, $\hat{e}_i$ y $\hat{e}'_j$}
+    \label{fig:bases-ortonormales}
+\end{figure}
 
 Respecto de esta nueva base, un vector $\vec{v}$ cualquiera puede ser descompuesto en sus componentes $v_i'$ \emph{en la base} $\{ \hat{e}_i'\}_{i=1}^n$,
 \begin{equation}
@@ -66,12 +75,12 @@ Dado que, si bien dan origen a sistemas de coordenadas diferentes, ambas bases s
     \end{pmatrix} \ .
 \end{equation}
 
-De este modo, 
+De este modo, un vector de la base $\vec{e}'_i$ puede escribirse también en términos de la base $\vec{e}_i$,
 \begin{equation} \label{eq:transformacion-coordenadas}
     \hat{e}'_i = \sum_{j=1}^n a_{ij} \hat{e}_j \ ,
 \end{equation}
 por lo que podemos reescribir el vector $\vec{v}$ como
-\begin{equation}
+\begin{equation} \label{eq:transformacion-vector}
     \vec{v} = \sum_{i=1}^n v'_i \left( \sum_{j=1}^n a_{ij} \hat{e}_j \right) \ .
 \end{equation}
 
@@ -79,10 +88,10 @@ por lo que podemos reescribir el vector $\vec{v}$ como
 
 Antes de continuar la discusión, es útil introducir el  \textbf{convenio de suma de Einstein}, que establece que en toda expresión donde se repitan dos índices iguales, \emph{existe una suma implícita sobre todo el rango de variación del índice}. Es más, el índice de suma \emph{es una etiqueta arbitraria}, por lo que puede ser renombrada a conveniencia.
 
-Por ejemplo, las expresiones \eqref{eq:vector-posicion} y \eqref{eq:delta-transformacion-ortogonal} pueden reescribirse como
+Por ejemplo, las expresiones \eqref{eq:vector-posicion} y \eqref{eq:transformacion-vector} pueden reescribirse como
 \begin{align}
     \vec{v} & = v_i \hat{e}_i \, , \\
-    \delta_{ij} & = a_{ik} a_{jk} \ .
+    \vec{v} & = v'_i a_{ij} \hat{e}_j .
 \end{align}
 
 Además, dado que existe una suma implícita, podemos aplicar la delta de Kronecker para reemplazar índices en una multiplicación, de modo que
@@ -124,7 +133,7 @@ que es \emph{una ley de transformación diferente}. Sin embargo, ambas cantidade
 
 El hecho radica en que, en efecto, ambas cantidades son vectores \emph{en coordenadas cartesianas}, pero no necesariamente \emph{en cualquier sistema de coordenadas}. Por ello, es conveniente introducir las nociones de vectores \textbf{covariantes} y vectores \textbf{contravariantes}. En este curso esta distinción no es necesaria, pero quienes deseen trabajar en gravitación o en altas energías, deberán comenzar a tener en cuenta estas nociones.
 
-\begin{defi}
+\begin{defi} \marginnote{Vector contravariante y vector covariante}
     Un vector $\vec{v}$ es denominado \textbf{contravariante} cuando, al ser sometido a una transformación ortogonal, transforma según la regla
     \begin{equation} \label{eq:contravariante}
         v'_i = \frac{\partial x'_i}{\partial x_j} v_j \ ,
@@ -150,7 +159,7 @@ Al utilizar esta convención, la suma se representa al tener \emph{índices cruz
 
 La discusión hecha hasta ahora es válida para cualquier transformación de coordenadas entre dos bases distintas. Para los efectos de este curso, nos interesa trabajar únicamente con \emph{transformaciones ortogonales}.
 
-\begin{defi}
+\begin{defi} \marginnote{Transformación ortogonal}
     Una \textbf{transformación ortogonal} es aquella transformación de cambio de base que permite convertir una base ortonormal $\{\hat{e}_i\}_{i=1}^n$ en una nueva base ortonormal $\{\hat{e}'_i\}_{i=1}^n$.
 \end{defi}
 
@@ -183,21 +192,24 @@ o en notación indicial,
 
 \section{Tensores Cartesianos}
 
-Hasta ahora, hemos discutido las propiedades de los vectores, elementos con los que ya somos familiares. Sin embargo, seguimos sin responder la incógnita de \emph{¿qué es un tensor?}.
+Hasta ahora, hemos discutido las propiedades de los vectores, elementos con los que ya somos familiares. Sin embargo, seguimos sin responder la incógnita de \emph{¿qué es un tensor?}. Para ello, introduzcamos una operación entre vectores.
 
-Para ello, consideremos dos vectores $\vec{B} = b_i \hat{e}_i$ y $\vec{C} = c_i \hat{e}_i$. El \emph{producto externo} de estos dos vectores corresponde a la cantidad
-\begin{eqnarray}
-    T_{ij} = u_i v_j \ ,
-\end{eqnarray}
-donde observamos que necesitamos de \emph{dos índices} para definir el producto externo. ¿Qué ocurre con esta cantidad si, en lugar de utilizar la base $\hat{e}_i$, utilizamos la base $\hat{e}'_i$? En otras palabras, ¿cómo transforma $T_{ij}$ bajo transformaciones ortogonales? Notamos que
+\begin{defi}\marginnote{Producto externo}
+    Dados dos vectores $\vec{u} = u_i \hat{e}_i$ y $\vec{v} = v_i \hat{e}_i$, se define el \textbf{producto externo} entre ambos vectores como la cantidad
+    \begin{equation}
+        T_{ij} = u_i v_j \ .
+    \end{equation}
+\end{defi}
+
+Como podemos ver de la definición anterior, necesitamos de \emph{dos índices} para definir el producto externo. ¿Qué ocurre con esta cantidad si, en lugar de utilizar la base $\hat{e}_i$, utilizamos la base $\hat{e}'_i$? En otras palabras, ¿cómo transforma $T_{ij}$ bajo transformaciones ortogonales? Notamos que
 \begin{equation}
     T'_{ij} = u'_i v'_j = (a_{ik}u_k)(a_{jl} v_l) = a_{ik} a_{jl} (u_k v_l) =  a_{ik} a_{jl} T_{kl} \ .
 \end{equation}
 
-Observamos pues, que $T_{ij}$ transforma de manera similar a los vectores bajo transformaciones ortogonales. A cantidades que siguen una regla de transformación de este tipo, las llamamos \emph{tensores de rango 2}, pues requerimos de dos matrices de transformación para definirlas adecuadamente. Observamos que, para un espacio de $n$ dimensiones, estos elementos tendrán $n^2$ componentes.
+Observamos pues, que $T_{ij}$ transforma de manera similar a los vectores bajo transformaciones ortogonales. A cantidades que siguen una regla de transformación de este tipo, las llamamos \emph{tensores (cartesianos) de rango 2}, pues requerimos de dos matrices de transformación para definirlas adecuadamente. Observamos que, para un espacio de $n$ dimensiones, estos elementos tendrán $n^2$ componentes.
 
 Esta noción puede ampliarse a más dimensiones, según la siguiente definición,
-\begin{defi}
+\begin{defi} \marginnote{Tensor cartesiano}
     Dado un espacio de $n$ dimensiones, el conjunto de $n^r$ cantidades $T_{i_1 i_2 \dots i_r}$ definidas en cada sistema ortogonal de coordenadas, son las componentes de un \textbf{tensor cartesiano de rango} $\mathbf{r}$ si, bajo transformaciones ortogonales, sus valores siguien la regla de transformación
     \begin{equation}
         T'_{i_1 i_2 \dots, i_r} = a_{i_1 j_1} a_{i_2 j_2} \dots a_{i_r j_r} T_{j_1 j_2 \dots j_r} \ . 
@@ -206,22 +218,68 @@ Esta noción puede ampliarse a más dimensiones, según la siguiente definición
 
 Gracias a esta definición, observamos que los \textbf{vectores}, que tienen una sola matriz de transformación en su definición \eqref{eq:transformacion-vector}, son \emph{tensores de rango 1}. A su vez, los \textbf{escalares} son cantidades que no se ven modificadas frente a una transformación de coordendas, de modo que $\rho' = \rho$. Por ello, podemos considerarlos \emph{tensores de rango 0}.
 
+\begin{ejemplo}
+    \textbf{Tensor de inercia.}
+
+    Consideremos un cuerpo con densidad $\rho(x_i)$, contenido en una región $V$ que rota \emph{rígidamente} respecto de un eje con dirección $\hat{\omega}$ con velocidad angular $\omega$. Entonces, podemos hallar su momento angular respecto al origen del sistema (ubicado sobre el eje de rotación) como
+    \begin{align*}
+        \vec{L} & = \int_V \x \times d\vec{p} \\
+        & = \int_V \rho(x) \x \times \vec{v} \ dV \\
+        & = \int_V \rho(x) \x \times (\vec{\omega} \times \x) \ dV \ .
+    \end{align*}
+    Usando la identidad $\vec{A} \times (\vec{B} \times \vec{C}) = \vec{B} (\vec{A} \cdot \vec{C}) - \vec{C} (\vec{A} \cdot \vec{B})$, podemos escribir
+    \begin{equation*}
+        \vec{L} = \int_V \rho(x) [\vec{\omega}(\x \cdot \x) - \x (\vec{\omega} \cdot \x)] \ dV \ ,
+    \end{equation*}
+    o en términos de las componentes del vector,
+    \begin{align*}
+        L_i & = \int_V \rho(x) [\omega_i(x_k x_k) - x_i(\omega_j x_j)] \ dV \\
+        & = \int_V \rho(x) [(\delta_{ij} \omega_j)(x_k x_k) - x_i(\omega_j x_j)] \ dV \\
+        & = \left( \int_V \rho(x) [\delta_{ij} (x_k x_k) - x_i x_j] \ dV \right) \omega_j \ ,
+    \end{align*}
+    es decir, 
+    \begin{equation*}
+        L_i = I_{ij} \omega_j \, 
+    \end{equation*}
+    donde $I_{ij}$ es el \emph{tensor de inercia} definido como
+    \begin{equation*}
+        \int_V \rho(x) [\delta_{ij} (x_k x_k) - x_i x_j] \ dV \ .
+    \end{equation*}
+
+    ¿Es esta cantidad efectivamente un tensor cartesiano? Revisemos cómo transforma bajo una transformación ortogonal,
+    \begin{align*}
+        I'_{ij} & = \int_V \rho'(x') [\delta_{ij} (x'_k x'_k) - x'_i x'_j] \ dV' \\
+        & = \int_V \underbrace{\rho(x)}_{\text{Escalar}} [\delta_{ij}\underbrace{(x_k x_k)}_\text{Escalar} - (a_{il} x_l)(a_{jm} x_m)] \ dV \\
+        & = \int_V \rho(x) [(a_{il}a_{jl})(x_k x_k) - (a_il x_l)(a_{jm} x_m)] \ dV \\
+        & = \int_V \rho(x) [(a_{il}a_{jm}\delta{lm})(x_k x_k) - (a_il x_l)(a_{jm} x_m)] \ dV \\
+        & = (a_{il} a_{jm}) \int_V \rho(x) [(\delta_{lm})(x_k x_k) - x_l x_m] \ dV \\
+        & = a_{il} a_{jm} I_{lm} \ ,
+    \end{align*}
+    de modo que efectivamente $I_{jl}$ transforma como un tensor cartesiano.
+\end{ejemplo}
+
 \subsection{Propiedades}
 
 En este contexto, vale la pena mencionar con algo más de detalle a dos propiedades.
 
-\begin{enumerate}
-    \item Si \emph{todas las componentes de un tensor se anulan en un sistema coordenado ortogonal}, ellas se anularán \emph{en todo sistema coordenado ortogonal}.  Esta propiedad nos interesa, ya que nos indica que la anulación de un tensor \textbf{es una propiedad intrínseca} de este. Por ello, utilizar tensores en Física es tan importante, pues nos permite plantear leyes \emph{que no dependen del sistema coordenado en que trabajamos}, sino únicamente del fenómeno estudiado.
-    
-    Por ejemplo, podemos estar estudiando el momento de inercia de un cuerpo en movimiento, el cual es un tensor de rango 2. Si diera la casualidad de que este es cero en algún sistema coordenado ortogonal, esto quiere decir que en cualquier sistema coordenado ortogonal, el cuerpo \emph{no se encuentra rotando}.
+\begin{propiedad}
+    \textbf{Propiedades de los tensores cartesianos.}
 
-    \item Existen algunos \textbf{tensores invariantes} o \textbf{isotrópicos}, los cuales tienen siempre las mismas componentes \emph{en cualquier sistema coordenado}. Un ejemplo de estos es la delta de Kronecker, pues en cualquier sistema coordenado tendrá las mismas componentes, 1 si $i=j$ y 0 si $i\neq j$.
+    \begin{enumerate}
+        \item Si \emph{todas las componentes de un tensor se anulan en un sistema coordenado ortogonal}, ellas se anularán \emph{en todo sistema coordenado ortogonal}.  Esta propiedad nos interesa, ya que nos indica que la anulación de un tensor \textbf{es una propiedad intrínseca} de este. Por ello, utilizar tensores en Física es tan importante, pues nos permite plantear leyes \emph{que no dependen del sistema coordenado en que trabajamos}, sino únicamente del fenómeno estudiado.
+        
+        Por ejemplo, podemos estar estudiando el momento de inercia de un cuerpo en movimiento, el cual es un tensor de rango 2. Si diera la casualidad de que este es cero en algún sistema coordenado ortogonal, esto quiere decir que en cualquier sistema coordenado ortogonal, el cuerpo \emph{no se encuentra rotando}.
     
-    En efecto, podemos observar que la delta de Kronecker transforma como
-    \begin{equation}
-        \delta'_{ij} = a_{ik} a_{jl} \delta_{kl} = a_{ik} a_{jk} = \delta_{ij} \ .
-    \end{equation}
-\end{enumerate}
+        \item Existen algunos \textbf{tensores invariantes} o \textbf{isotrópicos}, los cuales tienen siempre las mismas componentes \emph{en cualquier sistema coordenado}. Un ejemplo de estos es la delta de Kronecker, pues en cualquier sistema coordenado tendrá las mismas componentes, 1 si $i=j$ y 0 si $i\neq j$.
+        
+        En efecto, podemos observar que la delta de Kronecker transforma como
+        \begin{equation}
+            \delta'_{ij} = a_{ik} a_{jl} \delta_{kl} = a_{ik} a_{jk} = \delta_{ij} \ .
+        \end{equation}
+    \end{enumerate}
+\end{propiedad}
+
+
 
 \section{Álgebra Tensorial}
 
@@ -294,17 +352,17 @@ Dicho rápido y sencillo, hemos visto que los tensores de rango 1 y rango 2 se c
 
 Hasta ahora, de manera implícita, hemos utilizado transformaciones ortogonales \emph{propias}, es decir, que solo rotan el sistema, pero no modeifican la orientación de los tensores. Sin embargo, al considerar transformaciones \emph{impropias}, que no solo rotan el sistema sino que realizan una inversión de coordenadas o \emph{reflexión} ($x_i \to -x_i$). Cuando también incluimos este tipo de transformaciones, los vectores siguen cumpliendo la regla de transformación \eqref{eq:transformacion-vector}, pero existen ciertas cantidades físicas que comúnmente supondríamos como vectores, pero que bajo una reflexión no transforman de igual manera, como es el caso de aquellas relacionadas a cantidades \emph{angulares}, como la velociadad angular, el torque o el momento angular.
 
-\begin{defi}
+\begin{defi} \marginnote{Pseudovector}
     Las cantidades que transforman según la regla
     \begin{equation} \label{eq:pseudovector}
-        \vec{v}' = \det(A) A \vec{v} \ ,
+        \vec{v}' = \det(A) A \, \vec{v} \ ,
     \end{equation}
     se denominan \textbf{pseudovectores}, o \textbf{vectores axiales}.
 \end{defi}
 
 De forma análoga, es posible extender esta noción a tensores y \emph{pseudotensores}.
 
-\begin{defi}
+\begin{defi} \marginnote{Pseudotensor}
     Los elementos que transforman según la regla
     \begin{equation}
         T'_{i_1 i_2 \dots i_r} = \det(A) a_{i_1 j_1} a_{i_2 j_2} \dots a_{i_n j_n} T_{j_1 j_2 \dots j_r} 
@@ -314,18 +372,22 @@ De forma análoga, es posible extender esta noción a tensores y \emph{pseudoten
 
 \subsection{Propiedades}
 
-\begin{enumerate}
-    \item La suma y la diferencia de dos pseudotensores del mismo rango es también un pseudotensor del mismo rango.
-    \item El producto tensorial de dos pseudotensores es un tensor cartesiano.
-    \item El producto tensorial de un pseudotensor y un tensor es un pseudotensor.
-    \item La contracción de dos índices de un pseudotensor define un nuevo pseudotensor.
-    \item Un \textbf{pseudoescalar} es una cantidad que cambia de signo bajo una transformación impropia.
-    \item En física, es común considerar únicamente transformaciones propias. En estos casos, la distinción entre tensores y pseudotensores no es necesaria.
-\end{enumerate}
+\begin{propiedad}
+    \textbf{Propiedades de los pseudotensores.}
+
+    \begin{enumerate}
+        \item La suma y la diferencia de dos pseudotensores del mismo rango es también un pseudotensor del mismo rango.
+        \item El producto tensorial de dos pseudotensores es un tensor cartesiano.
+        \item El producto tensorial de un pseudotensor y un tensor es un pseudotensor.
+        \item La contracción de dos índices de un pseudotensor define un nuevo pseudotensor.
+        \item Un \textbf{pseudoescalar} es una cantidad que cambia de signo bajo una transformación impropia.
+        \item En física, es común considerar únicamente transformaciones propias. En estos casos, la distinción entre tensores y pseudotensores no es necesaria.
+    \end{enumerate}
+\end{propiedad}
 
 \subsection{Símbolo de Levi-Civita}
 
-\begin{defi}
+\begin{defi} \textbf{Símbolo de Levi-Civita}
     En un espacio $n-$dimensional, se define el \textbf{símbolo de Levi-Civita} como un objeto de $n$ índices \emph{totalmente antisimétrico}, es decir,
     \begin{equation}
         \varepsilon_{ijkl\dots} = -\varepsilon_{jikl\dots} = - \varepsilon_{kjil\dots} = - \varepsilon_{ljki} = \varepsilon_{jilk} = \dots \ ,
@@ -345,57 +407,66 @@ De forma análoga, es posible extender esta noción a tensores y \emph{pseudoten
     \end{equation}
 \end{defi}
 
-\subsubsection*{Propiedades}
+% \subsubsection*{Propiedades}
 
-El símbolo de Levi-Civita puede ser utilizado para calcular \emph{determinantes}, en particular aquellos de las matrices de transformación, donde 
-\begin{equation}
-    det(A) = a_{1 j_1} a_{2 j_2} \dots a_{n j_n} \varepsilon_{j_1 j_2 \dots j_n} \ , 
-\end{equation}
-de donde se desprende que el símbolo de Levi-Civita transforma, bajo una transformación arbitraria, como
-\begin{equation}
-    \varepsilon'_{i_1 \dots i_n} = \frac{1}{\det(A)} a_{i_1 j_1} a_{i_2 j_2} \dots a_{i_n j_n} \varepsilon_{j_1 j_2 \dots j_n} \ .
-\end{equation}
-Como en las transformaciones ortogonales, $\det(A) = 1/\det(A) = \pm 1$, concluímos que el símbolo de Levi-Civita \emph{transforma como un pseudotensor}.
+\begin{propiedad}
+    \textbf{Propiedades del símbolo de Levi-Civita.}
 
-Otra utilidad de este elemento es la posibilidad de representar productos vectoriales entre dos vectores en notación tensorial, de modo que si $\vec{C} = \vec{A} \times \vec{B}$, podemos escribir
-\begin{equation}
-    C_i = \varepsilon_{ijk} A_j B_k \ .
-\end{equation}
-Como consecuencia, \emph{todo vector que se obtiene a partir del producto vectorial entre dos vectores, es un pseudovector}, lo que explica por qué las cantidades angulares se comportan como pseudovectores.
+    \begin{enumerate}
+        \item El símbolo de Levi-Civita puede utilizarse para calcular determinantes, mediante la relación
+        \begin{equation}
+            det(A) = a_{1 j_1} a_{2 j_2} \dots a_{n j_n} \varepsilon_{j_1 j_2 \dots j_n} \ .
+        \end{equation}
 
-Otra propiedad interesante es la identidad
-\begin{equation}
-    \varepsilon_{i_1 \dots i_n} = \left| \begin{array}{cccc}
-        \delta_{i_1 1} & \delta_{i_1 2} & \dots & \delta_{i_1 n} \\
-        \delta_{i_2 1} & \delta_{i_2 2} & \dots & \delta_{i_2 n} \\
-        \vdots & \vdots & \ddots & \vdots \\
-        \delta_{i_n 1} & \delta_{i_n 2} & \dots & \delta_{i_n n} 
-    \end{array} \right| \ ,
-\end{equation}
-de donde es directo hallar que el producto de dos símbolos de Levi-Civita se puede hallar como
-\begin{equation}
-    \varepsilon_{i_1 i_2 \dots i_n} \varepsilon_{j_1 j_2 \dots j_n} = \left| \begin{array}{cccc}
-        \delta_{i_1 j_1} & \delta_{i_1 j_2} & \dots & \delta_{i_1 j_n} \\
-        \delta_{i_2 j_1} & \delta_{i_2 j_2} & \dots & \delta_{i_2 j_n} \\
-        \vdots & \vdots & \ddots & \vdots \\
-        \delta_{i_n j_1} & \delta_{i_n j_2} & \dots & \delta_{i_n j_n} \\
-    \end{array}
-    \right| \ .
-\end{equation}
+        \item El símbolo de Levi-Civita transforma como un pseudotensor.
+        
+        De la propiedad 1, se desprende que el símbolo de Levi-Civita transforma, bajo una transformación arbitraria, como
+        \begin{equation}
+            \varepsilon'_{i_1 \dots i_n} = \frac{1}{\det(A)} a_{i_1 j_1} a_{i_2 j_2} \dots a_{i_n j_n} \varepsilon_{j_1 j_2 \dots j_n} \ .
+        \end{equation}
+        Como en las transformaciones ortogonales, $\det(A) = 1/\det(A) = \pm 1$, concluímos que el símbolo de Levi-Civita \emph{transforma como un pseudotensor}.
 
-Por último, limitándonos al símbolo de Levi-Civita en tres dimensiones, este satisface las identidades
-\begin{align}
-    \varepsilon_{ijk} \varepsilon_{lmk} & = \delta_{il} \delta_{jm} - \delta_{im} \delta_{jl} \ , \\
-    \varepsilon_{ijk} \varepsilon_{ljk} & = 2 \delta_{il} \ , \\
-    \varepsilon_{ijk} \varepsilon_{ijk} & = 6 \ .
-\end{align}
+        \item El símbolo de Levi-Civita puede ser utilizado para representar productos vectoriales entre dos vectores en notación tensorial, de modo que si $\vec{C} = \vec{A} \, \times \, \vec{B}$, podemos escribir
+        \begin{equation}
+            C_i = \varepsilon_{ijk} A_j B_k \ .
+        \end{equation}
+        Como consecuencia, \emph{todo vector que se obtiene a partir del producto vectorial entre dos vectores, es un pseudovector}, lo que explica por qué las cantidades angulares se comportan como pseudovectores.
 
+        \item El símbolo de Levi-Civita satisface la identidad
+        \begin{equation}
+            \varepsilon_{i_1 \dots i_n} = \left| \begin{array}{cccc}
+                \delta_{i_1 1} & \delta_{i_1 2} & \dots & \delta_{i_1 n} \\
+                \delta_{i_2 1} & \delta_{i_2 2} & \dots & \delta_{i_2 n} \\
+                \vdots & \vdots & \ddots & \vdots \\
+                \delta_{i_n 1} & \delta_{i_n 2} & \dots & \delta_{i_n n} 
+            \end{array} \right| \ ,
+        \end{equation}
+        de donde es directo hallar que el producto de dos símbolos de Levi-Civita se puede hallar como
+    \begin{equation}
+        \varepsilon_{i_1 i_2 \dots i_n} \varepsilon_{j_1 j_2 \dots j_n} = \left| \begin{array}{cccc}
+            \delta_{i_1 j_1} & \delta_{i_1 j_2} & \dots & \delta_{i_1 j_n} \\
+            \delta_{i_2 j_1} & \delta_{i_2 j_2} & \dots & \delta_{i_2 j_n} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            \delta_{i_n j_1} & \delta_{i_n j_2} & \dots & \delta_{i_n j_n} \\
+        \end{array}
+        \right| \ .
+    \end{equation}
+
+    \item En tres dimensiones, el símbolo de Levi-Civita satisface las identidades
+    \begin{align}
+        \varepsilon_{ijk} \varepsilon_{lmk} & = \delta_{il} \delta_{jm} - \delta_{im} \delta_{jl} \ , \\
+        \varepsilon_{ijk} \varepsilon_{ljk} & = 2 \delta_{il} \ , \\
+        \varepsilon_{ijk} \varepsilon_{ijk} & = 6 \ .
+    \end{align}
+    
+    \end{enumerate}
+\end{propiedad}
 
 \subsection{Tensores duales}
 
 A cualquier (pseudo-)tensor totalmente antisimétrico de rango $r$ en $n$ dimensiones se le puede asociar un (pseudo-)tensor totalmente antisimétrico de rango $(n-r)$, pues ambos tienen el mismo número de componentes linealmente independientes.
 
-\begin{defi}
+\begin{defi} \marginnote{Pseudotensor dual}
     Si $A_{i_1 \dots i_r}$ es un tensor totalmente antisimétrico de rango $r$, se define un \textbf{pseudotensor dual} de rango $n-r$ como
     \begin{equation}
         \mathcal{A}_{i_1 \dots i_{n-r}} = \frac{1}{r!} \varepsilon_{i_1 \dots i_{n-r} j_1 \dots j_r} A_{j_1 \dots j_r} \ ,
@@ -421,7 +492,7 @@ En Física, el uso de tensores y sus duales nos permite tener cantidades diferen
 \section{Análisis tensorial}
 
 En el curso de Física Matemática I, ya estudiaron la noción de \emph{análisis vectorial}, que correspondía al uso del operador nabla en diferentes sistemas coordenados. En este, hicieron uso de las nociones de \emph{campo escalar} y \emph{campo vectorial}. Estas nociones pueden también extenderse a elementos de mayor rango mediante los campos tensoriales.
-\begin{defi}
+\begin{defi} \marginnote{Campo tensorial}
     Se define un \textbf{campo tensorial} como la función que asocia a cada punto del espacio con un tensor $T_{i_1 i_2 \dots i_r}$, es decir,
     \begin{equation}
         x \mapsto T_{i_1 i_2 \dots i_r}(x) \ .

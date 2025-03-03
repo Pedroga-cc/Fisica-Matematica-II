@@ -691,6 +691,45 @@
       \verb http://www.its.caltech.edu/~sean
       \endverb
     \endentry
+    \entry{Morse_Feshbach_1999}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=3242060738120f3f2a8674adf323bac6}{%
+           family={Morse},
+           familyi={M\bibinitperiod},
+           given={Philip\bibnamedelima McCord},
+           giveni={P\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=bb705917ba104d4c6a126e98c2c06156}{%
+           family={Feshbach},
+           familyi={F\bibinitperiod},
+           given={Herman},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \list{location}{1}{%
+        {Boston, Mass}%
+      }
+      \list{publisher}{1}{%
+        {McGraw-Hill}%
+      }
+      \strng{namehash}{a227b00884745159d74b4291c96539d0}
+      \strng{fullhash}{a227b00884745159d74b4291c96539d0}
+      \strng{fullhashraw}{a227b00884745159d74b4291c96539d0}
+      \strng{bibnamehash}{a227b00884745159d74b4291c96539d0}
+      \strng{authorbibnamehash}{a227b00884745159d74b4291c96539d0}
+      \strng{authornamehash}{a227b00884745159d74b4291c96539d0}
+      \strng{authorfullhash}{a227b00884745159d74b4291c96539d0}
+      \strng{authorfullhashraw}{a227b00884745159d74b4291c96539d0}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-0-07-043316-8}
+      \field{series}{International series in pure and applied physics}
+      \field{title}{Methods of theoretical physics}
+      \field{year}{1999}
+    \endentry
     \entry{Chile}{misc}{}{}
       \name{author}{2}{}{%
         {{hash=7e4249e96e6094e826ff0ab7038985ed}{%

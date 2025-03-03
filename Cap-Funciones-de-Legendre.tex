@@ -142,7 +142,7 @@ En la figura \ref{fig:Legendre}, puede encontrar las gráficas de los primeros s
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=12cm]{./Figuras/Legendre-Polynomials.pdf}
-    \caption{Primeros seis polinomios de Legendre. Adaptación de \href{https://github.com/gfrubi/FM2/blob/master/figuras-editables/fig-Legendre.py}{este} código. La adaptación se encuentra \href{aa}{aquí}.}
+    \caption{Primeros seis polinomios de Legendre. Adaptación de \href{https://github.com/gfrubi/FM2/blob/master/figuras-editables/fig-Legendre.py}{este} código. La adaptación se encuentra \href{https://github.com/Pedroga-cc/Fisica-Matematica-II/blob/main/Figuras/Plotter_Legendre.py}{aquí}.}
     \label{fig:Legendre}
 \end{figure}
 
@@ -303,7 +303,7 @@ Las primeras seis funciones de Legendre de segunda especie son graficadas en la 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=12cm]{Figuras/Legendre-second-kind.pdf}
-    \caption{Primeras seis funciones de Legendre de segunda especie. Nótese el comportamiento asintótico alrededor de los extremos $x = -1$ y $x=1$. Adaptación de \href{https://github.com/gfrubi/FM2/blob/master/figuras-editables/fig-Legendre.py}{este} código. La adaptación se encuentra \href{aa}{aquí}.}
+    \caption{Primeras seis funciones de Legendre de segunda especie. Nótese el comportamiento asintótico alrededor de los extremos $x = -1$ y $x=1$. Adaptación de \href{https://github.com/gfrubi/FM2/blob/master/figuras-editables/fig-Legendre.py}{este} código. La adaptación se encuentra \href{https://github.com/Pedroga-cc/Fisica-Matematica-II/blob/main/Figuras/Plotter_Legendre.py}{aquí}.}
     \label{fig:Legendre-second-kind}
 \end{figure}
 
@@ -586,7 +586,7 @@ donde se cumplirá que $- \ell \leq m \leq \ell$.
     
         \item \textbf{Completitud.} EL conjunto de funciones $\{ Y_\ell^m(\theta, \phi) \}_{\ell = 0, m = -\ell}^{\ell = \infty, m = \ell}$ es un \emph{conjunto completo de funciones}, con lo que \emph{forma una base en el espacio de funciones}, lo que se expresa como
         \begin{equation}
-            \sum_{\ell = 0}^{\infty} \sum_{m = -\ell}^{\ell} (Y_\ell^m (\theta, \phi))^\ast Y_{\ell}^m (\theta', \phi') = \delta(\phi - \phi') \delta(\cos\theta - \cos\theta') \ .
+            \sum_{\ell = 0}^{\infty} \sum_{m = -\ell}^{\ell} (Y_\ell^m (\theta, \phi))^\ast Y_{\ell}^m (\theta', \phi') = \frac{1}{\sin \theta} \delta(\phi - \phi') \delta(\theta - \theta') \ .
         \end{equation}
         
         \item \textbf{Expansión en términos de Armónicos Esféricos.} Dada la completitud de los armónicos esféricos, cualquier función $f(\theta, \phi)$ cuadrado integrable, es decir, que satisface

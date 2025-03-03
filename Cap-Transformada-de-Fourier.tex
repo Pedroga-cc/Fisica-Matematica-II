@@ -134,6 +134,7 @@ Note que la transformada de Fourier es la extensión natural del concepto de ser
    
 \end{itemize}
 
+¿Cómo aseguramos la existencia de la transformada de Fourier de una función? Para ello, necesitamos introducir el concepto de \emph{funciones absolutamente integrables}, tras lo cual podemos plantear el teorema de existencia de la transformada de Fourier.
 
 \begin{defi} \marginnote{Función absolutamente integrable}
 Si $f(x)$ es tal que 
@@ -162,14 +163,15 @@ $$\frac{1}{2\pi} \int_{-\infty}^{\infty} f(x) e^{-ikx} dx$$
 es finita, es decir, $\tilde{f}(k)$ existe. 
 \end{demo}
 
-\textbf{Observación:} La condición de que $f$ sea absolutamente integrable es suficiente pero no necesaria para la existencia de la transformada de Fourier.
+\begin{obs}{Observación}
+    La condición de que $f$ sea absolutamente integrable es suficiente pero no necesaria para la existencia de la transformada de Fourier.
+\end{obs}
 
 \begin{teorema}
-    Sea $f(x)$ una función seccionalmente continua en cada intervalo finito del eje $x$, y supongamos que es absolutamente integrable en $(-\infty, + \infty)$. Entonces la \textbf{integral de Fourier}
-$$
-\frac{1}{\pi} \int_0^{+\infty} \int_{-\infty}^{+\infty} f(\xi) \cos k(\xi-x) \,d\xi dk = \frac{f(x^+) + f(x^-)}{2},
-$$
-
+    Sea $f(x)$ una función seccionalmente continua en cada intervalo finito del eje $x$, y supongamos que es absolutamente integrable en $(-\infty, + \infty)$. Entonces la \textbf{integral de Fourier} satisface
+\begin{equation}
+    \frac{1}{\pi} \int_0^{+\infty} \int_{-\infty}^{+\infty} f(\xi) \cos k(\xi-x) \,d\xi dk = \frac{f(x^+) + f(x^-)}{2} \ ,    
+\end{equation}
 donde ambas derivadas laterales, $f'(x^+)$ y $f'(x^-)$, existen.
 \end{teorema}
 
@@ -177,133 +179,87 @@ donde ambas derivadas laterales, $f'(x^+)$ y $f'(x^-)$, existen.
 Consulte el cápitulo 6 <<Fourier Integrals and Applications>> en \cite{Brown}.
 \end{demo}
 
-\section{Ejemplos}
+% \section{Ejemplos}
 
-\begin{ejemplo}[Pulso cuadrado] \label{PulsoCuadrado}
-Consideremos la función 
-$$f(x) = \left\{ \begin{array}{cl}
-     1,& |x|<a  \\
-     0,& |x|> a
-\end{array} \right..$$
+\begin{ejemplo} \label{PulsoCuadrado}
+    \textbf{Función pulso cuadrado.} Consideremos la función 
+    \begin{equation*}
+        f(x) = \left\{ \begin{array}{cl}
+            1,& |x|<a  \\
+            0,& |x|> a
+        \end{array} \right. \ .
+    \end{equation*}
 
-Su transformada de Fourier es 
-\begin{align}
-    \tilde{f}(k) = \frac{1}{2\pi} \int_{-\infty}^{\infty} f(x) e^{-ikx} dx &= \frac{1}{2\pi}\int_{-a}^a (1)  e^{-ikx} dx \nonumber \\
-    &= \frac{1}{2\pi} \left[ - \frac{1}{ik} e^{-ikx} \right]_{-a}^a \nonumber\\
-    &= \frac{1}{2\pi i k} [e^{ika} - e^{-ika}] \nonumber\\
-    &= \frac{\sin(ka)}{\pi k}. \label{TransPulsoCuadrado}
-\end{align}
+    Su transformada de Fourier es 
+    \begin{align}
+        \tilde{f}(k) & = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} f(x) e^{-ikx} dx \nonumber \\
+        & = \frac{1}{\sqrt{2\pi}}\int_{-a}^a (1)  e^{-ikx} dx \nonumber \\
+        & = \frac{1}{\sqrt{2\pi}} \left[ - \frac{1}{ik} e^{-ikx} \right]_{-a}^a \nonumber\\
+        & = \frac{1}{\sqrt{2\pi} i k} [e^{ika} - e^{-ika}] \nonumber\\
+        & = \sqrt{\frac{2}{\pi}} \frac{\sin(ka)}{k} \ . \label{TransPulsoCuadrado}
+    \end{align}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale = 0.55]{Figuras/EjemploTransformada1.pdf}
-    \caption{Pulso cuadrado y su transformada de Fourier, con $a = 5$.}
-    \label{Espectro2}
-\end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale = 0.55]{Figuras/EjemploTransformada1.pdf}
+        \caption{Pulso cuadrado y su transformada de Fourier, con $a = 5$.}
+        \label{Espectro2}
+    \end{figure}
 
 \end{ejemplo}
 
-\begin{ejemplo}[Distribución gaussiana]
+\begin{ejemplo}
+    \textbf{Distribución gaussiana.} Considere la gaussiana
+    \begin{equation*}
+        f(x) = n e^{-\beta x^2}, \quad  \beta > 0 \ .
+    \end{equation*}
+    Su transformada de Fourier está dada por 
+    \begin{equation*}
+        \tilde{f}(k) =  \frac{n}{\sqrt{2\pi}} \int_{-\infty}^{\infty} e^{-\beta x^2} e^{-ikx} dx =  \frac{n}{\sqrt{2\pi}} \int_{-\infty}^{\infty} e^{-\beta x^2-ikx} dx .
+    \end{equation*}
 
-Considere la gaussiana
-$$f(x) = n e^{-\alpha x^2}, \quad  \alpha > 0.$$
+    Notemos que 
+    \begin{align*}
+        -\beta x^2-ikx &= - \beta \left( x^2 + \frac{ik}{\beta}x \right) \\
+        &= - \beta \left( x^2 + \frac{ik}{\beta} x + \left( \frac{ik}{2\beta} \right)^2 - \left( \frac{ik}{2\beta} \right)^2 \right) \\
+        &= - \beta \left( x + \frac{ik}{2\beta} \right)^2 + \beta \left( \frac{ik}{2\beta} \right)^2 \\
+        &= - \beta \left( x + \frac{ik}{2\beta} \right)^2 - \left( \frac{k^2}{4\beta} \right).
+    \end{align*}
 
-Su transformada de Fourier está dada por 
-\begin{equation*}
-    \tilde{f}(k) =  \frac{n}{2\pi} \int_{-\infty}^{\infty} e^{-\alpha x^2} e^{-ikx} dx =  \frac{n}{2\pi} \int_{-\infty}^{\infty} e^{-\alpha x^2-ikx} dx .
-\end{equation*}
+    Luego, su transformada de Fourier puede escribirse como
+    \begin{equation*}
+        \tilde{f}(k) =  \frac{n}{\sqrt{2\pi}} \int_{-\infty}^{\infty} e^{-\beta \left( x + ik/2\beta \right)^2 - \left(k^2/4\beta \right)}  dx = \frac{n}{\sqrt{2\pi}} e^{- \left( k^2/4\beta \right)} \int_{-\infty}^{\infty} e^{-\beta \left( x + ik/2\beta \right)^2} \,dx. 
+    \end{equation*}
 
-Notemos que 
-\begin{align*}
-    -\alpha x^2-ikx &= - \alpha \left( x^2 + \frac{ik}{\alpha}x \right) \\
-    &= - \alpha \left( x^2 + \frac{ik}{\alpha} x + \left( \frac{ik}{2\alpha} \right)^2 - \left( \frac{ik}{2\alpha} \right)^2 \right) \\
-    &= - \alpha \left( x + \frac{ik}{2\alpha} \right)^2 + \alpha \left( \frac{ik}{2\alpha} \right)^2 \\
-    &= - \alpha \left( x + \frac{ik}{2\alpha} \right)^2 - \left( \frac{k^2}{4\alpha} \right).
-\end{align*}
+    Haciendo el cambio de variable $u = x + \frac{ik}{2\beta}$, obtenemos que \footnote{}
+    \begin{equation}\label{eq:Fourier-Gaussiana}
+        \hat{f}(k) = \frac{n}{\sqrt{2\pi}} e^{- \left( k^2/4\beta \right)} \int_{-\infty}^{\infty} e^{-\beta u^2} \, du = \frac{n}{\sqrt{2\beta}} e^{- \left( k^2/4\beta \right)} \ ,
+    \end{equation}
+    donde hemos usado que 
+    \begin{equation}
+    \int_{-\infty}^{\infty} e^{-\beta x^2} \,dx = \sqrt{\frac{\pi}{\beta}}, \quad \beta > 0 \ . 
+    \end{equation} 
 
-Luego, 
-\begin{equation*}
-    \tilde{f}(k) =  \frac{n}{2\pi} \int_{-\infty}^{\infty} e^{-\alpha \left( x + \frac{ik}{2\alpha} \right)^2 - \left( \frac{k^2}{4\alpha} \right)}  dx = \frac{n}{2\pi} e^{- \left( \frac{k^2}{4\alpha} \right)} \int_{-\infty}^{\infty} e^{-\alpha \left( x + \frac{ik}{2\alpha} \right)^2} \,dx. 
-\end{equation*}
-
-Haciendo el cambio de variable $u = x + \frac{i\omega}{2\alpha}$, obtenemos que \footnote{}
-\begin{equation}\label{eq:Fourier-Gaussiana}
-    \hat{f}(\omega) = \frac{n}{\sqrt{2\pi}} e^{- \left( \frac{\omega^2}{4\alpha} \right)} \int_{-\infty}^{\infty} e^{-\alpha u^2} \,du = \frac{n}{\sqrt{2\alpha}} e^{- \left( \frac{\omega^2}{4\alpha} \right)} \ ,
-\end{equation}
-donde hemos usado que 
-\begin{equation}
-\int_{-\infty}^{\infty} e^{-\alpha x^2} \,dx = \sqrt{\frac{\pi}{\alpha}}, \quad \alpha > 0 \ . 
-\end{equation} 
-% obtenemos que 
-% \begin{equation}
-% \hat{f}(\omega) =  
-% \end{equation}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width = 0.8\textwidth]{Figuras/EjemploTransformada2.pdf}
-    \caption{Distribución gaussiana y su transformada de Fourier para $n=1$ y $\alpha =1$ .}
-    \label{Espectro3}
-\end{figure}
-    \footnoterule
-    
-    {\footnotesize
-    $^2$ En estricto rigor se debería calcular una integral compleja, vea \cite{Arfken}.
-    }
-
-% Probaremos, usando las herramientas que nos brinda el Cálculo Complejo, que
-% $$
-%  \int_{-\infty}^{\infty} e^{-\alpha \left( x + \frac{ik}{2\alpha} \right)^2} \,dx =  \int_{-\infty}^{\infty} e^{- \alpha x^2} dx.
-% $$
-
-% Consideremos la integral 
-% \begin{equation}
-%    \int_{\gamma} e^{-\alpha \left( z + \frac{ik}{2\alpha} \right)^2} dz \label{IntegralComplexGauss} 
-% \end{equation}
-
-% donde el contorno $\gamma$ es un rectángulo que está ilustrado en la figura \ref{fig:ContornoGauss}.
-
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[scale = 0.53]{Figuras/ContornoFourierGauss.pdf}
-%     \caption{Contorno cerrado orientado positivamente, $\gamma$, constituido por la unión del segmento dirigido de $-L$ a $L$, de $L$ a $L - ik/2\alpha$, de $L - ik/2\alpha$ a $-L - ik/2\alpha$ y de $-L - ik/2\alpha$ a $-L$.}
-%     \label{fig:ContornoGauss}
-% \end{figure}
-
-% Como el integrando no tiene singularidades dentro del rectángulo, entonces por el teorema de Cauchy-Goursat, la integral \eqref{IntegralComplexGauss} es igual a cero. Así, evaluando la integral en cada segmento,
-% \begin{align*}
-%  \int_{\gamma} e^{-\alpha \left( z + \frac{ik}{2\alpha} \right)^2} dz &= \int_{-L}^L e^{-\alpha \left( x + \frac{ik}{2\alpha} \right)^2} dx + \int_0^{- \frac{k}{2\alpha}} i e^{-\alpha \left( L + i \left( y + \frac{k}{2\alpha} \right) \right)^2} dy   \\
-%  & \quad - \int_{-L}^L e^{-\alpha x^2} dx + \int_{- \frac{k}{2\alpha}}^0 i e^{-\alpha \left(- L + i \left( y + \frac{k}{2\alpha} \right) \right)^2} dy = 0.
-% \end{align*}
-
-% La segunda y cuarta integral, al lado derecho de la igualdad, se anulan cuando $L \to + \infty$. Luego,
-% $$\lim_{L \to + \infty} \int_{-L}^L e^{-\alpha \left( x + \frac{ik}{2\alpha} \right)^2} dx = \lim_{L \to + \infty} \int_{-L}^L e^{-\alpha x^2} dx.$$
-
-% Pero, las integrales
-% $$\int_{- \infty}^{\infty} e^{-\alpha \left( x + \frac{ik}{2\alpha} \right)^2} dx ~~\mbox{y}~~ \int_{-\infty}^{\infty} e^{-\alpha x^2} dx$$
-
-% convergen (¿Por qué?), entonces sus valores coinciden con su valor principal de Cauchy. Por lo tanto,
-% $$\int_{-\infty}^{\infty} e^{-\alpha \left( x + \frac{ik}{2\alpha} \right)^2} \,dx = \lim_{L \to + \infty} \int_{-L}^L e^{-\alpha \left( x + \frac{ik}{2\alpha} \right)^2} dx = \lim_{L \to + \infty} \int_{-L}^L e^{-\alpha x^2} dx = \int_{-\infty}^{\infty} e^{-\alpha x^2} \,dx.$$
-
-% Volviendo al cálculo de la transformada de Fourier,
-% $$
-% \Tilde{f}(k) = \frac{n}{2\pi} e^{- \left( \frac{k^2}{4\alpha} \right)} \int_{-\infty}^{\infty} e^{-\alpha x^2} \,dx.
-% $$
-
-% Como
-% $$\int_{-\infty}^{\infty} e^{-\alpha x^2} \,dx = \sqrt{\frac{\pi}{\alpha}}, \quad \alpha > 0$$
-
-% obtenemos que 
-% $$\tilde{f}(k) = \frac{n}{2\pi}\sqrt{\frac{\pi}{\alpha}}e^{- \left( \frac{k^2}{4\alpha} \right)}.$$
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width = 0.8\textwidth]{Figuras/EjemploTransformada2.pdf}
+        \caption{Distribución gaussiana y su transformada de Fourier para $n=1$ y $\beta =1$ .}
+        \label{Espectro3}
+    \end{figure}
+        \footnoterule
+        
+        {\footnotesize
+        $^2$ En estricto rigor se debería calcular una integral compleja, vea \cite{Arfken}.
+        }
 
 
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale = 0.6]{Figuras/EjemploTransformada3.pdf}
-    \caption{Distribución gaussiana y su transformada de Fourier para $n=1$ y $\alpha =0.25$ .}
-    \label{Espectro4}
-\end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale = 0.6]{Figuras/EjemploTransformada3.pdf}
+        \caption{Distribución gaussiana y su transformada de Fourier para $n=1$ y $\beta =0.25$ .}
+        \label{Espectro4}
+    \end{figure}
 \end{ejemplo}
 
 

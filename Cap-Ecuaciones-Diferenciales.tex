@@ -114,15 +114,21 @@ Por ello, debemos entregar información adicional a nuestro problema para poder 
     \label{fig:condicionesdeborde}
 \end{figure}
 
-Puede ser útil clasificar las condiciones de contorno en tres tipos, aplicables a EDPs de segundo orden.
+\begin{defi} \marginnote{Condiciones de Borde}
+    En una ecuación diferencial, una \textbf{condición de borde, o de contorno} corresponde a información del comportamiento de la función variable $\psi$ (y sus derivadas) en algún punto dado de su dominio, las que son requeridas para resolver completamente la ecuación diferencial.
 
-\begin{itemize}
-    \item Tenemos condiciones de tipo \textbf{Dirichlet} cuando nos dan información del comportamiento \emph{de la función} $\psi$ en la frontera $\partial \Omega$ de la región en que trabajamos.
-    \item Tenemos condiciones de tipo \textbf{Neumann} cuando tenemos información de la \emph{derivada normal de la función}, es decir $\partial \psi/\partial n := \hat{n} \cdot \nabla \psi$, en la frontera $\partial \Omega$.
-    \item Tenemos condiciones de tipo \textbf{Cauchy} cuando tenemos a la vez condiciones de tipo Dirichlet y de tipo Neumann.
-\end{itemize} 
+    Al trabajar con EDP de segundo orden, estas pueden clasificadas en 3 tipos.
+    \begin{itemize}
+        \item Tenemos condiciones de tipo \textbf{Dirichlet} cuando nos dan información del comportamiento \emph{de la función} $\psi$ en la frontera $\partial \Omega$ de la región en que trabajamos.
+        \item Tenemos condiciones de tipo \textbf{Neumann} cuando tenemos información de la \emph{derivada normal de la función}, es decir $\partial \psi/\partial n := \hat{n} \cdot \nabla \psi$, en la frontera $\partial \Omega$.
+        \item Tenemos condiciones de tipo \textbf{Cauchy} cuando tenemos a la vez condiciones de tipo Dirichlet y de tipo Neumann.
+    \end{itemize} 
+\end{defi}
 
-¿Cómo sabemos qué tipo de condición de borde es apropiada para nuestro problema? Es una discusión un tanto complicada que considero que escapa a los contenidos del curso, pero que puede revisar en los capítulos X de X y X de X. La idea, sin embargo, es que esto dependerá tanto del tipo de EDP como de la definición del dominio, es decir, si este es acotado por una superficie (o curva, en el caso de dos variables independientes) abierta o cerrada.
+% Puede ser útil clasificar las condiciones de contorno en tres tipos, aplicables a EDPs de segundo orden.
+
+
+¿Cómo sabemos qué tipo de condición de borde es apropiada para nuestro problema? Es una discusión un tanto complicada que considero que escapa a los contenidos del curso, pero que puede revisar en el capítulo 6 de \cite{Morse_Feshbach_1999} y el capítulo 20, sección 3 de \cite{Riley}. La idea, sin embargo, es que esto dependerá tanto del tipo de EDP como de la definición del dominio, es decir, si este es acotado por una superficie (o curva, en el caso de dos variables independientes) abierta o cerrada.
 
 \section{Encontrar soluciones para ecuaciones diferenciales parciales}
 
@@ -271,7 +277,7 @@ Un punto de discusión relevante sobre el último ejemplo tiene que ver con el h
     \begin{equation}
         u(x,t) = \mathcal{F}^{-1} \left\{ \textcolor{red}{\hat{u}_0} \textcolor{blue}{e^{-\alpha k^2 t}} \right\} \ ,
     \end{equation}
-    lo que corresponde al producto de dos transformadas de Fourier, la de \textcolor{red}{$\hat{u}_0$} y la de una \textcolor{blue}{gaussiana}, las que pueden ser calculadas gracias a la ecuación \eqref{eq:Fourier-Gaussiana}, con $n=1$ y $\alpha_G = \dfrac{1}{4\alpha t}$.\footnote{Aquí se presenta un abuso de notación que no había considerado anteriormente, ya que en la definición de la gaussiana utilizamos un parámetro $\alpha$, al que he añadido el subíndice $G$ para distinguirlo del coeficiente de difusión de la ecuación del calor.} 
+    lo que corresponde al producto de dos transformadas de Fourier, la de \textcolor{red}{$\hat{u}_0$} y la de una \textcolor{blue}{gaussiana}, las que pueden ser calculadas gracias a la ecuación \eqref{eq:Fourier-Gaussiana}, con $n=1$ y $\beta = \dfrac{1}{4\alpha t}$.
     De este modo, la transformada de Fourier de la gaussiana es
     \begin{equation}
         \mathcal{F}\left\{ e^{-\frac{x^2}{4\alpha t}} \right\} = \sqrt{2\alpha t} e^{-\alpha k^2 t} \ ,

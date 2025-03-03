@@ -286,6 +286,7 @@ Hasta ahora, hemos estudiado ecuaciones que al cumplir ciertas propiedades, como
 \end{equation}
 En estos casos, podemos hacer uso del llamado \emph{método de series de potencias} para obtener una solución que, si bien no tiene una forma compacta, nos permite resolver dichos problemas, y encontrar aproximaciones válidas.
 
+
 % \section{Resolver EDOs por el método de series}
 
 Consideremos una ecuación diferencial ordinaria, lineal y de segundo orden cuyos coeficientes son polinomios en la variable independiente del problema, de la forma
@@ -305,84 +306,34 @@ Antes de discutir la existencia de soluciones para esta ecuación, debemos defin
     Dado un punto singular $x=x_0$ para una EDO de la forma \eqref{eq:EDO_Series}, diremos que $x_0$ es un \textbf{punto singular regular} si tanto $(x-x_0)P(x)$ como $(x-x_0)^2Q(x)$ son analíticas en $x=x_0$. En caso contrario, $x_0$ es un \textbf{punto singular irregular, o esencial}.
 \end{defi}
 
-En el caso en que el coeficiente $P(x)$ no se anula en el dominio del sistema, podemos garantizar la existencia de una solución para \eqref{eq:EDO_Series} mediante el siguiente teorema\footnote{En este apunte hemos omitido gran parte de la discusión sobre la naturaleza de este tipo de soluciones. Si desea revisarla en más detalle, puede consultar el capítulo 3, sección 5 de \cite{Butkov}.}
-\begin{teorema}[de Fuchs]\label{teo:Fuchs}
-    Una ecuación diferencial de la forma \eqref{eq:EDO_Series} posee al menos una solución expresable en una serie de potencias en torno a $x=x_0$ si este es un punto ordinario o un punto singular regular de la EDO \eqref{eq:EDO_Series}. La solución será de la forma 
-    \begin{equation} \label{eq:solucion_serie}
-        y(x) = \sum_{n=0}^\infty a_n(x-x_0)^{n+s} \ , \qquad a_0 \neq 0
+% Cuando nuestra ecuación de la forma \eqref{eq:EDO_Series} tiene únicamente puntos ordinarios, podemos utilizar el llamado \emph{método de series} para resolverla. Para ello, seguiremos el algoritmo presentado a continuación:
+\begin{propo} \marginnote{Método de Series}
+    \textbf{Método de Series}
+
+    Dada una EDO lineal de segundo orden de la forma \eqref{eq:EDO_Series} sin singularidades en su dominio de definición, es decir, donde únicamente existen puntos ordinarios, podemos proponer una solución en serie de potencias alrededor del punto $x_0$, de la forma
+    \begin{equation}
+        y(x) = \sum_{n=0}^\infty a_n(x-x_0)^n \ , \quad a_0 \neq 0 \ .
     \end{equation}
-    para un número $s$ real y positivo, o bien, de la forma 
-    \begin{equation}\label{eq:solucion_logaritmo}
-        y(x) = y_0 \ln(x-x_0) + \sum_{n=0}^\infty b_n (x-x_0)^{n+r} \ , \qquad b_0 \neq 0 
-    \end{equation}
-    para algún número $r$ real y positivo, donde $y_0$ es una solución de la forma \eqref{eq:solucion_serie}.
-
-    A la solución de la forma \eqref{eq:solucion_serie} se le conoce como \textbf{serie de Frobenius}, mientras que a una solución de la forma \eqref{eq:solucion_logaritmo} se le suele denominar \textbf{serie generalizada de Frobenius}.
-\end{teorema}
-
-\begin{propo} \marginnote{Método de Frobenius}
-    \textbf{Método de Frobenius.}
-
-    Dada una EDO lineal de segundo orden de la forma \eqref{eq:EDO_Series}, podemos proponer una solución en forma de serie de Frobenius \eqref{eq:solucion_serie}, que en general, podrá ser diferenciada al menos dos veces dentro de su radio de convergencia. Podremos determinar los coeficientes de nuestra serie siguiendo el siguiente algoritmo:\footnotemark[2]
+    Para ello, seguiremos este algoritmo, asumiendo $x_0 = 0$ para no sobrecargar la notación:
     \begin{enumerate}
-        \item Hallamos la primera y segunda derivada de nuestra serie, re-indexando, de ser necesario, de modo que siempre empecemos nuestra suma en $k=0$. Esto es,
+        \item Hallamos la primera y segunda derivada de nuestra serie, re-indexando, de ser necesario, de modo que ambas queden en términos de $x^n$:
         \begin{align}
-            y'(x)  & = \sum_{k=0}^\infty (k+s) A_k x^{k+s-1} 
-            % \nonumber
-            \ ,
-            \\
-            % & = sA_0 x^{s-1} + \sum_{k=1}^\infty (k+s) A_k x^{k+s-1} \nonumber \\
-            % & = sA_0 x^{s-1} + \sum_{k=0}^\infty (k+s+1) A_{k+1} x^{k+s} \\
-            y''(x) & = \sum_{k=0}^\infty (k+s-1)(k+s) A_k x^{k+s-2} \ .
-            % \nonumber \\
-            % & = s(s-1)A_0 x^{s-2} + \sum_{k=1}^\infty (k+s-1)(k+s) A_k x^{k+s-2} \nonumber \\
-            % & = s(s-1)A_0 x^{s-2} + \sum_{k=0}^\infty (k+s)(k+s+1) A_{k+1} x^{k+s-1} 
+            y'(x) & = \sum_{k=1}^\infty k a_k x^{k-1} \nonumber \\
+            & = \sum_{k=0}^\infty (k+1) a_{k+1} x^{k} \\
+            y''(x) & = \sum_{k=1}^\infty k (k+1) a_{k+1} x^{k-1} \nonumber \\
+            & = \sum_{k=0}^\infty (k+2) (k+1) a_{k+2} x^{k} \ .
         \end{align}
-        \item Sustituimos las derivadas en nuestra EDO homogénea \eqref{eq:EDO_Series}. Multiplicamos la ecuación por $x^2$, y luego de manipulaciones algebraicas, obtenemos la expresión
-        \begin{equation}\label{eq:metodo_frobenius_EDO}
-            [s(s-1) + p(x)s + q(x)]A_0 x^s + \sum_{k=1}^\infty [(k+s-1)(k+s) + p(x)(k+s) + q(x)]A_k x^{k+s} = 0 \ ,
-        \end{equation}
-        donde $p(x) = xP(x)$ y $q(x) = x^2 Q(x)$.\footnotemark
-        \item Dado que la ecuación \eqref{eq:metodo_frobenius_EDO} es nula término a término y asumiendo que el coeficiente $A_0$ es no nulo, podemos obtener la \emph{ecuación indicial} para $k=0$,
-        \begin{equation} \label{eq:ecuacion_indicial}
-            I(s) = s(s-1) + p(0)s + q(0) \ .
-        \end{equation}
-        \item Igualando a cero las potencias superiores de $x$, nos lleva a las \emph{relaciones de recurrencia} de la forma
+        \item Sustituímos las derivadas en nuestra EDO homogénea \eqref{eq:EDO_Series}, obteniendo la expresión
+        \begin{equation*}
+            \sum_{k=0}^\infty [ (k+1)(k+2)a_{k+2} + P(x) (k+1)a_{k+1} + Q(x) a_k ] x^k = 0 \ .
+        \end{equation*}
+        \item Dado que buscamos soluciones no triviales, la igualdad anterior se satisface si, término a término, se cumple la relación de recurrencia
         \begin{equation}
-            A_k = f(j,s) A_j \ ,
+            a_{k+2} = \frac{P(x) (k+1)a_{k+1} + Q(x) a_k}{(k+1)(k+2)} \ .
         \end{equation}
-        donde $j$ es un índice tal que $j > k$. Usualmente, podemos hacer que estas dependan de solo uno o dos coeficientes, típicamente $A_0$ y $A_1$.
-        \item A partir de nuestras condiciones de contorno, podemos determinar los valores de los coeficientes $A_k$. Además, es posible determinar el valor de $s$ a partir de la ecuación indicial \eqref{eq:ecuacion_indicial}.
-        \item La solución general a nuestra ecuación dependerá de las raíces $s_1$ y $s_2$ de la ecuación indicial:
-        \begin{itemize}
-            \item[a.] Si $s_1$ y $s_2$ son tales que su diferencia \emph{no es un número entero}, entonces la solución general es de la forma
-            \begin{align}
-                y(x) & = C_1 y_1(x) + C_2 y_2(x) \nonumber \\
-                & = C_1 \left( x^{s_1} \sum_{k=0}^\infty a_k x^k \right) + C_2 \left( x^{s_2} \sum_{k=0}^\infty a_k x^k \right)  \ .
-            \end{align}
-            \item[b.] Si $s_1 = s_2$, entonces el método de Frobenius nos entrega solo una solución, y la segunda solución será una serie de Frobenius generalizada \eqref{eq:solucion_logaritmo}, de modo que la solución general será
-            \begin{align}
-                y(x) & = C_1 y_1(x) + C_2 y_2(x) \nonumber \\
-                & = C_1 \left( x^{s} \sum_{k=0}^\infty a_k x^k \right) + C_2 \left( \alpha y_1(x) \ln(x) + \sum_{k=0}^\infty b_n x^{k+s}  \right) \ ,
-            \end{align}
-            donde $\alpha$ es una constante a determinar.
-            \item[c.] Si $s_1$ y $s_2$ son tales que su diferencia \emph{sí es un número entero}, existirá al menos una solución en forma de serie de potencias, correspondiente a la raíz mayor, mientras que la segunda puede ser tanto una serie de potencias (a.) o una solución logarítmica (b.).  
-        \end{itemize}
+        \item Podemos determinar los primeros coeficientes, $a_0$ y $a_1$, a partir de las condiciones de contorno del sistema, por lo que, en general, actuarán como los coeficientes de dos soluciones linealmente independientes para nuestro problema.
     \end{enumerate}
 \end{propo}
-\footnotetext[2]{{Por simplicidad y para no sobrecargar la notación, consideraremos el caso en que $x_0 = 0$. Sin embargo, el procedimiento sigue siendo válido para $x_0 \neq 0$.}}
-\footnotetext{{Puede encontrar algo más de información respecto a esta elección en el capítulo 6 de \cite{Zill_2013}. Para efectos de este curso, confíen en que funciona.}}
-
-\begin{teorema}
-    Si $x=x_0$ es un punto ordinario de la ecuación \eqref{eq:EDO_Series}, entonces podemos hallar la solución general a partir de una serie de potencias mediante el método de Frobenius con $s=0$, con ciertas modificaciones, las que son:
-    \begin{enumerate}
-        \item Nos interesa que las derivadas puedan expresarse en términos de $x^n$, re-indexando de ser necesario.
-        \item No multiplicamos la ecuación por $x^2$.
-        \item Omitimos este paso.
-    \end{enumerate}
-    
-    Esto dará origen a dos soluciones, $y_1$ e $y_2$, las que son linealmente independientes.
-\end{teorema}
 
 \begin{ejemplo}
     Encuentre una solución a la ecuación de Airy
@@ -480,3 +431,83 @@ En el caso en que el coeficiente $P(x)$ no se anula en el dominio del sistema, p
 
     En el caso en que $\lambda$ sea un número par no negativo, una de las dos series se hace finita. Es más, cuando $\lambda = 2n$, y normalizando por una constante adecuada, obtenemos los \emph{polinomios de Hermite} $H_n(x)$, que surgen como soluciones a la ecuación de Schrödinger para un oscilador armónico cuántico.
 \end{ejemplo}
+
+En el caso en que el coeficiente $P(x)$ no se anula en el dominio del sistema, podemos garantizar la existencia de una solución para \eqref{eq:EDO_Series} mediante el siguiente teorema\footnote{En este apunte hemos omitido gran parte de la discusión sobre la naturaleza de este tipo de soluciones. Si desea revisarla en más detalle, puede consultar el capítulo 3, sección 5 de \cite{Butkov}.}
+\begin{teorema}[de Fuchs]\label{teo:Fuchs}
+    Una ecuación diferencial de la forma \eqref{eq:EDO_Series} posee al menos una solución expresable en una serie de potencias en torno a $x=x_0$ si este es un punto ordinario o un punto singular regular de la EDO \eqref{eq:EDO_Series}. La solución será de la forma 
+    \begin{equation} \label{eq:solucion_serie}
+        y(x) = \sum_{n=0}^\infty a_n(x-x_0)^{n+s} \ , \qquad a_0 \neq 0
+    \end{equation}
+    para un número $s$ real y positivo, o bien, de la forma 
+    \begin{equation}\label{eq:solucion_logaritmo}
+        y(x) = y_0 \ln(x-x_0) + \sum_{n=0}^\infty b_n (x-x_0)^{n+r} \ , \qquad b_0 \neq 0 
+    \end{equation}
+    para algún número $r$ real y positivo, donde $y_0$ es una solución de la forma \eqref{eq:solucion_serie}.
+
+    A la solución de la forma \eqref{eq:solucion_serie} se le conoce como \textbf{serie de Frobenius}, mientras que a una solución de la forma \eqref{eq:solucion_logaritmo} se le suele denominar \textbf{serie generalizada de Frobenius}.
+\end{teorema}
+
+\begin{propo} \marginnote{Método de Frobenius}
+    \textbf{Método de Frobenius.}
+
+    Dada una EDO lineal de segundo orden de la forma \eqref{eq:EDO_Series}, podemos proponer una solución en forma de serie de Frobenius \eqref{eq:solucion_serie}, que en general, podrá ser diferenciada al menos dos veces dentro de su radio de convergencia. Podremos determinar los coeficientes de nuestra serie siguiendo el siguiente algoritmo, donde hemos asumido $x_0 = 0$ para no sobrecargar la notación:
+    \begin{enumerate}
+        \item Hallamos la primera y segunda derivada de nuestra serie, re-indexando, de ser necesario, de modo que siempre empecemos nuestra suma en $k=0$. Esto es,
+        \begin{align}
+            y'(x)  & = \sum_{k=0}^\infty (k+s) A_k x^{k+s-1} 
+            % \nonumber
+            \ ,
+            \\
+            % & = sA_0 x^{s-1} + \sum_{k=1}^\infty (k+s) A_k x^{k+s-1} \nonumber \\
+            % & = sA_0 x^{s-1} + \sum_{k=0}^\infty (k+s+1) A_{k+1} x^{k+s} \\
+            y''(x) & = \sum_{k=0}^\infty (k+s-1)(k+s) A_k x^{k+s-2} \ .
+            % \nonumber \\
+            % & = s(s-1)A_0 x^{s-2} + \sum_{k=1}^\infty (k+s-1)(k+s) A_k x^{k+s-2} \nonumber \\
+            % & = s(s-1)A_0 x^{s-2} + \sum_{k=0}^\infty (k+s)(k+s+1) A_{k+1} x^{k+s-1} 
+        \end{align}
+        \item Sustituimos las derivadas en nuestra EDO homogénea \eqref{eq:EDO_Series}. Multiplicamos la ecuación por $x^2$, y luego de manipulaciones algebraicas, obtenemos la expresión
+        \begin{equation}\label{eq:metodo_frobenius_EDO}
+            [s(s-1) + p(x)s + q(x)]A_0 x^s + \sum_{k=1}^\infty [(k+s-1)(k+s) + p(x)(k+s) + q(x)]A_k x^{k+s} = 0 \ ,
+        \end{equation}
+        donde $p(x) = xP(x)$ y $q(x) = x^2 Q(x)$.\footnotemark
+        \item Dado que la ecuación \eqref{eq:metodo_frobenius_EDO} es nula término a término y asumiendo que el coeficiente $A_0$ es no nulo, podemos obtener la \emph{ecuación indicial} para $k=0$,
+        \begin{equation} \label{eq:ecuacion_indicial}
+            I(s) = s(s-1) + p(0)s + q(0) \ .
+        \end{equation}
+        \item Igualando a cero las potencias superiores de $x$, nos lleva a las \emph{relaciones de recurrencia} de la forma
+        \begin{equation}
+            A_k = f(j,s) A_j \ ,
+        \end{equation}
+        donde $j$ es un índice tal que $j > k$. Usualmente, podemos hacer que estas dependan de solo uno o dos coeficientes, típicamente $A_0$ y $A_1$.
+        \item A partir de nuestras condiciones de contorno, podemos determinar los valores de los coeficientes $A_k$. Además, es posible determinar el valor de $s$ a partir de la ecuación indicial \eqref{eq:ecuacion_indicial}.
+        \item La solución general a nuestra ecuación dependerá de las raíces $s_1$ y $s_2$ de la ecuación indicial:
+        \begin{itemize}
+            \item[a.] Si $s_1$ y $s_2$ son tales que su diferencia \emph{no es un número entero}, entonces la solución general es de la forma
+            \begin{align}
+                y(x) & = C_1 y_1(x) + C_2 y_2(x) \nonumber \\
+                & = C_1 \left( x^{s_1} \sum_{k=0}^\infty a_k x^k \right) + C_2 \left( x^{s_2} \sum_{k=0}^\infty a_k x^k \right)  \ .
+            \end{align}
+            \item[b.] Si $s_1 = s_2$, entonces el método de Frobenius nos entrega solo una solución, y la segunda solución será una serie de Frobenius generalizada \eqref{eq:solucion_logaritmo}, de modo que la solución general será
+            \begin{align}
+                y(x) & = C_1 y_1(x) + C_2 y_2(x) \nonumber \\
+                & = C_1 \left( x^{s} \sum_{k=0}^\infty a_k x^k \right) + C_2 \left( \alpha y_1(x) \ln(x) + \sum_{k=0}^\infty b_n x^{k+s}  \right) \ ,
+            \end{align}
+            donde $\alpha$ es una constante a determinar.
+            \item[c.] Si $s_1$ y $s_2$ son tales que su diferencia \emph{sí es un número entero}, existirá al menos una solución en forma de serie de potencias, correspondiente a la raíz mayor, mientras que la segunda puede ser tanto una serie de potencias (a.) o una solución logarítmica (b.).  
+        \end{itemize}
+    \end{enumerate}
+\end{propo}
+\footnotetext{{Puede encontrar algo más de información respecto a esta elección en el capítulo 6 de \cite{Zill_2013}. Para efectos de este curso, confíen en que funciona.}}
+
+% \begin{teorema}
+%     Si $x=x_0$ es un punto ordinario de la ecuación \eqref{eq:EDO_Series}, entonces podemos hallar la solución general a partir de una serie de potencias mediante el método de Frobenius con $s=0$, con ciertas modificaciones, las que son:
+%     \begin{enumerate}
+%         \item Nos interesa que las derivadas puedan expresarse en términos de $x^n$, re-indexando de ser necesario.
+%         \item No multiplicamos la ecuación por $x^2$.
+%         \item Omitimos este paso.
+%     \end{enumerate}
+    
+%     Esto dará origen a dos soluciones, $y_1$ e $y_2$, las que son linealmente independientes.
+% \end{teorema}
+
+
