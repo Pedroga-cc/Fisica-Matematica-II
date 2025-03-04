@@ -55,6 +55,11 @@ $$\frac{1}{3} T = 2\pi n, \quad \frac{1}{4}T = 2\pi m; \quad n,m \in \mathbb{Z}.
 Por consiguiente $T = 6\pi n = 8\pi m$; cuando $n = 4$ y $m=3$, se obtiene el mínimo valor de $T$. Así, $T = 24\pi$.
 \end{ejemplo}
 
+\begin{defi} \marginnote{Función seccionalmente continua}
+    Una función $f: [a,b] \longrightarrow \mathbb{C}$ es \textbf{seccionalmente continua} si $[a,b]$ tiene una partición finita $a = t_0 < t_1 < \cdots < t_n = b$ tal que $f$ es continua y acotada en cada intervalo abierto $(t_i, t_{i+1}), i = 0, \dots, n-1$.
+    
+    Denotaremos por $\mathscr{C}[a,b]$ al conjunto de las funciones complejas seccionalmente continuas.
+\end{defi}
 
 
 \begin{propo}
@@ -111,8 +116,6 @@ De forma similar, diremos que $f$ es una \textbf{función impar} si y solo si, p
 \end{equation}
 \end{defi} 
 
-% \textbf{Observación 1:} 
-
 \begin{propo}
     Sea $f: [-a,a] \longrightarrow \mathbb{R}$ integrable,
     \begin{align*}
@@ -121,8 +124,12 @@ De forma similar, diremos que $f$ es una \textbf{función impar} si y solo si, p
     \end{align*}
 \end{propo}
 
-\textbf{Observación 2:} Toda función $f:[-a,a] \longrightarrow \mathbb{R}$ puede expresarse como la suma de una función par más otra impar: $f = f_p + f_i$ con 
-$$f_p(t) = \frac{f(t) + f(-t)}{2}, \quad f_i(t) = \frac{f(t) - f(-t)}{2}.$$
+\begin{obs}{Observación}
+    Toda función $f:[-a,a] \longrightarrow \mathbb{R}$ puede expresarse como la suma de una función par más otra impar: $f = f_p + f_i$ con 
+    \begin{equation*}
+        f_p(t) = \frac{f(t) + f(-t)}{2}, \quad f_i(t) = \frac{f(t) - f(-t)}{2} \ .
+    \end{equation*}
+\end{obs}
 
 \begin{defi} \marginnote{Extensión par e impar}
 Sea $f \in \mathscr{C}[0,a]$ real, entonces la \textbf{extensión par} y la \textbf{extensión impar} de $f$ están definidas, respectivamente, por:
@@ -135,6 +142,7 @@ Sea $f \in \mathscr{C}[0,a]$ real, entonces la \textbf{extensión par} y la \tex
     f(t)     & \mbox{si} & 0 \leq t \leq a
     \end{array} \right. .
 \end{equation*}
+Ambas extensiones se encuentran definidas en el intervalo $[-a,a]$.
 \end{defi}
 
 \begin{figure}[H]
@@ -159,8 +167,19 @@ Sea $f \in \mathscr{C}[0,a]$ real, entonces la \textbf{extensión par} y la \tex
     $$\left\{ \frac{1}{\sqrt{2\pi}}, \frac{\cos(nt)}{\sqrt{\pi}}, \frac{\sin(nt)}{\sqrt{\pi}} \right\}_{n=1}^{\infty}$$
 \end{defi}
 
+\begin{defi} \marginnote{Condiciones de Dirichlet}
+    Una función $f$ satisface las llamadas \textbf{Condiciones de Dirichlet} si satisface
+    \begin{enumerate}
+        \item Se encuentra definida en un intervalo $(a,a+2L)$.
+        \item Tanto $f$ como su derivada son funciones seccionalmente continuas en el intervalo $(a,a+2L)$.
+        \item $f$ tiene un número finito de discontinuidades \emph{finitas}.
+        \item $f$ es una función periódica de periodo $2L$.
+    \end{enumerate}
+
+\end{defi}
+
 \begin{defi} \marginnote{Serie de Fourier}
-Sea $f \in \mathscr{C}[a, a+2L]$, una función con un número finito de discontinuidades. Entonces, ella puede ser aproximada por la serie 
+Sea $f \in \mathscr{C}[a, a+2L]$ una función que satisface las condiciones de Dirichlet. Entonces, ella puede ser aproximada por la serie 
 \begin{equation}
     \frac{a_0}{2} + \sum_{n=1}^{\infty} \left( a_n \cos\left( \frac{n\pi}{L}x \right) + b_n \sin\left( \frac{n\pi}{L}x \right) \right) \approx f(x) \ . \label{FourierTrigo}
 \end{equation}
@@ -172,6 +191,37 @@ Esta expansión se denomina \textbf{serie trigonométrica de Fourier} o simpleme
     b_n &= \frac{1}{L} \int_{a}^{a+2L} f(t) \sin\left( \frac{n\pi}{L}t \right) \,dt. \quad n = 1,2, \dots
 \end{align*}
 \end{defi}
+
+\begin{ejemplo} \label{EjemploFourier1}
+    Consideremos la función $f(x) = x^2$ definida para $x\in [-\pi,\pi]$, la cual es continua con derivada $f'(x) = 2x$ también continua, luego la serie de Fourier de $f$ converge puntualmente a $f$ para todo $x \in (-\pi,\pi)$. Para los extremos $x = \pm \pi$ vemos que $f(\pi) = f(-\pi)$, por lo tanto la serie converge puntualmente a $f$ para todo $x \in [-\pi,\pi]$.
+    
+    Sus coeficientes de Fourier están dados por:
+    \begin{align*}
+        a_0 &= \frac{1}{\pi} \int_{-\pi}^{\pi} x^2 \,dx = \left. \frac{x^3}{3\pi} \right|_{-\pi}^{\pi} = \frac{2}{3} \pi^2, \\
+        a_n &= \frac{1}{\pi} \int_{-\pi}^{\pi} x^2 \cos(n x)\,dx =   \left. \frac{1}{n\pi} x^2 \sin(nx)  \right|_{-\pi}^{\pi} - \frac{2}{n\pi} \int_{-\pi}^{\pi} x \sin(nx) \,dx\\
+        &= \left.   \frac{2}{n^2\pi} x \cos(nx)\right|_{-\pi}^{\pi} - \frac{2}{n^2 \pi} \cancelto{0}{\int_{-\pi}^{\pi} \cos(nx) \,dx }\\
+        &=  \frac{4}{n^2} \cos(n\pi) =  (-1)^n \frac{4}{n^2}, \quad n = 1,2,\dots\\
+         b_n &= \frac{1}{\pi} \int_{-\pi}^{\pi} x^2 \sin(nx)\,dx = 0, \quad n = 1,2, \dots
+    \end{align*}
+    
+    Entonces, su serie de Fourier es
+    \begin{equation}
+    f(x) = \frac{\pi^2}{3} + \sum_{n=1}^{\infty} (-1)^n \frac{4}{n^2} \cos(nx), \qquad x \in [-\pi,\pi].    \label{FourierCuadratica}
+    \end{equation}
+    
+    Es claro que la serie de Fourier de $f(x) = x^2$ para todo $x\in \mathbb{R}$ representa la extensión periódica de los valores de $f(x)$ en el intervalo $[-\pi,\pi]$.
+    
+    La gráfica de $f$ en conjunto con diferentes sumas parciales de su serie de Fourier están representadas en la figura \ref{fig:EjemploFourier1}. 
+    
+    % \begin{figure}[htb]
+        \centering
+        \includegraphics[width = 0.8\textwidth]{Figuras/EjemploFourier1.pdf}
+        \captionof{figure}{Serie de Fourier de la función $f(x) = x^2, -\pi \leq x \leq \pi$, truncada hasta $n = 4$.}
+        \label{fig:EjemploFourier1}
+    % \end{figure}
+    % El teorema visto para convergencia uniforme nos garantiza que esta serie converge uniformemente a $f(x) = x^2$ en $[-\pi,\pi]$, es más, al aplicar el criterio de M de Weierstrass a la serie, ésta converge para todo $x \in \mathbb{R}$, pues
+    % $$\forall  x \in \mathbb{R}: ~ \left|(-1)^n \frac{4}{n^2} \cos(nx)\right| \leq \frac{4}{n^2} = M_n ~~\mbox{y}~~  \sum\limits_{n=1}^{\infty} M_n < \infty.$$
+\end{ejemplo}
 
 % \textbf{Observación}: La serie de Fourier de $f$ converge en media a $f$, o sea, 
 % \begin{shaded}
@@ -205,41 +255,47 @@ Esta expansión se denomina \textbf{serie trigonométrica de Fourier} o simpleme
 
 % Antes de responder estas preguntas, primero justifiquemos que es suficiente trabajar con funciones a valores reales, a pesar de que los siguientes teoremas también son válidos para funciones a valores complejos. 
 
+\subsection{Serie de Fourier de una función compleja de variable real}
+
 Sea $f = u + iv \in \mathscr{C}[-\pi,\pi]$, su serie de Fourier trigonométrica está dada por \eqref{FourierTrigo} con 
 \begin{align*}
     a_0 &= \frac{1}{\pi} \int_{-\pi}^{\pi} f(t) \,dt =  \frac{1}{\pi} \int_{-\pi}^{\pi} u(t) \,dt + \frac{i}{\pi} \int_{-\pi}^{\pi} v(t) \,dt,\\
-    a_n &= \frac{1}{\pi} \int_{-\pi}^{\pi} f(t) \cos(nt) \,dt = \frac{1}{\pi} \int_{-\pi}^{\pi} u(t) \cos(nt) \,dt + \frac{i}{\pi} \int_{-\pi}^{\pi} v(t) \cos(nt) \,dt , \quad n = 1,2, \dots\\
-    b_n &= \frac{1}{\pi} \int_{-\pi}^{\pi} f(t) \sin(nt) \,dt = \frac{1}{\pi} \int_{-\pi}^{\pi} u(t) \sin(nt) \,dt + \frac{i}{\pi} \int_{-\pi}^{\pi} v(t) \sin(nt) \,dt, \quad n = 1,2, \dots
+    a_n &= \frac{1}{\pi} \int_{-\pi}^{\pi} f(t) \cos(nt) \,dt = \frac{1}{\pi} \int_{-\pi}^{\pi} u(t) \cos(nt) \,dt + \frac{i}{\pi} \int_{-\pi}^{\pi} v(t) \cos(nt) \,dt , \quad n \in \mathbb{N} \\
+    b_n &= \frac{1}{\pi} \int_{-\pi}^{\pi} f(t) \sin(nt) \,dt = \frac{1}{\pi} \int_{-\pi}^{\pi} u(t) \sin(nt) \,dt + \frac{i}{\pi} \int_{-\pi}^{\pi} v(t) \sin(nt) \,dt, \quad n \in \mathbb{N}
 \end{align*}
 
 Entonces, su serie de Fourier nos queda
-\begin{align*}
-  f(t) & \sim   \left\{ \frac{\real(a_0)}{2} + \sum_{n=1}^{\infty} ( \real(a_n) \cos(nt) + \real(b_n) \sin(nt) ) \right\}  \\
+\begin{align}
+  f(t) & \sim   \left\{ \frac{\real(a_0)}{2} + \sum_{n=1}^{\infty} ( \real(a_n) \cos(nt) + \real(b_n) \sin(nt) ) \right\}  \nonumber \\
    &  + i \left\{ \frac{\im(a_0)}{2} + \sum_{n=1}^{\infty} (\im(a_n) \cos(nt) + \im(b_n) \sin(nt)) \right\},
-\end{align*}
+\end{align}
 
-es decir, la serie de Fourier de $f = u + iv$ es la de $u(t) + i$ (la de $v(t)$). 
+es decir, la serie de Fourier de $f = u + iv$ será dada por
+\begin{equation}
+    S_F(f) = S_F(u) + i S_F(v) \ ,
+\end{equation}
+donde $S_F$ representa a una serie de Fourier.
+
 
 \subsection{Series de senos y cosenos}
 
-Sea $f:[0,\pi] \longrightarrow \mathbb{R}$ seccionalmente continua, entonces la extensión par e impar de $f$ están definidas por:
-\begin{equation*}
-    E_f(t) = \left\{ \begin{array}{cll}
-    f(-t)     & \mbox{si} & -\pi \leq t < 0 \\
-    f(t)     & \mbox{si} & 0 \leq t \leq \pi
-    \end{array} \right. , ~ O_f(t) = \left\{ \begin{array}{cll}
-    -f(-t)     & \mbox{si} & -\pi \leq t < 0 \\
-    f(t)     & \mbox{si} & 0 \leq t \leq \pi
-    \end{array} \right. .
-\end{equation*}
+\begin{defi} \marginnote{Serie de Fourier seno y serie de Fourier coseno}
+    Dadas las extensiones par e impar de una función, $E_f, O_f: [-\pi,\pi] \to \mathbb{R}$, es posible obtener el desarrollo en serie de Fourier de cada una de estas, que corresponden a los \textbf{desarrollos en serie de Fourier de coseno y de seno} de $f$, respectivamente. Estos son definidos como
+    \begin{align*}
+        E_f(t) & \sim \frac{a_0}{2}  + \sum_{n=1}^{\infty} a_n \cos(nt), ~~\mbox{donde}~~ a_n = \frac{2}{\pi} \int_0^{\pi} f(t) \cos(nt)  dt \ , \\
+        O_f(t) & \sim  \sum_{n=1}^{\infty} b_n \sin(nt), ~~\mbox{donde} ~~ b_n = \frac{2}{\pi} \int_0^{\pi} f(t) \sin (nt) \ dt \ .
+    \end{align*}
 
-Puesto que $E_f, O_f: [-\pi,\pi] \to \mathbb{R}$ son seccionalmente continuas, se puede obtener el desarrollo en serie de Fourier de éstas, los cuales están definidos por: \footnote{La forma de las series seno y coseno, con sus respectivos coeficientes, se obtienen al aplicar las propiedades vistas para las funciones pares e impares.}
-$$ E_f(t) \sim \frac{a_0}{2}  + \sum_{n=1}^{\infty} a_n \cos(nt), ~~\mbox{donde}~~ a_n = \frac{2}{\pi} \int_0^{\pi} f(t) \cos(nt)\,dt$$
+    En ambos casos, se ha hecho uso de las propiedades de las funciones pares e impares para hallar los coeficientes de las series.
+\end{defi}
 
-y
-$$ O_f(t) \sim  \sum_{n=1}^{\infty} b_n \sin(nt), ~~\mbox{donde} ~~ b_n = \frac{2}{\pi} \int_0^{\pi} f(t) \sin (nt)\,dt.$$
+% Puesto que $E_f, O_f: [-\pi,\pi] \to \mathbb{R}$ son seccionalmente continuas, se puede obtener el desarrollo en serie de Fourier de estas, los cuales están definidos por: \footnote{La forma de las series seno y coseno, con sus respectivos coeficientes, se obtienen al aplicar las propiedades vistas para las funciones pares e impares.}
+% $$ 
 
-Estos son llamados \textbf{desarrollos en serie de Fourier de coseno y de seno de $f$}, respectivamente.
+% y
+% $$ .$$
+
+% Estos son llamados \textbf{desarrollos en serie de Fourier de coseno y de seno de $f$}, respectivamente.
 
 % \subsection{Convergencia puntual y uniforme}
 
@@ -301,38 +357,9 @@ Estos son llamados \textbf{desarrollos en serie de Fourier de coseno y de seno d
 % Supóngase que $f$ es continua en $[-\pi,\pi]$, $f(-\pi) = f(\pi)$ y que $f'$ es continua por tramos, con discontinuidades de salto. Entonces la serie de Fourier trigonométrica de $f$ converge a $f$ absolutamente y uniformemente.
 % \end{teorema}
 
-\subsection{Ejemplos}
+% \subsection{Ejemplos}
 
-\begin{ejemplo} \label{EjemploFourier1}
-Consideremos la función $f(x) = x^2$ definida para $x\in [-\pi,\pi]$, la cual es continua con derivada $f'(x) = 2x$ también continua, luego la serie de Fourier de $f$ converge puntualmente a $f$ para todo $x \in (-\pi,\pi)$. Para los extremos $x = \pm \pi$ vemos que $f(\pi) = f(-\pi)$, por lo tanto la serie converge puntualmente a $f$ para todo $x \in [-\pi,\pi]$.
 
-Sus coeficientes de Fourier están dados por:
-\begin{align*}
-    a_0 &= \frac{1}{\pi} \int_{-\pi}^{\pi} x^2 \,dx = \left. \frac{x^3}{3\pi} \right|_{-\pi}^{\pi} = \frac{2}{3} \pi^2, \\
-    a_n &= \frac{1}{\pi} \int_{-\pi}^{\pi} x^2 \cos(n x)\,dx =   \left. \frac{1}{n\pi} x^2 \sin(nx)  \right|_{-\pi}^{\pi} - \frac{2}{n\pi} \int_{-\pi}^{\pi} x \sin(nx) \,dx\\
-    &= \left.   \frac{2}{n^2\pi} x \cos(nx)\right|_{-\pi}^{\pi} - \frac{2}{n^2 \pi} \cancelto{0}{\int_{-\pi}^{\pi} \cos(nx) \,dx }\\
-    &=  \frac{4}{n^2} \cos(n\pi) =  (-1)^n \frac{4}{n^2}, \quad n = 1,2,\dots\\
-     b_n &= \frac{1}{\pi} \int_{-\pi}^{\pi} x^2 \sin(nx)\,dx = 0, \quad n = 1,2, \dots
-\end{align*}
-
-Entonces, su serie de Fourier es
-\begin{equation}
-f(x) = \frac{\pi^2}{3} + \sum_{n=1}^{\infty} (-1)^n \frac{4}{n^2} \cos(nx), \qquad x \in [-\pi,\pi].    \label{FourierCuadratica}
-\end{equation}
-
-Es claro que la serie de Fourier de $f(x) = x^2$ para todo $x\in \mathbb{R}$ representa la extensión periódica de los valores de $f(x)$ en el intervalo $[-\pi,\pi]$.
-
-La gráfica de $f$ en conjunto con diferentes sumas parciales de su serie de Fourier están representadas en la figura \ref{fig:EjemploFourier1}. 
-
-% \begin{figure}[htb]
-    \centering
-    \includegraphics[width = 0.8\textwidth]{Figuras/EjemploFourier1.pdf}
-    \captionof{figure}{Serie de Fourier de la función $f(x) = x^2, -\pi \leq x \leq \pi$, truncada hasta $n = 4$.}
-    \label{fig:EjemploFourier1}
-% \end{figure}
-% El teorema visto para convergencia uniforme nos garantiza que esta serie converge uniformemente a $f(x) = x^2$ en $[-\pi,\pi]$, es más, al aplicar el criterio de M de Weierstrass a la serie, ésta converge para todo $x \in \mathbb{R}$, pues
-% $$\forall  x \in \mathbb{R}: ~ \left|(-1)^n \frac{4}{n^2} \cos(nx)\right| \leq \frac{4}{n^2} = M_n ~~\mbox{y}~~  \sum\limits_{n=1}^{\infty} M_n < \infty.$$
-\end{ejemplo}
 
 % Podemos usar la expansión en serie de Fourier de $f(x) = x^2$ en $[-\pi,\pi]$ para probar que 
 % $$\sum_{n=1}^{\infty} \frac{1}{n^2} = 1 + \frac{1}{4} + \frac{1}{9} + \cdots = \frac{\pi^2}{6}.$$

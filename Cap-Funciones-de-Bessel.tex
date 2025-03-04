@@ -357,7 +357,7 @@ De igual manera, a veces es necesario utilizar los ceros de las derivadas de las
         % para cualquier $\nu > -1/2$.
         \item \textbf{Serie de Fourier-Bessel.} Dado que las funciones de Bessel forman una base en el intervalo $[0,a]$, podemos expandir cualquier función en una Serie de Fourier-Bessel, tal que
         \begin{equation}
-            f(x) = \sum_{n=0}^\infty c_{\nu, n} \ J_\nu\left(\alpha_{\nu, n} \frac{x}{a}\right) \ ,
+            f(x) = \sum_{n=1}^\infty c_{\nu, n} \ J_\nu\left(\alpha_{\nu, n} \frac{x}{a}\right) \ ,
         \end{equation}
         donde
         \begin{equation}
@@ -400,6 +400,86 @@ De igual manera, a veces es necesario utilizar los ceros de las derivadas de las
     \end{enumerate}
 \end{propiedad}
 
+\begin{ejemplo}
+    \textbf{(Butkov, sección 9.7, ejemplo 1.)} Las vibraciones libres de una membrana circular son descritas por la ecuación de onda bidimensional
+    \begin{equation*}
+        \frac{1}{r} \frac{\partial}{\partial r}\left( r \frac{\partial u}{\partial r} \right) + \frac{1}{r^2} \frac{\partial^2 u}{\partial \phi^2} = \frac{1}{v^2} \frac{\partial^2 u}{\partial t^2} \ ,
+    \end{equation*}
+    donde hemos considerado que el origen de nuestro sistema coordenado se encuentra en el centro de la membrana. \cite{Butkov}
+
+    Considere una membrana de radio $a$ fijada en sus contornos, de modo que
+    \begin{equation*}
+        u(\rho=a, \phi; t) = 0 \ ,
+    \end{equation*}
+    y sujeta a las condiciones iniciales para el desplazamiento y la velocidad transversales dadas por
+    \begin{equation*}
+        u(r, \phi; t=0) = u_0(r) \ , \qquad \frac{\partial u}{\partial t}(r, \phi; t = 0) = v_0(r) \ ,
+    \end{equation*}
+    es decir, que el desplazamiento posee simetría radial. Encuentre la función que describe el comportamiento de la membrana en cualquier instante de tiempo.
+
+    \textbf{Solución.} Separando variables, hallamos las ecuaciones
+    \begin{align*}
+        \frac{d^2 T}{dt^2} & = \lambda v^2 T \ , \\
+        \frac{d^2 \Phi}{d\phi^2} & = \lambda_1 \Phi \ , \\
+        \frac{d^2 R}{dr^2} + \frac{1}{r} \frac{dR}{dr} + \left(-\lambda + \frac{\lambda_1}{r^2}\right) R & = 0 \ .
+    \end{align*}
+
+    Físicamente, el comportamiento temporal deberá ser oscilatorio y no exponencial, de modo que $\lambda \leq 0$. En particular, estableceremos $\lambda = -k^2$, donde $k v = \omega$ es el número de onda. Por otra parte, la componente angular deberá satisfacer la condición de periodicidad, lo que nos lleva a la elección de $\lambda_1 = -m^2$. Sin embargo, al suponer simetría radial, tendremos que solo $m = 0$ será una solución adecuada. Luego, las soluciones a estas componentes son
+    \begin{align*}
+        T(t) & = e^{-i\omega t} \ , \\
+        \Phi(\phi) & = C \ . 
+    \end{align*} 
+    
+    Con estos cambios, observamos que la ecuación radial corresponde a la ecuación de Bessel de orden 0, cuya solución general es 
+    \begin{equation*}
+        R(r) = C_1 J_0(kr) + C_2 N_0(kr) \ .
+    \end{equation*}
+
+    Rápidamente descartamos la presencia de las funciones de Neumann, puesto que ellas divergen en $r = 0$. Por ello, imponemos que $C_2 = 0$. Aplicando nuestra condición de borde, la ecuación radial deberá cumplir que
+    \begin{equation*}
+        J_0(ka) = 0 \ .
+    \end{equation*}
+
+    En términos de los ceros de las funciones de Bessel, tenemos que $k$ deberá ser tal que
+    \begin{equation*}
+        k_{0n} = \frac{\alpha_{0n}}{a} \ , n = 1, 2, 3, \dots
+    \end{equation*}
+
+    Dado que la función debe ser real, los coeficientes de $\exp(i\omega t)$ deben ser el complejo conjugado de los de $\exp(-i \omega t)$. Así, la solución general de este problema tendrá la forma
+    \begin{equation*}
+        u(r, t) = \sum_{n=1}^\infty J_0 \left( \alpha_{0n} \frac{r}{a} \right) \left[A_{0n} e^{i \omega_{0n} t} + A^\ast_{0n} e^{-i \omega_{0n} t} \right] \ ,
+    \end{equation*}
+    donde $\omega_{0n} = vk_{0n} = \alpha_{0n} (v/a)$.
+
+    Ahora podemos imponer nuestras condiciones iniciales, de modo que
+    \begin{equation*}
+        u_0(r) = \sum_{n=1}^\infty J_0\left( \alpha_{0n} \frac{r}{a} \right) \left[ A_{0n} + A^\ast_{0n} \right] \ ,
+    \end{equation*}
+    y para las velocidades,
+    \begin{equation*}
+        v_0(r) = \sum_{n=1}^\infty J_0\left( \alpha_{0n} \frac{r}{a} \right) i \omega_{0n} \left[ A_{0n} - A^\ast_{0n} \right] \ .
+    \end{equation*}
+
+    Para determinar los coeficientes $A_{0n}$, multipliquemos a ambos lados por un factor
+    \begin{equation*}
+        t J_0\left( \alpha_{0 n'} \right)
+    \end{equation*}
+    e integremos sobre $r$ en el intervalo entre $0$ y $a$, de modo que utilizando la ortogonalidad de las funciones de Bessel respecto de sus raíces, tenemos que
+    \begin{equation*}
+        \int_0^a u_0(r) \cdot r J_0\left( \alpha_{0n} \frac{r}{a} \right) \ dr = \frac{a^2}{2} [J_1(\alpha_{0n})]^2 (A_{0n} + A^\ast_{0n}) \ .
+    \end{equation*}
+
+    Siguiendo un procedimiento análogo con la velocidad, hemos encontrado que
+    \begin{equation*}
+        \int_0^a v_0(r) \cdot r J_0\left( \alpha_{0n} \frac{r}{a} \right) \ dr = i \omega_{0n} \frac{a^2}{2} [J_1(\alpha_{0n})]^2 (A_{0n} - A^\ast_{0n}) \ .
+    \end{equation*}
+
+    A partie de ambas expresiones, podremos obtener los coeficientes $A_{0n}$ y $A^\ast_{0n}$ como
+    \begin{equation*}
+        A_{0n} = \frac{1}{\pi a^2 [J_1(\alpha_{0n})]^2} \int_0^a \left[ u_0(r) - \dfrac{i}{\omega_{0n}} v_0(r) \right] r J_0\left( \alpha_{0n} \frac{r}{a} \right) dr \ .
+    \end{equation*}
+
+\end{ejemplo}
 
 \section{Funciones modificadas de Bessel}
 

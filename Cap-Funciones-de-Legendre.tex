@@ -243,6 +243,50 @@ A partir de su función generadora, podemos encontrar explícitamente los polino
     \end{enumerate}
 \end{propiedad}
 
+\begin{ejemplo}
+    \textbf{(Arfken 15.2.2.)} Considere una esfera conductora sin carga de radio $r_0$ que es ubicada en un campo eléctrico uniforme de magnitud $E_0$, como se observa en la figura. Encuentre el nuevo potencial electrostático, perturbado por la ubicación de la esfera, y que satisface la ecuación de Laplace $\nabla^2 \psi = 0$.    
+
+    \begin{center}
+    \includegraphics[width = 6cm]{Figuras/Ejemplo-esfera-conductora-2.png}
+    \end{center}
+
+    \textbf{Solución.} Trabajaremos en coordenadas esféricas con el origen en el centro de la esfera y el eje $z$ orientado paralelamente al campo uniforme original. Recordemos que el potencial electrostático es una función \emph{continua}, de modo que en la frontera entre el interior y el exterior de la esfera (es decir, en $r = r_0$) la función potencial interior deberá tener el mismo valor que la función potencial exterior.
+    
+    Dado que la esfera es conductora, esta es \emph{equipotencial}, lo que significa que el potencial es el mismo en todo su volumen, tal que $\psi(r \leq r_0) = V_0$. En particular, dado que la esfera no está cargada, $V_0 = 0$. Supondremos también que en el plano $\theta = \pi/2$, $V = 0$. Esta será nuestra primera condición de borde.
+
+    Separando variables, obtendremos una ecuación radial con soluciones $a_\ell r^\ell + b_\ell r^{-\ell-1}$, y una ecuación axial que corresponde a la ecuación de Legendre. Dada la simetría esférica del sistema, se ha asumido que $m=0$, de modo que la ecuación azimutal da origen a una constante. De este modo, nuestro potencial tendrá la forma
+    \begin{equation*}
+        \psi(r, \theta) = \sum_{\ell = 0}^\infty \left( a_\ell r^\ell + b_\ell r^{-\ell-1} \right) P_\ell(\cos \theta) \ , \quad r > r_0 \ .
+    \end{equation*}
+
+    El efecto de insertar la esfera en el campo eléctrico es local, por lo que el potencial electrostático \emph{muy lejos} de la esfera deberá comportarse como si el campo siguiera siendo uniforme,
+    \begin{equation*}
+        \psi(r \to \infty, \theta) = - E_0 z = -E_0 r \cos \theta = - E_0 r P_1(\cos \theta) \ ,
+    \end{equation*}
+    que será nuestra segunda condición de borde. Esta corresponde al caso en que nuestra serie satisface
+    \begin{equation*}
+        a_1 = -E_0 \ , \qquad a_n = 0 \ , n > 1 \ .
+    \end{equation*}
+
+    ¿Por qué es relevante esta elección? Si considerásemos que, por ejemplo, $a_2 \neq 0$, tendríamos términos cuadráticos que dominarían el comportamiento del potencial, de modo que la segunda condición de borde no se estaría satisfaciendo.
+
+    Volviendo a nuestra primera condición de borde, estudiemos el comportamiento de la función en $r = r_0$ y $\theta = \pi/2$. tendremos
+    \begin{equation*}
+        \psi(r = r_0, \theta = \pi/2) = \frac{b_0}{r_0} + \left( \frac{b_1}{r_0^2} - E_0 r_0 \right) P_1 (\cos \theta) + \sum_{\ell=2}^\infty b_\ell \frac{P_\ell (\cos \theta)}{r_0^{\ell+1}} = 0 \ .
+    \end{equation*}
+
+    Esta igualdad se satisface si $b_n = 0$ para $n > 2$. Dado que la esfera no se encuentra cargada, $b_0 = 0$. Por último, despejando $b_1$, encontramos que su valor es
+    \begin{equation*}
+        b_1 = E_0 r_0^3 \ .
+    \end{equation*}
+
+    Así, el potencial electrostático en el exterior de la esfera tendrá la forma
+    \begin{equation*}
+        \psi_{\text{ext}}(r, \theta) = -E_0 r P_1(\cos \theta) + \frac{E_0 r_0^3}{r^2} P_1(\cos\theta) = - E_0 r \left(1 - \frac{r_0^3}{r^3} \right) P_1 (\cos \theta) \ .
+    \end{equation*}
+
+\end{ejemplo}
+
 \subsection{Funciones de Legendre de segunda especie}
 
 Como discutimos anteriormente, al escoger $\lambda = n(n+1)$ para un número entero $n$, debemos truncar una de las series que aparecen en la ecuación \eqref{eq:Legendre_series_solution}, de modo que la solución se reduce a los polinomios de Legendre. El motivo de hacer esto es hallar una solución que converja en $x = \pm 1$. Sin embargo, ¿debemos hacer esto si nuestro problema no requiere convergencia en los contornos $x = \pm 1$?

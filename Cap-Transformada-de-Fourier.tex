@@ -77,62 +77,65 @@ Note que la transformada de Fourier es la extensión natural del concepto de ser
     \end{equation}  
 \end{defi}
 
+\begin{obs}{Observaciones}
+    \begin{itemize}
+        \item Otras notaciones usadas son: $\tilde{f}(k) = \hat{f}(k) = g(k) = \mathcal{F}\{f(x)\}(k)$.
+        
+        \item El factor $1/\sqrt{2\pi}$ en la definición \eqref{T.Fourier} es convencional. Lo importante es que se cumpla la identidad conocida como \textbf{integral de Fourier}
+        \begin{equation}
+            f(x) = \int_{-\infty}^{\infty} \left[\frac{1}{2\pi} \int_{-\infty}^{\infty} f(\xi) e^{-ik\xi} d\xi \right] e^{ikx} \,dk.
+          \label{IntegralFourier}
+        \end{equation}
+       
+        % Por ejemplo, en lugar de estos factores, podría introducirse un $\alpha$ en \eqref{I.Fourier} y $1/(2\pi \alpha)$ en \eqref{T.Fourier}, con $\alpha$ una constante arbitraria. Algunas elecciones populares son: $\alpha = 1$ y $\alpha = 1/\sqrt{2\pi}$ \cite{Rubilar}.
+    
+        \item Al igual que el factor $1/\sqrt{2\pi}$ en la definición \eqref{T.Fourier}, la función $e^{-ikx}$ es convencional y puede ser reemplazada por $e^{ikx}$, siempre y cuando se verifique \eqref{IntegralFourier} \cite{Butkov, Riley}.
+        
+        % \item En el caso que $f(x)$ sea real, tenemos que \eqref{IntegralFourier} se puede escribir como 
+        % \begin{equation}
+        %     f(x) = \frac{1}{\pi} \int_{0}^{\infty} \int_{-\infty}^{\infty} f(\xi) \cos k(x-\xi)  \, d\xi \,dk.  \label{IntegralFourierReal}
+        % \end{equation}
+    
+        % \colorlet{shadecolor}{blue!10} 
+        % \begin{shaded}
+        % En efecto, la relación \eqref{IntegralFourier} también se puede expresar como 
+        % $$f(x) = \frac{1}{2\pi}  \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(\xi) e^{-ik\xi} e^{ikx} d\xi  \,dk = \frac{1}{2\pi}  \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(\xi) e^{ik(x-\xi)} d\xi  \,dk.$$
+        
+        % Como $f(x)$ es real, se igualan las partes reales para así obtener
+        % $$f(x) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(\xi) \cos k(x-\xi) d\xi  \,dk. $$
+        
+        % Puesto que $\cos k(x-\xi)$ es par con respecto a $k$, tenemos que 
+        % $$f(x) = \frac{2}{2\pi} \int_{0}^{\infty} \int_{-\infty}^{\infty} f(\xi) \cos k(x-\xi)  \, d\xi \,dk =\frac{1}{\pi} \int_{0}^{\infty} \int_{-\infty}^{\infty} f(\xi) \cos k(x-\xi)  \, d\xi \,dk. $$  
+        % \end{shaded}
+        % \colorlet{shadecolor}{green!20}
+        
+        \item Es común en Física trabajar con funciones del tiempo, $f = f(t)$. En este caso, se acostumbra usar la frecuencia $\omega$ en lugar del número de onda $k$, de modo que la integral de Fourier adopta a forma
+        $$
+        f(t) = \int_{- \infty}^{\infty} \Tilde{f}(\omega) e^{i \omega t} d\omega,
+        $$
+    
+        donde
+        $$
+        \Tilde{f}(\omega) = \frac{1}{2\pi} \int_{- \infty}^{\infty} f(t) e^{- i \omega t} dt.
+        $$
+        
+        \item En 3 dimensiones, la integral de Fourier está dada por:
+        \begin{align*}
+             f(\vec{r}\,) &:= \int_{\mathbb{R}^3} \tilde{f}(\vec{k}) e^{i (\vec{k} \cdot \vec{r})} d^3k, \\
+             \tilde{f}(\vec{k}\,) &:= \frac{1}{(2\pi)^3} \int_{\mathbb{R}^3} f(\vec{r}) e^{-i (\vec{k} \cdot \vec{r})} d^3x.
+        \end{align*}
+        
+        En general, en $n$ dimensiones:
+         \begin{align*}
+             f(\vec{r}\,) &:= \int_{\mathbb{R}^n} \tilde{f}(\vec{k}) e^{i (\vec{k} \cdot \vec{r})} d^n k, \\
+             \tilde{f}(\vec{k}\,) &:= \frac{1}{(2\pi)^n} \int_{\mathbb{R}^n} f(\vec{r}) e^{-i (\vec{k} \cdot \vec{r})} d^n x.
+        \end{align*}
+       
+    \end{itemize}    
+\end{obs}
 
-\textbf{Observaciones:}
-\begin{itemize}
-    \item Otras notaciones usadas son: $\tilde{f}(k) = \hat{f}(x) = g(k) = \mathcal{F}\{f(x)\}(k)$.
-    
-    \item El factor $1/\sqrt{2\pi}$ en la definición \eqref{T.Fourier} es convencional. Lo importante es que se cumpla la identidad conocida como \textbf{integral de Fourier}
-    \begin{equation}
-        f(x) = \int_{-\infty}^{\infty} \left[\frac{1}{2\pi} \int_{-\infty}^{\infty} f(\xi) e^{-ik\xi} d\xi \right] e^{ikx} \,dk.
-      \label{IntegralFourier}
-    \end{equation}
-   
-    % Por ejemplo, en lugar de estos factores, podría introducirse un $\alpha$ en \eqref{I.Fourier} y $1/(2\pi \alpha)$ en \eqref{T.Fourier}, con $\alpha$ una constante arbitraria. Algunas elecciones populares son: $\alpha = 1$ y $\alpha = 1/\sqrt{2\pi}$ \cite{Rubilar}.
 
-    \item Al igual que el factor $1/\sqrt{2\pi}$ en la definición \eqref{T.Fourier}, la función $e^{-ikx}$ es convencional y puede ser reemplazada por $e^{ikx}$, siempre y cuando se verifique \eqref{IntegralFourier} \cite{Butkov, Riley}.
-    
-    % \item En el caso que $f(x)$ sea real, tenemos que \eqref{IntegralFourier} se puede escribir como 
-    % \begin{equation}
-    %     f(x) = \frac{1}{\pi} \int_{0}^{\infty} \int_{-\infty}^{\infty} f(\xi) \cos k(x-\xi)  \, d\xi \,dk.  \label{IntegralFourierReal}
-    % \end{equation}
-
-    % \colorlet{shadecolor}{blue!10} 
-    % \begin{shaded}
-    % En efecto, la relación \eqref{IntegralFourier} también se puede expresar como 
-    % $$f(x) = \frac{1}{2\pi}  \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(\xi) e^{-ik\xi} e^{ikx} d\xi  \,dk = \frac{1}{2\pi}  \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(\xi) e^{ik(x-\xi)} d\xi  \,dk.$$
-    
-    % Como $f(x)$ es real, se igualan las partes reales para así obtener
-    % $$f(x) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(\xi) \cos k(x-\xi) d\xi  \,dk. $$
-    
-    % Puesto que $\cos k(x-\xi)$ es par con respecto a $k$, tenemos que 
-    % $$f(x) = \frac{2}{2\pi} \int_{0}^{\infty} \int_{-\infty}^{\infty} f(\xi) \cos k(x-\xi)  \, d\xi \,dk =\frac{1}{\pi} \int_{0}^{\infty} \int_{-\infty}^{\infty} f(\xi) \cos k(x-\xi)  \, d\xi \,dk. $$  
-    % \end{shaded}
-    % \colorlet{shadecolor}{green!20}
-    
-    \item Es común en Física trabajar con funciones del tiempo, $f = f(t)$. En este caso, se acostumbra usar la frecuencia $\omega$ en lugar del número de onda $k$, de modo que la integral de Fourier adopta a forma
-    $$
-    f(t) = \int_{- \infty}^{\infty} \Tilde{f}(\omega) e^{i \omega t} d\omega,
-    $$
-
-    donde
-    $$
-    \Tilde{f}(\omega) = \frac{1}{2\pi} \int_{- \infty}^{\infty} f(t) e^{- i \omega t} dt.
-    $$
-    
-    \item En 3 dimensiones, la integral de Fourier está dada por:
-    \begin{align*}
-         f(\vec{r}\,) &:= \int_{\mathbb{R}^3} \tilde{f}(\vec{k}) e^{i (\vec{k} \cdot \vec{r})} d^3k, \\
-         \tilde{f}(\vec{k}\,) &:= \frac{1}{(2\pi)^3} \int_{\mathbb{R}^3} f(\vec{r}) e^{-i (\vec{k} \cdot \vec{r})} d^3x.
-    \end{align*}
-    
-    En general, en $n$ dimensiones:
-     \begin{align*}
-         f(\vec{r}\,) &:= \int_{\mathbb{R}^n} \tilde{f}(\vec{k}) e^{i (\vec{k} \cdot \vec{r})} d^n k, \\
-         \tilde{f}(\vec{k}\,) &:= \frac{1}{(2\pi)^n} \int_{\mathbb{R}^n} f(\vec{r}) e^{-i (\vec{k} \cdot \vec{r})} d^n x.
-    \end{align*}
-   
-\end{itemize}
+% \textbf{Observaciones:}
 
 ¿Cómo aseguramos la existencia de la transformada de Fourier de una función? Para ello, necesitamos introducir el concepto de \emph{funciones absolutamente integrables}, tras lo cual podemos plantear el teorema de existencia de la transformada de Fourier.
 
@@ -356,11 +359,17 @@ Demostraremos los puntos desde el 1 hasta el 5, y volveremos más tarde a los pu
 
 \begin{propo}\marginnote{Transformada de Fourier de una derivada}
 Sea $f(x)$ con transformada de Fourier $\mathcal{F}\{f(x)\}$ y $\lim\limits_{x \to \pm \infty} f(x) = 0$. Entonces, 
-$$\boxed{\mathcal{F}\{f'(x)\} = i k \mathcal{F}\{f(x)\}}$$
+\begin{equation}
+    \boxed{\mathcal{F}\{f'(x)\} = i k \mathcal{F}\{f(x)\}\ ,} 
+\end{equation}
+y en general, 
+\begin{equation}
+    \mathcal{F}\{f^{(n)} (x)\} = (i k)^n \mathcal{F}\{f(x)\} \ ,
+\end{equation}
 \end{propo}
 
 \begin{demo}
-Usando la definición \eqref{T.Fourier} de la transformada de Fourier, tenemos que 
+Demostraremos el caso para la primera derivada, pues derivadas más altas se deducen a partir de este. Usando la definición \eqref{T.Fourier} de la transformada de Fourier, tenemos que 
 \begin{align*}
     \mathcal{F}\{f'(x)\} &= \frac{1}{2\pi} \int_{- \infty}^{\infty} f'(x) e^{-ikx} \,dx \\
     &= \frac{1}{2\pi} \int_{- \infty}^{\infty} \left\{ \frac{d}{dx}\left[ f(x) e^{-ikx} \right]  - (-ik) f(x) e^{-ikx} \right\}\,dx \\
@@ -372,12 +381,11 @@ Como  $\lim\limits_{x \to \pm \infty} f(x) = 0$, obtenemos
 $$\mathcal{F}\{f'(x)\} = i k \mathcal{F}\{f(x)\}.$$
 \end{demo}
 
-En general,
-\begin{shaded}
-$$\mathcal{F}\{f^{(n)} (x)\} = (i k)^n \mathcal{F}\{f(x)\},$$    
-\end{shaded}
+% En general,
+% \begin{shaded}
+% $$,$$    
+% \end{shaded}
 
-siempre que todas las partes integradas se anulen cuando $x \to \pm \infty$.
 
 Dado que hemos entendido la transformada de Fourier como una extensión de las series de Fourier, como es el caso de que las condiciones de existencia de la transformada de Fourier son las mismas \emph{condiciones de Dirichlet} para la existencia de los coeficientes de Fourier. Por ello, esperaríamos una analogía a la fórmula de Parseval propia de las series de Fourier. Esta corresponde al siguiente teorema.
 
@@ -725,7 +733,7 @@ ya que
 \end{equation*}
 
 \begin{ejemplo}
-    \emph{Considere un anillo de carga $Q$ distribuida uniformemente y radio $a$ ubicado en el plano $xy$ con su centro en el origen. Encuentre la densidad volumétrica de carga en coordenadas cilíndricas y en coordenadas esféricas.}
+    Considere un anillo de carga $Q$ distribuida uniformemente y radio $a$ ubicado en el plano $xy$ con su centro en el origen. Encuentre la densidad volumétrica de carga en coordenadas cilíndricas y en coordenadas esféricas.
 
     Recordamos que una densidad de carga, integrada sobre la región de interés, debe corresponderse con la carga total del sistema, es decir,
     \begin{equation*}
