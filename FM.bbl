@@ -1067,6 +1067,46 @@
       \field{year}{2012}
       \true{nocite}
     \endentry
+    \entry{Sakurai_Napolitano_2011}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=ff0c91c55b5caca1a75c53d4825f5bc1}{%
+           family={Sakurai},
+           familyi={S\bibinitperiod},
+           given={Jun\bibnamedelima J.},
+           giveni={J\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=b87d786f54d3cf33fabdda13f1df174d}{%
+           family={Napolitano},
+           familyi={N\bibinitperiod},
+           given={Jim},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \list{location}{1}{%
+        {Boston, Mass.}%
+      }
+      \list{publisher}{1}{%
+        {Addison-Wesley, Pearson}%
+      }
+      \strng{namehash}{863a26f5e91955b1d359ebb44a3f2b75}
+      \strng{fullhash}{863a26f5e91955b1d359ebb44a3f2b75}
+      \strng{fullhashraw}{863a26f5e91955b1d359ebb44a3f2b75}
+      \strng{bibnamehash}{863a26f5e91955b1d359ebb44a3f2b75}
+      \strng{authorbibnamehash}{863a26f5e91955b1d359ebb44a3f2b75}
+      \strng{authornamehash}{863a26f5e91955b1d359ebb44a3f2b75}
+      \strng{authorfullhash}{863a26f5e91955b1d359ebb44a3f2b75}
+      \strng{authorfullhashraw}{863a26f5e91955b1d359ebb44a3f2b75}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{2. ed., international ed}
+      \field{isbn}{978-0-8053-8291-4}
+      \field{title}{Modern quantum mechanics}
+      \field{year}{2011}
+      \true{nocite}
+    \endentry
     \entry{Spiegel_Liu_Lipschutz_2009}{book}{}{}
       \name{author}{3}{}{%
         {{hash=5b4e41c0914ea564981e3db366e1ee89}{%
