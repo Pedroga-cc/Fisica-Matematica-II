@@ -379,6 +379,72 @@
       \field{year}{1961}
       \true{nocite}
     \endentry
+    \entry{Cohen-Tannoudji_Diu_Laloë_2020}{book}{}{}
+      \name{author}{3}{}{%
+        {{hash=b424d6eadf894bf83fcb843c19382d7a}{%
+           family={Cohen-Tannoudji},
+           familyi={C\bibinithyphendelim T\bibinitperiod},
+           given={Claude},
+           giveni={C\bibinitperiod}}}%
+        {{hash=1b77617a288ff1ae2dd6c4b93ff6c21c}{%
+           family={Diu},
+           familyi={D\bibinitperiod},
+           given={Bernard},
+           giveni={B\bibinitperiod}}}%
+        {{hash=bc88c0350af8e4f57c2ce6799c84f28f}{%
+           family={Laloë},
+           familyi={L\bibinitperiod},
+           given={Franck},
+           giveni={F\bibinitperiod}}}%
+      }
+      \name{editor}{3}{}{%
+        {{hash=d8cf1117f71c28bbac2c074e54e4f773}{%
+           family={Reid\bibnamedelima Hemley},
+           familyi={R\bibinitperiod\bibinitdelim H\bibinitperiod},
+           given={Susan},
+           giveni={S\bibinitperiod}}}%
+        {{hash=00e66695382f7edc2e530020b209ebac}{%
+           family={Ostrowsky},
+           familyi={O\bibinitperiod},
+           given={Nicole},
+           giveni={N\bibinitperiod}}}%
+        {{hash=f42c8150071a0dc8c876f9208921b7df}{%
+           family={Ostrowsky},
+           familyi={O\bibinitperiod},
+           given={Dan},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \list{location}{1}{%
+        {Weinheim}%
+      }
+      \list{publisher}{1}{%
+        {Wiley-VCH Verlag GmbH \& Co. KGaA}%
+      }
+      \strng{namehash}{e5d4f56e984ae30c9e3f05c877895ee1}
+      \strng{fullhash}{e5d4f56e984ae30c9e3f05c877895ee1}
+      \strng{fullhashraw}{e5d4f56e984ae30c9e3f05c877895ee1}
+      \strng{bibnamehash}{e5d4f56e984ae30c9e3f05c877895ee1}
+      \strng{authorbibnamehash}{e5d4f56e984ae30c9e3f05c877895ee1}
+      \strng{authornamehash}{e5d4f56e984ae30c9e3f05c877895ee1}
+      \strng{authorfullhash}{e5d4f56e984ae30c9e3f05c877895ee1}
+      \strng{authorfullhashraw}{e5d4f56e984ae30c9e3f05c877895ee1}
+      \strng{editorbibnamehash}{80ef107c67b794a56a387aa0e059f5d7}
+      \strng{editornamehash}{80ef107c67b794a56a387aa0e059f5d7}
+      \strng{editorfullhash}{80ef107c67b794a56a387aa0e059f5d7}
+      \strng{editorfullhashraw}{80ef107c67b794a56a387aa0e059f5d7}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{Second edition}
+      \field{isbn}{978-3-527-34553-3}
+      \field{title}{Quantum mechanics. Volume 1: Basic concepts, tools, and applications}
+      \field{year}{2020}
+      \true{nocite}
+    \endentry
     \entry{Courant}{book}{}{}
       \name{author}{2}{}{%
         {{hash=f9d1c33cfe5873767fb913f40640ee7b}{%
