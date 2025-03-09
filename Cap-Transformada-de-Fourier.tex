@@ -47,18 +47,20 @@ En otras palabras, para $L \to \infty$, $\Delta k$ es pequeño. Con este cambio 
 
 Es natural especular sobre la posibilidad de un espectro continuo cuando $L$ tiende al infinito  de tal forma que todas las frecuencias están presentes. Puede ser instructivo considerar la siguiente derivación heurística: Sabemos que una función puede ser expandida como una serie de Fourier tal como se muestra en \eqref{Transformada1}. Luego, la transición $L \to \infty$ puede resultar difícil de realizar directamente ya que $c_n$ aparentemente tiende a cero. Seguimos entonces la idea de usar las frecuencias $k = 2\pi n/L$ tal que
 $\Delta k = (2\pi/L ) \Delta n = 2\pi/L$ para valores de $k$ adyacentes y definimos
-$$c_L(k) = \frac{L}{2 \pi} c_n.$$
+\begin{equation}
+    c_L(k) = \frac{L}{\sqrt{2 \pi}} c_n \ .
+\end{equation}
 
 Usando las definiciones anteriores en las ecuaciones \eqref{Transformada1} y \eqref{Transformada2}, obtenemos que la función y sus coeficientes de Fourier se pueden escribir como: 
 \begin{align*}
-    f(x)&= \sum_{Lk/2\pi = -\infty}^{\infty} \frac{2\pi}{L} c_L(k) e^{ikx} \left( \frac{\Delta k L}{2\pi}\right) = \sum_{Lk/2\pi = -\infty}^{\infty}  c_L(k) e^{ikx} \Delta k , \\
-  c_L(k) &= \frac{L}{2\pi} \frac{1}{L} \int_{-L/2}^{L/2} f(x) e^{-ikx} dx = \frac{1}{2\pi} \int_{-L/2}^{L/2} f(x) e^{-ikx} dx.
+    f(x)&= \sum_{Lk/2\pi = -\infty}^{\infty} \frac{\sqrt{2\pi}}{L} c_L(k) e^{ikx} \left( \frac{\Delta k L}{2\pi}\right) = \sum_{Lk/2\pi = -\infty}^{\infty}  \frac{1}{\sqrt{2\pi}} c_L(k) e^{ikx} \Delta k , \\
+  c_L(k) &= \frac{L}{\sqrt{2\pi}} \frac{1}{L} \int_{-L/2}^{L/2} f(x) e^{-ikx} dx = \frac{1}{\sqrt{2\pi}} \int_{-L/2}^{L/2} f(x) e^{-ikx} dx.
 \end{align*}
 
 Al hacer $L \to \infty$, la función $f$ puede considerarse como una función no-periódica arbitraria definida en todo el intervalo $(-\infty, \infty)$, mientras que la primera suma ``se convierte'' en una integral:
 \begin{align*}
-    f(x)&= \int_{-\infty}^{\infty} c(k) e^{ikx} \,dk, \\
-  c(k) &= \lim_{L\to + \infty} c_L(k) =  \frac{1}{2\pi}  \int_{-\infty}^{\infty} f(x) e^{-ikx} dx.
+    f(x)& = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} c(k) e^{ikx} \,dk, \\
+  c(k) & = \lim_{L\to + \infty} c_L(k) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} f(x) e^{-ikx} dx.
 \end{align*}
 
 \begin{defi} \marginnote{Transformada de Fourier}
@@ -543,10 +545,10 @@ Sin embargo, lo más probable es que la función se parezca a la figura X, donde
 \begin{defi}\marginnote{Delta de Dirac}
     Se define la \textbf{Delta de Dirac} centrada en $x=a$ como la función
     \begin{equation}
-        \delta(x-a) = \begin{dcases}
-            0 \ , \qquad x \neq a \ ,
-            \infty \ , \qquad x = a \ ,
-        \end{dcases}
+        \delta(x-a) = \left\{ \begin{array}{cc}
+            0 \ , & \quad x \neq a \ , \\
+            \infty \ , & \quad x = a \ ,
+        \end{array} \right.
     \end{equation}
     tal que la integral de $\delta(x)$ está normalizada,
     \begin{equation}
