@@ -4,6 +4,8 @@ Repositorio de mi apunte del curso Física Matemática II de la UdeC, creado a p
 
 La versión actualizada del archivo .pdf compilado lo puede encontrar en este [link](https://drive.google.com/file/d/1E_A4k7EziUMChqkPDXmnSgDRSN1bMsYA/view?usp=drive_link).
 
+Puede también encontrarse el historial de cambios realizados al apunte en el documento [Changelog.txt](https://github.com/Pedroga-cc/Fisica-Matematica-II/blob/main/changelog.txt)
+
 ## Contenidos:
 
 * Series de Fourier
@@ -35,8 +37,8 @@ La versión actualizada del archivo .pdf compilado lo puede encontrar en este [l
 
 * Tensores Cartesianos
 
-Además, en los apéndices se cubren los siguientes temas:
+<!-- Además, en los apéndices se cubren los siguientes temas:
 
 * Espacio de Funciones
 
-* Ecuaciones diferenciales por el método de series
+* Ecuaciones diferenciales por el método de series -->
