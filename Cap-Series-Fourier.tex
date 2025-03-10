@@ -157,8 +157,8 @@ Ambas extensiones se encuentran definidas en el intervalo $[-a,a]$.
 
 \begin{propo}
     En el espacio $\mathscr{C}[a,b]$, el conjunto formado por las funciones
-    $$\left\{ 1, \cos\left( \frac{2\pi}{L}x \right), \sin\left( \frac{2\pi}{L}x \right) \right\}_{n=1}^{\infty}$$
-    es un conjunto ortogonal, con $L = b-a$.
+    $$\left\{ 1, \cos\left( \frac{2n \pi}{T}x \right), \sin\left( \frac{2n \pi}{T}x \right) \right\}_{n=1}^{\infty}$$
+    es un conjunto ortogonal, con $T = b-a$ el periodo de la función.
 \end{propo}
 
 
@@ -170,25 +170,25 @@ Ambas extensiones se encuentran definidas en el intervalo $[-a,a]$.
 \begin{defi} \marginnote{Condiciones de Dirichlet}
     Una función $f$ satisface las llamadas \textbf{Condiciones de Dirichlet} si satisface
     \begin{enumerate}
-        \item Se encuentra definida en un intervalo $(a,a+2L)$.
-        \item Tanto $f$ como su derivada son funciones seccionalmente continuas en el intervalo $(a,a+2L)$.
+        \item Se encuentra definida en un intervalo $(a,a+T)$.
+        \item Tanto $f$ como su derivada son funciones seccionalmente continuas en el intervalo $(a,a+T)$.
         \item $f$ tiene un número finito de discontinuidades \emph{finitas}.
-        \item $f$ es una función periódica de periodo $2L$.
+        \item $f$ es una función periódica de periodo $T$.
     \end{enumerate}
 
 \end{defi}
 
 \begin{defi} \marginnote{Serie de Fourier}
-Sea $f \in \mathscr{C}[a, a+2L]$ una función que satisface las condiciones de Dirichlet. Entonces, ella puede ser aproximada por la serie 
+Sea $f \in \mathscr{C}[a, a+T]$ una función que satisface las condiciones de Dirichlet. Entonces, ella puede ser aproximada por la serie 
 \begin{equation}
-    \frac{a_0}{2} + \sum_{n=1}^{\infty} \left( a_n \cos\left( \frac{n\pi}{L}x \right) + b_n \sin\left( \frac{n\pi}{L}x \right) \right) \approx f(x) \ . \label{FourierTrigo}
+    \frac{a_0}{2} + \sum_{n=1}^{\infty} \left( a_n \cos\left( \frac{2n\pi}{T}x \right) + b_n \sin\left( \frac{2n\pi}{T}x \right) \right) \approx f(x) \ . \label{FourierTrigo}
 \end{equation}
 
 Esta expansión se denomina \textbf{serie trigonométrica de Fourier} o simplemente \textbf{serie de Fourier}, donde los \textit{coeficientes de Fourier} están dados por:
 \begin{align*}
-    a_0 &= \frac{1}{L} \int_{a}^{a+2L} f(t) \,dt, \\
-    a_n &= \frac{1}{L} \int_{a}^{a+2L} f(t) \cos\left( \frac{n\pi}{L}t \right) \,dt, \quad n = 1,2, \dots\\
-    b_n &= \frac{1}{L} \int_{a}^{a+2L} f(t) \sin\left( \frac{n\pi}{L}t \right) \,dt. \quad n = 1,2, \dots
+    a_0 &= \frac{2}{T} \int_{a}^{a+T} f(t) \,dt, \\
+    a_n &= \frac{2}{T} \int_{a}^{a+T} f(t) \cos\left( \frac{2n\pi}{T}t \right) \,dt, \quad n = 1,2, \dots\\
+    b_n &= \frac{2}{T} \int_{a}^{a+T} f(t) \sin\left( \frac{2n\pi}{T}t \right) \,dt. \quad n = 1,2, \dots
 \end{align*}
 \end{defi}
 
@@ -257,17 +257,17 @@ Esta expansión se denomina \textbf{serie trigonométrica de Fourier} o simpleme
 
 \subsection{Serie de Fourier de una función compleja de variable real}
 
-Sea $f = u + iv \in \mathscr{C}[-\pi,\pi]$, su serie de Fourier trigonométrica está dada por \eqref{FourierTrigo} con 
+Sea $f = u + iv \in \mathscr{C}[a,b]$, su serie de Fourier trigonométrica está dada por \eqref{FourierTrigo} con 
 \begin{align*}
-    a_0 &= \frac{1}{\pi} \int_{-\pi}^{\pi} f(t) \,dt =  \frac{1}{\pi} \int_{-\pi}^{\pi} u(t) \,dt + \frac{i}{\pi} \int_{-\pi}^{\pi} v(t) \,dt,\\
-    a_n &= \frac{1}{\pi} \int_{-\pi}^{\pi} f(t) \cos(nt) \,dt = \frac{1}{\pi} \int_{-\pi}^{\pi} u(t) \cos(nt) \,dt + \frac{i}{\pi} \int_{-\pi}^{\pi} v(t) \cos(nt) \,dt , \quad n \in \mathbb{N} \\
-    b_n &= \frac{1}{\pi} \int_{-\pi}^{\pi} f(t) \sin(nt) \,dt = \frac{1}{\pi} \int_{-\pi}^{\pi} u(t) \sin(nt) \,dt + \frac{i}{\pi} \int_{-\pi}^{\pi} v(t) \sin(nt) \,dt, \quad n \in \mathbb{N}
+    a_0 &= \frac{2}{T} \int_{a}^{b} f(t) \,dt =  \frac{2}{T} \int_a^b u(t) \,dt + \frac{2}{T} \int_a^b v(t) \,dt,\\
+    a_n &= \frac{2}{T} \int_a^b f(t) \cos\left( \frac{2n\pi}{T}t \right) \,dt = \frac{2}{T} \int_a^b u(t) \cos\left( \frac{2n\pi}{T}t \right) \,dt + \frac{2}{T} \int_a^b v(t) \cos\left( \frac{2n\pi}{T}t \right) \,dt , \quad n \in \mathbb{N} \\
+    b_n &= \frac{2}{T} \int_a^b f(t) \sin\left( \frac{2n\pi}{T}t \right) \,dt = \frac{2}{T} \int_a^b u(t) \sin\left( \frac{2n\pi}{T}t \right) \,dt + \frac{2}{T} \int_a^b v(t) \sin\left( \frac{2n\pi}{T}t \right) \,dt, \quad n \in \mathbb{N}
 \end{align*}
 
 Entonces, su serie de Fourier nos queda
 \begin{align}
-  f(t) & \sim   \left\{ \frac{\real(a_0)}{2} + \sum_{n=1}^{\infty} ( \real(a_n) \cos(nt) + \real(b_n) \sin(nt) ) \right\}  \nonumber \\
-   &  + i \left\{ \frac{\im(a_0)}{2} + \sum_{n=1}^{\infty} (\im(a_n) \cos(nt) + \im(b_n) \sin(nt)) \right\},
+  f(t) & \sim   \left\{ \frac{\real(a_0)}{2} + \sum_{n=1}^{\infty} \left[ \real(a_n) \cos\left( \frac{2n\pi}{T}t \right) + \real\left( \frac{2n\pi}{T}t \right) \sin\left( \frac{2n\pi}{T}t \right) \right] \right\}  \nonumber \\
+   &  + i \left\{ \frac{\im(a_0)}{2} + \sum_{n=1}^{\infty} \left[\im(a_n) \cos\left( \frac{2n\pi}{T}t \right) + \im(b_n) \sin\left( \frac{2n\pi}{T}t \right) \right] \right\},
 \end{align}
 
 es decir, la serie de Fourier de $f = u + iv$ será dada por
@@ -280,10 +280,10 @@ donde $S_F$ representa a una serie de Fourier.
 \subsection{Series de senos y cosenos}
 
 \begin{defi} \marginnote{Serie de Fourier seno y serie de Fourier coseno}
-    Dadas las extensiones par e impar de una función, $E_f, O_f: [-\pi,\pi] \to \mathbb{R}$, es posible obtener el desarrollo en serie de Fourier de cada una de estas, que corresponden a los \textbf{desarrollos en serie de Fourier de coseno y de seno} de $f$, respectivamente. Estos son definidos como
+    Dadas las extensiones par e impar de una función, $E_f, O_f: [a,b] \to \mathbb{R}$, es posible obtener el desarrollo en serie de Fourier de cada una de estas, que corresponden a los \textbf{desarrollos en serie de Fourier de coseno y de seno} de $f$, respectivamente. Estos son definidos como
     \begin{align*}
-        E_f(t) & \sim \frac{a_0}{2}  + \sum_{n=1}^{\infty} a_n \cos(nt), ~~\mbox{donde}~~ a_n = \frac{2}{\pi} \int_0^{\pi} f(t) \cos(nt)  dt \ , \\
-        O_f(t) & \sim  \sum_{n=1}^{\infty} b_n \sin(nt), ~~\mbox{donde} ~~ b_n = \frac{2}{\pi} \int_0^{\pi} f(t) \sin (nt) \ dt \ .
+        E_f(t) & \sim \frac{a_0}{2}  + \sum_{n=1}^{\infty} a_n \cos\left( \frac{2n\pi}{T}t \right), & ~~\mbox{donde}~~ a_n = \frac{2}{T} \int_a^{b} f(t) \cos\left( \frac{2n\pi}{T}t \right)  dt \ , \\
+        O_f(t) & \sim  \sum_{n=1}^{\infty} b_n \sin\left( \frac{2n\pi}{T}t \right), & ~~\mbox{donde} ~~ b_n = \frac{2}{T} \int_a^{b} f(t) \sin\left( \frac{2n\pi}{T}t \right) \ dt \ .
     \end{align*}
 
     En ambos casos, se ha hecho uso de las propiedades de las funciones pares e impares para hallar los coeficientes de las series.
@@ -418,9 +418,9 @@ La gráfica de $f$ en conjunto con diferentes sumas parciales de su serie de Fou
 \section{Serie exponencial}
 
 \begin{propo}
-    En el espacio $\mathscr{C}[a,a+2L]$, el conjunto formado por las funciones 
+    En el espacio $\mathscr{C}[a,a+T]$, el conjunto formado por las funciones 
     \begin{equation}
-        \left\{ \frac{1}{\sqrt{2L}} e^{i\frac{n\pi}{L}x} \right\}_{n= - \infty}^{n = \infty}
+        \left\{ \frac{1}{\sqrt{T}} \exp\left(i\frac{2n\pi}{T}x\right) \right\}_{n= - \infty}^{n = \infty}
     \end{equation}
     es un conjunto ortonormal.
 \end{propo}
@@ -431,14 +431,14 @@ La gráfica de $f$ en conjunto con diferentes sumas parciales de su serie de Fou
 \end{defi}
 
 \begin{defi} \marginnote{Serie de Fourier exponencial}
-Sea $f \in \mathscr{C}[a,a+2L]$ una función con un número finito de discontinuidades. Entonces, ella puede ser aproximada por la serie 
+Sea $f \in \mathscr{C}[a,a+T]$ una función con un número finito de discontinuidades. Entonces, ella puede ser aproximada por la serie 
 \begin{equation}
-     \sum_{n=- \infty}^{\infty} c_n e^{i\frac{n\pi}{L}x} \label{FourierExpo}
+     \sum_{n=- \infty}^{\infty} c_n \exp\left(i\frac{2n\pi}{T}x\right) \label{FourierExpo}
 \end{equation}
 
 Esta expansión se denomina \textbf{serie exponencial de Fourier}  donde los \textit{coeficientes de Fourier} están dados por:
 \begin{equation*}
-    c_n = \frac{1}{2L} \int_{a}^{a+2L} f(t) e^{-i\frac{n\pi}{L}t} \,dt \ .
+    c_n = \frac{1}{T} \int_{a}^{a+T} f(t) \exp\left(-i\frac{2n\pi}{T}t \right) \ dt \ .
 \end{equation*}
 \end{defi}
 

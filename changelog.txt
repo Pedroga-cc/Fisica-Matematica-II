@@ -1,1 +1,3 @@
 v1.0.1 (09/03/25) Corrección en la derivación de la transformada de Fourier. Corregido array en definición de delta de Dirac.
+
+v1.0.2 (10/03/25) Corrección en la definición de la serie de Fourier. Se prefiere la definición en base al periodo en lugar de la longitud del intervalo.
