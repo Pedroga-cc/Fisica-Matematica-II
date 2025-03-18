@@ -111,26 +111,26 @@ Note que la transformada de Fourier es la extensión natural del concepto de ser
         % \end{shaded}
         % \colorlet{shadecolor}{green!20}
         
-        \item Es común en Física trabajar con funciones del tiempo, $f = f(t)$. En este caso, se acostumbra usar la frecuencia $\omega$ en lugar del número de onda $k$, de modo que la integral de Fourier adopta a forma
+        \item Es común en Física trabajar con funciones del tiempo, $f = f(t)$. En este caso, se acostumbra usar la frecuencia $\omega$ en lugar del número de onda $k$, de modo que la transformada de Fourier adopta la forma
         $$
-        f(t) = \int_{- \infty}^{\infty} \Tilde{f}(\omega) e^{i \omega t} d\omega,
+        f(t) = \frac{1}{\sqrt{2\pi}} \int_{- \infty}^{\infty} \Tilde{f}(\omega) e^{i \omega t} d\omega,
         $$
     
         donde
         $$
-        \Tilde{f}(\omega) = \frac{1}{2\pi} \int_{- \infty}^{\infty} f(t) e^{- i \omega t} dt.
+        \Tilde{f}(\omega) = \frac{1}{\sqrt{2\pi}} \int_{- \infty}^{\infty} f(t) e^{- i \omega t} dt.
         $$
         
         \item En 3 dimensiones, la integral de Fourier está dada por:
         \begin{align*}
-             f(\vec{r}\,) &:= \int_{\mathbb{R}^3} \tilde{f}(\vec{k}) e^{i (\vec{k} \cdot \vec{r})} d^3k, \\
-             \tilde{f}(\vec{k}\,) &:= \frac{1}{(2\pi)^3} \int_{\mathbb{R}^3} f(\vec{r}) e^{-i (\vec{k} \cdot \vec{r})} d^3x.
+             f(\vec{r}\,) &:= \frac{1}{(2\pi)^{3/2}} \int_{\mathbb{R}^3} \tilde{f}(\vec{k}) e^{i (\vec{k} \cdot \vec{r})} d^3k, \\
+             \tilde{f}(\vec{k}\,) &:= \frac{1}{(2\pi)^{3/2}} \int_{\mathbb{R}^3} f(\vec{r}) e^{-i (\vec{k} \cdot \vec{r})} d^3x.
         \end{align*}
         
         En general, en $n$ dimensiones:
          \begin{align*}
-             f(\vec{r}\,) &:= \int_{\mathbb{R}^n} \tilde{f}(\vec{k}) e^{i (\vec{k} \cdot \vec{r})} d^n k, \\
-             \tilde{f}(\vec{k}\,) &:= \frac{1}{(2\pi)^n} \int_{\mathbb{R}^n} f(\vec{r}) e^{-i (\vec{k} \cdot \vec{r})} d^n x.
+             f(\vec{r}\,) &:= \frac{1}{(2\pi)^{n/2}} \int_{\mathbb{R}^n} \tilde{f}(\vec{k}) e^{i (\vec{k} \cdot \vec{r})} d^n k, \\
+             \tilde{f}(\vec{k}\,) &:= \frac{1}{(2\pi)^{n/2}} \int_{\mathbb{R}^n} f(\vec{r}) e^{-i (\vec{k} \cdot \vec{r})} d^n x.
         \end{align*}
        
     \end{itemize}    
@@ -300,16 +300,16 @@ Demostraremos los puntos desde el 1 hasta el 5, y volveremos más tarde a los pu
 \begin{enumerate}
     \item Por la definición \eqref{T.Fourier} de la transformada de Fourier y usando el hecho de que las funciones son absolutamente convergentes, tenemos
     \begin{align*}
-        \mathcal{F}\{\alpha f(x) + \beta g(x)\}(k) &= \frac{1}{2\pi} \int_{-\infty}^{\infty} [\alpha f(x) + \beta g(x)] e^{-ikx} dx \\
-        &= \frac{\alpha}{2\pi} \int_{-\infty}^{\infty}  f(x) e^{-ikx} dx + \frac{\beta}{2\pi} \int_{-\infty}^{\infty}  g(x) e^{-ikx} dx \\
+        \mathcal{F}\{\alpha f(x) + \beta g(x)\}(k) &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} [\alpha f(x) + \beta g(x)] e^{-ikx} dx \\
+        &= \frac{\alpha}{\sqrt{2\pi}} \int_{-\infty}^{\infty}  f(x) e^{-ikx} dx + \frac{\beta}{\sqrt{2\pi}} \int_{-\infty}^{\infty}  g(x) e^{-ikx} dx \\
         &= \alpha \mathcal{F}\{f(x)\}(k) + \beta \mathcal{F}\{g(x)\}(k).
     \end{align*}
     
     \item Por la definición \eqref{T.Fourier} de la transformada de Fourier y suponiendo que $f$ es real:
     \begin{align*}
-        \mathcal{F}\{f(x)\}(-k) &= \frac{1}{2\pi} \int_{-\infty}^{\infty}  f(x)  e^{-(-ikx)} dx  \\
-        &= \frac{1}{2\pi} \int_{-\infty}^{\infty}  f(x)  (e^{-ikx})^* dx  \\
-        &= \frac{1}{2\pi} \int_{-\infty}^{\infty}  [f(x)  e^{-ikx}]^* dx \\
+        \mathcal{F}\{f(x)\}(-k) &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty}  f(x)  e^{-(-ikx)} dx  \\
+        &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty}  f(x)  (e^{-ikx})^* dx  \\
+        &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty}  [f(x)  e^{-ikx}]^* dx \\
         &= (\mathcal{F}\{f(x)\}(k))^*.
     \end{align*}
 
@@ -373,9 +373,9 @@ y en general,
 \begin{demo}
 Demostraremos el caso para la primera derivada, pues derivadas más altas se deducen a partir de este. Usando la definición \eqref{T.Fourier} de la transformada de Fourier, tenemos que 
 \begin{align*}
-    \mathcal{F}\{f'(x)\} &= \frac{1}{2\pi} \int_{- \infty}^{\infty} f'(x) e^{-ikx} \,dx \\
-    &= \frac{1}{2\pi} \int_{- \infty}^{\infty} \left\{ \frac{d}{dx}\left[ f(x) e^{-ikx} \right]  - (-ik) f(x) e^{-ikx} \right\}\,dx \\
-    &= \frac{1}{2\pi} \left. f(x) e^{-ikx} \right|_{-\infty}^{\infty} + \frac{ik}{2\pi} \int_{- \infty}^{\infty}  f(x) e^{-ikx} \,dx \\
+    \mathcal{F}\{f'(x)\} &= \frac{1}{\sqrt{2\pi}} \int_{- \infty}^{\infty} f'(x) e^{-ikx} \,dx \\
+    &= \frac{1}{\sqrt{2\pi}} \int_{- \infty}^{\infty} \left\{ \frac{d}{dx}\left[ f(x) e^{-ikx} \right]  - (-ik) f(x) e^{-ikx} \right\}\,dx \\
+    &= \frac{1}{\sqrt{2\pi}} \left. f(x) e^{-ikx} \right|_{-\infty}^{\infty} + \frac{ik}{\sqrt{2\pi}} \int_{- \infty}^{\infty}  f(x) e^{-ikx} \,dx \\
     &=  ik \mathcal{F}\{f(x)\} + \left. f(x) e^{-ikx} \right|_{-\infty}^{\infty}.
 \end{align*}
 
@@ -430,12 +430,12 @@ $$\int_{-\infty}^{\infty} \tilde{f}(k) \tilde{g}(-k) \,dk = \int_{-\infty}^{\inf
     \textbf{Solución:} Esta integral puede ser calculada usando el teorema del residuo. En nuestro caso, usaremos el primer teorema de Parseval, teniendo en cuenta el resultado de la transformada de Fourier del pulso cuadrado en el ejemplo \ref{PulsoCuadrado}. 
 
     Para $a = 1$ en la ecuación \eqref{TransPulsoCuadrado}, tenemos que
-    $$\int_{- \infty}^{\infty} |\Tilde{f}(k)|^2 \,dk = \int_{- \infty}^{\infty} \frac{\sin^2(k)}{\pi^2 k^2}  \,dk = \frac{1}{\pi^2} \int_{-\infty}^{\infty}  \frac{\sin^2(k)}{k^2} \,dk.$$
+    $$\int_{- \infty}^{\infty} |\Tilde{f}(k)|^2 \,dk = \int_{- \infty}^{\infty} \frac{2}{\pi} \frac{\sin^2(k)}{k^2}  \,dk = \frac{2}{\pi} \int_{-\infty}^{\infty}  \frac{\sin^2(k)}{k^2} \,dk.$$
 
     Por el primer teorema de Parseval,
     \begin{align*}
-        \int_{- \infty}^{\infty} |\Tilde{f}(k)|^2 \,dk &= \frac{1}{2\pi} \int_{-\infty}^{\infty} |f(x)|^2 \,dx \\
-        \Rightarrow \frac{1}{\pi^2} \int_{-\infty}^{\infty}  \frac{\sin^2(k)}{k^2} &= \frac{1}{2\pi} \int_{-1}^1 \,dx = \frac{1}{\pi}. 
+        \int_{- \infty}^{\infty} |\Tilde{f}(k)|^2 \,dk &= \int_{-\infty}^{\infty} |f(x)|^2 \,dx \\
+        \Rightarrow \frac{2}{\pi} \int_{-\infty}^{\infty}  \frac{\sin^2(k)}{k^2} &=  \int_{-1}^1 \,dx = 2 \ . 
     \end{align*}
 
 Por lo tanto,
@@ -449,10 +449,10 @@ Dependiendo de la paridad de las funciones a las cuales le aplicamos una transfo
 Notemos que, dada una función real $f(x)$ impar, tenemos que
 \begin{align*}
     \tilde{f}(k) & = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} f(x) e^{-ikx} dx \\
-    & = \frac{1}{\sqrt{2\pi}}  \int_{-\infty}^0 f(x) e^{-ikx} \,dx + \frac{1}{\sqrt{2\pi}} \int_{0}^{\infty} f(x) e^{-ikx} \, dx  \\
-    & = -\frac{1}{\sqrt{2\pi}}  \int_{\infty}^0 f(-x) e^{ikx} \,dx + \frac{1}{\sqrt{2\pi}}  \int_{0}^{\infty} f(x) e^{-ikx} \, dx \\
-    & = -\frac{1}{\sqrt{2\pi}} \int_{0}^{\infty} f(x) e^{ikx} \,dx + \frac{1}{\sqrt{2\pi}}  \int_{0}^{\infty} f(x) e^{-ikx} \, dx  \\
-     &= -\frac{1}{\sqrt{2\pi}}  \int_{0}^{\infty} f(x) [e^{ikx} - e^{-ikx}  ] \,dx \\
+    & = \frac{1}{\sqrt{2\pi}}  \int_{-\infty}^0 f(x) e^{-ikx} \,dx + \frac{1}{\sqrt{2\pi}} \int_{0}^{\infty} f(x) e^{-ikx} \, dx \\
+    & = -\frac{1}{\sqrt{2\pi}}  \int_{\infty}^0 f(-x) e^{ikx} \,dx + \frac{1}{\sqrt{2\pi}}  \int_{0}^{\infty} f(x) e^{-ikx} \, dx \ , \quad x \to -x \mbox{ en la integral 1} \ , \\
+    & = -\frac{1}{\sqrt{2\pi}} \int_{0}^{\infty} f(x) e^{ikx} \,dx + \frac{1}{\sqrt{2\pi}}  \int_{0}^{\infty} f(x) e^{-ikx} \, dx \ , \quad f(-x) = -f(x) \ ,  \\
+     &= -\frac{1}{\sqrt{2\pi}}  \int_{0}^{\infty} f(x) [e^{ikx} - e^{-ikx}  ] \, dx \ , \quad \int_a^b = - \int_b^a \ , \\
     & = -\frac{2i}{\sqrt{2\pi}}  \int_{0}^{\infty} f(x) \sin(kx) \,dx \\
     & = -i \left(\sqrt{\frac{2}{\pi}}  \int_{0}^{\infty} f(x) \sin(kx) \,dx \right) \ .
     %  \equiv - i  \tilde{f}_S(k),
@@ -465,10 +465,10 @@ Notemos que, dada una función real $f(x)$ impar, tenemos que
     \end{equation}
     cuya transformada inversa es dada por
     \begin{equation}
-        f(x) = \mathcal{F}^{-1}_S\{F(k)\} = \sqrt{\frac{2}{\pi}} \int_0^\infty F_S(k) \sin(kx) dx \ .
+        f(x) = \mathcal{F}^{-1}_S\{\tilde{f}_S(k)\} = \sqrt{\frac{2}{\pi}} \int_0^\infty \tilde{f}_S(k) \sin(kx) dx \ .
     \end{equation}
 
-    Dada una función $f(x)$ real e impar, su transformada de Fourier puede obtenerse como
+    Dada una función $f(x)$ real e impar, su transformada de Fourier será puramente imaginaria, y puede obtenerse como
     \begin{equation*}
         \tilde{f}(k) = -i \tilde{f}_S(k) \ .
     \end{equation*}
@@ -477,10 +477,10 @@ Notemos que, dada una función real $f(x)$ impar, tenemos que
 De forma análoga, dada una función $f(x)$ real y par, tenemos
 
 \begin{align*}
-    \tilde{f}(k) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} f(x) e^{-ikx} dx 
+    \tilde{f}(k) & = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} f(x) e^{-ikx} dx \\
     & = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^0 f(x) e^{-ikx} \,dx + \frac{1}{\sqrt{2\pi}} \int_{0}^{\infty} f(x) e^{-ikx} \, dx  \\
-    & = -\frac{1}{\sqrt{2\pi}} \int_{\infty}^0 f(-x) e^{ikx} \,dx + \frac{1}{\sqrt{2\pi}} \int_{0}^{\infty} f(x) e^{-ikx} \, dx \\
-    & = \frac{1}{\sqrt{2\pi}} \int_{0}^{\infty} f(x) e^{ikx} \,dx + \frac{1}{\sqrt{2\pi}} \int_{0}^{\infty} f(x) e^{-ikx} \, dx \\
+    & = -\frac{1}{\sqrt{2\pi}} \int_{\infty}^0 f(-x) e^{ikx} \,dx + \frac{1}{\sqrt{2\pi}} \int_{0}^{\infty} f(x) e^{-ikx} \, dx \ , \quad x \to -x \mbox{ en la integral 1} \ , \\
+    & = \frac{1}{\sqrt{2\pi}} \int_{0}^{\infty} f(x) e^{ikx} \,dx + \frac{1}{\sqrt{2\pi}} \int_{0}^{\infty} f(x) e^{-ikx} \, dx \ , \quad f(-x) = f(x) \ , \\
     & = \frac{1}{\sqrt{2\pi}} \int_{0}^{\infty} f(x) [e^{ikx} + e^{-ikx}  ] \,dx \\
     & = \sqrt{\frac{2}{\pi}} \int_{0}^{\infty} f(x) \cos(kx) \,dx \ .
 \end{align*}
@@ -492,10 +492,10 @@ De forma análoga, dada una función $f(x)$ real y par, tenemos
     \end{equation}
     cuya transformada inversa es dada por
     \begin{equation}
-        f(x) = \mathcal{F}^{-1}_C\{F(k)\} = \sqrt{\frac{2}{\pi}} \int_0^\infty F_C(k) \cos(kx) dx \ .
+        f(x) = \mathcal{F}^{-1}_C\{\tilde{f}_C(k)\} = \sqrt{\frac{2}{\pi}} \int_0^\infty \tilde{f}_C(k) \cos(kx) dx \ .
     \end{equation}
 
-    Dada una función $f(x)$ real y par, su transformada de Fourier puede obtenerse como
+    Dada una función $f(x)$ real y par, su transformada de Fourier será real, y puede obtenerse como
     \begin{equation*}
         \tilde{f}(k) = \tilde{f}_C(k) \ .
     \end{equation*}
@@ -565,20 +565,20 @@ Sin embargo, lo más probable es que la función se parezca a la figura X, donde
     \begin{enumerate}
         \item Si $\delta'(x)$ denota a la derivada de la delta de Dirac, y $f'(x)$ representa la derivada de $f(x)$, entonces se satisface
         \begin{equation}
-            \int_{-\infty}^{\infty} \delta'(x) f(x) dx = - f'(0) \ .
+            \int_{-\infty}^{\infty} \delta'(x) f(x) \, dx = - f'(0) \ .
         \end{equation}
 
         Esta idea se puede generalizar a derivadas de orden superior, tal que, asumiendo que $f$ es $m$ veces diferenciable
         \begin{equation}
-            \int_{-\infty}^{\infty} \delta^{(m)}(x) f(x) dx = - f^{(m)}(0) \ .
+            \int_{-\infty}^{\infty} \delta^{(m)}(x) f(x) \, dx = - f^{(m)}(0) \ .
         \end{equation}
 
         \item Dada la \textbf{función escalón de Heaviside}, definida como
         \begin{equation}
-            \begin{dcases}
-                0 \ , \qquad x < 0 \ , \\
-                1 \ , \qquad x > 0 \ ,
-            \end{dcases}
+            H(x) = \begin{array}{cc}
+                0 \ , & x < 0 \ , \\
+                1 \ , & x \geq 0 \ ,
+            \end{array}
         \end{equation}
         entonces la delta de Dirac puede entenderse como su derivada, es decir,
         \begin{equation}
@@ -670,7 +670,7 @@ En coordenadas cartesianas, esta corresponde únicamente al producto de tres del
 \end{equation}
 mientras que en un sistema de coordenadas curvilíneas ortogonales, cuyas coordenadas son $(\xi_1, \xi_2, \xi_3)$, y factores de escala 
 \begin{equation}
-    h_i = \left\| \frac{\partial \vec{x}}{\partial \xi_i} \right\| = \left[ \left( \frac{\partial x}{\partial \xi_i} \right)^2 + \left( \frac{\partial y}{\partial \xi_i} \right)^2 + \left( \frac{\partial z}{\partial \xi_i} \right)^2 \right]^2 \ , \quad i = 1, 2, 3 \ ,
+    h_i = \left\| \frac{\partial \vec{x}}{\partial \xi_i} \right\| = \left[ \left( \frac{\partial x}{\partial \xi_i} \right)^2 + \left( \frac{\partial y}{\partial \xi_i} \right)^2 + \left( \frac{\partial z}{\partial \xi_i} \right)^2 \right]^{1/2} \ , \quad i = 1, 2, 3 \ ,
 \end{equation}
 la delta de Dirac será dada por
 \begin{equation}

@@ -3,3 +3,7 @@ v1.0.1 (09/03/25) Corrección en la derivación de la transformada de Fourier. C
 v1.0.2 (10/03/25) Corrección en la definición de la serie de Fourier. Se prefiere la definición en base al periodo en lugar de la longitud del intervalo.
 
 v1.0.3 (11/03/25) Corrección de typos en sección 1.2.1 (Serie de Fourier de una función compleja)
+
+v1.0.4 (17/03/25) Cambio de convención en demostraciones de propiedades de la transformada (de 1/2pi a 1/sqrt{2pi}) y typos menores.
+
+v1.0.5 (18/03/25) Cambios en transformadas seno y coseno para mayor claridad. Corregidos typos en delta de Dirac. Queda pendiente figura en sección 2.1 (Delta de Dirac)
