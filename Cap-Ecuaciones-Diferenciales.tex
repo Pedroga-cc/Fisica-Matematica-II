@@ -164,30 +164,30 @@ Es posible que esta idea les sea familiar de su curso de Ecuaciones Diferenciale
         \mathcal{F} \left\{ e^{-\alpha |t|} \right\}(\omega) & = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty e^{-\alpha |t|} e^{-i\omega t} dt \nonumber \\
         & = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^0 e^{\alpha t} e^{-i\omega t} dt + \frac{1}{\sqrt{2\pi}} \int_0^\infty e^{-\alpha t} e^{-i\omega t} dt \nonumber \\
         & = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^0 e^{(\alpha -i\omega) t} dt + \frac{1}{\sqrt{2\pi}} \int_0^\infty e^{(-\alpha -i\omega) t} dt \nonumber \\
-        & = \frac{e^{t(\alpha - i \omega)}}{\alpha - i\omega} \left.\right|_{-\infty}^0 + \frac{e^{t(-\alpha - i \omega)}}{-\alpha - i\omega} \left.\right|_0^{\infty} \nonumber \\
-        & = \frac{1}{\alpha - i\omega} + \frac{1}{\alpha + i\omega} \nonumber \\
-        & = \frac{2\alpha}{\alpha^2 + \omega^2} \ , \\
+        & = \frac{1}{\sqrt{2\pi}} \left( \frac{e^{t(\alpha - i \omega)}}{\alpha - i\omega} \left.\right|_{-\infty}^0 + \frac{e^{t(-\alpha - i \omega)}}{-\alpha - i\omega} \left.\right|_0^{\infty}\right) \nonumber \\
+        & = \frac{1}{\sqrt{2\pi}} \left( \frac{1}{\alpha - i\omega} + \frac{1}{\alpha + i\omega} \right) \nonumber \\
+        & = \sqrt{\frac{2}{\pi}} \frac{\alpha}{\alpha^2 + \omega^2} \ , \\
         \mathcal{F} \left\{ \frac{d^2x}{dt^2} \right\}(\omega) & = (i\omega)^2 \mathcal{F}\{ x \}(\omega) \nonumber \\
         & = -\omega^2 \mathcal{F}\{ x \}(\omega) \ ,
     \end{align}
     de modo que la ecuación original, en el espacio de Fourier, se convierte en
     \begin{equation}
-        -\omega^2 \hat{x}(\omega) - \hat{x}(\omega) = \frac{2\alpha}{\omega^2 + \alpha^2} \ ,
+        -\omega^2 \hat{x}(\omega) - \hat{x}(\omega) = \sqrt{\frac{2}{\pi}} \frac{\alpha}{\omega^2 + \alpha^2} \ ,
     \end{equation}
     que es una ecuación algebraica para $\hat{x}(\omega)$. Despejando, obtenemos
     \begin{equation} \label{eq:solucion_edo_fourier}
-        \hat{x}(\omega) = \frac{-2\alpha}{(\omega^2 + \alpha^2) (\omega^2 + 1)} \ .
+        \hat{x}(\omega) = - \sqrt{\frac{2}{\pi}} \frac{\alpha}{(\omega^2 + \alpha^2) (\omega^2 + 1)} \ .
     \end{equation}
     Dado que esta ecuación es algebraica, es directo comprobar que satisface la condición de borde, y no debemos determinar ningún coeficiente. Ahora, podemos aplicar la transformada inversa a la solución \eqref{eq:solucion_edo_fourier}, tal que
     \begin{align}
         x(t) & = \mathcal{F}^{-1} \left\{ \hat{x}(\omega) \right\} (t) \nonumber \\
         & = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty \hat{x}(\omega) e^{i\omega t} d\omega \nonumber \\
-        & = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty \frac{-2\alpha}{(\omega^2 + \alpha^2) (\omega^2 + 1)} e^{i\omega t} d\omega \nonumber \\
-        & = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty \frac{2\alpha}{(\alpha^2 - 1)} \left( \frac{1}{\omega^2 + \alpha^2} - \frac{1}{\omega^2 + 1} \right) e^{i\omega t} d\omega \nonumber \\
-        & = \frac{1}{\alpha^2 - 1} \left( \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty \frac{2\alpha}{\omega^2 + \alpha^2} e^{i\omega t} d\omega + \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty \alpha \frac{2}{\omega^2 + 1} e^{i\omega t} d\omega \right) \nonumber \\
-        & = \frac{\sqrt{2\pi}}{\alpha^2-1} \left( e^{-\alpha |t|} - \alpha e^{-|t|} \right)\ ,
+        & = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty - \sqrt{\frac{2}{\pi}} \frac{\alpha}{(\omega^2 + \alpha^2) (\omega^2 + 1)} e^{i\omega t} d\omega \nonumber \\
+        & = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty \sqrt{\frac{2}{\pi}} \frac{\alpha}{(\alpha^2 - 1)} \left( \frac{1}{\omega^2 + \alpha^2} - \frac{1}{\omega^2 + 1} \right) e^{i\omega t} d\omega \nonumber \\
+        & = \frac{1}{\alpha^2 - 1} \left( \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty \sqrt{\frac{2}{\pi}} \frac{\alpha}{\omega^2 + \alpha^2} e^{i\omega t} d\omega - \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty \alpha \sqrt{\frac{2}{\pi}} \frac{1}{\omega^2 + 1} e^{i\omega t} d\omega \right) \nonumber \\
+        & = \frac{1}{\alpha^2-1} \left( e^{-\alpha |t|} - \alpha e^{-|t|} \right)\ .
     \end{align}
-    donde el factor $\sqrt{2\pi}$ surge de la convención utilizada para la transformada de Fourier.
+    Potencialmente, utilizar convenciones distintas para la definición de la transformada podría afectar nuestra solución en un factor proporcional a $2\pi$.
 \end{ejemplo}
 
 ¿Para qué tipo de problemas puede ser útil trabajar con transformada de Fourier? Principalmente para resolver ecuaciones diferenciales en el dominio $(-\infty, \infty)$ con condiciones de borde homogéneas en el infinito. Particularmente, se recomienda utilizarla en ecuaciones diferenciales \emph{lineales} con \emph{coeficientes constantes}, pues en ambos casos podemos hacer uso de la propiedad de la linealidad de la transformada de Fourier.
@@ -198,7 +198,7 @@ Es posible que esta idea les sea familiar de su curso de Ecuaciones Diferenciale
     \textbf{Método de la transformada de Fourier.} \par
     Dada una EDP que involucre tanto componentes espaciales como temporales, es posible aplicar la transformada de Fourier \emph{sobre un tipo de componentes}, ya sea espaciales o temporales, con el objetivo de convertir nuestra ecuación en una EDO de menor orden. Para ello, seguimos el siguiente procedimiento:
     \begin{enumerate}
-        \item Evaluar qué transformada es más conveniente en nuestro problema. Normalmente utilizaremos aquella que nos permita utilizar nuestras condiciones de borde de la manera más sencilla.
+        \item Evaluar qué transformada es más conveniente en nuestro problema. Normalmente utilizaremos aquella que nos permita utilizar nuestras condiciones de borde de la manera más sencilla. En particular, escogeremos aquella en que nuestras condiciones de borde o iniciales sean suficientes para el orden de la ecuación resultante.
         \item Aplicar la transformada sobre las variables escogidas, de modo que nuestra EDP se convierta en una EDO, idealmente de menor orden que nuestro problema original.
         \item Resolvemos la EDO en el espacio de Fourier.
         \item De ser necesario, calculamos la transformada de Fourier de nuestra condición de borde, y la aplicamos a la solución obtenida en el espacio de Fourier.
@@ -222,7 +222,7 @@ Para hacer más clara esta idea, consideremos el siguiente ejemplo.
     \begin{equation} \label{eq:Fourier_EDP}
         \frac{1}{\alpha} \frac{\partial u}{\partial t} (x,t) - \frac{\partial^2 u}{\partial x^2}(x,t) = 0 \, , x \in \mathbb{R}, \ t>0 \ ,
     \end{equation}
-    con condiciones de contorno dadas por $u(x,0) = \sin(x), \ x \in \mathbb{R}$. Mediante el método de la transformada de Fourier, encuentre la solución al problema.
+    con condiciones iniciales dadas por $u(x,0) = \sin(x), \ x \in \mathbb{R}$. Mediante el método de la transformada de Fourier, encuentre la solución al problema.
     
     \textbf{Solución.} Aplicamos la transformada de Fourier \emph{respecto a la coordenada} $x$, de modo que la ecuación \eqref{eq:Fourier_EDP} se transformará en
     \begin{align}
@@ -238,7 +238,7 @@ Para hacer más clara esta idea, consideremos el siguiente ejemplo.
     Dado que la transformada la hemos calculado \emph{respecto de la posición}, la transformada y la derivada parcial respecto del tiempo conmutan, es decir,
     \begin{align}
         \mathcal{F} \left\{ \frac{\partial u}{\partial t} \right\} & = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty \frac{\partial u}{\partial t} (x,t) e^{-ikx} dx \nonumber \\
-        & = \frac{\partial }{\partial t} \left\{ {1}{\sqrt{2\pi}} \int_{-\infty}^\infty u(x,t) e^{-ikx} dx  \right\} \nonumber \\
+        & = \frac{\partial }{\partial t} \left\{ \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty u(x,t) e^{-ikx} dx  \right\} \nonumber \\
         & = \frac{\partial \hat{u}}{\partial t}(k,t) \ ,
     \end{align}
     de modo que la ecuación \eqref{eq:Fourier_EDP_transformada} puede reescribirse como

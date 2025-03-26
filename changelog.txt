@@ -6,4 +6,6 @@ v1.0.3 (11/03/25) Corrección de typos en sección 1.2.1 (Serie de Fourier de un
 
 v1.0.4 (17/03/25) Cambio de convención en demostraciones de propiedades de la transformada (de 1/2pi a 1/sqrt{2pi}) y typos menores.
 
-v1.0.5 (18/03/25) Cambios en transformadas seno y coseno para mayor claridad. Corregidos typos en delta de Dirac. Queda pendiente figura en sección 2.1 (Delta de Dirac)
+v1.0.5 (18/03/25) Cambios en transformadas seno y coseno para mayor claridad. Corregidos typos en delta de Dirac. Queda pendiente figura en sección 2.3 (Delta de Dirac)
+
+v1.0.6 (26/03/25) Corrección de typos menores en el capítulo 2 (Transformada de Fourier). Cambio de convención de la transformada en el ejemplo 3.1. Typo (fracción mal impresa) en el ejemplo 3.2. Sugerencia más explícita en el paso 1 del Método de la transformada de Fourier.
