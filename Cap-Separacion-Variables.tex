@@ -342,7 +342,7 @@ Antes de discutir la existencia de soluciones para esta ecuación, debemos defin
     \end{equation}
     utilizando el método de series alrededor de $x_0 = 0$.
 
-    \textbf{Solución.} Según la estructura \eqref{eq:EDO_Series}, tenemos que $P(x) = 0$ y $Q(x) = -x$. Como $P(x)$ y $Q(x)$ son funciones analíticas en $\mathbb{R}$ (función constante y lineal, respectivamente) y en particular en $x_0 = 0$, entonces $x_0 = 0$ es un punto ordinario de la EDO, por lo que podemos utilizar el método de Frobenius con $s=0$. Entonces, postulamos una solución de la forma
+    \textbf{Solución.} Según la estructura \eqref{eq:EDO_Series}, tenemos que $P(x) = 0$ y $Q(x) = -x$. Como $P(x)$ y $Q(x)$ son funciones analíticas en $\mathbb{R}$ (función constante y lineal, respectivamente) y en particular en $x_0 = 0$, entonces $x_0 = 0$ es un punto ordinario de la EDO, por lo que podemos utilizar el método de series. Entonces, postulamos una solución de la forma
     \begin{equation}
         y(x) = \sum_{n=0}^\infty a_n x^n \ .
     \end{equation}
@@ -395,7 +395,7 @@ Antes de discutir la existencia de soluciones para esta ecuación, debemos defin
     \end{equation}
     donde $\lambda$ es un valor constante. Encuentre la solución general en serie de potencias.
 
-    \textbf{Solución.} Según la estructura \eqref{eq:EDO_Series}, tenemos que $P(x) = -2x$ y $Q(x) = \lambda$. Como $P(x)$ y $Q(x)$ son funciones analíticas en $\mathbb{R}$ (función lineal y constante, respectivamente) y en particular en $x_0 = 0$. Entonces, $x_0 = 0$ es un punto ordinario de la EDO, por lo que podemos utilizar el método de Frobenius con $s=0$. Entonces, postulamos una solución de la forma
+    \textbf{Solución.} Según la estructura \eqref{eq:EDO_Series}, tenemos que $P(x) = -2x$ y $Q(x) = \lambda$. Como $P(x)$ y $Q(x)$ son funciones analíticas en $\mathbb{R}$ (función lineal y constante, respectivamente) y en particular en $x_0 = 0$. Entonces, $x_0 = 0$ es un punto ordinario de la EDO, por lo que podemos utilizar el método de series. Entonces, postulamos una solución de la forma
     \begin{equation}
         y(x) = \sum_{n=0}^\infty a_n x^n \ .
     \end{equation}
@@ -438,7 +438,7 @@ En el caso en que el coeficiente $P(x)$ no se anula en el dominio del sistema, p
     \begin{equation} \label{eq:solucion_serie}
         y(x) = \sum_{n=0}^\infty a_n(x-x_0)^{n+s} \ , \qquad a_0 \neq 0
     \end{equation}
-    para un número $s$ real y positivo, o bien, de la forma 
+    para un número $s$ real y positivo (si $x_0$ es un punto ordinario, entonces $s=0$), o bien, de la forma 
     \begin{equation}\label{eq:solucion_logaritmo}
         y(x) = y_0 \ln(x-x_0) + \sum_{n=0}^\infty b_n (x-x_0)^{n+r} \ , \qquad b_0 \neq 0 
     \end{equation}
@@ -465,7 +465,7 @@ En el caso en que el coeficiente $P(x)$ no se anula en el dominio del sistema, p
             % & = s(s-1)A_0 x^{s-2} + \sum_{k=1}^\infty (k+s-1)(k+s) A_k x^{k+s-2} \nonumber \\
             % & = s(s-1)A_0 x^{s-2} + \sum_{k=0}^\infty (k+s)(k+s+1) A_{k+1} x^{k+s-1} 
         \end{align}
-        \item Sustituimos las derivadas en nuestra EDO homogénea \eqref{eq:EDO_Series}. Multiplicamos la ecuación por $x^2$, y luego de manipulaciones algebraicas, obtenemos la expresión
+        \item Sustituimos las derivadas en nuestra EDO homogénea \eqref{eq:EDO_Series}. Multiplicamos la ecuación por $x^2$ (en general, por $(x-x_0)^2$), y luego de manipulaciones algebraicas, obtenemos la expresión
         \begin{equation}\label{eq:metodo_frobenius_EDO}
             [s(s-1) + p(x)s + q(x)]A_0 x^s + \sum_{k=1}^\infty [(k+s-1)(k+s) + p(x)(k+s) + q(x)]A_k x^{k+s} = 0 \ ,
         \end{equation}
