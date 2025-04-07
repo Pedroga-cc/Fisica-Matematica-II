@@ -160,23 +160,23 @@ En este caso, pueden ser soluciones físicas tanto el caso en que $\lambda_1>0$,
 
 % la única solución que da sentido físico a nuestro sistema será la oscilante, donde $\lambda_1 < 0$. Esto ocurre debido a que nuestro sistema debe tener condiciones de borde finitas, lo que no ocurre ni en el caso lineal ni en el caso exponencial, donde $Z(z)  \to \infty$ cuando $z \to \infty$. Por ello, y para evitar escribir raíces en nuestras soluciones, podemos establecer que $\lambda_1 = -\ell^2$, con $\ell$ un valor real positivo. 
 
-Ahora, definiendo un valor auxiliar $n^2 = k^2 + \lambda_1$, podemos separar la ecuación \eqref{eq:EDO_en_rho_phi} en una parte que dependa de $\rho$ y una que dependa de $\phi$, de modo que luego de multiplicar por $\rho^2$ y manipular un poco los términos, obtenemos la ecuación
+Ahora, definiendo un valor auxiliar $\eta^2 = k^2 - \lambda_1$, \emph{no necesariamente entero}, podemos separar la ecuación \eqref{eq:EDO_en_rho_phi} en una parte que dependa de $\rho$ y una que dependa de $\phi$, de modo que luego de multiplicar por $\rho^2$ y manipular un poco los términos, obtenemos la ecuación
 \begin{equation}
-    \frac{\rho}{P} \frac{d}{d\rho} \left( \rho \frac{dP}{d\rho} \right) + \rho^2 n^2 = - \frac{1}{\Phi} \frac{d^2 \Phi}{d\phi^2} \ , 
+    \frac{\rho}{P} \frac{d}{d\rho} \left( \rho \frac{dP}{d\rho} \right) + \rho^2 \eta^2 = - \frac{1}{\Phi} \frac{d^2 \Phi}{d\phi^2} \ , 
 \end{equation}
 e introduciendo una constante de separación $\lambda_2$, obtenemos las siguientes expresiones
 \begin{align}
     \frac{1}{\Phi} \frac{d^2 \Phi}{d\phi^2} & = - \lambda_2 \ , \label{eq:EDO_en_Phi} \\
-    \frac{\rho}{P} \frac{d}{d\rho} \left( \rho \frac{dP}{d\rho} \right) + n^2 \rho^2 & = \lambda_2 \ .
+    \frac{\rho}{P} \frac{d}{d\rho} \left( \rho \frac{dP}{d\rho} \right) + \eta^2 \rho^2 & = \lambda_2 \ .
 \end{align}
 
 Las soluciones físicas para la EDO de $\phi$ deberán ser periódicas, dado que $\Phi(\phi + 2\pi) = \Phi(\phi)$, con lo que necesitamos que $\lambda_2 > 0$, ya que el signo menos en \eqref{eq:EDO_en_Phi} produce que el lado derecho de la igualdad sea negativo. Llamamos $\lambda_2 = m^2$, donde $m$ es un número entero para satisfacer la condición de periodicidad.
 
 Solo nos queda resolver la ecuación radial, es decir, la EDO
 \begin{equation}
-    \rho \frac{d}{d\rho} \left( \rho \frac{dP}{d\rho} \right) + (n^2 \rho^2 - m^2)P = 0 \ ,
+    \rho \frac{d}{d\rho} \left( \rho \frac{dP}{d\rho} \right) + (\eta^2 \rho^2 - m^2)P = 0 \ ,
 \end{equation}
-que al realizar el cambio de variable $x = n\rho$, $dx = n d\rho$, y definiendo $Y(x) = P(\rho) = P(x/n)$, puede reescribirse como
+que al realizar el cambio de variable $x = \eta\rho$, $dx = \eta d\rho$, y definiendo $Y(x) = P(\rho) = P(x/\eta)$, puede reescribirse como
 \begin{equation}
     x \frac{d}{dx}\left( x \frac{dY}{dx} \right) + (x^2 - m^2)Y = 0 \ ,
 \end{equation}
@@ -217,13 +217,13 @@ que al ser sustituído en la ecuación \eqref{eq:Helmholtz_esferica} resulta en
 
 Dividiendo por $R\Theta\Phi$ y reordenando los términos, podemos llegar a la expresión
 \begin{equation}
-    \frac{1}{\Phi} \frac{d^2\Phi}{d\phi^2} = r^2\sin^2\theta \left[ -\frac{1}{Rr^2} \frac{d}{dr}\left( r^2 \frac{dR}{dr} \right) - \frac{1}{\Theta r^2\sin\theta} \frac{d}{d\Theta} \left( \sin\theta \frac{d\Theta}{d\theta} \right) - k^2 \right] \ .
+    \frac{1}{\Phi} \frac{d^2\Phi}{d\phi^2} = r^2\sin^2\theta \left[ -\frac{1}{Rr^2} \frac{d}{dr}\left( r^2 \frac{dR}{dr} \right) - \frac{1}{\Theta r^2\sin\theta} \frac{d}{d\Theta} \left( \sin\theta \frac{d\theta}{d\theta} \right) - k^2 \right] \ .
 \end{equation}
 
 En este momento, podemos separar ambos lados de la ecuación al igualarlas a una constante $\lambda_1$, de modo que obtenemos el sistema de ecuaciones
 \begin{align}
     \frac{1}{\Phi} \frac{d^2\Phi}{d\phi^2} & = \lambda_1 \\
-    r^2\sin^2\theta \left[ -\frac{1}{Rr^2} \frac{d}{dr}\left( r^2 \frac{dR}{dr} \right) - \frac{1}{\Theta r^2\sin\theta} \frac{d}{d\Theta} \left( \sin\theta \frac{d\Theta}{d\theta} \right) - k^2 \right] & = \lambda_1 \ , \label{eq:EDO_theta_phi}
+    r^2\sin^2\theta \left[ -\frac{1}{Rr^2} \frac{d}{dr}\left( r^2 \frac{dR}{dr} \right) - \frac{1}{\Theta r^2\sin\theta} \frac{d}{d\theta} \left( \sin\theta \frac{d\Theta}{d\theta} \right) - k^2 \right] & = \lambda_1 \ , \label{eq:EDO_theta_phi}
 \end{align}
 y como en la coordenada azimutal $\phi$ debe cumplirse la condición de periodicidad $\Phi(\phi) = \Phi(\phi + 2\pi)$, entonces $\lambda_1<0$, y lo denotamos por $\lambda_1 = -m^2$, con $m$ un número entero. Luego, reemplazamos este valor en la ecuación \eqref{eq:EDO_theta_phi} para poder separarla. Multiplicando por $r^2$, y manipulando un poco los términos, obtenemos la expresión
 \begin{equation}
@@ -289,7 +289,7 @@ En estos casos, podemos hacer uso del llamado \emph{método de series de potenci
 
 % \section{Resolver EDOs por el método de series}
 
-Consideremos una ecuación diferencial ordinaria, lineal y de segundo orden cuyos coeficientes son polinomios en la variable independiente del problema, de la forma
+Consideremos una ecuación diferencial ordinaria, lineal y de segundo orden cuyos coeficientes son polinomios\footnote{En este caso, por \emph{polinomios} nos referimos a términos de la forma $(x-x_0)^k$, donde $k$ puede tomar tanto valores positivos como negativos.} en la variable independiente del problema, de la forma
 \begin{equation} \label{eq:EDO_Series}
     \frac{d^2 y}{dx} + P(x) \frac{dy}{dx} + Q(x) y(x) = 0 \ .
 \end{equation}
@@ -329,7 +329,7 @@ Antes de discutir la existencia de soluciones para esta ecuación, debemos defin
         \end{equation*}
         \item Dado que buscamos soluciones no triviales, la igualdad anterior se satisface si, término a término, se cumple la relación de recurrencia
         \begin{equation}
-            a_{k+2} = \frac{P(x) (k+1)a_{k+1} + Q(x) a_k}{(k+1)(k+2)} \ .
+            a_{k+2} = -\frac{P(x) (k+1)a_{k+1} + Q(x) a_k}{(k+1)(k+2)} \ .
         \end{equation}
         \item Podemos determinar los primeros coeficientes, $a_0$ y $a_1$, a partir de las condiciones de contorno del sistema, por lo que, en general, actuarán como los coeficientes de dos soluciones linealmente independientes para nuestro problema.
     \end{enumerate}
