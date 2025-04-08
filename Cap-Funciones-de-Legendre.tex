@@ -61,7 +61,7 @@ de modo que dados unos valores para $a_0$ y $a_1$ podremos determinar todos los 
     a_4 & = \frac{2(2+1) - \lambda}{3 \cdot 4} a_2 = \frac{-\lambda(2(2+1)-\lambda)}{4!}a_0 \\
     a_6 & = \frac{4(4+1) - \lambda}{5 \cdot 6} a_4 = \frac{-\lambda (2(2+1)-\lambda)(4(4+1)-\lambda)}{6!} a_0 \\
     & \qquad \vdots \\
-    a_n & = \frac{a_0}{n!}\prod_{\ell=0}^{n-2}[\ell (\ell+1) - \lambda] \ ,
+    a_n & = \frac{a_0}{n!}\prod_{\substack{\ell=0 \\ \ell \mbox{ \scriptsize{par}}}}^{n-2}[\ell (\ell+1) - \lambda] \ ,
 \end{align*}
 mientras que para el caso de coeficientes impares,
 \begin{align*}
@@ -69,13 +69,13 @@ mientras que para el caso de coeficientes impares,
     a_5 & = \frac{(3(3+1)-\lambda)}{4 \cdot 5}a_3 = \frac{(1(1+1) - \lambda)(3(3+1)-\lambda)}{5!} a_1 \\
     a_7 & = \frac{5(5+1) - \lambda}{6 \cdot 7} = \frac{(1(1+1) - \lambda)(3(3+1)-\lambda)(5(5+1) - \lambda)}{7!} a_1 \\
     & \qquad \vdots \\
-    a_n & = \frac{a_1}{n!}\prod_{\ell=1}^{n-2}[\ell (\ell+1) - \lambda] \ ,
+    a_n & = \frac{a_1}{n!}\prod_{\substack{\ell=1 \\ \ell \mbox{ \scriptsize{impar}}}}^{n-2}[\ell (\ell+1) - \lambda] \ ,
 \end{align*}
 de modo que la solución general para la ecuación de Legendre será la combinación lineal de la solución para los valores pares y la solución para los valores impares,
 \begin{align}
     y(x) & = a_0 y_{1}(x) + a_1 y_{2}(x) \nonumber \\
     & = a_0 \left( \sum_{m=0}^{\infty} b_{m} x^{2m} \right) + a_1 \left( \sum_{m=0}^{\infty} c_{m} x^{2m+1} \right) \nonumber \\
-    & = \sum_{m=0}^{\infty} \frac{a_0}{(2m)!}\left( \prod_{\ell=0}^{2m-2}[\ell (\ell+1) - \lambda] \right)x^{2m} + \sum_{m=0}^{\infty} \frac{a_1}{(2m+1)!}\left( \prod_{\ell=1}^{2m-1}[\ell (\ell+1) - \lambda] \right)x^{2m+1} \ . \label{eq:Legendre_series_solution}
+    & = \sum_{m=0}^{\infty} \frac{a_0}{(2m)!}\left( \prod_{\substack{\ell=0 \\ \ell \mbox{ \scriptsize{par}}}}^{2m-2}[\ell (\ell+1) - \lambda] \right)x^{2m} + \sum_{m=0}^{\infty} \frac{a_1}{(2m+1)!}\left( \prod_{\substack{\ell=1 \\ \ell \mbox{ \scriptsize{impar}}}}^{2m-1}[\ell (\ell+1) - \lambda] \right)x^{2m+1} \ . \label{eq:Legendre_series_solution}
 \end{align}
 
 Con esto, podemos darnos cuenta de que la solución general de la ecuación de Legendre es una serie infinita, para la cual debemos analizar su convergencia en el intervalo $x \in [-1,1]$.
@@ -88,8 +88,8 @@ Para $\lambda = n (n+1)$, existirá algún término $a_n=0$ para una de las solu
 
 De esta forma, nos gustaría poder escribir una expresión general para las soluciones que son válidas en todo el dominio, es decir, cuando $\lambda = n(n+1)$. Notamos que $\ell(\ell+1)-n(n+1) = (\ell - n)(\ell + n + 1)$, podemos encontrar que, como una serie de potencias,
 \begin{align} 
-    y_{1,n}(x) & = \sum_{m=0}^{n/2} b_m x^{2m} = \sum_{m=0}^{n/2} \left(\frac{1}{(2m)!} \prod_{\ell=0}^{2m-2} (\ell-n)(\ell+n+1) \right) x^{2m} \\
-    y_{2,n}(x) & = \sum_{m=0}^{(n-1)/2} c_m x^{2m+1} = \sum_{m=0}^{n/2} \left(\frac{1}{(2m)!} \prod_{\ell=0}^{2m-2} (\ell-n)(\ell+n+1) \right) x^{2m+1}
+    y_{1,n}(x) & = \sum_{m=0}^{n/2} b_m x^{2m} = \sum_{m=0}^{n/2} \left(\frac{1}{(2m)!} \prod_{\substack{\ell=0 \\ \ell \mbox{ \scriptsize{par}}}}^{2m-2} (\ell-n)(\ell+n+1) \right) x^{2m} \\
+    y_{2,n}(x) & = \sum_{m=0}^{(n-1)/2} c_m x^{2m+1} = \sum_{m=0}^{n/2} \left(\frac{1}{(2m)!} \prod_{\substack{\ell=1 \\ \ell \mbox{ \scriptsize{impar}}}}^{2m-2} (\ell-n)(\ell+n+1) \right) x^{2m+1}
 \end{align}
 o bien, mediante una expansión en términos de un conjunto de funciones $P_n(x)$,
 \begin{align}
@@ -202,8 +202,8 @@ A partir de su función generadora, podemos encontrar explícitamente los polino
     \begin{enumerate}
         \item \textbf{Normalización.} Los polinomios de Legendre son funciones normalizadas, de modo que $P_n(1) = 1$, para cualquier valor de $n$.
         \item \textbf{Paridad.} Podemos encontrar que los polinomios de Legendre pueden ser funciones pares o impares según el valor de $n$, ya que
-        \item \begin{equation}
-            P_n(-x) = (1-)^n P_n(x) \ . 
+        \begin{equation}
+            P_n(-x) = (-1)^n P_n(x) \ . 
         \end{equation}
     
         \item \textbf{Valor en el origen.} A partir de la función generatriz, podemos mostrar que
@@ -225,7 +225,7 @@ A partir de su función generadora, podemos encontrar explícitamente los polino
             \sum_{n=0}^\infty \frac{2n+1}{2} P_n(x) P_n(x') = \delta(x-x') \ .
         \end{equation}
     
-        \item \textbf{Serie de Fourier-Legendre.} Dado que los polinomios de Legendre forman un abase en el intervalo $[-1,1]$, podemos expandir cualquier función en una Serie de Fourie-Legendre, tal que
+        \item \textbf{Serie de Fourier-Legendre.} Dado que los polinomios de Legendre forman una base en el intervalo $[-1,1]$, podemos expandir cualquier función en una Serie de Fourier-Legendre, tal que
     
         \begin{equation}
             f(x) = \sum_{n=0}^\infty a_n P_n(x) \ ,
