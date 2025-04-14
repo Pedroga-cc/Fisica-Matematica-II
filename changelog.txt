@@ -13,3 +13,5 @@ v1.0.6 (26/03/25) Corrección de typos menores en el capítulo 2 (Transformada d
 v1.0.7 (07/04/25) Corrección de typo en la sección 4.1.2 (había un signo + en lugar  de un signo - al definir n^2). Se aclara que este valor no tiene por qué ser un entero. Reemplazado por \eta para evitar ambigüedad. Typo en la sección 4.1.3 (Theta mayúscula en lugares donde corresponde theta minúscula). Aclaración respecto a la noción de "polinomio" en la sección 4.2. Añadido signo negativo faltante en ecuación 4.53. Typo en ejemplo 4.1.
 
 v1.0.8 (08/04/25) Corrección en los productorios al deducir los polinomios de Legendre (explicitar la paridad del valor ell). Typos menores en propiedades de los Polinomios de Legendre.
+
+v1.0.9 (14/04/25) Corregido error mayor en la definición de la relación de recurrencia 5.26.
