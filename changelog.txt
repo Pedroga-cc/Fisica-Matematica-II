@@ -15,3 +15,5 @@ v1.0.7 (07/04/25) Corrección de typo en la sección 4.1.2 (había un signo + en
 v1.0.8 (08/04/25) Corrección en los productorios al deducir los polinomios de Legendre (explicitar la paridad del valor ell). Typos menores en propiedades de los Polinomios de Legendre.
 
 v1.0.9 (14/04/25) Corregido error mayor en la definición de la relación de recurrencia 5.26. Typo menor en propiedad 5.2.
+
+v1.0.10 (21/04/25) Añadida segunda relación de ortogonalidad de los Polinomios Asociados de Legendre (respecto a m). Añadida, para evitar confusión, relaciones de ortogonalidad de los PAdL en términos de theta. Añadida imagen explicativa del teorema de adición de los armónicos esféricos. Typos menores.

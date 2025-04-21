@@ -526,7 +526,7 @@ De este modo, podemos hallar que
     \begin{enumerate}[series=asociadas]
         \item \textbf{Simetría.} Los polinomios $P^{-m}_n$ se pueden obtener a partir de los $P^{m}_n$ siguiendo la relación
         \begin{equation}
-            P^{-m}_n(x) = (-1)m \frac{(n-m)!}{(n+m)!}P^{m}_n(x) \ .
+            P^{-m}_n(x) = (-1)^m \frac{(n-m)!}{(n+m)!}P^{m}_n(x) \ .
         \end{equation}
         Esto se puede demostrar a partir de la expresión \eqref{eq:asociadas_legendre}, aplicando la fórmula de Leibniz al producto $(n+1)^n (x-1)^n$.
     \end{enumerate}
@@ -547,9 +547,10 @@ De este modo, podemos hallar que
         \end{equation}
 
         \item \textbf{Ortogonalidad.} Los polinomios asociados de Legendre satisfacen las siguientes relaciones de ortogonalidad,
-        \begin{equation}
-            \int_{-1}^1 P_\ell^m(x) P_k^m(x) dx = \frac{2}{2\ell + 1} \frac{(\ell + m)!}{(\ell - m)!} \delta_{\ell, k} \ .
-        \end{equation}
+        \begin{gather}
+            \int_{-1}^1 P_\ell^m(x) P_k^m(x) \, dx = \int_0^\pi P_\ell^m(\cos\theta) P_k^m(\cos\theta) \sin\theta \, d\theta = \frac{2}{2\ell + 1} \frac{(\ell + m)!}{(\ell - m)!} \delta_{\ell, k} \ , \\
+            \int_{-1}^1 P_\ell^m(x) P_\ell^n(x) \frac{dx}{1-x^2} = \int_0^\pi P_\ell^m(\cos\theta) P_\ell^n(\cos\theta) \frac{d\theta}{\sin \theta} = \frac{(\ell+m)!}{m(\ell-m)!} \delta_{m,n} \ .
+        \end{gather}
 
         \item \textbf{Relaciones de recurrencia.} Los polinomios asociados de Legendre satisfacen las siguientes relaciones de recurrencia,
         \begin{align}
@@ -567,6 +568,8 @@ De este modo, podemos hallar que
         \item La mayoría de los problemas físicos descartan esta segunda solución, ya que en general esperaremos que nuestra solución sea finita en $x = \pm 1$, es decir, en $\theta = 0$ y en $\theta = \pi$, con lo que hacemos $C_2 = 0$.
     \end{enumerate}
 \end{propiedad}
+
+\newpage
 
 \section{Armónicos Esféricos}
 
@@ -593,7 +596,7 @@ o bien,
 donde se cumplirá que $- \ell \leq m \leq \ell$.
 
 \begin{defi} \marginnote{Armónicos esféricos}
-    Se denominan \textbf{funciones armónicas esféricas}, o simplemente \textbf{Armónicos esféricos} $Y_\ell^m$, a las soluciones de la parte angular de la ecuación de Laplace, definidos como
+    Se denominan \textbf{funciones armónicas esféricas} $Y_\ell^m$, o simplemente \textbf{Armónicos esféricos}, a las soluciones de la parte angular de la ecuación de Laplace. Son definidos como
     \begin{equation}
         Y_\ell^m(\theta, \phi) = (-1)^m \sqrt{\frac{2\ell + 1}{4\pi} \frac{(\ell-m)!}{(\ell+m)!} } P_\ell^m (\cos\theta) e^{im\phi} \ .
     \end{equation}
@@ -606,6 +609,8 @@ donde se cumplirá que $- \ell \leq m \leq \ell$.
 % \end{equation}
 
 % El factor radical tiene su origen en la normalización de los armónicos esféricos, mientras que el factor $(-1)^m$ es convencional al trabajar en mecánica cuántica en el contexto del momento angular. Esta fase es conocida como \emph{fase de Condon-Shortley}, y a veces es introducida en la definición de los polinomios asociados de Legendre.
+
+\newpage
 
 \subsection{Propiedades}
 
@@ -663,6 +668,12 @@ donde se cumplirá que $- \ell \leq m \leq \ell$.
         \begin{equation}
             \sum_{m = -\ell}^\ell |Y_\ell^m(\theta, \phi)|^2 = \frac{2\ell + 1}{4\pi} \ .
         \end{equation}
+
+        \begin{center}
+            \includegraphics[width=8cm]{Figuras/Addition_Theorem.png}
+            \captionof{figure}{Descripción geométrica de los ángulos involucrados en el teorema de adición de armónicos esféricos.}
+        \end{center}
+       
     
     \end{enumerate}
 \end{propiedad}
