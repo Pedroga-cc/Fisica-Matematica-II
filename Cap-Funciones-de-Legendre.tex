@@ -591,12 +591,18 @@ Una solución para la ecuación de Laplace en coordenadas esféricas será, por 
 \end{align}
 o bien,
 \begin{equation}
-    \psi_{m\ell}(r,\theta,\phi) = R_\ell(r) P_\ell^m(\cos\theta) C_\ell e^{im\phi} \ ,
+    \psi_{m\ell}(r,\theta,\phi) = (D_{\ell, m} r^\ell + E_{\ell, m} r^{-(\ell+1)}) P_\ell^m(\cos\theta) e^{im\phi} \ ,
 \end{equation}
 donde se cumplirá que $- \ell \leq m \leq \ell$.
 
+Sin embargo, recordemos que en la ecuación de Helmholtz la constante $k$ siempre es separada junto a la variable radial, por lo que nuestra EDO para $R$ podrá tener una forma diferente, pero las ecuaciones para $\phi$ y $\theta$ seguirán siendo las ecuaciones \eqref{eq:edo_laplace_phi} y \eqref{eq:edo_laplace_theta}, respectivamente, por lo que las soluciones serán de la forma
+\begin{equation}\label{eq:solucion_armonicos} 
+    \psi_{k\ell m}(r, \theta, \phi) = R_{k, \ell}(r) P_\ell^m(\cos\theta) e^{im\phi} \ .
+\end{equation}
+Incluso, si $k$ no es una constante, sino que una función que depende únicamente de $r$, la solución al problema tendrá la forma \eqref{eq:solucion_armonicos}, de modo que será deseable denotar de alguna forma esta solución \emph{angular} a la ecuación de Helmholtz ``generalizada''.
+
 \begin{defi} \marginnote{Armónicos esféricos}
-    Se denominan \textbf{funciones armónicas esféricas} $Y_\ell^m$, o simplemente \textbf{Armónicos esféricos}, a las soluciones de la parte angular de la ecuación de Laplace. Son definidos como
+    Se denominan \textbf{funciones armónicas esféricas} $Y_\ell^m$, o simplemente \textbf{armónicos esféricos}, a las soluciones de la parte angular de la ecuación de Laplace. Son definidos como
     \begin{equation}
         Y_\ell^m(\theta, \phi) = (-1)^m \sqrt{\frac{2\ell + 1}{4\pi} \frac{(\ell-m)!}{(\ell+m)!} } P_\ell^m (\cos\theta) e^{im\phi} \ .
     \end{equation}
@@ -609,8 +615,6 @@ donde se cumplirá que $- \ell \leq m \leq \ell$.
 % \end{equation}
 
 % El factor radical tiene su origen en la normalización de los armónicos esféricos, mientras que el factor $(-1)^m$ es convencional al trabajar en mecánica cuántica en el contexto del momento angular. Esta fase es conocida como \emph{fase de Condon-Shortley}, y a veces es introducida en la definición de los polinomios asociados de Legendre.
-
-\newpage
 
 \subsection{Propiedades}
 
@@ -630,12 +634,12 @@ donde se cumplirá que $- \ell \leq m \leq \ell$.
     
         \item \textbf{Ortonormalidad.} Los armónicos esféricos forman un conjunto ortonormal, es decir,
         \begin{equation}
-            \int_0^{2\pi} \int_0^\pi Y_j^k(\theta, \phi) Y_\ell^m (\theta, \phi) \sin\theta d\theta d\phi = \delta_{j, \ell} \delta_{k, m} \ .
+            \int_0^{2\pi} \int_0^\pi \left[Y_j^k(\theta, \phi)\right]^\ast Y_\ell^m (\theta, \phi) \sin\theta d\theta d\phi = \delta_{j, \ell} \delta_{k, m} \ .
         \end{equation}
     
         \item \textbf{Completitud.} EL conjunto de funciones $\{ Y_\ell^m(\theta, \phi) \}_{\ell = 0, m = -\ell}^{\ell = \infty, m = \ell}$ es un \emph{conjunto completo de funciones}, con lo que \emph{forma una base en el espacio de funciones}, lo que se expresa como
         \begin{equation}
-            \sum_{\ell = 0}^{\infty} \sum_{m = -\ell}^{\ell} (Y_\ell^m (\theta, \phi))^\ast Y_{\ell}^m (\theta', \phi') = \frac{1}{\sin \theta} \delta(\phi - \phi') \delta(\theta - \theta') \ .
+            \sum_{\ell = 0}^{\infty} \sum_{m = -\ell}^{\ell} \left[Y_\ell^m (\theta, \phi)\right]^\ast Y_{\ell}^m (\theta', \phi') = \frac{1}{\sin \theta} \delta(\phi - \phi') \delta(\theta - \theta') \ .
         \end{equation}
         
         \item \textbf{Expansión en términos de Armónicos Esféricos.} Dada la completitud de los armónicos esféricos, cualquier función $f(\theta, \phi)$ cuadrado integrable, es decir, que satisface
@@ -648,16 +652,20 @@ donde se cumplirá que $- \ell \leq m \leq \ell$.
         \end{equation}
         donde los coeficientes $a_{\ell m}$ son dados por
         \begin{equation}
-            a_{\ell m} = \int_{0}^{2\pi} \int_{0}^{\pi} f(\theta, \phi) (Y_\ell^m)^\ast (\theta, \phi) \sin\theta d\theta d\phi \ .
+            a_{\ell m} = \int_{0}^{2\pi} \int_{0}^{\pi} f(\theta, \phi) \left[Y_\ell^m (\theta, \phi)\right]^\ast \sin\theta d\theta d\phi \ .
         \end{equation}
     
         \item \textbf{Teorema de adición de armónicos esféricos.} Dados dos vectores unitarios $\hat{r}_1$ y $\hat{r}_2$, con direcciones $(\theta_1, \phi_1)$ y $(\theta_2, \phi_2)$, podemos obtener el ángulo $\gamma$ formado entre ambos vectores como
         \begin{equation}
-            \hat{r}_1 \cdot \hat{r}_2 = \cos\gamma = \sin\theta_1 \sin\theta_2 \cos(\phi_1 - \phi_2) + \cos\phi_1 \cos\phi_2 \ ,
+            \hat{r}_1 \cdot \hat{r}_2 = \cos\gamma = \sin\theta_1 \sin\theta_2 \cos(\phi_1 - \phi_2) + \cos\theta_1 \cos\theta_2 \ ,
         \end{equation}
-        y podremos hallar los polinomios de Legendre de este ángulo como
+        donde hemos usado que
+        \begin{equation*}
+            \hat{r}_i = \sin \theta_i \cos \phi_i \hat{x} + \sin \theta_o \sin \phi_i \hat{y} + \cos \theta_i \hat{z} \ .
+        \end{equation*}
+        De este modo, podremos hallar los polinomios de Legendre de este ángulo como
         \begin{equation}
-            P_\ell(\cos\gamma) = \frac{4\pi}{2\ell + 1} \sum_{m = -\ell}^\ell Y_\ell^m(\theta_1, \phi_1) (Y_\ell^m(\theta_2, \phi_2))^\ast \ .
+            P_\ell(\cos\gamma) = \frac{4\pi}{2\ell + 1} \sum_{m = -\ell}^\ell Y_\ell^m(\theta_1, \phi_1) \left[Y_\ell^m(\theta_2, \phi_2)\right]^\ast \ .
         \end{equation}
     
         En particular, cuando $\gamma=0$, y por ende $\theta_1 = \theta_2 = \theta$ y $\phi_1 = \phi_2 = \phi$, obtenemos que
