@@ -917,6 +917,7 @@
       \field{eprinttype}{arXiv}
       \field{title}{A completeness-like relation for Bessel functions}
       \field{year}{2015}
+      \true{nocite}
       \verb{eprint}
       \verb 1310.1128
       \endverb
