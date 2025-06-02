@@ -21,3 +21,5 @@ v1.0.10 (21/04/25) Añadida segunda relación de ortogonalidad de los Polinomios
 v1.1.0 (21/04/25) Mejoras en el texto de armónicos esféricos, incluyendo la discusión de diferentes valores de k. Leves mejoras en la explicación del teorema de adición de armónicos esféricos. Corregidas propiedades de los armónicos esféricos: Añadido conjugado faltante en ortonormalidad, y corrección de ángulos en el teorema de adición.
 
 v1.2.0 (02/06/25) Corrección de typos en la introducción a funciones de Bessel (definición de Q(x)), al igual que en la ecuación 6.15 (falta la constante a0) y 6.8 (reemplaza +2nu por +- 2nu). Añadida Delta faltante en Propiedad 6.1.1. Modificada repetición de relación entre las propiedaes 6.1.7 y 6.1.8. Añadidas dos relaciones de recurrencia (6.54 y 6.55 nueva). Añadida la propiedad general de ortogonalidad de las funciones de Bessel.
+
+V1.2.1 (02/06/25) Correcciones de Typos en la parte final del ejemplo 6.1.
