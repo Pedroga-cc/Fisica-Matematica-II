@@ -505,7 +505,7 @@ Esta ecuación es conocida como la \textbf{ecuación modificada de Bessel}, y su
 \begin{defi} \marginnote{Funciones modificadas de Bessel}
     Un conjunto particular de soluciones a la ecuación modificada de Bessel \eqref{eq:Bessel_modificada} corresponde a las \textbf{funciones modificadas de Bessel de primera especie}, $I_\nu(x)$, y a las \textbf{funciones modificadas de Bessel de segunda especie}, $K_\nu(x)$, definidas como
     \begin{align}
-        I_\nu(x) & = i^{-\nu} J_\nu(ix) = \sum_{k=0^\infty} \frac{1}{k! \Gamma(k+\nu+1)} \left( \frac{x}{2} \right)^{2k+\nu} \ , \\
+        I_\nu(x) & = i^{-\nu} J_\nu(ix) = \sum_{k=0}^\infty \frac{1}{k! \Gamma(k+\nu+1)} \left( \frac{x}{2} \right)^{2k+\nu} \ , \\
         K_\nu(x) & = i^{\nu + 1} \frac{\pi}{2} H_\nu^{(1)}(ix) = \frac{\pi}{2} \left[ \frac{I_{-\nu}(x) - I_\nu(x)}{\sin(\nu \pi)} \right] \ , \qquad \nu \notin \mathbb{Z} \ .
     \end{align}
 \end{defi}
@@ -553,7 +553,7 @@ De forma análoga a lo ocurrido para las funciones de Bessel de segunda especie,
     \textbf{Propiedades de las funciones modificadas de Bessel.}
 
     \begin{enumerate}
-        \item \textbf{Comportamiento asintótico.} En el límite en que $x$ toma valores \emph{muy grandes}, generalmente entendido como $x \gg |\nu^2 - 1/4|$, podemos representar las funciones de Bessel como
+        \item \textbf{Comportamiento asintótico.} En el límite en que $x$ toma valores \emph{muy grandes}, generalmente entendido como $x \gg |\nu^2 - 1/4|$, podemos representar las funciones modificadas de Bessel como
         \begin{align}
             I_\nu(x) & = \frac{1}{\sqrt{2\pi x}} e^x \ , \\
             K_\nu(x) & = \sqrt{\frac{\pi}{2x}} e^{-x} \ . 
@@ -667,10 +667,11 @@ Vale la pena hacer notar que
     j_0(x) & = \frac{\sin x}{x} \ , \\
     y_0(x) & = - \frac{\cos x}{x} \ .
 \end{align}
-Además, cuando $\ell$ corresponde a un número entero, las funciones esféricas de Bessel satisfacen que
-\begin{equation}
-    y_{\ell+1/2}(x) = (-1)^{\ell+1} j_{-\ell - 1/2}(x) \ ,
-\end{equation}
+Además, cuando $\ell$ corresponde a un número entero, las funciones esféricas de Bessel satisfacen las relaciones
+\begin{align}
+    y_{\ell}(x) & = (-1)^{\ell+1} j_{-\ell - 1}(x) \ , \\
+    j_{\ell}(x) & = (-1)^{\ell  } y_{-\ell - 1}(x) \ ,
+\end{align}
 lo que es consecuencia de su relación con las funciones de Bessel de orden semientero.
 
 \begin{figure}[htbp]
@@ -737,7 +738,7 @@ Al igual que en el caso de las funciones de Bessel, no es posible hallar las ra�
     \begin{enumerate}
         \item \textbf{Ortogonalidad respecto a las raíces.} A partir de la ortogonalidad de las funciones de Bessel, tenemos que
         \begin{equation}
-            \int_0^a j_n\left( \alpha_{n,p} \frac{x}{a} \right) j_n\left( \alpha_{n,q} \frac{x}{a}  \right) r^2 \ dr = \frac{a^3}{2} \left[ j_{n+1}(\alpha_{np}) \right]^2 \delta_{pq} \ .
+            \int_0^a j_n\left( \alpha_{n,p} \frac{x}{a} \right) j_n\left( \alpha_{n,q} \frac{x}{a}  \right) x^2 \ dx = \frac{a^3}{2} \left[ j_{n+1}(\alpha_{np}) \right]^2 \delta_{pq} \ .
         \end{equation}
         \item \textbf{Ortogonalidad respecto al orden.} Tenemos que, a diferencia de las funciones de Bessel, las funciones esféricas de Bessel son ortogonales respecto a su orden, tal que
         \begin{equation}
@@ -757,26 +758,36 @@ Al igual que en el caso de las funciones de Bessel, no es posible hallar las ra�
         \begin{align}
             j_n(x) & \approx \frac{1}{x} \sin\left( x - \frac{n\pi}{2} \right) \ , \\
             y_n(x) & \approx - \frac{1}{x} \cos\left( x - \frac{n\pi}{2} \right) \ , \\
-            h_n^{(1)}(x) = H_n^{(2)}(x)^\ast & = \approx (-i)^{n+1} \frac{e^{ix}}{x} = - \frac{e^{i(x-n\pi/2)}}{x} \ .
+            h_n^{(1)}(x) = H_n^{(2)}(x)^\ast & \approx (-i)^{n+1} \frac{e^{ix}}{x} = - \frac{e^{i(x-n\pi/2)}}{x} \ .
         \end{align}
         \item \textbf{Relaciones de recurrencia.} Cualquier función esférica de Bessel satisface las relaciones de recurrencia
         \begin{align}
             f_{n-1}(x) + f_{n+1}(x) & = \frac{2n+1}{x} f_n(x) \ , \\
             n f_{n-1}(x) - (n+1) f_{n+1}(x) & = (2n+1) f'_n(x) \ .
         \end{align}
-        \item \textbf{Relaciones con derivadas.} Las funciones esféricas de Bessel de orden $n$ pueden obtenerse a partir de las funciones de orden 0 mediante sucesivas derivaciones, esto es,
+        \item \textbf{Relaciones con derivadas.} Las funciones esféricas de Bessel de orden $n$ pueden obtenerse a partir de las funciones de orden 0 mediante sucesivas derivaciones (fórmulas de Rayleigh), esto es,
         \begin{align}
             j_n(x) & = (-1)^n x^n \left( \frac{1}{x} \frac{d}{dx} \right)^n \left( \frac{\sin x}{x} \right) \ , \\
             y_n(x) & = (-1)^n x^n \left( \frac{1}{x} \frac{d}{dx} \right)^n \left( \frac{\cos x}{x} \right) \ , \\
             h_n^{(1)}(x) & = -i (-1)^n x^n \left( \frac{1}{x} \frac{d}{dx} \right)^n \left( \frac{e^{ix}}{x} \right) \ , \\
             h_n^{(2)}(x) & = i (-1)^n x^n \left( \frac{1}{x} \frac{d}{dx} \right)^n \left( \frac{e^{-ix}}{x} \right) \ .
         \end{align}
+
+        De igual forma, podríamos escribir que cualquier función esférica de Bessel satisface las relaciones
+        \begin{align}
+            \frac{d}{dx}[x^{n+1} f_n(x)] & = x^{n+1} f_{n-1}(x) \\
+            \frac{d}{dx}[x^{-n} f_n(x)] & = -x^{-n} f_{n+1}(x)
+        \end{align}
+        
+        % \item \textbf{Función generatriz, para orden entero.}
+        
         \item \textbf{Funciones esféricas modificadas de Bessel.} Puede darse el caso en que la ecuación esférica de Bessel tenga la forma de la ecuación modificada de Bessel para orden $1/2$. En ese caso,se definen las \emph{funciones esféricas de Bessel modificadas} como
         \begin{align}
             i_n(x) & = \sqrt{\frac{\pi}{2x}} I_{n+1/2}(x) \ , \\
             k_n(x) & = \sqrt{\frac{2}{\pi x}} K_{n+1/2}(x) \ .
         \end{align} 
         Nótese que el factor de escala para $k_n$ es diferente al utilizado para el resto de las funciones esféricas de Bessel.
+
     \end{enumerate}
 \end{propiedad}
 
