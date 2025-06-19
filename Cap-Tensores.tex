@@ -6,7 +6,7 @@ Una de las nociones más importantes que tenemos en física clásica es el hecho
 
 Por ejemplo, un vector que describe la posición de un objeto en función del tiempo puede ser diferente según el sistema de coordenadas en que se lo describa, pero el movimiento \emph{físico} del objeto seguirá siendo el mismo.
 
-\section{Transformaciones ortogonales}
+\section{Sistemas Coordenados}
 
 Antes de entrar más de lleno en la discusión, recordemos e introduzcamos algunas definiciones.
 
@@ -250,8 +250,8 @@ Gracias a esta definición, observamos que los \textbf{vectores}, que tienen una
     \begin{align*}
         I'_{ij} & = \int_V \rho'(x') [\delta_{ij} (x'_k x'_k) - x'_i x'_j] \ dV' \\
         & = \int_V \underbrace{\rho(x)}_{\text{Escalar}} [\delta_{ij}\underbrace{(x_k x_k)}_\text{Escalar} - (a_{il} x_l)(a_{jm} x_m)] \ dV \\
-        & = \int_V \rho(x) [(a_{il}a_{jl})(x_k x_k) - (a_il x_l)(a_{jm} x_m)] \ dV \\
-        & = \int_V \rho(x) [(a_{il}a_{jm}\delta{lm})(x_k x_k) - (a_il x_l)(a_{jm} x_m)] \ dV \\
+        & = \int_V \rho(x) [(a_{il}a_{jl})(x_k x_k) - (a_{il} x_l)(a_{jm} x_m)] \ dV \\
+        & = \int_V \rho(x) [(a_{il}a_{jm}\delta_{lm})(x_k x_k) - (a_{il} x_l)(a_{jm} x_m)] \ dV \\
         & = (a_{il} a_{jm}) \int_V \rho(x) [(\delta_{lm})(x_k x_k) - x_l x_m] \ dV \\
         & = a_{il} a_{jm} I_{lm} \ ,
     \end{align*}
@@ -266,9 +266,9 @@ En este contexto, vale la pena mencionar con algo más de detalle a dos propieda
     \textbf{Propiedades de los tensores cartesianos.}
 
     \begin{enumerate}
-        \item Si \emph{todas las componentes de un tensor se anulan en un sistema coordenado ortogonal}, ellas se anularán \emph{en todo sistema coordenado ortogonal}.  Esta propiedad nos interesa, ya que nos indica que la anulación de un tensor \textbf{es una propiedad intrínseca} de este. Por ello, utilizar tensores en Física es tan importante, pues nos permite plantear leyes \emph{que no dependen del sistema coordenado en que trabajamos}, sino únicamente del fenómeno estudiado.
+        \item Si \emph{todas las componentes de un tensor se anulan en un sistema coordenado ortogonal}, ellas se anularán \emph{en todo sistema coordenado ortogonal}.  Esta propiedad nos interesa, ya que nos indica que la anulación de un tensor \textbf{es una propiedad intrínseca} de este. De esta propiedad surge la importancia de utilizar tensores en Física, pues nos permite plantear leyes \emph{que no dependen del sistema coordenado en que trabajamos}, sino únicamente del fenómeno estudiado.
         
-        Por ejemplo, podemos estar estudiando el momento de inercia de un cuerpo en movimiento, el cual es un tensor de rango 2. Si diera la casualidad de que este es cero en algún sistema coordenado ortogonal, esto quiere decir que en cualquier sistema coordenado ortogonal, el cuerpo \emph{no se encuentra rotando}.
+        Por ejemplo, podemos estar estudiando el momento de inercia de un cuerpo en movimiento, el cual es un tensor de rango 2. Si diera la casualidad de que este es cero en algún sistema coordenado ortogonal, esto quiere decir que, \textbf{en cualquier sistema coordenado ortogonal}, el cuerpo \emph{no se encuentra rotando}.
     
         \item Existen algunos \textbf{tensores invariantes} o \textbf{isotrópicos}, los cuales tienen siempre las mismas componentes \emph{en cualquier sistema coordenado}. Un ejemplo de estos es la delta de Kronecker, pues en cualquier sistema coordenado tendrá las mismas componentes, 1 si $i=j$ y 0 si $i\neq j$.
         
@@ -303,11 +303,11 @@ Dicho rápido y sencillo, hemos visto que los tensores de rango 1 y rango 2 se c
         C_{i_1 i_2 \dots i_{r+s}} = A_{i_1 i_2 \dots i_r} \cdot B_{i_{r+1} i_{r+2} \dots i_{r+s}} \ .
     \end{equation}
     
-    En este caso, es relevante respeter la posición de los índices en el producto, pues en general el tensor $C_{ij} = A_i B_j$ será distinto al vector $D_{ij} = A_j B_i$, como consecuencia de la permutación de índices.
+    En este caso, es relevante respetar la posición de los índices en el producto, pues en general el tensor $C_{ij} = A_i B_j$ será distinto al vector $D_{ij} = A_j B_i$, como consecuencia de la permutación de índices.
 
     Esta operación incluye, por supuesto, el producto entre un tensor de rango 0 (un escalar) y un tensor de rango $r$, definiendo el \emph{prodcuto por un escalar}.
 
-    \item \textbf{Contracción de índices.} El producto escalar entre dos vectores nos entrega un escalar en lugar de un tensor de orden 2 como consecuencia de la repetición de índices en el producto. De manera similar, la repetición de dos índice dentro de un tensor de orden $r$ (digamos, el $s$-ésimo y el $t$-ésimo índice), es equivalente a un tensor de orden $r-2$,
+    \item \textbf{Contracción de índices.} El producto escalar entre dos vectores nos entrega un escalar en lugar de un tensor de orden 2, como consecuencia de la repetición de índices en el producto. De manera similar, la repetición de dos índices dentro de un tensor de orden $r$ (digamos, el $s$-ésimo y el $t$-ésimo índice), es equivalente a un tensor de orden $r-2$,
     \begin{equation}
         B_{i_1 i_2 \dots i_{r-2}} = A_{i_1 i_2 \dots j \dots j \dots i_{r-2}} \ ,
     \end{equation}
@@ -350,7 +350,7 @@ Dicho rápido y sencillo, hemos visto que los tensores de rango 1 y rango 2 se c
 
 \section{Pseudovectores y pseudotensores}
 
-Hasta ahora, de manera implícita, hemos utilizado transformaciones ortogonales \emph{propias}, es decir, que solo rotan el sistema, pero no modeifican la orientación de los tensores. Sin embargo, al considerar transformaciones \emph{impropias}, que no solo rotan el sistema sino que realizan una inversión de coordenadas o \emph{reflexión} ($x_i \to -x_i$). Cuando también incluimos este tipo de transformaciones, los vectores siguen cumpliendo la regla de transformación \eqref{eq:transformacion-vector}, pero existen ciertas cantidades físicas que comúnmente supondríamos como vectores, pero que bajo una reflexión no transforman de igual manera, como es el caso de aquellas relacionadas a cantidades \emph{angulares}, como la velociadad angular, el torque o el momento angular.
+Hasta ahora, de manera implícita, hemos utilizado transformaciones ortogonales \emph{propias}, es decir, que solo rotan el sistema, pero no modeifican la orientación de los tensores. Sin embargo, al considerar transformaciones \emph{impropias}, que no solo rotan el sistema sino que realizan una inversión de coordenadas o \emph{reflexión} ($x_i \to -x_i$). Cuando también incluimos este tipo de transformaciones, los vectores siguen cumpliendo la regla de transformación \eqref{eq:transformacion-vector}. Sin embargo, existen ciertas cantidades físicas que comúnmente supondríamos como vectores, que \textbf{no transforman de igual manera} bajo una reflexión, como es el caso de aquellas relacionadas a cantidades \emph{angulares}, como la velociadad angular, el torque o el momento angular.
 
 \begin{defi} \marginnote{Pseudovector}
     Las cantidades que transforman según la regla

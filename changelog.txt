@@ -25,3 +25,5 @@ v1.2.0 (02/06/25) Corrección de typos en la introducción a funciones de Bessel
 V1.2.1 (02/06/25) Correcciones de Typos en la parte final del ejemplo 6.1.
 
 v1.2.2 (06/06/25) Corregida la relación entre las funciones esféricas de Bessel y de Neumann. Corrección de typo en la propiedad 6.3.1. Añadida una formulación alternativa en la propiedad 6.3.7.
+
+v1.2.3 (19/06/25) Correcciones de typos en capítulo de tensores cartesianos: sub-índices equivocados en el ejemplo 8.1, nombre de la sección 8.1.
